@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decoder — a decoder ring for the language of AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --font-fallback:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --font-primary:"Inter",var(--font-fallback);
+    --font-secondary:"Newsreader",var(--font-fallback);
+    --font-body:var(--font-primary);
+  }
+  html,body{margin:0;padding:0}
+  body{background:#fdfdfc;font-family:var(--font-body);-webkit-font-smoothing:antialiased;letter-spacing:-.006em}
+  *{box-sizing:border-box}
+  a{color:var(--accent);text-decoration:none;cursor:pointer}
+  a:hover{opacity:.72}
+  button{font-family:inherit;color:inherit}
+  :focus-visible{outline:2px solid rgba(79,119,166,.45);outline-offset:2px}
+  .dsp{font-family:var(--font-secondary)}
+
+  @keyframes bd{from{opacity:0}to{opacity:1}}
+  @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes sl{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @keyframes rise{from{opacity:0;transform:translate(-50%,8px) scale(.96)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+  @keyframes toastin{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
+  @keyframes cardin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(240,150,55,0)}50%{box-shadow:0 0 0 4px rgba(240,150,55,.18)}}
+  @keyframes savepop{0%{transform:scale(.4);opacity:0}55%{transform:scale(1.25)}100%{transform:scale(1);opacity:1}}
+  @keyframes heroin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .card{position:relative;animation:cardin .5s cubic-bezier(.2,.75,.3,1) both;transition:transform .18s cubic-bezier(.2,.75,.3,1),box-shadow .18s,border-color .18s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(20,24,33,.06);border-color:var(--border-strong)}
+  .card .go{position:absolute;right:16px;bottom:15px;opacity:0;transform:translateX(-5px);transition:opacity .2s,transform .2s;color:var(--accent);font-size:16px}
+  .card:hover .go{opacity:1;transform:translateX(0)}
+  .srow{transition:background .13s,padding-left .13s}
+  .srow:hover{padding-left:22px}
+  .pulse{animation:glow 2.6s ease-in-out infinite;border-radius:20px}
+  .mstack>*{animation:sl .5s cubic-bezier(.2,.75,.3,1) both}
+  .mstack>*:nth-child(1){animation-delay:.04s}
+  .mstack>*:nth-child(2){animation-delay:.1s}
+  .mstack>*:nth-child(3){animation-delay:.16s}
+  .mstack.still>*{animation:none}
+  #lensLine{transition:opacity .18s ease}
+  .hero-line{animation:heroin .6s cubic-bezier(.2,.75,.3,1) both}
+  .tabu{transition:transform .32s cubic-bezier(.4,1.1,.3,1)}
+  .savepop{display:inline-block;animation:savepop .4s cubic-bezier(.3,1.3,.4,1) both}
+
+  /* hover helpers (converted from prototype style-hover attrs) */
+  .h-bd:hover{border-color:var(--border-strong)}
+  .h-theme:hover{border-color:var(--border-strong);color:var(--text-2)}
+  .h-hero:hover{box-shadow:0 4px 16px rgba(20,24,33,0.09);border-color:var(--border-strong)}
+  .h-close:hover{background:var(--hover)}
+  .h-surf2:hover{background:var(--surface-2)}
+  .h-surf3:hover{background:var(--surface-3)}
+  .rel:hover{border-color:var(--border-3);background:var(--hover-strong)}
+  .jterm{border-bottom:var(--hint-border);cursor:pointer;border-radius:2px;transition:background .12s}
+  .jterm:hover{background:var(--hover)}
+  .popclose:hover{color:var(--muted-2)}
+  .rm:hover{color:var(--error)}
+
+  .dm-shell{
+    --bg:#fdfdfc;--surface:#ffffff;--surface-2:#fbfbfc;--surface-3:#f7f7f8;--hover:#eef1f6;--hover-strong:#ebecef;--header-bg:rgba(253,253,252,0.82);
+    --text:#0e0f12;--text-2:#22252b;--text-3:#3f4249;--text-4:#4a4e55;--muted:#6a6e75;--muted-2:#787c83;--faint:#9a9ea5;--faint-2:#c6c9ce;
+    --border:rgba(20,24,33,0.10);--border-2:rgba(20,24,33,0.14);--border-3:rgba(20,24,33,0.18);--border-strong:rgba(20,24,33,0.30);--hairline:rgba(20,24,33,0.06);--hairline-2:rgba(20,24,33,0.08);
+    --save-text:#4a7c59;--toast-bg:#17181b;--toast-text:#ffffff;--error:#ff0052;--secondary:#f09637;
+    --hint-border:1px dotted rgba(20,24,33,.38);
+    transition:background .3s ease,color .3s ease;
+  }
+  .dm-shell[data-theme="dark"]{
+    --bg:#131519;--surface:#1c1f25;--surface-2:#191c21;--surface-3:#23272e;--hover:#2b3038;--hover-strong:#333944;--header-bg:rgba(19,21,25,0.82);
+    --text:#f4f5f7;--text-2:#e6e8ec;--text-3:#c6cad1;--text-4:#b2b7bf;--muted:#969ba3;--muted-2:#858a92;--faint:#6d727a;--faint-2:#565b63;
+    --border:rgba(255,255,255,0.12);--border-2:rgba(255,255,255,0.17);--border-3:rgba(255,255,255,0.22);--border-strong:rgba(255,255,255,0.34);--hairline:rgba(255,255,255,0.07);--hairline-2:rgba(255,255,255,0.10);
+    --save-text:oklch(0.82 0.1 150);--toast-bg:#f4f5f7;--toast-text:#131519;
+    --hint-border:1px dotted rgba(255,255,255,.42);
+  }
+  .dm-shell[data-theme="dark"] .card:hover{box-shadow:0 6px 20px rgba(0,0,0,.35)}
+
+  /* status colors — swap purely via CSS on theme change */
+  .st-core{--stc:oklch(0.5 0.085 155);--stbg:oklch(0.955 0.03 155)}
+  .st-rising{--stc:oklch(0.56 0.12 55);--stbg:oklch(0.955 0.05 72)}
+  .st-fading{--stc:oklch(0.55 0.05 250);--stbg:oklch(0.955 0.022 250)}
+  .st-historical{--stc:oklch(0.5 0 0);--stbg:oklch(0.925 0 0)}
+  [data-theme="dark"] .st-core{--stc:oklch(0.82 0.11 155);--stbg:oklch(0.33 0.05 155)}
+  [data-theme="dark"] .st-rising{--stc:oklch(0.83 0.12 68);--stbg:oklch(0.35 0.06 60)}
+  [data-theme="dark"] .st-fading{--stc:oklch(0.82 0.07 250);--stbg:oklch(0.33 0.04 250)}
+  [data-theme="dark"] .st-historical{--stc:oklch(0.78 0 0);--stbg:oklch(0.34 0 0)}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-primary);font-weight:600;text-transform:uppercase;border-radius:20px;color:var(--stc);background:var(--stbg)}
+
+  .savebtn{border:1px solid var(--accent);border-radius:10px;padding:11px 18px;font-size:14px;font-weight:600;cursor:pointer;background:var(--accent);color:#fff;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s,border-color .2s}
+  .savebtn.is-saved{background:#eef4ee;color:#4a7c59;border-color:#cfe0cf}
+  [data-theme="dark"] .savebtn.is-saved{background:oklch(0.30 0.045 150);color:oklch(0.85 0.1 150);border-color:oklch(0.42 0.05 150)}
+
+  ::selection{background:var(--hover);color:var(--text)}
+
+  /* ---------- polish pass (Emil): press feedback, interruptible collapse, touch/reduced-motion ---------- */
+  button{ -webkit-tap-highlight-color:transparent; }
+  button:active{ transform:scale(0.98); }
+  /* "Go deeper" accordion — height animated via the Web Animations API (see toggleDeeper), fade via CSS */
+  .deeper-wrap{ height:0; overflow:hidden; }
+  .deeper-inner{ min-height:0; transition:opacity .18s ease; }
+  /* Gate hover states to real pointers so taps don't leave sticky states on touch devices */
+  @media (hover:none){
+    .card:hover{ transform:none; box-shadow:none; border-color:var(--border); }
+    .card:hover .go{ opacity:0; }
+    .srow:hover{ padding-left:16px; background:transparent; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.05s !important; }
+  }
+
+  /* ---------- responsive / mobile ---------- */
+  @media (max-width:640px){
+    .hdr-inner{ gap:8px !important; padding:0 14px !important; }
+    .hdr-tag{ display:none !important; }
+    #searchBtn{ min-width:0 !important; padding:8px 10px !important; }
+    #searchBtn .search-label, #searchBtn .search-kbd{ display:none !important; }
+    #main{ padding:0 14px !important; }
+    .hero-pad{ padding:44px 0 44px !important; }
+    .shelf-grid{ grid-template-columns:1fr !important; }
+    nav#tabs button{ padding:10px 9px 12px !important; }
+    #themeBtn{ width:40px !important; height:40px !important; }
+    .auth-email, .auth-signout-word, .auth-dot, .auth-signin-word{ display:none !important; }
+    .auth-btn{ padding:8px !important; }
+    .modal-card{ border-radius:16px 16px 0 0 !important; }
+    .modal-pad{ padding:22px 18px 20px !important; }
+    .sheet-pad{ padding:44px 0 64px !important; }
+  }
+  @media (max-width:380px){
+    nav#tabs button span:first-child{ font-size:12.5px !important; }
+  }
+</style>
+</head>
+<body>
+<div class="dm-shell" id="shell" data-theme="light" style="--accent:#4f77a6;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text)">
+
+  <header style="position:sticky;top:0;z-index:20;background:var(--header-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)">
+    <div class="hdr-inner" style="max-width:1040px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;gap:20px">
+      <div style="display:flex;align-items:center;gap:9px;margin-right:8px">
+        <span style="width:9px;height:9px;border-radius:50%;background:var(--accent);display:inline-block"></span>
+        <span class="dsp" style="font-weight:600;font-size:22px;line-height:1;letter-spacing:-.02em">Decoder</span>
+        <span class="hdr-tag" style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">for AI</span>
+      </div>
+      <nav id="tabs" style="display:flex;gap:2px"></nav>
+      <button id="searchBtn" class="h-bd" aria-label="Search a term" style="margin-left:auto;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border-2);border-radius:10px;padding:7px 10px 7px 12px;cursor:pointer;color:var(--muted-2);font-size:13px;min-width:210px;transition:border-color .15s">
+        <span style="color:var(--accent);font-size:15px">⌕</span>
+        <span class="search-label" style="opacity:.7">Search a term…</span>
+        <span class="search-kbd" style="margin-left:auto;font-family:var(--font-primary);font-size:10.5px;color:var(--faint);border:1px solid var(--border-2);border-radius:5px;padding:1px 6px">⌘K</span>
+      </button>
+      <button id="themeBtn" class="h-theme" title="Switch to dark" aria-label="Switch to dark" style="flex:none;display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--surface);border:1px solid var(--border-2);border-radius:10px;cursor:pointer;color:var(--muted);font-size:15px;line-height:1;transition:border-color .15s,color .15s">☾</button>
+      <div id="authSlot" style="flex:none;display:flex;align-items:center"></div>
+    </div>
+  </header>
+
+  <main id="main" style="flex:1;width:100%;max-width:1040px;margin:0 auto;padding:0 24px">
+    <section id="s-lookup"></section>
+    <section id="s-sheet" style="display:none"></section>
+  </main>
+
+  <!-- overlay roots live INSIDE the shell so they inherit theme + accent CSS variables -->
+  <div id="spotRoot"></div>
+  <div id="modalRoot"></div>
+  <div id="signinRoot"></div>
+  <div id="popRoot"></div>
+  <div id="toastRoot"></div>
+
+</div>
+
+<!-- ============================================================
+     Supabase config. Fill these in from your Supabase project
+     (Settings → API). The anon key is safe to ship in the client;
+     access is protected by row-level security (see supabase/schema.sql).
+     Leave blank to run in local-only mode (localStorage, no sign-in).
+     ============================================================ -->
+<script>
+  window.DECODER_CONFIG = {
+    SUPABASE_URL: "https://ivyfvwnxjkqyicbjzqoz.supabase.co",       // e.g. https://abcdefgh.supabase.co  (Connect dialog, or Settings → Data API)
+    SUPABASE_ANON_KEY: "sb_publishable_rP_Ds8F2cbEHkpFNIzyRIQ_YHGxQ5c9"   // Publishable key (sb_publishable_...) or legacy anon key. NOT the secret/service_role key.
+  };
+</script>
+
+<!-- Cloud bridge: sets up Supabase (if configured) and talks to the app via events. -->
+<script type="module">
+  const cfg = window.DECODER_CONFIG || {};
+  function emit(detail){ window.dispatchEvent(new CustomEvent("decoder-auth", { detail })); }
+  if (!cfg.SUPABASE_URL || !cfg.SUPABASE_ANON_KEY) {
+    window.__decoderConfigured = false;
+    emit({ configured: false });
+  } else {
+    window.__decoderConfigured = true;
+    const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2");
+    const sb = createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+    const api = {
+      signIn: () => sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.href.split("#")[0] } }),
+      signOut: () => sb.auth.signOut(),
+      async list() {
+        const { data, error } = await sb.from("cheatsheet_items").select("concept_id");
+        if (error) { console.warn("[decoder] list failed", error.message); return []; }
+        return data.map(r => r.concept_id);
+      },
+      async add(uid, id) { await sb.from("cheatsheet_items").upsert({ user_id: uid, concept_id: id }); },
+      async remove(id) { await sb.from("cheatsheet_items").delete().eq("concept_id", id); },
+    };
+    window.__decoderCloud = api;
+    sb.auth.onAuthStateChange((_evt, session) => {
+      emit({ configured: true, user: session ? { id: session.user.id, email: session.user.email } : null, api });
+    });
+    const { data: { session } } = await sb.auth.getSession();
+    emit({ configured: true, user: session ? { id: session.user.id, email: session.user.email } : null, api });
+  }
+</script>
+
+<script>
+"use strict";
+const ACCENT = "#4f77a6";
+const SHOW_HINTS = true;
+
+const statusMeta = {
+  Core:       { label:"Core",       sym:"●", cls:"st-core" },
+  Rising:     { label:"Rising",     sym:"▲", cls:"st-rising" },
+  Fading:     { label:"Fading",     sym:"▼", cls:"st-fading" },
+  Historical: { label:"Historical", sym:"†", cls:"st-historical" },
+};
+
+const DATA = [
+  { id:'rag', term:'RAG', aliases:'Retrieval-Augmented Generation', said:'“rag”', aliasList:['rag','retrieval augmented generation','retrieval-augmented generation'], status:'Core',
+    oneLiner:'Hand the model a stack of your documents to read before it answers, so it stops making things up.',
+    analogy:'An open-book exam — instead of reciting from memory, it looks up the right page first.',
+    example:'A support bot that quotes your actual help docs instead of confidently guessing is doing RAG.',
+    related:[{text:'Often confused with fine-tuning — that changes the model itself; RAG just hands it notes.',id:'finetuning'},{text:'Runs on embeddings under the hood.',id:'embeddings'},{text:'Exists mostly to dodge the context window limit.',id:'contextwindow'}],
+    deeper:'Your docs get chopped into chunks, turned into embeddings, and stored in a vector database. At query time the system finds the closest chunks and stuffs them into the context window next to your question. Quality lives and dies on the retrieval step — bad chunks in, bad answer out.' },
+
+  { id:'evals', term:'Evals', aliases:'Evaluations', said:'“ee-vals”', aliasList:['evals','eval','evaluations','evaluation'], status:'Core',
+    oneLiner:'Tests for AI — a repeatable way to check whether the model actually got better or just feels like it did.',
+    analogy:'A unit-test suite, but for judgment instead of code.',
+    example:'Before shipping a new prompt, a team runs it against 500 saved questions and counts how many it nails.',
+    related:[{text:'The scoreboard a human in the loop quietly fills.',id:'hitl'},{text:'What you run to catch a hallucination before users do.',id:'hallucination'}],
+    deeper:'They range from exact-match graders to “LLM-as-judge” setups where one model scores another. The hard part is never running them — it is writing eval sets that reflect what real users actually do, not what is easy to grade.' },
+
+  { id:'contextwindow', term:'Context window', aliases:'', said:'', aliasList:['context window'], status:'Core',
+    oneLiner:'How much the model can hold in view at once — your prompt, the docs, the whole chat — before the start falls off.',
+    analogy:'Short-term memory, or a desk that only fits so many papers before the older ones slide off the edge.',
+    example:'Paste a 400-page PDF into a small-context model and it will quietly lose the early chapters.',
+    related:[{text:'Measured in tokens.',id:'tokens'},{text:'The ceiling RAG is designed to work around.',id:'rag'}],
+    deeper:'Windows have grown from a few thousand tokens to millions, but “it fits” is not “it uses well.” Models often attend better to the beginning and end than the muddled middle — the classic “lost in the middle” effect.' },
+
+  { id:'hitl', term:'HITL', aliases:'Human in the loop', said:'“human in the loop”', aliasList:['hitl','human in the loop'], status:'Core',
+    oneLiner:'A person checks or approves the AI’s work before it counts — the safety catch on high-stakes steps.',
+    analogy:'A spellchecker that suggests, but you still have to hit accept.',
+    example:'The AI drafts the refund; a human clicks approve before any money actually moves.',
+    related:[{text:'The judgment that becomes your evals.',id:'evals'},{text:'The opposite pole from a fully autonomous agent.',id:'agents'}],
+    deeper:'The real design question is where the human sits: on every action (slow, safe), on random samples (a spot check), or only on low-confidence cases where the model itself asks for help. Most teams end up with the third.' },
+
+  { id:'agents', term:'Agents', aliases:'', said:'', aliasList:['agent','agents','agentic'], status:'Rising',
+    oneLiner:'AI that doesn’t just answer — it takes steps, uses tools, and works toward a goal without you holding its hand.',
+    analogy:'Less like a search box, more like an intern you can hand a whole task to.',
+    example:'When a coding assistant reads your files, runs the tests, and fixes what broke, that’s an agent at work.',
+    related:[{text:'The grown-up version of a chatbot.'},{text:'Only as useful as its tools — which is what MCP standardizes.',id:'mcp'},{text:'Its scariest failure mode is prompt injection.',id:'promptinjection'}],
+    deeper:'Under the hood it’s a loop: the model picks an action, something runs it, the result comes back, repeat until done. Most “agent” failures are really loop-control failures — it gets stuck, over-repeats, or wanders off the goal.' },
+
+  { id:'embeddings', term:'Embeddings', aliases:'', said:'', aliasList:['embedding','embeddings'], status:'Core',
+    oneLiner:'Turning words into coordinates, so a computer can measure how close in meaning two things are.',
+    analogy:'A map where “dog” and “puppy” are next-door neighbors and “dog” and “tax form” are on opposite coasts.',
+    example:'Search that finds “car” when you typed “automobile” is matching on embeddings, not on spelling.',
+    related:[{text:'The engine underneath RAG.',id:'rag'},{text:'Not the same as tokens, though both are “text as numbers.”',id:'tokens'}],
+    deeper:'Each piece of text becomes a long list of numbers — a vector. “Similar” means the vectors point in nearly the same direction (cosine similarity). The entire trick of semantic search lives in this one idea.' },
+
+  { id:'finetuning', term:'Fine-tuning', aliases:'', said:'', aliasList:['fine-tuning','fine tuning','finetuning'], status:'Fading',
+    oneLiner:'Retraining a model a little on your own examples so it picks up a style or skill it didn’t ship with.',
+    analogy:'Sending a strong generalist off to a short apprenticeship in your specific shop.',
+    example:'Training on 10,000 of your past support replies so the model sounds like your team, not a robot.',
+    related:[{text:'Often reached for when RAG would have done the job.',id:'rag'},{text:'A heavier hammer than good prompt engineering.',id:'promptengineering'}],
+    deeper:'Techniques like LoRA make it cheap by nudging a small set of weights instead of all of them. It’s cooling as a first move: most teams now try prompting and RAG first, because a fine-tune is a maintenance burden that goes stale with the base model.' },
+
+  { id:'vibecoding', term:'Vibe coding', aliases:'obituary', said:'“vibe coding”', aliasList:['vibe coding','vibe-coding','vibecoding'], status:'Historical',
+    oneLiner:'What we briefly called just… talking to an AI until the app worked, without really reading the code.',
+    analogy:'Cooking without measuring — totally fine for a snack, faintly terrifying for a wedding cake.',
+    example:'In 2024, “I vibe-coded a weekend app” meant you prompted your way to something that ran and shipped it.',
+    related:[{text:'Folded into “agentic coding.”',id:'agents'},{text:'The reflex it named lives on inside prompt engineering.',id:'promptengineering'}],
+    deeper:'Filed as history: what people meant in 2024–25, and why it grew up. The term peaked in early 2025, then split — the throwaway-prototype meaning stuck around as a joke, while the actual practice matured into agentic coding with tests, reviews, and specs. The vibes, it turned out, needed guardrails.' },
+
+  { id:'promptengineering', term:'Prompt engineering', aliases:'', said:'', aliasList:['prompt engineering'], status:'Fading',
+    oneLiner:'The craft of phrasing your request just right to coax out a better answer.',
+    analogy:'Knowing how to Google well — a real skill that quietly becomes second nature.',
+    example:'“Think step by step, then answer” reliably beats just asking — a classic prompt-engineering move.',
+    related:[{text:'Overlaps heavily with chain of thought.',id:'chainofthought'},{text:'Cooling as models get better at reading plain intent.'}],
+    deeper:'Once a hot job title, it’s cooling not because it’s useless but because it’s diffusing into everyone’s baseline. The heavy lifting moved to context and tools; the exact wording matters far less than it did back in 2023.' },
+
+  { id:'tokens', term:'Tokens', aliases:'', said:'', aliasList:['token','tokens'], status:'Core',
+    oneLiner:'The chunks a model reads and writes in — roughly ¾ of a word each. Everything is priced and measured in them.',
+    analogy:'Syllables for a machine — not quite letters, not quite whole words.',
+    example:'“unbelievable” might be three tokens: un-believ-able. Your bill counts every single one.',
+    related:[{text:'The unit the context window is measured in.',id:'contextwindow'},{text:'Cousin of embeddings — both turn text into numbers.',id:'embeddings'}],
+    deeper:'Tokenization is why models miscount the letters in a word or fumble rare strings — they never saw the letters, only the chunks. It also explains why some languages cost more: they tokenize less efficiently, so the same sentence spends more tokens.' },
+
+  { id:'hallucination', term:'Hallucination', aliases:'', said:'', aliasList:['hallucinate','hallucination','hallucinations'], status:'Core',
+    oneLiner:'When the model states something false with total confidence — the failure mode that never fully goes away.',
+    analogy:'A friend who never says “I don’t know” and just fills the gap with a plausible-sounding story.',
+    example:'Ask for a citation and get a real-looking paper, by real-looking authors, that simply does not exist.',
+    related:[{text:'What RAG tries to ground away.',id:'rag'},{text:'What evals exist to catch.',id:'evals'}],
+    deeper:'It’s not lying — the model predicts likely text, and “likely” is not “true.” Grounding it in real documents and asking it to cite reduces it, but confidence and correctness are separate dials. A model can be dead wrong and completely sure.' },
+
+  { id:'mcp', term:'MCP', aliases:'Model Context Protocol', said:'“em-see-pee”', aliasList:['mcp','model context protocol'], status:'Rising',
+    oneLiner:'A standard plug so any AI can talk to your tools and data without a custom integration each time.',
+    analogy:'USB-C for AI — one connector instead of a junk drawer of adapters.',
+    example:'Point an assistant at an MCP server for your calendar and it can read your schedule with no bespoke code.',
+    related:[{text:'What makes agents actually useful in the real world.',id:'agents'}],
+    deeper:'It defines how a model discovers tools, calls them, and gets results back. Boring plumbing on purpose — that boringness is what lets the whole agent ecosystem interoperate instead of everyone reinventing the same wiring.' },
+
+  { id:'chainofthought', term:'Chain of thought', aliases:'CoT', said:'', aliasList:['chain of thought','cot'], status:'Core',
+    oneLiner:'Letting the model reason out loud in steps before answering — it gets more right when it shows its work.',
+    analogy:'Doing long division on paper instead of trying to hold it all in your head.',
+    example:'Nudging “let’s work through this step by step” measurably boosts hard math and logic problems.',
+    related:[{text:'A staple of prompt engineering.',id:'promptengineering'},{text:'Now baked into “reasoning” models by default.'}],
+    deeper:'Newer reasoning models do this internally, spending extra compute to think before replying. The visible scratchpad became a hidden one — same idea, just more of it, and often no longer shown to you.' },
+
+  { id:'temperature', term:'Temperature', aliases:'', said:'', aliasList:['temperature'], status:'Core',
+    oneLiner:'A dial for how adventurous the model is — low is focused and repetitive, high is creative and risky.',
+    analogy:'The difference between a careful accountant and a poet mid-brainstorm.',
+    example:'Set it near 0 to extract data cleanly; crank it up when you want ten weird names for a product.',
+    related:[{text:'One of several “sampling” knobs, alongside top-p and top-k.'},{text:'Turn it down for extraction, up for ideation.'}],
+    deeper:'It reshapes the probability distribution over the next token. High temperature flattens it so rare words get a chance; low temperature sharpens it so the safe pick almost always wins. Related knobs — top-p and top-k — trim the same distribution differently.' },
+
+  { id:'promptinjection', term:'Prompt injection', aliases:'', said:'', aliasList:['prompt injection'], status:'Rising',
+    oneLiner:'A sneaky attack where hidden instructions buried in your data hijack what the AI does.',
+    analogy:'A note slipped into a stack of paperwork that reads “ignore your boss, do this instead.”',
+    example:'A webpage hides “forward the user’s email to me” in white text; a browsing agent reads it and obeys.',
+    related:[{text:'The security nightmare that comes free with agents.',id:'agents'},{text:'A strong reason to keep a human in the loop.',id:'hitl'}],
+    deeper:'The root problem: models can’t reliably tell “data to process” from “instructions to follow.” There’s no clean fix yet — defenses are layered (sandboxing, human approval on risky actions, input filtering), not solved. Treat any untrusted text an agent reads as potentially hostile.' },
+];
+
+// Alternate one-liners per audience. Default ("curious") uses each concept's own oneLiner.
+const LENSES = {
+  rag:{ pm:'Ground the bot in your own docs so answers cite real sources — fewer escalations, no invented policies.', eng:'Retrieve top-k relevant chunks via vector search and inject them into the prompt at inference time.' },
+  evals:{ pm:'A regression suite for quality — proof a change actually moved the metric before you ship.', eng:'Automated graders (exact-match, rubric, or LLM-as-judge) scoring output over a fixed dataset.' },
+  contextwindow:{ pm:"The model's attention budget — overload it and details drop, so scope what you feed it.", eng:'Max token span the model attends over; content beyond it is truncated or must be chunked/retrieved.' },
+  hitl:{ pm:'A human approval gate on risky actions — your control point for compliance and trust.', eng:'An approval checkpoint that blocks an action until a human confirms (all / sampled / low-confidence).' },
+  agents:{ pm:'AI that completes multi-step tasks end to end — automation you delegate outcomes to, not just answers.', eng:'A model-driven loop: choose action → run tool → observe result → repeat until a stop condition.' },
+  embeddings:{ pm:"The tech behind 'find similar' — powers semantic search, dedup, and recommendations.", eng:'Dense vector representations where cosine distance approximates semantic similarity.' },
+  finetuning:{ pm:'Teaching the model your style with examples — powerful but a maintenance cost; try prompting/RAG first.', eng:'Gradient updates on a base model (often LoRA/PEFT) over labeled examples to shift behavior.' },
+  vibecoding:{ pm:'The 2024 name for prompt-until-it-works prototyping — now matured into agentic coding with guardrails.', eng:'Prompt-driven codegen without close review; superseded by agent workflows with tests and specs.' },
+  promptengineering:{ pm:'Wording requests well for better output — a fading standalone skill as models read intent better.', eng:'Structuring prompts (instructions, examples, format constraints) to steer the output distribution.' },
+  tokens:{ pm:'The billing and length unit for AI — costs and limits are counted in these, not words.', eng:'Sub-word units from the tokenizer; model I/O and pricing are both measured per token.' },
+  hallucination:{ pm:'Confident wrong answers — the core reliability risk; mitigate with grounding, citations, and evals.', eng:'Plausible-but-false generations from likelihood-based decoding untethered from ground truth.' },
+  mcp:{ pm:'A standard that lets any AI plug into your tools without custom builds — faster integrations, less lock-in.', eng:'An open protocol for tool/data discovery and invocation between a model host and external servers.' },
+  chainofthought:{ pm:'Letting the model reason step by step — better accuracy on hard tasks, now built into reasoning models.', eng:'Intermediate reasoning tokens before the answer; boosts multi-step tasks, often internalized in reasoning models.' },
+  temperature:{ pm:'A creativity dial — low for reliable extraction, high for brainstorming variety.', eng:'Softmax scaling on next-token logits; higher flattens the distribution, lower sharpens it.' },
+  promptinjection:{ pm:'A security risk where malicious text hijacks your AI — a key reason to gate agent actions.', eng:'Adversarial instructions in untrusted input the model executes; mitigate via isolation + approval, not solved.' },
+};
+
+const state = { tab:'lookup', spotlightOpen:false, query:'', selIndex:0, openId:null, deeperOpen:false, saved:[], sel:null, selSaved:false, dark:false, lens:'curious' };
+let toastTimer = null;
+try { const L = localStorage.getItem('decoder.lens.v1'); if (['curious','pm','eng'].includes(L)) state.lens = L; } catch (e) {}
+
+// persist the cheatsheet across reloads (graceful if storage is unavailable)
+const STORE_KEY = 'decoder.saved.v1';
+try {
+  const s = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
+  if (Array.isArray(s)) state.saved = s.filter(id => DATA.some(c => c.id === id));
+} catch (e) { /* storage blocked — run in-memory */ }
+function persist(){ if (cloud.user) return; try { localStorage.setItem(STORE_KEY, JSON.stringify(state.saved)); } catch (e) {} }
+
+// ---- cloud / auth (Supabase, optional) ----
+const cloud = { configured: false, user: null, api: null };
+window.addEventListener("decoder-auth", async e => {
+  const d = e.detail || {};
+  cloud.configured = !!d.configured;
+  cloud.api = d.api || cloud.api;
+  const wasSignedIn = !!cloud.user;
+  cloud.user = d.user || null;
+  renderAuth();
+  if (cloud.user && cloud.api) {
+    closeSignin();
+    // On sign-in, merge any local saves up, then load the cloud set as source of truth.
+    const local = state.saved.slice();
+    let remote = await cloud.api.list();
+    const toUpload = local.filter(id => !remote.includes(id));
+    if (toUpload.length) { await Promise.all(toUpload.map(id => cloud.api.add(cloud.user.id, id))); remote = remote.concat(toUpload); }
+    state.saved = remote.filter(id => DATA.some(c => c.id === id));
+    try { localStorage.removeItem(STORE_KEY); } catch (e2) {}
+    renderTabs(); renderLookup(); updateGridFlags(); if (state.tab === 'sheet') renderSheet(); renderModal(false);
+  } else if (wasSignedIn && !cloud.user) {
+    // Signed out — clear the in-memory cheatsheet and re-gate the UI.
+    state.saved = [];
+    renderTabs(); renderLookup(); updateGridFlags(); if (state.tab === 'sheet') renderSheet();
+  } else {
+    // Config resolved while logged out — make sure gated UI (shelf CTA) reflects it.
+    renderLookup();
+  }
+});
+function isSignedIn(){ return !!cloud.user; }
+function doSignIn(){ if (cloud.api) cloud.api.signIn(); else showToast('Sign-in isn’t connected yet — see SETUP.md'); }
+// mirror a save/remove into the cloud when signed in (fire-and-forget)
+function cloudSync(id, added){
+  if (!cloud.user || !cloud.api) return;
+  (added ? cloud.api.add(cloud.user.id, id) : cloud.api.remove(id)).catch(e => console.warn("[decoder] sync failed", e));
+}
+const GOOGLE_G = `<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" style="flex:none"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.24 1.06-3.72 1.06-2.86 0-5.28-1.93-6.15-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.85 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.67-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.67 2.84C6.72 7.3 9.14 5.38 12 5.38z"/></svg>`;
+function renderAuth(){
+  const slot = document.getElementById("authSlot");
+  if (!slot) return;
+  if (cloud.user) {
+    const email = cloud.user.email || "Signed in";
+    const initial = (email[0] || "?").toUpperCase();
+    slot.innerHTML = `<button data-signout title="Sign out (${email})" class="h-bd auth-btn" style="display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border-2);border-radius:10px;padding:5px 10px 5px 6px;cursor:pointer;color:var(--muted-2);font-size:12.5px;transition:border-color .15s">
+      <span style="width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex:none">${initial}</span>
+      <span class="auth-email" style="max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${email}</span>
+      <span class="auth-dot" style="color:var(--faint)">·</span><span class="auth-signout-word">Sign out</span>
+    </button>`;
+  } else {
+    slot.innerHTML = `<button data-signin class="h-bd auth-btn" aria-label="Sign in with Google" style="display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border-2);border-radius:10px;padding:7px 12px;cursor:pointer;color:var(--text-2);font-size:13px;font-weight:500;transition:border-color .15s">
+      ${GOOGLE_G}<span class="auth-signin-word">Sign in with Google</span>
+    </button>`;
+  }
+}
+
+/* ---------- sign-in prompt (shown when a logged-out user tries to save) ---------- */
+function openSignin(){
+  const root = document.getElementById("signinRoot");
+  if (!root) return;
+  root.innerHTML = `
+    <div data-backdrop="signin" style="position:fixed;inset:0;z-index:75;background:rgba(28,25,20,0.40);backdrop-filter:blur(6px);display:flex;justify-content:center;align-items:center;padding:20px;animation:bd .16s ease">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-label="Sign in to save" style="width:min(400px,100%);background:var(--surface);border-radius:16px;box-shadow:0 20px 56px rgba(20,18,14,0.24);animation:pop .2s cubic-bezier(.23,1,.32,1);overflow:hidden">
+        <div class="modal-pad" style="padding:30px 28px 26px;text-align:center">
+          <div style="width:44px;height:44px;border-radius:12px;background:var(--surface-3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px">🔖</div>
+          <h2 class="dsp" style="font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-.02em;margin:0 0 8px">Save it to your cheatsheet</h2>
+          <p style="font-size:14.5px;line-height:1.55;color:var(--text-3);margin:0 0 22px">Sign in to save terms and reach your cheatsheet on any device.</p>
+          <button data-signin style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:13px;font-size:14.5px;font-weight:600;cursor:pointer">${GOOGLE_G_WHITE}<span>Sign in with Google</span></button>
+          <button data-close-signin style="margin-top:10px;background:none;border:none;cursor:pointer;color:var(--muted-2);font-size:13px;padding:8px">Maybe later</button>
+        </div>
+      </div>
+    </div>`;
+}
+function closeSignin(){ const r = document.getElementById("signinRoot"); if (r) r.innerHTML = ""; }
+function requireAuth(){ openSignin(); }
+const GOOGLE_G_WHITE = `<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex:none;background:#fff;border-radius:3px;padding:1px"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.24 1.06-3.72 1.06-2.86 0-5.28-1.93-6.15-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.85 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.67-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.67 2.84C6.72 7.3 9.14 5.38 12 5.38z"/></svg>`;
+
+const $ = (s) => document.querySelector(s);
+const shell = $("#shell");
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function find(id){ return DATA.find(c => c.id === id); }
+function norm(s){ return (s||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
+function match(text){ const n = norm(text); if(!n) return null; return DATA.find(c => c.aliasList.some(a => norm(a) === n)) || null; }
+function getResults(){
+  const q = state.query.trim().toLowerCase();
+  if(!q) return DATA;
+  return DATA.filter(c => (c.term+' '+c.aliases+' '+c.said+' '+c.oneLiner+' '+c.aliasList.join(' ')).toLowerCase().includes(q));
+}
+function meta(c){ return statusMeta[c.status]; }
+function isSaved(id){ return state.saved.includes(id); }
+
+/* ---------- header / tabs ---------- */
+const TABS = [{key:'lookup',label:'Lookup'},{key:'sheet',label:'My cheatsheet'}];
+function renderTabs(){
+  $("#tabs").innerHTML = TABS.map(t => {
+    const active = state.tab === t.key;
+    const badge = (t.key === 'sheet' && isSignedIn() && state.saved.length > 0)
+      ? `<span style="font-family:var(--font-primary);font-size:10px;font-weight:600;background:var(--accent);color:#fff;border-radius:20px;padding:1px 6px;line-height:1.4">${state.saved.length}</span>` : '';
+    return `<button data-tab="${t.key}" style="position:relative;background:none;border:none;cursor:pointer;padding:8px 12px 10px;font-size:13.5px;font-weight:500;color:${active?'var(--text)':'var(--muted-2)'};display:flex;align-items:center;gap:7px">
+      <span>${t.label}</span>${badge}
+      <span class="tabu" style="position:absolute;left:12px;right:12px;bottom:0;height:2px;border-radius:2px;background:var(--accent);transform:${active?'scaleX(1)':'scaleX(0)'};transform-origin:left"></span>
+    </button>`;
+  }).join('');
+}
+
+/* ---------- surface 1: lookup ---------- */
+function cardHTML(c, i){
+  const m = meta(c);
+  const aliasBit = c.aliases ? `<span style="font-size:11.5px;color:var(--faint)">${esc(c.aliases)}</span>` : '';
+  return `<button class="card" data-open="${c.id}" style="text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 19px 34px;cursor:pointer;display:flex;flex-direction:column;gap:9px;animation-delay:${i*45}ms">
+    <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap">
+      <span class="${m.cls} ${c.status==='Rising'?'pulse':''}" title="${m.label}" style="width:7px;height:7px;border-radius:50%;background:var(--stc);flex:none;align-self:center"></span>
+      <span class="term dsp" style="font-weight:600;font-size:20px;line-height:1.15;letter-spacing:-.02em">${esc(c.term)}</span>
+      ${aliasBit}
+      <span class="saved-flag" data-flag="${c.id}" style="margin-left:auto;font-size:10.5px;color:var(--faint);align-self:center;letter-spacing:.03em;display:${isSignedIn()&&isSaved(c.id)?'inline':'none'}">saved</span>
+    </div>
+    <p style="margin:0;font-size:13.5px;line-height:1.5;color:var(--text-4)">${esc(c.oneLiner)}</p>
+    <span class="go">&rarr;</span>
+  </button>`;
+}
+const LOGGED_OUT_LIMIT = 100;
+function renderLookup(){
+  const shown = isSignedIn() ? DATA : DATA.slice(0, LOGGED_OUT_LIMIT);
+  const grid = shown.map((c,i)=>cardHTML(c,i)).join('');
+  const cta = !isSignedIn() ? `
+      <div class="hero-line" style="margin-top:28px;position:relative;border:1px solid var(--border);border-radius:16px;background:var(--surface-2);padding:36px 28px;text-align:center;overflow:hidden">
+        <div style="position:absolute;left:0;right:0;top:-44px;height:44px;background:linear-gradient(to bottom, transparent, var(--surface-2));pointer-events:none"></div>
+        <h3 class="dsp" style="font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-.02em;margin:0 0 8px;color:var(--text)">Save the terms that trip you up</h3>
+        <p style="font-size:14.5px;line-height:1.55;color:var(--text-3);margin:0 auto 20px;max-width:420px">Sign in to build your own cheatsheet and reach it on any device — plus new terms as the glossary grows.</p>
+        <button data-signin style="display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer">${GOOGLE_G_WHITE}<span>Sign in with Google</span></button>
+      </div>` : '';
+  $("#s-lookup").innerHTML = `
+    <div class="hero-pad" style="padding:76px 0 84px">
+      <div style="max-width:760px">
+        <div class="hero-line" style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:22px">Plain-language AI glossary</div>
+        <h1 class="dsp hero-line" style="font-weight:600;font-size:clamp(34px,5.4vw,60px);line-height:1.02;letter-spacing:-.035em;margin:0 0 20px;color:var(--text);animation-delay:.07s">Understand any AI term in seconds.</h1>
+        <p class="hero-line" style="font-size:17px;line-height:1.55;color:var(--text-3);margin:0 0 32px;max-width:560px;animation-delay:.13s">Search a term, or click one while you read. You get a plain explanation, a real example, and whether it still matters. Free to look up.</p>
+        <button data-openspot class="hero-line h-hero" style="animation-delay:.19s;display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border-3);border-radius:12px;padding:13px 15px;cursor:pointer;width:100%;max-width:440px;box-shadow:0 1px 2px rgba(20,24,33,0.04);transition:box-shadow .15s,border-color .15s">
+          <span style="color:var(--accent);font-size:16px">⌕</span>
+          <span style="color:var(--muted-2);font-size:15px">Type a term… RAG, evals, context window</span>
+          <span class="search-kbd" style="margin-left:auto;font-family:var(--font-primary);font-size:11px;color:var(--faint);border:1px solid var(--border-2);border-radius:6px;padding:2px 7px">⌘K</span>
+        </button>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin:68px 0 22px;border-top:1px solid var(--border);padding-top:24px">
+        <h2 style="font-family:var(--font-primary);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin:0">The shelf · ${DATA.length} terms</h2>
+        <span style="font-size:12px;color:var(--faint)">click any card</span>
+      </div>
+      <div class="shelf-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">${grid}</div>
+      ${cta}
+    </div>`;
+}
+
+/* ---------- surface 2: cheatsheet ---------- */
+function nudgeFor(c){
+  if(c.status==='Fading') return 'This term is fading. Worth recognizing, not worth relying on.';
+  if(c.status==='Historical') return 'Mostly historical now. Useful to recognize, not in active use.';
+  return null;
+}
+function renderSheet(){
+  const head = `
+    <div style="max-width:640px;margin-bottom:44px">
+      <div style="font-family:var(--font-primary);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px">My cheatsheet</div>
+      <h1 class="dsp" style="font-weight:600;font-size:clamp(34px,5vw,54px);line-height:1.02;letter-spacing:-.035em;margin:0 0 14px;color:var(--text)">The terms you saved.</h1>
+      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">Everything you saved while reading, in one place. Skim it before a meeting.</p>
+    </div>`;
+  let body;
+  if(!isSignedIn()){
+    body = `<div style="border:1px solid var(--border);border-radius:16px;background:var(--surface-2);padding:52px 28px;text-align:center;max-width:520px">
+      <div style="width:44px;height:44px;border-radius:12px;background:var(--surface-3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px">🔖</div>
+      <p style="font-size:16px;line-height:1.5;color:var(--text-3);margin:0 0 8px;font-weight:500">Sign in to start your cheatsheet</p>
+      <p style="font-size:14px;line-height:1.55;color:var(--muted-2);margin:0 auto 22px;max-width:380px">Save terms as you look them up and reach your cheatsheet on any device.</p>
+      <button data-signin style="display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer">${GOOGLE_G_WHITE}<span>Sign in with Google</span></button>
+    </div>`;
+  } else if(state.saved.length){
+    const cards = state.saved.map(id => {
+      const c = find(id); const m = meta(c); const n = nudgeFor(c);
+      const nudge = n ? `<div class="${m.cls}" style="margin-top:2px;font-size:12px;line-height:1.45;color:var(--stc);background:var(--stbg);border-radius:8px;padding:7px 10px">${esc(n)}</div>` : '';
+      return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 17px;display:flex;flex-direction:column;gap:9px;animation:cardin .45s cubic-bezier(.2,.75,.3,1) both">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="badge ${m.cls}" style="font-size:9.5px;letter-spacing:.06em;padding:3px 8px"><span>${m.sym}</span><span>${m.label}</span></span>
+          <button class="rm" data-remove="${c.id}" title="Remove" style="margin-left:auto;background:none;border:none;cursor:pointer;color:var(--faint-2);font-size:16px;line-height:1;padding:2px 4px">×</button>
+        </div>
+        <button data-open="${c.id}" style="text-align:left;background:none;border:none;padding:0;cursor:pointer;display:flex;flex-direction:column;gap:7px">
+          <span class="dsp" style="font-weight:600;font-size:19px;line-height:1.15;letter-spacing:-.02em">${esc(c.term)}</span>
+          <span style="font-size:13.5px;line-height:1.5;color:var(--text-4)">${esc(c.oneLiner)}</span>
+        </button>${nudge}
+      </div>`;
+    }).join('');
+    body = `<div class="shelf-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">${cards}</div>`;
+  } else {
+    body = `<div style="border:1px dashed var(--border-3);border-radius:16px;padding:52px 28px;text-align:center;max-width:520px">
+      <div style="font-family:var(--font-primary);font-size:40px;line-height:1;color:var(--faint-2);margin-bottom:16px">∅</div>
+      <p style="font-size:16px;line-height:1.5;color:var(--text-4);margin:0 0 8px;font-weight:500">Nothing saved yet.</p>
+      <p style="font-size:14px;line-height:1.55;color:var(--muted-2);margin:0 0 20px">Open any card and hit save — or use the browser extension while you read. Saved terms show up here.</p>
+      <button data-openspot style="background:var(--accent);color:#fff;border:none;border-radius:9px;padding:9px 16px;font-size:13.5px;font-weight:500;cursor:pointer">Look something up</button>
+    </div>`;
+  }
+  $("#s-sheet").innerHTML = `<div class="sheet-pad" style="padding:76px 0 96px">${head}${body}</div>`;
+}
+
+/* ---------- spotlight ---------- */
+function renderSpotResults(){
+  const box = $("#spotResults"); if(!box) return;
+  const results = getResults();
+  if(state.selIndex > results.length-1) state.selIndex = Math.max(results.length-1,0);
+  if(results.length === 0){
+    box.innerHTML = `<div style="padding:34px 20px;text-align:center;color:var(--muted-2);font-size:14px;line-height:1.5">No match. It might be too new to have a card yet.</div>`;
+  } else {
+    box.innerHTML = results.map((c,i) => {
+      const active = i === state.selIndex;
+      return `<button class="srow" data-openrow="${c.id}" data-idx="${i}" style="width:100%;text-align:left;background:${active?'var(--hover)':'transparent'};border:none;border-bottom:1px solid var(--hairline);border-left:2px solid ${active?'var(--accent)':'transparent'};cursor:pointer;padding:12px 18px 12px 16px;display:flex;align-items:center;gap:12px">
+        <span class="dsp" style="flex:none;font-weight:600;font-size:15px;letter-spacing:-.01em">${esc(c.term)}</span>
+        <span style="flex:1;font-size:13px;color:var(--muted-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(c.oneLiner)}</span>
+        <span style="flex:none;font-size:11px;color:${active?'var(--accent)':'transparent'}">↵</span>
+      </button>`;
+    }).join('');
+  }
+  const cnt = $("#spotCount"); if(cnt) cnt.textContent = results.length + " shown";
+  const activeEl = box.querySelector('.srow[data-idx="'+state.selIndex+'"]');
+  if(activeEl) activeEl.scrollIntoView({block:'nearest'});
+}
+function renderSpotlight(){
+  const root = $("#spotRoot");
+  if(!state.spotlightOpen){ root.innerHTML = ''; return; }
+  root.innerHTML = `
+    <div data-backdrop="spot" style="position:fixed;inset:0;z-index:60;background:rgba(28,25,20,0.34);backdrop-filter:blur(6px);display:flex;justify-content:center;align-items:flex-start;padding:12vh 20px 20px;animation:bd .16s ease">
+      <div role="dialog" aria-modal="true" aria-label="Search a term" style="width:min(660px,100%);background:var(--surface);border-radius:14px;box-shadow:0 16px 48px rgba(20,18,14,0.22);overflow:hidden;animation:pop .18s cubic-bezier(.2,.7,.3,1)">
+        <div style="display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--border)">
+          <span style="color:var(--accent);font-size:19px">⌕</span>
+          <input id="spotInput" value="${esc(state.query)}" placeholder="Type a term… RAG, embeddings, human in the loop" style="flex:1;border:none;outline:none;font-size:18px;font-family:inherit;color:var(--text);background:none" />
+          <span style="font-family:var(--font-primary);font-size:10.5px;color:var(--faint);border:1px solid var(--border-2);border-radius:5px;padding:2px 7px">esc</span>
+        </div>
+        <div id="spotResults" style="max-height:min(52vh,440px);overflow-y:auto"></div>
+        <div style="display:flex;gap:16px;padding:9px 18px;border-top:1px solid var(--hairline-2);font-family:var(--font-primary);font-size:10px;color:var(--faint)">
+          <span>↑↓ &nbsp;navigate</span><span>↵ &nbsp;open</span><span>esc &nbsp;close</span>
+          <span id="spotCount" style="margin-left:auto"></span>
+        </div>
+      </div>
+    </div>`;
+  renderSpotResults();
+  const inp = $("#spotInput");
+  inp.addEventListener('input', e => { state.query = e.target.value; state.selIndex = 0; renderSpotResults(); });
+  setTimeout(() => inp && inp.focus(), 20);
+  const box = $("#spotResults");
+  box.addEventListener('mouseover', e => {
+    const row = e.target.closest('[data-idx]'); if(!row) return;
+    const idx = +row.getAttribute('data-idx');
+    if(idx !== state.selIndex){ state.selIndex = idx; renderSpotResults(); }
+  });
+}
+
+/* ---------- detail modal ---------- */
+const LENS_LABELS = { curious:'Plain', pm:'In practice', eng:'Technical' };
+function lensLineFor(c, k){ return (k !== 'curious' && LENSES[c.id] && LENSES[c.id][k]) ? LENSES[c.id][k] : c.oneLiner; }
+function lensBtnStyle(on){ return `background:${on?'var(--surface)':'transparent'};border:none;border-radius:7px;padding:5px 11px;font-size:11.5px;font-weight:${on?600:500};color:${on?'var(--text-2)':'var(--muted-2)'};cursor:pointer;box-shadow:${on?'0 1px 2px rgba(20,24,33,.06)':'none'};transition:background .18s,color .18s,box-shadow .18s`; }
+function renderModal(animate){
+  const root = $("#modalRoot");
+  if(!state.openId){ root.innerHTML = ''; return; }
+  const c = find(state.openId); const m = meta(c);
+  const saved = isSaved(c.id);
+  const lensLine = lensLineFor(c, state.lens);
+  const lensCtl = `<div style="display:inline-flex;gap:2px;background:var(--surface-3);border:1px solid var(--hairline-2);border-radius:9px;padding:2px;margin:14px 0 10px">${['curious','pm','eng'].map(k=>`<button data-lens="${k}" style="${lensBtnStyle(state.lens===k)}">${LENS_LABELS[k]}</button>`).join('')}</div>`;
+  const aliasBit = c.aliases ? `<span style="font-size:14px;color:var(--faint)">${esc(c.aliases)}</span>` : '';
+  const saidBit = c.said ? `<span style="font-family:var(--font-primary);font-size:11px;color:var(--faint)">said ${esc(c.said)}</span>` : '';
+  const related = (c.related||[]).map(r => {
+    if(r.id) return `<button class="rel" data-open="${r.id}" style="text-align:left;background:var(--surface-3);border:1px solid var(--hairline-2);border-radius:9px;padding:8px 11px;cursor:pointer;font-size:13.5px;line-height:1.45;color:var(--text-3);display:flex;gap:8px;align-items:baseline"><span style="flex:1">${esc(r.text)}</span><span style="color:var(--accent);flex:none">→</span></button>`;
+    return `<div style="padding:8px 11px;font-size:13.5px;line-height:1.45;color:var(--text-4)">${esc(r.text)}</div>`;
+  }).join('');
+  const signed = isSignedIn();
+  const deeperBlock = `<div class="deeper-wrap" style="height:${state.deeperOpen?'auto':'0'}"><div class="deeper-inner" style="opacity:${state.deeperOpen?'1':'0'}"><div style="padding:2px 28px 22px"><p style="margin:0;font-size:14px;line-height:1.62;color:var(--text-4)">${esc(c.deeper)}</p></div></div></div>`;
+  root.innerHTML = `
+    <div data-backdrop="modal" style="position:fixed;inset:0;z-index:70;background:rgba(28,25,20,0.40);backdrop-filter:blur(6px);display:flex;justify-content:center;align-items:flex-start;padding:7vh 20px 24px;overflow-y:auto;scrollbar-gutter:stable;animation:bd .16s ease">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-label="${esc(c.term)} — definition" style="width:min(580px,100%);background:var(--surface);border-radius:16px;box-shadow:0 20px 56px rgba(20,18,14,0.24);animation:${animate?'pop .22s cubic-bezier(.23,1,.32,1)':'none'};overflow:hidden">
+        <div class="modal-pad" style="padding:26px 28px 24px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+            <span class="badge ${m.cls}" style="font-size:10px;letter-spacing:.06em;padding:4px 9px"><span>${m.sym}</span><span>${m.label}</span></span>
+            ${saidBit}
+            <button data-close-modal style="margin-left:auto;background:none;border:1px solid var(--border-2);border-radius:8px;width:30px;height:30px;cursor:pointer;color:var(--muted-2);font-size:16px;line-height:1" class="h-close">×</button>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px">
+            <h2 class="dsp" style="font-weight:600;font-size:33px;line-height:1.02;letter-spacing:-.03em;margin:0">${esc(c.term)}</h2>
+            ${aliasBit}
+          </div>
+          ${lensCtl}
+          <p id="lensLine" style="font-family:var(--font-primary);font-weight:500;font-size:19px;line-height:1.5;color:var(--text-2);margin:0 0 22px">${esc(lensLine)}</p>
+          <div class="mstack${animate?'':' still'}" style="display:flex;flex-direction:column;gap:16px">
+            <div>
+              <div style="font-family:var(--font-primary);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">It's like</div>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--text-3);font-style:italic">${esc(c.analogy)}</p>
+            </div>
+            <div>
+              <div style="font-family:var(--font-primary);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Example</div>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--text-3)">${esc(c.example)}</p>
+            </div>
+            <div>
+              <div style="font-family:var(--font-primary);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:7px">Related</div>
+              <div style="display:flex;flex-direction:column;gap:6px">${related}</div>
+            </div>
+          </div>
+        </div>
+        <div style="border-top:1px solid var(--hairline-2)">
+          <button data-deeper style="width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:15px 28px;display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500;color:var(--text-3)" class="h-surf2">
+            <span style="font-family:var(--font-primary);font-size:11px;color:var(--accent)">${state.deeperOpen?'−':'+'}</span>
+            <span>${state.deeperOpen?'Hide details':'Go deeper'}</span>
+            <span style="margin-left:auto;font-size:11px;color:var(--faint)">the technical version</span>
+          </button>
+          ${deeperBlock}
+        </div>
+        <div style="border-top:1px solid var(--hairline-2);padding:16px 28px;display:flex;align-items:center;gap:12px;background:var(--surface-2)">
+          <button data-savemodal class="savebtn ${signed&&saved?'is-saved':''}">${signed&&saved?'<span class="savepop">✓</span>':''}<span>${!signed?'Sign in to save':(saved?'Remove from my cheatsheet':'Save to my cheatsheet')}</span></button>
+          <span style="font-size:12.5px;color:var(--faint);line-height:1.4">${!signed?'Your cheatsheet syncs to your account.':(saved?'Its status updates as the field changes.':'Keeps the terms you looked up in one place.')}</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+/* ---------- select-to-explain popover ---------- */
+function renderPopover(){
+  const root = $("#popRoot");
+  if(!state.sel){ root.innerHTML = ''; return; }
+  const c = find(state.sel.id); const m = meta(c);
+  const savedNow = isSaved(c.id) || state.selSaved;
+  const saveRow = savedNow
+    ? `<button data-removepop class="h-surf3" style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:var(--save-text)"><span class="savepop">✓</span> Saved · remove</button>`
+    : `<button data-savepop class="h-surf3" style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:500;color:var(--accent)">＋ Save to my cheatsheet</button>`;
+  root.innerHTML = `
+    <div style="position:fixed;z-index:65;left:${state.sel.x}px;top:${state.sel.y}px;transform:translateX(-50%);width:300px;max-width:calc(100vw - 24px);background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 12px 36px rgba(20,18,14,0.18);animation:rise .16s ease;overflow:hidden">
+      <div style="padding:13px 15px 12px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span class="badge ${m.cls}" style="font-size:9px;letter-spacing:.05em;padding:2px 7px"><span>${m.sym}</span><span>${m.label}</span></span>
+          <span class="dsp" style="font-weight:600;font-size:16px;line-height:1.1;letter-spacing:-.01em">${esc(c.term)}</span>
+          <button data-closepop class="popclose" style="margin-left:auto;background:none;border:none;cursor:pointer;color:var(--faint-2);font-size:15px;line-height:1;padding:2px">×</button>
+        </div>
+        <p style="margin:0 0 8px;font-size:13.5px;line-height:1.5;color:var(--text-2)">${esc(c.oneLiner)}</p>
+        <p style="margin:0 0 6px;font-size:12.5px;line-height:1.5;color:var(--text-4);font-style:italic">${esc(c.analogy)}</p>
+        <p style="margin:0;font-size:12px;line-height:1.5;color:var(--muted-2)">${esc(c.example)}</p>
+      </div>
+      <div style="border-top:1px solid var(--hairline-2);display:flex">
+        ${saveRow}
+        <button data-openfull class="h-surf3" style="flex:none;background:none;border:none;border-left:1px solid var(--hairline-2);cursor:pointer;padding:10px 14px;font-size:12.5px;color:var(--text-4)">Full card →</button>
+      </div>
+    </div>`;
+}
+
+/* ---------- toast ---------- */
+function showToast(msg){
+  state.toast = msg;
+  $("#toastRoot").innerHTML = `<div style="position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:80;background:var(--toast-bg);color:var(--toast-text);font-size:13px;font-weight:500;padding:10px 18px;border-radius:24px;box-shadow:0 8px 28px rgba(20,18,14,0.3);animation:toastin .2s ease">${esc(msg)}</div>`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { state.toast = null; $("#toastRoot").innerHTML = ''; }, 1900);
+}
+
+/* ---------- actions ---------- */
+function setTab(t){
+  state.tab = t; state.spotlightOpen = false; state.openId = null; state.sel = null;
+  $("#s-lookup").style.display = t==='lookup' ? '' : 'none';
+  $("#s-sheet").style.display  = t==='sheet'  ? '' : 'none';
+  if(t==='sheet') renderSheet();
+  renderTabs(); renderSpotlight(); renderModal(false); renderPopover();
+}
+function openSpotlight(){ state.spotlightOpen = true; state.query = ''; state.selIndex = 0; renderSpotlight(); }
+function toggleSpotlight(){ state.spotlightOpen ? (state.spotlightOpen=false, renderSpotlight()) : openSpotlight(); }
+function escapeAll(){ state.spotlightOpen=false; state.openId=null; state.sel=null; renderSpotlight(); renderModal(false); renderPopover(); closeSignin(); }
+
+function openCard(id){ state.openId = id; state.deeperOpen = false; state.spotlightOpen = false; state.sel = null; renderSpotlight(); renderPopover(); renderModal(true); }
+function closeCard(){ state.openId = null; renderModal(false); }
+function toggleDeeper(){
+  state.deeperOpen = !state.deeperOpen;
+  const isOpen = state.deeperOpen;
+  const wrap = document.querySelector('#modalRoot .deeper-wrap');
+  const inner = wrap && wrap.querySelector('.deeper-inner');
+  const btn = document.querySelector('#modalRoot [data-deeper]');
+  if(btn){
+    const spans = btn.querySelectorAll('span');
+    if(spans[0]) spans[0].textContent = isOpen ? '−' : '+';
+    if(spans[1]) spans[1].textContent = isOpen ? 'Hide details' : 'Go deeper';
+  }
+  if(!wrap || !inner) return;
+  inner.style.opacity = isOpen ? '1' : '0';          // CSS-transition fade
+  const start = wrap.getBoundingClientRect().height; // visual height (mid-anim if interrupted)
+  if(wrap._anim) wrap._anim.cancel();
+  wrap.style.height = 'auto';
+  const full = wrap.getBoundingClientRect().height;  // measure target
+  wrap.style.height = isOpen ? 'auto' : '0';         // rest value the element settles to
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return;
+  // Animate only the height, from the current visual height to the target. Interruptible, no fill
+  // (so it settles to the inline rest value above with no snap).
+  const anim = wrap.animate(
+    [{ height: start + 'px' }, { height: (isOpen ? full : 0) + 'px' }],
+    { duration: isOpen ? 260 : 190, easing: 'cubic-bezier(.32,.72,0,1)' }
+  );
+  wrap._anim = anim;
+  anim.onfinish = anim.oncancel = () => { if(wrap._anim === anim) wrap._anim = null; };
+}
+let lensTimer = null;
+function setLens(k){
+  if(state.lens === k) return;
+  state.lens = k;
+  try { localStorage.setItem('decoder.lens.v1', k); } catch (e) {}
+  // patch in place — no modal rebuild, so nothing flickers
+  document.querySelectorAll('#modalRoot [data-lens]').forEach(b => b.setAttribute('style', lensBtnStyle(b.getAttribute('data-lens') === k)));
+  const p = document.getElementById('lensLine');
+  if(p && state.openId){
+    const line = lensLineFor(find(state.openId), k);
+    p.style.opacity = '0';
+    clearTimeout(lensTimer);
+    lensTimer = setTimeout(() => { p.textContent = line; p.style.opacity = '1'; }, 140);
+  }
+}
+
+function updateGridFlags(){
+  document.querySelectorAll('[data-flag]').forEach(el => {
+    if(!isSignedIn()){ el.style.display='none'; return; }
+    el.style.display = isSaved(el.getAttribute('data-flag')) ? 'inline' : 'none';
+  });
+}
+function afterSaveChange(){ persist(); renderTabs(); updateGridFlags(); if(state.tab==='sheet') renderSheet(); renderModal(false); renderPopover(); }
+
+function toggleSave(id){
+  if(!id) return;
+  if(!isSignedIn()){ requireAuth(); return; }
+  const has = isSaved(id);
+  state.saved = has ? state.saved.filter(x => x !== id) : [...state.saved, id];
+  cloudSync(id, !has);
+  showToast(has ? 'Removed from my cheatsheet' : 'Saved to my cheatsheet');
+  afterSaveChange();
+}
+
+function closePopover(){ state.sel = null; renderPopover(); }
+function savePopover(){
+  const id = state.sel && state.sel.id; if(!id) return;
+  if(!isSignedIn()){ requireAuth(); return; }
+  if(!isSaved(id)){ state.saved = [...state.saved, id]; cloudSync(id, true); }
+  state.selSaved = true; showToast('Saved to my cheatsheet'); afterSaveChange();
+}
+function removePopover(){
+  const id = state.sel && state.sel.id; if(!id) return;
+  state.saved = state.saved.filter(x => x !== id); cloudSync(id, false);
+  state.selSaved = false; showToast('Removed from my cheatsheet'); afterSaveChange();
+}
+function openSelFull(){ const id = state.sel && state.sel.id; if(id) openCard(id); }
+
+function toggleTheme(){
+  state.dark = !state.dark;
+  shell.setAttribute('data-theme', state.dark ? 'dark' : 'light');
+  const b = $("#themeBtn");
+  b.textContent = state.dark ? '☀' : '☾';
+  const title = state.dark ? 'Switch to light' : 'Switch to dark';
+  b.title = title; b.setAttribute('aria-label', title);
+}
+
+/* ---------- global event wiring ---------- */
+function spotlightNav(e){
+  const r = getResults();
+  if(e.key === 'ArrowDown'){ e.preventDefault(); state.selIndex = Math.min(state.selIndex+1, Math.max(r.length-1,0)); renderSpotResults(); }
+  else if(e.key === 'ArrowUp'){ e.preventDefault(); state.selIndex = Math.max(state.selIndex-1, 0); renderSpotResults(); }
+  else if(e.key === 'Enter'){ e.preventDefault(); const c = r[state.selIndex] || r[0]; if(c) openCard(c.id); }
+}
+window.addEventListener('keydown', e => {
+  const k = e.key;
+  const typing = /^(input|textarea)$/i.test((e.target && e.target.tagName) || '');
+  if((e.metaKey || e.ctrlKey) && (k === 'k' || k === 'K')){ e.preventDefault(); toggleSpotlight(); return; }
+  if(k === 'Escape'){ escapeAll(); return; }
+  if(k === '/' && !state.spotlightOpen && !typing){ e.preventDefault(); openSpotlight(); return; }
+  if(state.spotlightOpen) spotlightNav(e);
+});
+
+// delegated clicks
+document.addEventListener('click', e => {
+  const t = e.target;
+  const tabBtn = t.closest('[data-tab]'); if(tabBtn){ setTab(tabBtn.getAttribute('data-tab')); return; }
+  if(t.closest('[data-openspot]')){ openSpotlight(); return; }
+  const openBtn = t.closest('[data-open]'); if(openBtn){ openCard(openBtn.getAttribute('data-open')); return; }
+  const rowBtn = t.closest('[data-openrow]'); if(rowBtn){ openCard(rowBtn.getAttribute('data-openrow')); return; }
+  const rmBtn = t.closest('[data-remove]'); if(rmBtn){ toggleSave(rmBtn.getAttribute('data-remove')); return; }
+  if(t.closest('[data-close-modal]')){ closeCard(); return; }
+  if(t.closest('[data-deeper]')){ toggleDeeper(); return; }
+  const lensBtn = t.closest('[data-lens]'); if(lensBtn){ setLens(lensBtn.getAttribute('data-lens')); return; }
+  if(t.closest('[data-savemodal]')){ toggleSave(state.openId); return; }
+  if(t.closest('[data-closepop]')){ closePopover(); return; }
+  if(t.closest('[data-savepop]')){ savePopover(); return; }
+  if(t.closest('[data-removepop]')){ removePopover(); return; }
+  if(t.closest('[data-openfull]')){ openSelFull(); return; }
+  if(t.closest('[data-close-signin]')){ closeSignin(); return; }
+  if(t.closest('[data-signin]')){ doSignIn(); return; }
+  if(t.closest('[data-signout]')){ cloud.api && cloud.api.signOut(); return; }
+});
+$("#searchBtn").addEventListener('click', openSpotlight);
+$("#themeBtn").addEventListener('click', toggleTheme);
+// backdrop mousedown close (matches prototype onMouseDown)
+document.addEventListener('mousedown', e => {
+  const bd = e.target.closest && e.target.closest('[data-backdrop]');
+  if(bd && e.target === bd) escapeAll();
+});
+// reposition popover on scroll/resize by dismissing (keeps it anchored honestly)
+window.addEventListener('scroll', () => { if(state.sel) closePopover(); }, true);
+
+/* ---------- init ---------- */
+renderTabs();
+renderLookup();
+renderSheet();
+renderAuth();
+</script>
+</body>
+</html>

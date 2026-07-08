@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Decoder — AI terms, explained in place",
+  "version": "1.0.0",
+  "description": "Subtly highlights AI jargon on any page. Click a term to understand it in seconds and save it to your cheatsheet.",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Decoder — my cheatsheet"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["concepts.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

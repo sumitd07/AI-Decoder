@@ -1,0 +1,4 @@
+# Netlify: serve the static site in web/ with no build step.
+[build]
+  publish = "web"
+  command = ""

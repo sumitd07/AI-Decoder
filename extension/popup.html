@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  :root{ --accent:#4f77a6; }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    width:340px; max-height:520px; overflow-y:auto;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,'Helvetica Neue',Arial,sans-serif;
+    background:#fdfdfc; color:#0e0f12; -webkit-font-smoothing:antialiased;
+  }
+  header{ display:flex; align-items:center; gap:9px; padding:15px 16px 12px; border-bottom:1px solid rgba(20,24,33,.08); position:sticky; top:0; background:#fdfdfc; z-index:2 }
+  .dot{ width:9px; height:9px; border-radius:50%; background:var(--accent) }
+  .logo{ font-family:'Newsreader',Georgia,serif; font-weight:600; font-size:19px; letter-spacing:-.02em }
+  .tag{ font-size:8.5px; letter-spacing:.16em; text-transform:uppercase; color:#9a9ea5 }
+  .toggle{ margin-left:auto; display:flex; align-items:center; gap:8px; font-size:11.5px; color:#6a6e75; cursor:pointer; user-select:none }
+  .sw{ position:relative; width:34px; height:20px; border-radius:20px; background:#c6c9ce; transition:background .18s }
+  .sw::after{ content:""; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.2); transition:left .18s }
+  .toggle.on .sw{ background:var(--accent) }
+  .toggle.on .sw::after{ left:16px }
+  main{ padding:14px 16px 18px }
+  .lede{ font-size:11.5px; line-height:1.5; color:#787c83; margin:0 0 14px }
+  .card{ background:#fff; border:1px solid rgba(20,24,33,.10); border-radius:11px; padding:12px 13px; margin-bottom:10px }
+  .row{ display:flex; align-items:center; gap:7px; margin-bottom:7px }
+  .badge{ display:inline-flex; align-items:center; gap:4px; font-size:8.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 7px; border-radius:20px }
+  .rm{ margin-left:auto; background:none; border:none; cursor:pointer; color:#c6c9ce; font-size:15px; line-height:1; padding:0 2px }
+  .rm:hover{ color:#ff0052 }
+  .term{ font-family:'Newsreader',Georgia,serif; font-weight:600; font-size:16px; letter-spacing:-.02em; line-height:1.15 }
+  .one{ font-size:12px; line-height:1.5; color:#4a4e55; margin:5px 0 0 }
+  .nudge{ margin-top:7px; font-size:11px; line-height:1.45; border-radius:7px; padding:6px 9px }
+  .empty{ border:1px dashed rgba(20,24,33,.18); border-radius:13px; padding:34px 20px; text-align:center }
+  .empty .glyph{ font-size:32px; color:#c6c9ce; margin-bottom:10px }
+  .empty p{ margin:0 0 5px }
+  .empty .t1{ font-size:13.5px; font-weight:600; color:#4a4e55 }
+  .empty .t2{ font-size:12px; color:#787c83; line-height:1.5 }
+  .count{ font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#9a9ea5; margin:0 0 12px }
+</style>
+</head>
+<body>
+  <header>
+    <span class="dot"></span>
+    <span class="logo">Decoder</span>
+    <span class="tag">for AI</span>
+    <div class="toggle" id="toggle" title="Highlight AI terms on pages">
+      <span>Highlight</span>
+      <span class="sw"></span>
+    </div>
+  </header>
+  <main>
+    <p class="lede">The terms you saved while reading.</p>
+    <div id="list"></div>
+  </main>
+  <script src="concepts.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
