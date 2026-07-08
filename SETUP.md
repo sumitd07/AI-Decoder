@@ -1,42 +1,49 @@
-# Setup & deploy
+# Setup & deploy — plain-language guide
 
-This covers the parts that need your own accounts. The steps are in strict order — each one only depends on the ones before it, so just go top to bottom.
+This turns Decoder from files on your computer into a real website with Google sign-in. No developer background assumed — every click is spelled out, and where a technical word shows up, it's explained.
 
-**The dependency chain:** Supabase project → keys in the app → GitHub → deploy (gives you a live URL) → Google OAuth (needs that URL) → connect Google to Supabase → test. The Chrome Web Store (step 8) is independent and can be done anytime.
+You'll create three free accounts along the way (Supabase, GitHub, Google Cloud) and one paid one only if you publish the browser extension ($5, optional). Do the steps top to bottom — each one uses something from the step before it.
 
-## How sign-in works in the app (what users see)
-
-- **Looking up terms is free** — no account needed. Search (⌘K), browse the shelf, open any card.
-- **Saving requires sign-in.** When a logged-out user taps **Save to my cheatsheet**, a sign-in prompt appears. The **My cheatsheet** tab and a card at the bottom of the shelf also invite sign-in.
-- **Signed in:** the cheatsheet reads/writes to Supabase and syncs across devices. On first sign-in, any terms saved locally are merged up automatically.
-- Until you finish these steps, the app runs in **preview mode**: the gated UI is fully visible, but "Sign in with Google" shows a "not connected yet" toast instead of signing in. This lets you review the design before wiring the backend.
+**The path:** set up a database (Supabase) → paste two keys into the app → put the project on GitHub → publish it to the web → switch on "Sign in with Google" → connect Google to the database → test. The Chrome extension (Step 8) is separate and optional.
 
 ---
 
-## Step 1 — Create the Supabase project (database)
+## How sign-in works in the app (so the steps make sense)
 
-1. Create a free project at [supabase.com](https://supabase.com) → **New project**. Choose a name and a strong database password.
-2. When it's ready, open **SQL Editor → New query**, paste the contents of [`supabase/schema.sql`](supabase/schema.sql), and click **Run**. This creates the `cheatsheet_items` table with row-level security so each user only sees their own saves.
-3. Get your **Project URL** and a **client key**. The dashboard was reorganized recently, so the quickest path is the **Connect** button in the top bar — that dialog shows both. Otherwise:
-   - **Project URL** — looks like `https://<project-ref>.supabase.co`. Shown in the **Connect** dialog, or under **Settings → Data API**.
-   - **Client key** — **Settings → API Keys** → copy the **Publishable key** (starts with `sb_publishable_...`). If your project only shows the older keys, use the **anon public** key from the **Legacy API Keys** tab instead — either one works for the browser client.
-   - ⚠️ Do **not** use the **Secret key** (`sb_secret_...`) or the legacy **service_role** key — those are server-only and must never ship in the browser.
+- **Looking up terms is free** — no account needed. Anyone can search and read.
+- **Saving to a cheatsheet needs sign-in.** When a signed-out person taps *Save to my cheatsheet*, a "Sign in with Google" prompt appears.
+- **Once signed in,** their saved terms are stored online and follow them to any device.
+- Until you finish this guide, the app runs in **preview mode**: everything looks right, but the "Sign in with Google" button shows a little "not connected yet" message instead of actually signing in. That's expected — it starts working once you finish Step 6.
 
-   You'll paste both into the app in step 2.
+---
 
-## Step 2 — Put the keys in the app
+## Step 1 — Set up the database (Supabase)
 
-Open [`web/index.html`](web/index.html), find the `window.DECODER_CONFIG` block near the top of the `<body>`, and paste the two values from step 1.3:
+**What this is:** Supabase is a free service that stores your data online and handles Google login for you, so you don't have to build a server.
+
+1. Go to [supabase.com](https://supabase.com), click **Start your project**, and sign in (you can sign in with your GitHub or Google account).
+2. Click **New project**. Give it a name (e.g. "decoder"), set a database password (save it somewhere), pick the closest region, and click **Create new project**. Wait a minute for it to finish setting up.
+3. Set up the storage table. Open the SQL editor with this direct link: **`https://supabase.com/dashboard/project/_/sql/new`** — or just click **SQL Editor → New query** in the left sidebar (that always works). (The `_` in these links is a stand-in for your project code; if a link ever shows a 404, use the sidebar instead, or see the note in Step 6 about swapping in your project code.) Open the file `supabase/schema.sql` from this project in a text editor, copy everything in it, paste it into the big empty box in Supabase, and click **Run**. You should see "Success." (This creates the place your saved terms live, and switches on rules so each person can only see their own.)
+4. Get your two keys. Click the green **Connect** button at the top of the Supabase dashboard — the pop-up shows your **Project URL** and a key. You need:
+   - **Project URL** — looks like `https://abcdefgh.supabase.co`
+   - **Publishable key** — a long code starting with `sb_publishable_...` (if your project only offers older keys, the **anon** key works too; both are fine).
+   - ⚠️ Do **not** use the **secret** key (`sb_secret_...`) or **service_role** key — those are private and must never go into the app.
+
+   Copy both somewhere handy for Step 2.
+
+## Step 2 — Paste your keys into the app
+
+1. Open the file `web/index.html` (inside this project) in a text editor. Any works; a free one like [VS Code](https://code.visualstudio.com) is nicest, but Mac's built-in TextEdit is fine — if TextEdit opens it as a styled page, choose **Format → Make Plain Text** first.
+2. Near the top you'll find this block. Paste your two values from Step 1 between the quote marks:
 
 ```js
 window.DECODER_CONFIG = {
-  SUPABASE_URL: "https://<project-ref>.supabase.co",
-  // Paste your Publishable key (sb_publishable_...) OR the legacy anon key — either works:
-  SUPABASE_ANON_KEY: "sb_publishable_..."
+  SUPABASE_URL: "https://abcdefgh.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_...."
 };
 ```
 
-This publishable/anon key is designed to ship in the browser — access is protected by the row-level security policies from step 1. (Never paste the `sb_secret_...` or `service_role` key here.)
+3. Save the file. (These are safe to include — they're the public keys, protected by the rules you turned on in Step 1. Never paste the secret/service_role key here.)
 
 ## Step 3 — Put the project on GitHub
 
@@ -46,25 +53,24 @@ You have a Mac, so I'd use **GitHub Desktop** — a normal app with buttons, no 
 
 ### Option A — GitHub Desktop (recommended, no terminal)
 
-1. Download **GitHub Desktop** from [desktop.github.com](https://desktop.github.com) and open it (it lands in your Applications folder like any app).
-2. When it opens, click **Sign in to GitHub.com**. If you don't have a GitHub account yet, click **Create your free account** and follow the prompts, then come back and sign in.
-3. In GitHub Desktop's top menu bar: **File → Add Local Repository…**
-4. Click **Choose…** and select this folder:
-   `Documents` → `Mitsu` → `AI Dictionary`, then click **Open**.
-5. It will say *"This directory does not appear to be a Git repository. Would you like to create a repository here instead?"* — click the **create a repository** link, then click the **Create Repository** button (the defaults are fine).
-6. Now click the big **Publish repository** button (top right). In the box that appears, name it `decoder`, leave **Keep this code private** checked (or uncheck it to make it public), and click **Publish repository**.
+1. Download **GitHub Desktop** from [desktop.github.com](https://desktop.github.com) and open it (it installs like any app).
+2. When it opens, click **Sign in to GitHub.com**. No account yet? Click **Create your free account**, follow the prompts, then come back and sign in.
+3. Top menu bar: **File → Add Local Repository…**
+4. Click **Choose…** and select this folder: `Documents` → `Mitsu` → `AI Dictionary`, then click **Open**.
+5. It'll say *"This directory does not appear to be a Git repository. Would you like to create a repository here instead?"* — click the **create a repository** link, then the **Create Repository** button (defaults are fine).
+6. Click the big **Publish repository** button (top right). Name it `decoder`, leave **Keep this code private** checked (or uncheck to make it public), and click **Publish repository**.
 
-That's it — your code is on GitHub. (If you ever change files, GitHub Desktop shows them; type a short note in the "Summary" box, click **Commit to main**, then **Push origin**.)
+Done — your code is on GitHub. (Changed a file later? GitHub Desktop shows it; type a short note in the "Summary" box, click **Commit to main**, then **Push origin**.)
 
-### Option B — Terminal (if you prefer commands)
+### Option B — Terminal (only if you prefer commands)
 
-1. Open the **Terminal** app: press **⌘ (Cmd) + Space**, type `Terminal`, press **Return**. A window opens where you type commands and press Return after each.
-2. First create the empty repo online: go to [github.com/new](https://github.com/new), name it `decoder`, **don't** check "Add a README" (we already have one), and click **Create repository**. Leave that page open — you'll need the URL it shows.
-3. In Terminal, paste this to move into the project folder (the quotes matter because of the space in the name), then press Return:
+1. Open the **Terminal** app: press **⌘ + Space**, type `Terminal`, press **Return**.
+2. Create the empty repo online first: go to [github.com/new](https://github.com/new), name it `decoder`, **don't** check "Add a README," click **Create repository**, and leave the page open.
+3. In Terminal, paste this (the quotes matter — the folder name has a space) and press Return:
    ```bash
    cd "/Users/shibbypills/Documents/Mitsu/AI Dictionary"
    ```
-4. Paste these lines one block at a time, pressing Return after. Replace `<your-username>` with your GitHub username:
+4. Paste these one block at a time, pressing Return after each. Replace `<your-username>` with your GitHub username:
    ```bash
    git init
    git add .
@@ -73,68 +79,88 @@ That's it — your code is on GitHub. (If you ever change files, GitHub Desktop 
    git remote add origin https://github.com/<your-username>/decoder.git
    git push -u origin main
    ```
-5. The `git push` may open a browser window asking you to sign in to GitHub — approve it. (GitHub no longer accepts your password typed in the terminal; the browser sign-in handles it.)
-   - If `git` isn't installed, macOS pops up a box offering to install the "command line developer tools" — click **Install**, wait, then re-run the command.
+5. The last command may open a browser to sign in to GitHub — approve it. If it says `git` isn't installed, macOS offers to install "command line developer tools" — click **Install**, wait, and re-run.
 
-Either way, `.gitignore` already keeps out junk files. Your Supabase publishable/anon key is safe to include; never include the secret/service_role key.
+## Step 4 — Publish it to the web
 
-## Step 4 — Deploy (Vercel — recommended)
+This puts your app online and gives you its address (needed for Google sign-in). Pick one:
 
-1. Import the repo at [vercel.com/new](https://vercel.com/new).
-2. Set **Root Directory** to `web`. No build command — it's a static site (`vercel.json` is included).
-3. Deploy. **Copy the live URL** it gives you (e.g. `https://decoder.vercel.app`) — you need it in steps 5 and 6.
+### Option A — Vercel (recommended; uses your GitHub from Step 3)
 
-*Netlify alternative:* import the repo, set **Publish directory** to `web` (already in `netlify.toml`), deploy, and copy the URL.
+1. Go to [vercel.com/new](https://vercel.com/new) and sign in with your GitHub account.
+2. Find your **decoder** repository in the list and click **Import**.
+3. There's a setting called **Root Directory** — click **Edit** next to it and choose the **web** folder. (Your app lives in `web`, not at the top.) Leave everything else as-is.
+4. Click **Deploy** and wait. When it's done, it shows your live address, like `https://decoder.vercel.app`. **Copy it** — you need it in Steps 5 and 6.
 
-## Step 5 — Create the Google OAuth client
+### Option B — Netlify Drop (fastest; skips GitHub entirely)
 
-Now that you have a live URL, set up Google sign-in.
+If GitHub felt like a hassle and you just want it live: go to [app.netlify.com/drop](https://app.netlify.com/drop), and drag your **web** folder onto the page. It uploads and gives you a live address to copy. (You can connect GitHub later for automatic updates.)
 
-1. In [Google Cloud Console](https://console.cloud.google.com), create or select a project → **APIs & Services → OAuth consent screen**. Choose **External**, fill in the app name and your support email, and (while in testing) add your Google account under **Test users**.
-2. Go to **APIs & Services → Credentials → Create credentials → OAuth client ID → Web application**.
-3. **Authorized JavaScript origins:** add your live URL from step 4 (and `http://localhost:3000` if you'll test locally).
-4. **Authorized redirect URIs:** add your Supabase callback, copied in full:
-   `https://<project-ref>.supabase.co/auth/v1/callback`
-   ⚠️ **Most common mistake:** dropping the trailing `/auth/v1/callback`. If sign-in later fails with `redirect_uri_mismatch`, this is almost always why.
-5. Click **Create**, then copy the **Client ID** and **Client secret** for step 6.
+## Step 5 — Set up "Sign in with Google"
+
+**What's happening here:** to offer Google sign-in, you register your app with Google once. Google asks you two questions — *which website is allowed to start a sign-in* (your app), and *where to send the person after they log in* (back to Supabase). You type the answers into a Google setup screen. It's fiddly but it's just filling in two boxes.
+
+1. Open the **Google Auth Platform** and sign in: **`https://console.cloud.google.com/auth/overview`** . At the top of the page, pick a project or create a new one (any name).
+2. If this is your first time, Google asks you to set up a consent screen: click **Get started**, enter an app name and your email, choose **External** for "Audience," add a contact email, and finish. Then, while it's still in "Testing" mode, open the **Audience** page — **`https://console.cloud.google.com/auth/audience`** — and under **Test users** add your own Google email (so Google lets you sign in during testing). (If Google asks for an app homepage or privacy-policy link, use your live site URL from Step 4 and that URL + `/privacy`.)
+3. Open the **Clients** page — **`https://console.cloud.google.com/auth/clients`** — and click **Create client**. For "Application type" choose **Web application**, give it any name.
+4. You'll see two boxes to fill in. Here's what each one means:
+
+   **Box 1 — "Authorized JavaScript origins"** = *which website is allowed to start a Google sign-in.*
+   Click **+ Add URI** and paste your live app address from Step 4, for example:
+   `https://decoder.vercel.app`
+   (Testing on your own computer too? Click **+ Add URI** again and add `http://localhost:3000`.)
+
+   **Box 2 — "Authorized redirect URIs"** = *where Google sends the person back after they log in.*
+   This is always your **Supabase** address (from Step 1) with `/auth/v1/callback` added on the end. For example, if your Supabase Project URL is `https://abcdefgh.supabase.co`, you'd paste:
+   `https://abcdefgh.supabase.co/auth/v1/callback`
+   - **Copy it exactly, the whole thing.** If you leave off the `/auth/v1/callback` part, sign-in later fails with an error reading `redirect_uri_mismatch` — that just means "the address didn't match."
+   - Easiest way to avoid a typo: Supabase shows you this exact line on its Google settings page (Step 6), so you can copy it from there.
+
+5. Click **Create**. A box pops up with two long codes — the **Client ID** and the **Client secret**. Keep it open (or copy both) for Step 6.
 
 ## Step 6 — Connect Google to Supabase
 
-1. In Supabase: **Authentication → Providers → Google** → enable it, paste the Client ID and secret from step 5, and **Save**. (The exact callback URL you needed in step 5.4 is shown right here on this page, if you want to double-check it.)
-2. In Supabase: **Authentication → URL Configuration** → set **Site URL** to your live URL from step 4, and add it to **Redirect URLs** (add `http://localhost:3000` too if testing locally).
+Now you hand Google's two codes to Supabase so they can talk. The links below use direct addresses so you don't have to hunt through menus.
 
-## Step 7 — Test sign-in
+> **About the `_` in these links:** it's a stand-in for your project's code. It only auto-fills when Supabase already knows which project you're in — in a fresh tab it can show a **404**. If that happens, replace the `_` with your own project code: it's the `abcdefgh` part of your Project URL from Step 1, and it's also visible in your browser's address bar whenever you're inside your project (`…/dashboard/project/`**`abcdefgh`**`/…`). Easiest trick: once you're on any Supabase page for your project, just edit the end of the address bar to the page you want.
 
-Open your live URL, click **Sign in with Google**, and confirm you can save a term and see it in **My cheatsheet**. Reload — it should persist. Open the same account on another device to confirm sync.
+1. Open the Google settings page:
+   **`https://supabase.com/dashboard/project/_/auth/providers?provider=Google`** (replace `_` with your project code if it 404s)
+   - Menu fallback: left sidebar **Authentication** (the lock/shield icon) → **Sign In / Providers** (older projects just say **Providers**) → find **Google** in the list.
+2. Click **Google** to expand it, switch it **on**, and paste the **Client ID** and **Client secret** from Step 5 into their boxes. Click **Save**. (This same page shows the exact callback address from Step 5's Box 2 — a good spot to double-check you copied that correctly.)
+3. Open the URL settings page:
+   **`https://supabase.com/dashboard/project/_/auth/url-configuration`** (again, replace `_` with your project code if it 404s)
+   - Menu fallback: left sidebar **Authentication** → **URL Configuration**.
+   - Set **Site URL** to your live app address from Step 4 (e.g. `https://decoder.vercel.app`), and add that same address under **Redirect URLs**. Click **Save**. (Add `http://localhost:3000` too if you'll test on your computer.)
 
-## Step 8 — Chrome Web Store (independent — anytime)
+## Step 7 — Test it
 
-1. Zip the extension from the project root: `cd extension && zip -r ../decoder-extension.zip . && cd ..`
-2. Register a developer account at the [Chrome Web Store dashboard](https://chrome.google.com/webstore/devconsole) (one-time $5 fee).
-3. **Add new item**, upload the zip, and fill in the listing using the draft in [`extension/STORE-LISTING.md`](extension/STORE-LISTING.md).
-4. Add 128/48/16px icons first — see the note in the extension README.
-5. Submit for review.
+Open your live address, click **Sign in with Google**, and pick your account. Then save a term and open **My cheatsheet** — it should be there. Reload the page; it should still be there. Open the same account on your phone to confirm it follows you across devices.
+
+If sign-in fails with `redirect_uri_mismatch`, go back to Step 5 Box 2 and make sure the address ends in `/auth/v1/callback`.
+
+## Step 8 — Publish the browser extension (optional, separate)
+
+1. Zip the extension folder: in **Finder**, open your `AI Dictionary` folder, **right-click** the `extension` folder, and choose **Compress "extension"**. That makes `extension.zip`.
+2. Go to the [Chrome Web Store developer dashboard](https://chrome.google.com/webstore/devconsole) and register (a one-time $5 fee).
+3. Click **Add new item**, upload the zip, and fill in the listing using the ready-made kit in `extension/STORE-LISTING.md` (all the text fields, permission justifications, and privacy answers are written out for you).
+4. Icons are already made and bundled; promo tiles are in the `store-assets/` folder. The only thing you have to create yourself is **screenshots** (real pictures of the extension running) — `STORE-LISTING.md` explains exactly how.
+5. **Privacy Policy field (required):** your policy is already built into your website as a page, so once you've deployed (Step 4) it's live at your site URL + `/privacy` — for example `https://decoder.vercel.app/privacy`. Paste that link into the store's Privacy Policy field. (Open it once to check it loads; to add your contact email, edit `web/privacy.html` near the bottom and re-deploy.) Then submit for review.
 
 ---
 
-## Local testing (optional)
+## Testing on your own computer first (optional)
 
-Because sign-in uses a redirect, open the site over `http://localhost`, not `file://`. From the project root:
+Because sign-in bounces through Google, you need to open the app at a proper web address, not by double-clicking the file. The simplest local address is `http://localhost:3000`. Setting that up is a little technical (it needs a one-line terminal command), so skip it unless you want it — testing on the live site from Step 4 works fine. If you do want it: in Terminal, run `cd "/Users/shibbypills/Documents/Mitsu/AI Dictionary/web"` then `python3 -m http.server 3000`, and visit `http://localhost:3000`. For sign-in to work there, add `http://localhost:3000` in Step 5 (Box 1) and Step 6 (Redirect URLs).
 
-```bash
-cd web && python3 -m http.server 3000
-# then visit http://localhost:3000
-```
+## Still to do later
 
-For local sign-in to work, `http://localhost:3000` must be in Google's Authorized origins (step 5.3) and Supabase's Redirect URLs (step 6.2).
-
-## Follow-ups (not done yet)
-
-- **Extension sign-in:** the extension keeps its cheatsheet on-device (`chrome.storage`). Syncing it to the same Google account needs `chrome.identity.launchWebAuthFlow` + the same Supabase project.
-- **Shared concept source:** `extension/concepts.js` and the web app's concept list are maintained separately; a single shared JSON is a sensible next refactor.
-- **Extension download CTA** on the Lookup page — add once the Web Store URL exists.
+- **Extension sign-in:** the extension saves on your device only right now. Syncing it to the same Google account as the website is a future add-on.
+- **Keeping term lists in sync:** the website and the extension each carry their own copy of the concept list; merging them into one shared source is a tidy-up for later.
+- **"Get the extension" button** on the website — worth adding once the extension is live in the store and has a link.
 
 ## Sources
 
 - [Login with Google — Supabase Docs](https://supabase.com/docs/guides/auth/social-login/auth-google)
+- [Understanding API keys — Supabase Docs](https://supabase.com/docs/guides/getting-started/api-keys)
 - [Redirect URLs — Supabase Docs](https://supabase.com/docs/guides/auth/redirect-urls)

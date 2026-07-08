@@ -30,6 +30,6 @@ Subtly underlines AI jargon on any web page. Click a term to understand it in se
 
 ## Notes & scope
 
-- No toolbar icon art is bundled, so Chrome shows a default placeholder icon — drop 16/48/128px PNGs in and add an `icons` block to `manifest.json` to brand it.
+- Toolbar/store icons (16/32/48/128px, a "d" with a dot) are in `icons/` and wired into `manifest.json`. Promo tiles for the store are in the top-level `store-assets/` folder.
 - The popover uses system fonts (not the Newsreader/Inter web fonts) so it renders instantly and identically on any page without a network fetch.
 - Data is bundled in the extension; there's no backend or live "currency" updates. Keeping `concepts.js` in sync with the web app's shelf is a manual step for now.
