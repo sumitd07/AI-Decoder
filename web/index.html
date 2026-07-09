@@ -381,7 +381,7 @@ async function loadShelfFromDB(){
   const all = [];
   try{
     for(let offset=0; offset<20000; offset+=1000){
-      const res = await fetch(REMOTE.url+'/rest/v1/concepts?is_published=eq.true&select='+cols+'&order=priority.desc,term.asc&limit=1000&offset='+offset+'&_cb='+Date.now(), { cache:'no-store', headers:{ apikey:REMOTE.key, Authorization:'Bearer '+REMOTE.key } });
+      const res = await fetch(REMOTE.url+'/rest/v1/concepts?is_published=eq.true&select='+cols+'&order=priority.desc,term.asc&limit=1000&offset='+offset, { cache:'no-store', headers:{ apikey:REMOTE.key, Authorization:'Bearer '+REMOTE.key } });
       if(!res.ok) return; // keep static fallback
       const rows = await res.json();
       all.push(...rows);
