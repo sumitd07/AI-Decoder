@@ -36,13 +36,19 @@
   function setSaved(arr) { try { chrome.storage.local.set({ "decoder.saved": arr }); } catch (e) {} }
 
   // ---- skip logic ----
-  const SKIP_TAGS = /^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA|INPUT|SELECT|OPTION|CODE|PRE|SVG|CANVAS|BUTTON)$/;
+  // Includes A (links) so we never underline or hijack link text — e.g. Google
+  // search result titles stay clickable.
+  const SKIP_TAGS = /^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA|INPUT|SELECT|OPTION|CODE|PRE|SVG|CANVAS|BUTTON|A|LABEL|SUMMARY)$/;
   function skip(node) {
     let el = node.parentElement;
     while (el) {
       const tag = el.tagName;
       if (tag && SKIP_TAGS.test(tag)) return true;
       if (el.isContentEditable) return true;
+      if (el.getAttribute) {
+        const role = el.getAttribute("role");
+        if (role === "link" || role === "button" || role === "menuitem" || role === "tab") return true;
+      }
       if (el.classList && (el.classList.contains("dcx-term") || el.classList.contains("dcx-ui"))) return true;
       el = el.parentElement;
     }
@@ -186,7 +192,11 @@
   // ---- global interactions ----
   document.addEventListener("click", e => {
     const term = e.target.closest && e.target.closest(".dcx-term");
-    if (term) { e.preventDefault(); e.stopPropagation(); showPopover(term.getAttribute("data-dcx-id"), term); return; }
+    if (term) {
+      // never hijack a click that's inside a link or button — follow it normally
+      if (term.closest('a, button, [role="link"], [role="button"]')) return;
+      e.preventDefault(); e.stopPropagation(); showPopover(term.getAttribute("data-dcx-id"), term); return;
+    }
     if (pop && !(e.target.closest && e.target.closest("#dcx-pop"))) closePopover();
   }, true);
   document.addEventListener("keydown", e => { if (e.key === "Escape") closePopover(); });
