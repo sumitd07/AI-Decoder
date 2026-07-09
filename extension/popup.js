@@ -4,7 +4,8 @@
   const STATUS = window.DECODER_STATUS || {};
   const byId = id => DATA.find(c => c.id === id);
   const listEl = document.getElementById("list");
-  const toggleEl = document.getElementById("toggle");
+  const enableEl = document.getElementById("enable");
+  const ALL = { origins: ["<all_urls>"] };
 
   function nudgeFor(c) {
     if (c.status === "Fading") return ["This term is fading. Worth recognizing, not worth relying on.", c];
@@ -56,15 +57,47 @@
     });
   });
 
-  function paintToggle(on) { toggleEl.classList.toggle("on", on); }
-  toggleEl.addEventListener("click", () => {
-    chrome.storage.local.get(["decoder.enabled"], r => {
-      const next = r["decoder.enabled"] === false; // flip
-      chrome.storage.local.set({ "decoder.enabled": next }, () => paintToggle(next));
+  // ---- opt-in: highlight on all sites (optional host permission) ----
+  function renderEnable(granted) {
+    if (granted) {
+      enableEl.className = "enable on";
+      enableEl.innerHTML = `
+        <p class="etitle"><span class="ok">✓</span> Highlighting is on for every site</p>
+        <p class="edesc">AI terms are underlined automatically as you read. Click one for a plain-language explanation.</p>
+        <button class="btn ghost" id="disableBtn">Turn off</button>`;
+      document.getElementById("disableBtn").addEventListener("click", () => {
+        chrome.permissions.remove(ALL, () => refresh());
+      });
+    } else {
+      enableEl.className = "enable";
+      enableEl.innerHTML = `
+        <p class="etitle">Turn on highlighting</p>
+        <p class="edesc">Decoder needs your OK to read pages so it can underline AI terms as you browse. It runs on your device only — nothing is sent anywhere.</p>
+        <button class="btn primary" id="enableBtn">Enable on all sites</button>`;
+      document.getElementById("enableBtn").addEventListener("click", () => {
+        // must be called directly from the click (user gesture)
+        chrome.permissions.request(ALL, granted => {
+          if (granted) { highlightActiveTabNow(); refresh(); }
+        });
+      });
+    }
+  }
+
+  // Inject into the tab that's open right now, so it lights up without a reload.
+  function highlightActiveTabNow() {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      const tab = tabs && tabs[0];
+      if (!tab || !tab.id) return;
+      chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ["content.css"] }).catch(() => {});
+      chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["concepts.js", "content.js"] }).catch(() => {});
     });
-  });
+  }
+
+  function refresh() {
+    chrome.permissions.contains(ALL, granted => renderEnable(!!granted));
+    loadSaved(render);
+  }
 
   // init
-  chrome.storage.local.get(["decoder.enabled"], r => paintToggle(r["decoder.enabled"] !== false));
-  loadSaved(render);
+  refresh();
 })();

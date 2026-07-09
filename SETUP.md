@@ -141,11 +141,15 @@ If sign-in fails with `redirect_uri_mismatch`, go back to Step 5 Box 2 and make 
 
 ## Step 8 — Publish the browser extension (optional, separate)
 
-1. Zip the extension folder: in **Finder**, open your `AI Dictionary` folder, **right-click** the `extension` folder, and choose **Compress "extension"**. That makes `extension.zip`.
-2. Go to the [Chrome Web Store developer dashboard](https://chrome.google.com/webstore/devconsole) and register (a one-time $5 fee).
-3. Click **Add new item**, upload the zip, and fill in the listing using the ready-made kit in `extension/STORE-LISTING.md` (all the text fields, permission justifications, and privacy answers are written out for you).
+> The extension uses an **opt-in** permission model: after installing, the user clicks **Enable on all sites** once, then highlighting is automatic. This is why the Web Store won't show the "broad host permissions / in-depth review" warning. It also means the reviewer must click Enable before anything highlights — the ready-made reviewer note in `STORE-LISTING.md` (section 3b) already says so.
+
+1. Zip the extension folder: in **Finder**, open your `AI Dictionary` folder, **right-click** the `extension` folder, and choose **Compress "extension"**. That makes `extension.zip`. (The zip must include `background.js` — compressing the whole folder does this automatically.)
+2. Go to the [Chrome Web Store developer dashboard](https://chrome.google.com/webstore/devconsole) and register (a one-time $5 fee). Verify your publisher **contact email** first, or nothing can be published (see `STORE-LISTING.md` section 0).
+3. Click **Add new item**, upload the zip, and fill in the listing using the ready-made kit in `extension/STORE-LISTING.md` (all the text fields, permission justifications, privacy answers, and the reviewer test note are written out for you).
 4. Icons are already made and bundled; promo tiles are in the `store-assets/` folder. The only thing you have to create yourself is **screenshots** (real pictures of the extension running) — `STORE-LISTING.md` explains exactly how.
 5. **Privacy Policy field (required):** your policy is already built into your website as a page, so once you've deployed (Step 4) it's live at your site URL + `/privacy` — for example `https://decoder.vercel.app/privacy`. Paste that link into the store's Privacy Policy field. (Open it once to check it loads; to add your contact email, edit `web/privacy.html` near the bottom and re-deploy.) Then submit for review.
+
+> **If you already uploaded an earlier zip** (before this opt-in change): upload the new `extension.zip` to replace the package, re-paste the reviewer note from `STORE-LISTING.md` section 3b (it now tells the reviewer to click **Enable on all sites** first), and re-check the permission justifications (a `scripting` line was added). The broad-permission warning should no longer appear. If the dashboard refuses the upload because the version already exists, bump `"version"` in `extension/manifest.json` (e.g. to `1.0.1`) and re-zip.
 
 ---
 

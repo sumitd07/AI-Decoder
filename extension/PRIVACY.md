@@ -8,7 +8,8 @@ Decoder is a browser extension that underlines known AI/technical terms on web p
 
 ## What the extension does with data
 
-- **Page text is read locally, never collected.** To find and underline terms, the extension looks at the visible text of the page you're on, in your browser. This happens entirely on your device. Page content is **not** stored, logged, sent to us, or shared with anyone.
+- **Access is opt-in.** The extension has no access to any page until you turn it on (a one-time permission granted from its popup), and you can turn it off at any time.
+- **Page text is read locally, never collected.** Once enabled, to find and underline terms the extension looks at the visible text of the page you're on, in your browser. This happens entirely on your device. Page content is **not** stored, logged, sent to us, or shared with anyone.
 - **Your saved terms stay on your device.** When you save a term, only a short identifier for that term (e.g. `rag`) is stored using the browser's local storage (`chrome.storage`). This never leaves your browser.
 - **No accounts, no tracking, no servers.** The extension has no login, collects no personal information, uses no analytics or advertising, contacts no external servers, and loads no remote code.
 

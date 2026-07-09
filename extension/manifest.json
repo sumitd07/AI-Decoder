@@ -2,8 +2,12 @@
   "manifest_version": 3,
   "name": "Decoder — AI terms, explained in place",
   "version": "1.0.0",
-  "description": "Subtly highlights AI jargon on any page. Click a term to understand it in seconds and save it to your cheatsheet.",
-  "permissions": ["storage"],
+  "description": "Highlights AI jargon on any page. Click a term to understand it in seconds and save it to your cheatsheet.",
+  "permissions": ["storage", "scripting"],
+  "optional_host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
   "icons": {
     "16": "icons/16.png",
     "32": "icons/32.png",
@@ -19,13 +23,5 @@
       "48": "icons/48.png",
       "128": "icons/128.png"
     }
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["concepts.js", "content.js"],
-      "css": ["content.css"],
-      "run_at": "document_idle"
-    }
-  ]
+  }
 }

@@ -5,7 +5,8 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
 ---
 
 ## 0. Before you start
-- A Chrome Web Store **developer account** (one-time **$5** fee) with a **verified contact email** (set it under Account → verify email, or the item can't be published).
+- A Chrome Web Store **developer account** (one-time **$5** fee).
+- **A verified publisher contact email — required, or nothing can be published.** On the dashboard's **Account** page (left sidebar, person/gear icon): enter your **Contact email**, Save, then click **Verify** — Google emails you a link; open it and click. Refresh the dashboard afterward. (This is an account-level step, separate from your extension. The email may show publicly as the publisher contact.)
 - The extension **zip**: in Finder, right-click the `extension` folder → **Compress "extension"** → `extension.zip`. (It already includes the icons.)
 
 ## 1. Graphic assets
@@ -55,7 +56,8 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
 
 - **Permission justifications** — one per permission in the manifest:
   - **storage:** `Stores the user's saved cheatsheet (short term identifiers they chose to save) locally in the browser so it persists between visits. Nothing is transmitted.`
-  - **Host permissions (access to all sites):** `The extension reads the visible text of the page the user is reading to detect and underline known AI terms. Because people read about AI on any website, it needs to run on the pages they visit. Page text is processed locally and is never collected or transmitted.`
+  - **scripting:** `Injects the highlighter into a page after the user turns Decoder on, and registers it to run on pages they visit once they've opted in.`
+  - **Host access — optional, "all sites":** `Requested at runtime (not at install) only when the user clicks "Enable on all sites." It lets the extension read the visible text of pages they read so it can underline known AI terms. Page text is processed locally and is never collected or transmitted.`
 
 - **Are you using remote code?** **No.** All code ships inside the package; the extension loads no external scripts and uses the system font.
 
@@ -68,6 +70,22 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
   `https://decoder.vercel.app/privacy`
   Paste that into this field. Two small things first: open the page once to confirm it loads, and edit `web/privacy.html` to add your contact email (near the bottom), then re-deploy.
 
+## 3b. Test instructions tab (notes for the Google reviewer)
+
+This tab has three inputs: **Username**, **Password**, and **Additional instructions** (max 500 characters). Decoder needs no login, so:
+
+- **Username / Password:** leave both **blank**.
+- **Additional instructions:** paste the text below (it fits the 500-char limit). **Important:** highlighting is opt-in, so the reviewer must click "Enable on all sites" in the popup first — otherwise they'll see nothing and may reject it as non-functional.
+
+```
+No login needed.
+1) Open the Decoder toolbar popup and click "Enable on all sites", approve the Chrome prompt (grants optional page access).
+2) Open a page about AI, e.g. https://en.wikipedia.org/wiki/Large_language_model — known AI terms get underlined.
+3) Click a term for an in-page explanation, then click "Save to my cheatsheet".
+4) The toolbar popup lists your saved terms.
+All processing is on-device; nothing is transmitted.
+```
+
 ## 4. Distribution
 - **Visibility:** Public (or Unlisted while you test).
 - **Regions:** All, unless you want to limit.
@@ -75,6 +93,6 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
 
 ---
 
-## Heads-up on the broad permission (relevant to review)
+## Note on permissions (why there's no broad-permission warning)
 
-Decoder requests access to **all sites** so it can underline terms automatically as you read. Broad host access gets extra reviewer scrutiny, so the single-purpose and justification text above is written to be clear and honest. If a reviewer pushes back, the alternative is to switch to an **`activeTab`**-based model (the extension only reads a page when you click the toolbar button) — that narrows the permission but changes the experience from "automatic" to "on demand." Ask me and I can make that change.
+Decoder does **not** request access to all sites at install time. Instead, "all sites" is an **optional** permission that the user grants at runtime by clicking **Enable on all sites** in the popup. Because the broad permission isn't in the required manifest, the Web Store shouldn't show the "Broad Host Permissions / in-depth review" warning at submission. After the user opts in, the extension auto-underlines terms on the pages they read, just like an always-on extension would — the difference is the user chose it explicitly. (This is the same pattern Chrome recommends for extensions that could otherwise trigger the broad-permission review.)

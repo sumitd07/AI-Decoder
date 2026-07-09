@@ -1,5 +1,10 @@
 (function () {
   "use strict";
+  // Guard: the script can arrive two ways (registered content script on load, or
+  // injected into the current tab right after opt-in). Never set up twice.
+  if (window.__decoderLoaded) { if (window.__decoderRescan) window.__decoderRescan(); return; }
+  window.__decoderLoaded = true;
+
   const DATA = window.DECODER_CONCEPTS || [];
   const STATUS = window.DECODER_STATUS || {};
   const ACCENT = "#4f77a6";
@@ -210,31 +215,13 @@
   }
   function stopObserver() { if (observer) { observer.disconnect(); observer = null; } }
 
-  // ---- react to popup toggle ----
-  try {
-    chrome.storage.onChanged.addListener((changes, area) => {
-      if (area !== "local" || !("decoder.enabled" in changes)) return;
-      const on = changes["decoder.enabled"].newValue !== false;
-      if (on === enabled) return;
-      enabled = on;
-      if (enabled) { scanRoot(document.body); startObserver(); }
-      else { stopObserver(); removeAllHighlights(); }
-    });
-  } catch (e) {}
-
   // ---- init ----
+  // Re-scan hook, used when the script is re-injected into an already-loaded tab.
+  window.__decoderRescan = () => { if (DATA.length) scanRoot(document.body); };
   function init() {
     if (!DATA.length) return;
-    getEnabled(on => {
-      enabled = on;
-      if (!enabled) return;
-      scanRoot(document.body);
-      startObserver();
-    });
-  }
-  function getEnabled(cb) {
-    try { chrome.storage.local.get(["decoder.enabled"], r => cb(r["decoder.enabled"] !== false)); }
-    catch (e) { cb(true); }
+    scanRoot(document.body);
+    startObserver();
   }
   init();
 })();
