@@ -2,6 +2,6 @@
 // in the same cheatsheet. Fill these with the values from web/index.html
 // (Supabase Settings → Data API for the URL, API Keys for the publishable/anon key).
 self.DECODER_SUPABASE = {
-  url: "",       // https://<project-ref>.supabase.co
-  anonKey: ""    // sb_publishable_...  (or the legacy anon key) — NEVER the secret key
+  url: "https://ivyfvwnxjkqyicbjzqoz.supabase.co",       // https://<project-ref>.supabase.co
+  anonKey: "sb_publishable_rP_Ds8F2cbEHkpFNIzyRIQ_YHGxQ5c9"    // sb_publishable_...  (or the legacy anon key) — NEVER the secret key
 };
