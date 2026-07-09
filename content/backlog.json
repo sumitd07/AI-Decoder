@@ -303,601 +303,601 @@
   "term": "perplexity",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "log probability",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "beam search",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "repetition penalty",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "frequency penalty",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "presence penalty",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "max tokens",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "stop sequence",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "truncation",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "padding",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "attention mask",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "token limit",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "subword",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "byte-pair encoding",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "word embedding",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sentence embedding",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "one-hot encoding",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "softmax temperature",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "entropy",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cross-entropy",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "gradient",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "learning signal",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "capacity",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "emergent ability",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "in-context learning",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "zero-shot",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "few-shot",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "one-shot",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "instruction following",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "world model",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "grounding",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "knowledge cutoff",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "parametric knowledge",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "non-parametric memory",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "context stuffing",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "lost in the middle",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "needle in a haystack",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "effective context",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "multimodal input",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "text generation",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "language model",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "small language model",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "mixture model",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ensemble",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "teacher model",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "student model",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model checkpointing",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "warm start",
   "domain": "Foundations",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "pretraining",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "RLHF",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "RLAIF",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reward model",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "preference data",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "DPO",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "constitutional AI",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "instruction tuning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "supervised fine-tuning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "alignment",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "LoRA",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "QLoRA",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "PEFT",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "adapter",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "distillation",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "knowledge distillation",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "continued pretraining",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "catastrophic forgetting",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "synthetic data",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "data augmentation",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "labeling",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "annotation",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "data contamination",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "deduplication",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "curriculum learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "self-supervised learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "unsupervised learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "supervised learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reinforcement learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "semi-supervised learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "transfer learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "multitask learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "meta-learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "few-shot learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "gradient descent",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "stochastic gradient descent",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "backpropagation",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "loss function",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "objective function",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "learning rate",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "learning rate schedule",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "warmup",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "batch size",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "epoch",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "iteration",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "optimizer",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Adam",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "AdamW",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "weight decay",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "regularization",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "gradient clipping",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "gradient accumulation",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "mixed precision",
@@ -1287,7 +1287,7 @@
   "term": "catastrophic interference",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "replay buffer",
@@ -3663,7 +3663,7 @@
   "term": "benchmark contamination",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "overfitting to benchmarks",
@@ -3705,7 +3705,7 @@
   "term": "annotator",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "inter-annotator agreement",
@@ -4707,7 +4707,7 @@
   "term": "multimodal",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "any-to-any",
@@ -5097,7 +5097,7 @@
   "term": "few-shot prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "zero-shot prompting",
@@ -6015,13 +6015,13 @@
   "term": "word2vec",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GloVe",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "n-gram model",
@@ -6303,7 +6303,7 @@
   "term": "stop words",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "stemming",

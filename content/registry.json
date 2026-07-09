@@ -339,6 +339,406 @@
   "seed": {
    "term": "Seed",
    "status": "Core"
+  },
+  "perplexity": {
+   "term": "Perplexity",
+   "status": "Core"
+  },
+  "logprobability": {
+   "term": "Log probability",
+   "status": "Core"
+  },
+  "beamsearch": {
+   "term": "Beam search",
+   "status": "Fading"
+  },
+  "repetitionpenalty": {
+   "term": "Repetition penalty",
+   "status": "Core"
+  },
+  "frequencypenalty": {
+   "term": "Frequency penalty",
+   "status": "Core"
+  },
+  "presencepenalty": {
+   "term": "Presence penalty",
+   "status": "Core"
+  },
+  "maxtokens": {
+   "term": "Max tokens",
+   "status": "Core"
+  },
+  "stopsequence": {
+   "term": "Stop sequence",
+   "status": "Core"
+  },
+  "truncation": {
+   "term": "Truncation",
+   "status": "Core"
+  },
+  "padding": {
+   "term": "Padding",
+   "status": "Core"
+  },
+  "attentionmask": {
+   "term": "Attention mask",
+   "status": "Core"
+  },
+  "tokenlimit": {
+   "term": "Token limit",
+   "status": "Core"
+  },
+  "subword": {
+   "term": "Subword",
+   "status": "Core"
+  },
+  "bytepairencoding": {
+   "term": "Byte-pair encoding",
+   "status": "Core"
+  },
+  "wordembedding": {
+   "term": "Word embedding",
+   "status": "Fading"
+  },
+  "sentenceembedding": {
+   "term": "Sentence embedding",
+   "status": "Core"
+  },
+  "onehotencoding": {
+   "term": "One-hot encoding",
+   "status": "Core"
+  },
+  "softmaxtemperature": {
+   "term": "Softmax temperature",
+   "status": "Core"
+  },
+  "entropy": {
+   "term": "Entropy",
+   "status": "Core"
+  },
+  "crossentropy": {
+   "term": "Cross-entropy",
+   "status": "Core"
+  },
+  "gradient": {
+   "term": "Gradient",
+   "status": "Core"
+  },
+  "learningsignal": {
+   "term": "Learning signal",
+   "status": "Core"
+  },
+  "capacity": {
+   "term": "Capacity",
+   "status": "Core"
+  },
+  "emergentability": {
+   "term": "Emergent ability",
+   "status": "Rising"
+  },
+  "incontextlearning": {
+   "term": "In-context learning",
+   "status": "Core"
+  },
+  "zeroshot": {
+   "term": "Zero-shot",
+   "status": "Core"
+  },
+  "fewshot": {
+   "term": "Few-shot",
+   "status": "Core"
+  },
+  "oneshot": {
+   "term": "One-shot",
+   "status": "Core"
+  },
+  "instructionfollowing": {
+   "term": "Instruction following",
+   "status": "Core"
+  },
+  "worldmodel": {
+   "term": "World model",
+   "status": "Rising"
+  },
+  "grounding": {
+   "term": "Grounding",
+   "status": "Core"
+  },
+  "knowledgecutoff": {
+   "term": "Knowledge cutoff",
+   "status": "Core"
+  },
+  "parametricknowledge": {
+   "term": "Parametric knowledge",
+   "status": "Core"
+  },
+  "nonparametricmemory": {
+   "term": "Non-parametric memory",
+   "status": "Core"
+  },
+  "contextstuffing": {
+   "term": "Context stuffing",
+   "status": "Rising"
+  },
+  "lostinthemiddle": {
+   "term": "Lost in the middle",
+   "status": "Rising"
+  },
+  "needleinahaystack": {
+   "term": "Needle in a haystack",
+   "status": "Rising"
+  },
+  "effectivecontext": {
+   "term": "Effective context",
+   "status": "Rising"
+  },
+  "multimodalinput": {
+   "term": "Multimodal input",
+   "status": "Rising"
+  },
+  "textgeneration": {
+   "term": "Text generation",
+   "status": "Core"
+  },
+  "languagemodel": {
+   "term": "Language model",
+   "status": "Core"
+  },
+  "smalllanguagemodel": {
+   "term": "Small language model",
+   "status": "Rising"
+  },
+  "mixturemodel": {
+   "term": "Mixture model",
+   "status": "Core"
+  },
+  "ensemble": {
+   "term": "Ensemble",
+   "status": "Core"
+  },
+  "teachermodel": {
+   "term": "Teacher model",
+   "status": "Core"
+  },
+  "studentmodel": {
+   "term": "Student model",
+   "status": "Core"
+  },
+  "modelcheckpointing": {
+   "term": "Model checkpointing",
+   "status": "Core"
+  },
+  "warmstart": {
+   "term": "Warm start",
+   "status": "Core"
+  },
+  "pretraining": {
+   "term": "Pretraining",
+   "status": "Core"
+  },
+  "rlhf": {
+   "term": "RLHF",
+   "status": "Core"
+  },
+  "rlaif": {
+   "term": "RLAIF",
+   "status": "Rising"
+  },
+  "rewardmodel": {
+   "term": "Reward model",
+   "status": "Core"
+  },
+  "preferencedata": {
+   "term": "Preference data",
+   "status": "Core"
+  },
+  "dpo": {
+   "term": "DPO",
+   "status": "Rising"
+  },
+  "constitutionalai": {
+   "term": "Constitutional AI",
+   "status": "Rising"
+  },
+  "instructiontuning": {
+   "term": "Instruction tuning",
+   "status": "Core"
+  },
+  "sft": {
+   "term": "Supervised fine-tuning",
+   "status": "Core"
+  },
+  "alignment": {
+   "term": "Alignment",
+   "status": "Core"
+  },
+  "lora": {
+   "term": "LoRA",
+   "status": "Rising"
+  },
+  "qlora": {
+   "term": "QLoRA",
+   "status": "Rising"
+  },
+  "peft": {
+   "term": "PEFT",
+   "status": "Rising"
+  },
+  "adapter": {
+   "term": "Adapter",
+   "status": "Core"
+  },
+  "distillation": {
+   "term": "Distillation",
+   "status": "Core"
+  },
+  "knowledgedistillation": {
+   "term": "Knowledge distillation",
+   "status": "Core"
+  },
+  "continuedpretraining": {
+   "term": "Continued pretraining",
+   "status": "Rising"
+  },
+  "catastrophicforgetting": {
+   "term": "Catastrophic forgetting",
+   "status": "Core"
+  },
+  "syntheticdata": {
+   "term": "Synthetic data",
+   "status": "Rising"
+  },
+  "dataaugmentation": {
+   "term": "Data augmentation",
+   "status": "Core"
+  },
+  "labeling": {
+   "term": "Labeling",
+   "status": "Core"
+  },
+  "annotation": {
+   "term": "Annotation",
+   "status": "Core"
+  },
+  "datacontamination": {
+   "term": "Data contamination",
+   "status": "Rising"
+  },
+  "deduplication": {
+   "term": "Deduplication",
+   "status": "Core"
+  },
+  "curriculumlearning": {
+   "term": "Curriculum learning",
+   "status": "Core"
+  },
+  "selfsupervisedlearning": {
+   "term": "Self-supervised learning",
+   "status": "Core"
+  },
+  "unsupervisedlearning": {
+   "term": "Unsupervised learning",
+   "status": "Core"
+  },
+  "supervisedlearning": {
+   "term": "Supervised learning",
+   "status": "Core"
+  },
+  "reinforcementlearning": {
+   "term": "Reinforcement learning",
+   "status": "Core"
+  },
+  "semisupervisedlearning": {
+   "term": "Semi-supervised learning",
+   "status": "Core"
+  },
+  "transferlearning": {
+   "term": "Transfer learning",
+   "status": "Core"
+  },
+  "multitasklearning": {
+   "term": "Multitask learning",
+   "status": "Core"
+  },
+  "metalearning": {
+   "term": "Meta-learning",
+   "status": "Rising"
+  },
+  "fewshotlearning": {
+   "term": "Few-shot learning",
+   "status": "Core"
+  },
+  "gradientdescent": {
+   "term": "Gradient descent",
+   "status": "Core"
+  },
+  "sgd": {
+   "term": "Stochastic gradient descent",
+   "status": "Core"
+  },
+  "backpropagation": {
+   "term": "Backpropagation",
+   "status": "Core"
+  },
+  "lossfunction": {
+   "term": "Loss function",
+   "status": "Core"
+  },
+  "objectivefunction": {
+   "term": "Objective function",
+   "status": "Core"
+  },
+  "learningrate": {
+   "term": "Learning rate",
+   "status": "Core"
+  },
+  "lrschedule": {
+   "term": "Learning rate schedule",
+   "status": "Core"
+  },
+  "warmup": {
+   "term": "Warmup",
+   "status": "Core"
+  },
+  "batchsize": {
+   "term": "Batch size",
+   "status": "Core"
+  },
+  "epoch": {
+   "term": "Epoch",
+   "status": "Core"
+  },
+  "iteration": {
+   "term": "Iteration",
+   "status": "Core"
+  },
+  "optimizer": {
+   "term": "Optimizer",
+   "status": "Core"
+  },
+  "adam": {
+   "term": "Adam",
+   "status": "Core"
+  },
+  "adamw": {
+   "term": "AdamW",
+   "status": "Core"
+  },
+  "weightdecay": {
+   "term": "Weight decay",
+   "status": "Core"
+  },
+  "regularization": {
+   "term": "Regularization",
+   "status": "Core"
+  },
+  "gradientclipping": {
+   "term": "Gradient clipping",
+   "status": "Core"
+  },
+  "gradientaccumulation": {
+   "term": "Gradient accumulation",
+   "status": "Core"
   }
  },
  "aliases": {
@@ -497,6 +897,260 @@
   "stochastic": "stochastic",
   "determinism": "determinism",
   "deterministic": "determinism",
-  "seed": "seed"
+  "seed": "seed",
+  "perplexity": "perplexity",
+  "ppl": "perplexity",
+  "log probability": "logprobability",
+  "logprob": "logprobability",
+  "log prob": "logprobability",
+  "logprobs": "logprobability",
+  "beam search": "beamsearch",
+  "beam decoding": "beamsearch",
+  "repetition penalty": "repetitionpenalty",
+  "repeat penalty": "repetitionpenalty",
+  "frequency penalty": "frequencypenalty",
+  "presence penalty": "presencepenalty",
+  "max tokens": "maxtokens",
+  "max_tokens": "maxtokens",
+  "max new tokens": "maxtokens",
+  "max output tokens": "maxtokens",
+  "stop sequence": "stopsequence",
+  "stop token": "stopsequence",
+  "stop string": "stopsequence",
+  "stop words": "stopsequence",
+  "truncation": "truncation",
+  "truncate": "truncation",
+  "truncating": "truncation",
+  "padding": "padding",
+  "pad token": "padding",
+  "pad tokens": "padding",
+  "attention mask": "attentionmask",
+  "attn mask": "attentionmask",
+  "token limit": "tokenlimit",
+  "max context": "tokenlimit",
+  "context limit": "tokenlimit",
+  "subword": "subword",
+  "subword unit": "subword",
+  "subword token": "subword",
+  "byte-pair encoding": "bytepairencoding",
+  "bpe": "bytepairencoding",
+  "byte pair encoding": "bytepairencoding",
+  "word embedding": "wordembedding",
+  "word vector": "wordembedding",
+  "word2vec": "wordembedding",
+  "glove": "wordembedding",
+  "sentence embedding": "sentenceembedding",
+  "sentence vector": "sentenceembedding",
+  "text embedding": "sentenceembedding",
+  "one-hot encoding": "onehotencoding",
+  "one hot": "onehotencoding",
+  "one-hot": "onehotencoding",
+  "one-hot vector": "onehotencoding",
+  "softmax temperature": "softmaxtemperature",
+  "temperature scaling": "softmaxtemperature",
+  "entropy": "entropy",
+  "shannon entropy": "entropy",
+  "cross-entropy": "crossentropy",
+  "cross entropy": "crossentropy",
+  "cross-entropy loss": "crossentropy",
+  "gradient": "gradient",
+  "gradients": "gradient",
+  "learning signal": "learningsignal",
+  "training signal": "learningsignal",
+  "capacity": "capacity",
+  "model capacity": "capacity",
+  "emergent ability": "emergentability",
+  "emergent abilities": "emergentability",
+  "emergent capability": "emergentability",
+  "in-context learning": "incontextlearning",
+  "icl": "incontextlearning",
+  "in context learning": "incontextlearning",
+  "zero-shot": "zeroshot",
+  "zero shot": "zeroshot",
+  "zero-shot learning": "zeroshot",
+  "few-shot": "fewshot",
+  "few shot": "fewshot",
+  "few-shot prompting": "fewshot",
+  "one-shot": "oneshot",
+  "one shot": "oneshot",
+  "one-shot prompting": "oneshot",
+  "instruction following": "instructionfollowing",
+  "instruction-following": "instructionfollowing",
+  "world model": "worldmodel",
+  "internal model": "worldmodel",
+  "grounding": "grounding",
+  "grounded": "grounding",
+  "grounded generation": "grounding",
+  "knowledge cutoff": "knowledgecutoff",
+  "training cutoff": "knowledgecutoff",
+  "cutoff date": "knowledgecutoff",
+  "parametric knowledge": "parametricknowledge",
+  "parametric memory": "parametricknowledge",
+  "non-parametric memory": "nonparametricmemory",
+  "nonparametric memory": "nonparametricmemory",
+  "external memory": "nonparametricmemory",
+  "context stuffing": "contextstuffing",
+  "context packing": "contextstuffing",
+  "prompt stuffing": "contextstuffing",
+  "lost in the middle": "lostinthemiddle",
+  "lost-in-the-middle": "lostinthemiddle",
+  "needle in a haystack": "needleinahaystack",
+  "needle in haystack": "needleinahaystack",
+  "niah": "needleinahaystack",
+  "effective context": "effectivecontext",
+  "effective context length": "effectivecontext",
+  "usable context": "effectivecontext",
+  "multimodal input": "multimodalinput",
+  "multi-modal input": "multimodalinput",
+  "multimodal": "multimodalinput",
+  "text generation": "textgeneration",
+  "natural language generation": "textgeneration",
+  "nlg": "textgeneration",
+  "language model": "languagemodel",
+  "lm": "languagemodel",
+  "small language model": "smalllanguagemodel",
+  "slm": "smalllanguagemodel",
+  "mixture model": "mixturemodel",
+  "mixture of models": "mixturemodel",
+  "ensemble": "ensemble",
+  "ensembling": "ensemble",
+  "ensemble model": "ensemble",
+  "teacher model": "teachermodel",
+  "student model": "studentmodel",
+  "model checkpointing": "modelcheckpointing",
+  "saving checkpoints": "modelcheckpointing",
+  "warm start": "warmstart",
+  "warm-start": "warmstart",
+  "pretraining": "pretraining",
+  "pre-training": "pretraining",
+  "pretrain": "pretraining",
+  "rlhf": "rlhf",
+  "reinforcement learning from human feedback": "rlhf",
+  "rlaif": "rlaif",
+  "reinforcement learning from ai feedback": "rlaif",
+  "reward model": "rewardmodel",
+  "preference model": "rewardmodel",
+  "rm": "rewardmodel",
+  "preference data": "preferencedata",
+  "preference pairs": "preferencedata",
+  "comparison data": "preferencedata",
+  "dpo": "dpo",
+  "direct preference optimization": "dpo",
+  "constitutional ai": "constitutionalai",
+  "cai": "constitutionalai",
+  "instruction tuning": "instructiontuning",
+  "instruct tuning": "instructiontuning",
+  "instruction fine-tuning": "instructiontuning",
+  "supervised fine-tuning": "sft",
+  "sft": "sft",
+  "alignment": "alignment",
+  "ai alignment": "alignment",
+  "aligned": "alignment",
+  "lora": "lora",
+  "low-rank adaptation": "lora",
+  "qlora": "qlora",
+  "quantized lora": "qlora",
+  "peft": "peft",
+  "parameter-efficient fine-tuning": "peft",
+  "adapter": "adapter",
+  "adapter module": "adapter",
+  "adapter layers": "adapter",
+  "distillation": "distillation",
+  "model distillation": "distillation",
+  "knowledge distillation": "knowledgedistillation",
+  "kd": "knowledgedistillation",
+  "continued pretraining": "continuedpretraining",
+  "continual pretraining": "continuedpretraining",
+  "domain-adaptive pretraining": "continuedpretraining",
+  "catastrophic forgetting": "catastrophicforgetting",
+  "catastrophic interference": "catastrophicforgetting",
+  "synthetic data": "syntheticdata",
+  "generated data": "syntheticdata",
+  "model-generated data": "syntheticdata",
+  "data augmentation": "dataaugmentation",
+  "augmentation": "dataaugmentation",
+  "labeling": "labeling",
+  "labelling": "labeling",
+  "data labeling": "labeling",
+  "annotation": "annotation",
+  "data annotation": "annotation",
+  "annotator": "annotation",
+  "data contamination": "datacontamination",
+  "test set contamination": "datacontamination",
+  "benchmark contamination": "datacontamination",
+  "deduplication": "deduplication",
+  "dedup": "deduplication",
+  "dedupe": "deduplication",
+  "curriculum learning": "curriculumlearning",
+  "curriculum training": "curriculumlearning",
+  "self-supervised learning": "selfsupervisedlearning",
+  "ssl": "selfsupervisedlearning",
+  "self-supervision": "selfsupervisedlearning",
+  "unsupervised learning": "unsupervisedlearning",
+  "unsupervised": "unsupervisedlearning",
+  "supervised learning": "supervisedlearning",
+  "supervised": "supervisedlearning",
+  "reinforcement learning": "reinforcementlearning",
+  "rl": "reinforcementlearning",
+  "semi-supervised learning": "semisupervisedlearning",
+  "semi-supervised": "semisupervisedlearning",
+  "transfer learning": "transferlearning",
+  "transfer": "transferlearning",
+  "multitask learning": "multitasklearning",
+  "multi-task learning": "multitasklearning",
+  "mtl": "multitasklearning",
+  "meta-learning": "metalearning",
+  "meta learning": "metalearning",
+  "learning to learn": "metalearning",
+  "n-shot learning": "fewshotlearning",
+  "few-shot classification": "fewshotlearning",
+  "gradient descent": "gradientdescent",
+  "gd": "gradientdescent",
+  "stochastic gradient descent": "sgd",
+  "sgd": "sgd",
+  "backpropagation": "backpropagation",
+  "backprop": "backpropagation",
+  "back-propagation": "backpropagation",
+  "loss function": "lossfunction",
+  "loss": "lossfunction",
+  "cost function": "lossfunction",
+  "objective function": "objectivefunction",
+  "objective": "objectivefunction",
+  "criterion": "objectivefunction",
+  "learning rate": "learningrate",
+  "lr": "learningrate",
+  "step size": "learningrate",
+  "learning rate schedule": "lrschedule",
+  "lr schedule": "lrschedule",
+  "learning rate scheduler": "lrschedule",
+  "warmup": "warmup",
+  "warm-up": "warmup",
+  "learning rate warmup": "warmup",
+  "batch size": "batchsize",
+  "minibatch size": "batchsize",
+  "mini-batch": "batchsize",
+  "epoch": "epoch",
+  "epochs": "epoch",
+  "training epoch": "epoch",
+  "iteration": "iteration",
+  "training step": "iteration",
+  "step": "iteration",
+  "optimizer": "optimizer",
+  "optimiser": "optimizer",
+  "adam": "adam",
+  "adam optimizer": "adam",
+  "adamw": "adamw",
+  "adam w": "adamw",
+  "weight decay": "weightdecay",
+  "l2 regularization": "weightdecay",
+  "l2 penalty": "weightdecay",
+  "regularization": "regularization",
+  "regularisation": "regularization",
+  "regularizer": "regularization",
+  "gradient clipping": "gradientclipping",
+  "grad clipping": "gradientclipping",
+  "clip gradients": "gradientclipping",
+  "gradient accumulation": "gradientaccumulation",
+  "grad accumulation": "gradientaccumulation"
  }
 }
