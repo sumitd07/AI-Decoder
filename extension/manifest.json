@@ -3,7 +3,8 @@
   "name": "Decoder — AI terms, explained in place",
   "version": "1.0.0",
   "description": "Highlights AI jargon on any page. Click a term to understand it in seconds and save it to your cheatsheet.",
-  "permissions": ["storage", "scripting"],
+  "permissions": ["storage", "scripting", "identity"],
+  "host_permissions": ["https://*.supabase.co/*"],
   "optional_host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"

@@ -2,6 +2,22 @@
 // granted the optional "all sites" permission (from the popup). Until then, the
 // extension has no host access, so the store shows no broad-permission warning.
 
+importScripts("config.js", "supa.js");
+
+// Route cheatsheet reads/writes from the content script and popup through here,
+// so account/token handling lives in one place.
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  (async () => {
+    try {
+      if (msg && msg.type === "list") sendResponse(await self.DecoderSupa.list());
+      else if (msg && msg.type === "save") sendResponse(await self.DecoderSupa.save(msg.id));
+      else if (msg && msg.type === "remove") sendResponse(await self.DecoderSupa.remove(msg.id));
+      else sendResponse({ ok: false });
+    } catch (e) { sendResponse({ ok: false, error: String(e) }); }
+  })();
+  return true; // keep the channel open for the async response
+});
+
 const SCRIPT = {
   id: "decoder-highlighter",
   matches: ["<all_urls>"],

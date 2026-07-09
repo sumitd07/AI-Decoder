@@ -1,7 +1,7 @@
 # How to test Decoder
 
 A plain walk-through to confirm everything works end to end. Your live site is:
-**https://ai-decoder-nine.vercel.app**
+**https://aidecoder.app**
 
 Work top to bottom. Each check says what you should see. If something's off, the "If it's wrong" note tells you the likely cause.
 
@@ -44,14 +44,19 @@ Work top to bottom. Each check says what you should see. If something's off, the
 2. **Opt in.** Click the Decoder icon and press **Enable on all sites**; approve Chrome's prompt. (This is the one-time permission grant — before it, nothing highlights, which is by design.)
 3. **It highlights.** Open a news or blog article about AI. Known terms (RAG, agents, hallucination, etc.) get a faint dotted underline. (If you opened the article before opting in, reload it.)
 4. **Click to explain.** Click an underlined term — a small card appears right there with the explanation.
-5. **Save.** In that card, click **＋ Save to my cheatsheet**. It changes to "Saved · remove."
-6. **The popup.** Click the Decoder toolbar icon — your saved terms are listed, and it shows "Highlighting is on for every site."
-7. **Turn off.** In the popup, click **Turn off**. Reload the article — no underlines. Re-enable to bring them back.
+5. **Sign in (needed to save).** Click the Decoder icon → **Sign in with Google**, pick your account. (Requires the Step 8b setup: keys in `config.js` + the extension's redirect URL added to Supabase.) Before signing in, a term's card says "Sign in from the Decoder toolbar to save."
+6. **Save.** With a term's card open, click **＋ Save to my cheatsheet** — it changes to "Saved · remove."
+7. **Sync check (the whole point).** Open the web app, sign in with the **same** Google account, and open **My cheatsheet** — the term you saved in the extension is there. Save one on the website; it appears in the extension popup. One shared cheatsheet.
+8. **The popup.** Click the Decoder icon — it shows your account, your saved terms, and "Highlighting is on for every site."
+9. **Turn off.** In the popup, click **Turn off**. Reload the article — no underlines. Re-enable to bring them back.
 
-*If it's wrong:* nothing underlines on a page that was already open → reload the page after loading the extension. Some pages (browser settings, the Chrome Web Store, blank tabs) are off-limits to extensions by design.
+*If it's wrong:*
+- Nothing underlines on a page that was already open → reload it. Some pages (browser settings, the Web Store, blank tabs) are off-limits to extensions by design.
+- Sign-in fails or the popup shows a red error → check `config.js` has the keys, and that `https://<extension-id>.chromiumapp.org/` is in Supabase's Redirect URLs (Step 8b). The extension ID is on its `chrome://extensions` card.
+- Signed in but a saved term doesn't appear in the web app → confirm both are the **same** Supabase project and the **same** Google account.
 
 ## Part D — Privacy page
-- Open **https://ai-decoder-nine.vercel.app/privacy** — it should show the policy with your email (sumitd0704@gmail.com) at the bottom.
+- Open **https://aidecoder.app/privacy** — it should show the policy with your email (sumitd0704@gmail.com) at the bottom.
 
 ---
 

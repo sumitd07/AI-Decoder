@@ -42,48 +42,52 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
   >
   > • Plain-language explanations, not textbook definitions
   > • Works on any page; the underlines are subtle and easy to ignore
-  > • One click to understand a term, one click to save it
-  > • Your saved terms stay on your device — no account, no tracking
-  > • No data ever leaves your browser
+  > • One click to understand a term
+  > • Optional sign-in saves terms to your account and syncs them with the Decoder web app
+  > • No ads, no tracking — page text is read on your device to find terms
 
-- **Homepage URL** (optional): your website, if you have one.
+- **Homepage URL** (optional): `https://aidecoder.app`
 - **Support URL** (optional): a contact page, or your GitHub repo's Issues page.
 
 ## 3. Privacy tab (this is where extensions usually get held up — fill every field)
 
 - **Single purpose** (one sentence):
-  `Decoder underlines known AI/technical terms on the page you're reading and shows a plain-language explanation when you click one, with an option to save terms to a personal on-device list.`
+  `Decoder underlines known AI/technical terms on the page you're reading and shows a plain-language explanation when you click one, with an option to sign in and save terms to your cheatsheet.`
 
-- **Permission justifications** — one per permission in the manifest:
-  - **storage:** `Stores the user's saved cheatsheet (short term identifiers they chose to save) locally in the browser so it persists between visits. Nothing is transmitted.`
+- **Permission justifications** — the manifest now declares four items to justify (the "all sites" access is still *optional* and won't appear here):
+  - **storage:** `Holds the user's sign-in session on the device so they stay logged in between visits.`
   - **scripting:** `Injects the highlighter into a page after the user turns Decoder on, and registers it to run on pages they visit once they've opted in.`
-  - **Host access — optional, "all sites":** `Requested at runtime (not at install) only when the user clicks "Enable on all sites." It lets the extension read the visible text of pages they read so it can underline known AI terms. Page text is processed locally and is never collected or transmitted.`
+  - **identity:** `Used only to let the user sign in with Google (via the browser identity API) so their saved cheatsheet syncs with their account. No Google profile data beyond sign-in is accessed.`
+  - **host access to `https://*.supabase.co/*`:** `The extension reads and writes the user's saved cheatsheet to their Supabase account. This is a single specific backend domain, not broad web access.`
 
-- **Are you using remote code?** **No.** All code ships inside the package; the extension loads no external scripts and uses the system font.
+- **Are you using remote code?** **No.** All code ships inside the package; the extension loads no external scripts and uses the system font. (It makes data requests to the Supabase backend, but does not load or run remote code.)
 
-- **Data usage / what you collect:** **Nothing leaves the device**, so you do not check any of the "data collected" categories. Then check the three certifications (all true for Decoder):
+- **Data collected — this changed now that saving syncs to an account.** Core highlighting collects nothing. **If the user signs in to sync their cheatsheet**, disclose in the Data-collection form:
+  - ✅ **Personally identifiable information** — the user's **email address** (to create/identify their account).
+  - ✅ **User activity** — the list of term IDs the user chooses to save.
+  - Purpose: **App functionality** (account + sync). Not for ads, analytics, personalization, or resale.
+- Then check the three certifications (all true for Decoder):
   - ✅ I do not sell or transfer user data to third parties (outside approved use cases)
   - ✅ I do not use or transfer user data for purposes unrelated to my item's single purpose
   - ✅ I do not use or transfer user data to determine creditworthiness or for lending
 
 - **Privacy policy URL — required.** Already handled for you: the policy is a page built into your website (`web/privacy.html`), so it goes live automatically when you deploy the site in Step 4 of `SETUP.md`. Its address is your live site URL followed by `/privacy` (Vercel/Netlify strip the `.html`), for example:
-  `https://decoder.vercel.app/privacy`
+  `https://aidecoder.app/privacy`
   Paste that into this field. Two small things first: open the page once to confirm it loads, and edit `web/privacy.html` to add your contact email (near the bottom), then re-deploy.
 
 ## 3b. Test instructions tab (notes for the Google reviewer)
 
-This tab has three inputs: **Username**, **Password**, and **Additional instructions** (max 500 characters). Decoder needs no login, so:
+This tab has three inputs: **Username**, **Password**, and **Additional instructions** (max 500 characters). The **core feature needs no login**, so:
 
 - **Username / Password:** leave both **blank**.
 - **Additional instructions:** paste the text below (it fits the 500-char limit). **Important:** highlighting is opt-in, so the reviewer must click "Enable on all sites" in the popup first — otherwise they'll see nothing and may reject it as non-functional.
 
 ```
-No login needed.
-1) Open the Decoder toolbar popup and click "Enable on all sites", approve the Chrome prompt (grants optional page access).
-2) Open a page about AI, e.g. https://en.wikipedia.org/wiki/Large_language_model — known AI terms get underlined.
-3) Click a term for an in-page explanation, then click "Save to my cheatsheet".
-4) The toolbar popup lists your saved terms.
-All processing is on-device; nothing is transmitted.
+No login needed to review the core feature.
+1) Open the Decoder toolbar popup and click "Enable on all sites", approve the Chrome prompt.
+2) Open a page about AI, e.g. https://en.wikipedia.org/wiki/Large_language_model — known AI terms get a dotted underline.
+3) Click a term to see the in-page explanation.
+Saving is OPTIONAL and requires signing in with Google (it syncs the cheatsheet to the user's account) — not needed to evaluate highlighting. Page text is read locally; only signed-in saves are sent to the account backend.
 ```
 
 ## 4. Distribution

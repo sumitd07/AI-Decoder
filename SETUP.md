@@ -90,7 +90,7 @@ This puts your app online and gives you its address (needed for Google sign-in).
 1. Go to [vercel.com/new](https://vercel.com/new) and sign in with your GitHub account.
 2. Find your **decoder** repository in the list and click **Import**.
 3. There's a setting called **Root Directory** — click **Edit** next to it and choose the **web** folder. (Your app lives in `web`, not at the top.) Leave everything else as-is.
-4. Click **Deploy** and wait. When it's done, it shows your live address, like `https://decoder.vercel.app`. **Copy it** — you need it in Steps 5 and 6.
+4. Click **Deploy** and wait. When it's done, it shows your live address, like `https://aidecoder.app`. **Copy it** — you need it in Steps 5 and 6.
 
 ### Option B — Netlify Drop (fastest; skips GitHub entirely)
 
@@ -107,7 +107,7 @@ If GitHub felt like a hassle and you just want it live: go to [app.netlify.com/d
 
    **Box 1 — "Authorized JavaScript origins"** = *which website is allowed to start a Google sign-in.*
    Click **+ Add URI** and paste your live app address from Step 4, for example:
-   `https://decoder.vercel.app`
+   `https://aidecoder.app`
    (Testing on your own computer too? Click **+ Add URI** again and add `http://localhost:3000`.)
 
    **Box 2 — "Authorized redirect URIs"** = *where Google sends the person back after they log in.*
@@ -131,7 +131,7 @@ Now you hand Google's two codes to Supabase so they can talk. The links below us
 3. Open the URL settings page:
    **`https://supabase.com/dashboard/project/_/auth/url-configuration`** (again, replace `_` with your project code if it 404s)
    - Menu fallback: left sidebar **Authentication** → **URL Configuration**.
-   - Set **Site URL** to your live app address from Step 4 (e.g. `https://decoder.vercel.app`), and add that same address under **Redirect URLs**. Click **Save**. (Add `http://localhost:3000` too if you'll test on your computer.)
+   - Set **Site URL** to your live app address from Step 4 (e.g. `https://aidecoder.app`), and add that same address under **Redirect URLs**. Click **Save**. (Add `http://localhost:3000` too if you'll test on your computer.)
 
 ## Step 7 — Test it
 
@@ -147,9 +147,26 @@ If sign-in fails with `redirect_uri_mismatch`, go back to Step 5 Box 2 and make 
 2. Go to the [Chrome Web Store developer dashboard](https://chrome.google.com/webstore/devconsole) and register (a one-time $5 fee). Verify your publisher **contact email** first, or nothing can be published (see `STORE-LISTING.md` section 0).
 3. Click **Add new item**, upload the zip, and fill in the listing using the ready-made kit in `extension/STORE-LISTING.md` (all the text fields, permission justifications, privacy answers, and the reviewer test note are written out for you).
 4. Icons are already made and bundled; promo tiles are in the `store-assets/` folder. The only thing you have to create yourself is **screenshots** (real pictures of the extension running) — `STORE-LISTING.md` explains exactly how.
-5. **Privacy Policy field (required):** your policy is already built into your website as a page, so once you've deployed (Step 4) it's live at your site URL + `/privacy` — for example `https://decoder.vercel.app/privacy`. Paste that link into the store's Privacy Policy field. (Open it once to check it loads; to add your contact email, edit `web/privacy.html` near the bottom and re-deploy.) Then submit for review.
+5. **Privacy Policy field (required):** your policy is already built into your website as a page, so once you've deployed (Step 4) it's live at your site URL + `/privacy` — for example `https://aidecoder.app/privacy`. Paste that link into the store's Privacy Policy field. (Open it once to check it loads; to add your contact email, edit `web/privacy.html` near the bottom and re-deploy.) Then submit for review.
 
-> **If you already uploaded an earlier zip** (before this opt-in change): upload the new `extension.zip` to replace the package, re-paste the reviewer note from `STORE-LISTING.md` section 3b (it now tells the reviewer to click **Enable on all sites** first), and re-check the permission justifications (a `scripting` line was added). The broad-permission warning should no longer appear. If the dashboard refuses the upload because the version already exists, bump `"version"` in `extension/manifest.json` (e.g. to `1.0.1`) and re-zip.
+> **If you already uploaded an earlier zip:** upload the new `extension.zip` to replace the package, re-paste the reviewer note from `STORE-LISTING.md` §3b, and re-check the permission justifications (they changed — see §3). If the dashboard refuses a duplicate version, bump `"version"` in `extension/manifest.json` (e.g. `1.0.1`) and re-zip.
+
+### Step 8b — Connect the extension to your account (so clips sync with the web app)
+
+The extension can save terms straight to the same cheatsheet as the website. Two setup steps:
+
+1. **Point the extension at your Supabase project.** Open `extension/config.js` in a text editor and paste the **same** two values you used in the web app (Step 2) — the Supabase URL and the publishable/anon key:
+   ```js
+   self.DECODER_SUPABASE = { url: "https://<project-ref>.supabase.co", anonKey: "sb_publishable_..." };
+   ```
+2. **Allow the extension's sign-in redirect in Supabase.**
+   - Load the extension: `chrome://extensions` → **Developer mode** on → **Load unpacked** → pick the `extension` folder.
+   - Note the extension's **ID** shown on its card. Its sign-in redirect address is:
+     `https://<EXTENSION-ID>.chromiumapp.org/`
+   - In Supabase → **Authentication → URL Configuration** (`https://supabase.com/dashboard/project/_/auth/url-configuration`) → add that address under **Redirect URLs** → **Save**.
+3. Now click the Decoder icon → **Sign in with Google**. Terms you save in the extension appear in the web app's **My cheatsheet**, and vice-versa.
+
+> When you later publish to the Web Store, Google assigns a **different, permanent** extension ID. Add that published ID's `https://<ID>.chromiumapp.org/` to the same Supabase Redirect URLs list so sign-in works in the published version too.
 
 ---
 
@@ -159,7 +176,6 @@ Because sign-in bounces through Google, you need to open the app at a proper web
 
 ## Still to do later
 
-- **Extension sign-in:** the extension saves on your device only right now. Syncing it to the same Google account as the website is a future add-on.
 - **Keeping term lists in sync:** the website and the extension each carry their own copy of the concept list; merging them into one shared source is a tidy-up for later.
 - **"Get the extension" button** on the website — worth adding once the extension is live in the store and has a link.
 

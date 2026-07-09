@@ -14,23 +14,25 @@ Subtly underlines AI jargon on any web page. Click a term to understand it in se
 
 ## How it works
 
-- **Permission is opt-in.** At install the extension has no host access — `<all_urls>` is an *optional* permission requested only when the user clicks **Enable on all sites**. This keeps broad access out of the required manifest (no Web Store broad-permission warning).
+- **Permission is opt-in.** At install the extension has no page access — `<all_urls>` is an *optional* permission requested only when the user clicks **Enable on all sites**. This keeps broad access out of the required manifest (no Web Store broad-permission warning).
 - Once granted, `background.js` registers the content script for all sites (and the popup injects it into the current tab immediately, so it lights up without a reload).
-- `content.js` scans page text for the shelf terms (via each concept's alias list), wraps matches in a subtle highlight, and shows the popover on click. A re-injection guard (`window.__decoderLoaded`) prevents double-binding.
+- `content.js` scans page text for the shelf terms (via each concept's alias list), wraps matches in a subtle highlight, and shows the popover on click. A re-injection guard (`window.__decoderLoaded`) prevents double-binding, and links (`<a>`, `role="link"`) are skipped so clicks aren't hijacked (e.g. Google result titles).
 - Matching is word-boundary aware and longest-first, so "context window" wins over "context", and short tokens (e.g. "rag") won't match inside other words ("storage").
 - It watches for dynamically loaded content (infinite scroll, SPAs) and highlights new text as it appears.
-- Saves live in `chrome.storage.local` and sync between the popover and the toolbar cheatsheet.
+- **Cheatsheet syncs with the web app account.** Sign-in (Google, via `chrome.identity` → Supabase) and saves are handled with plain `fetch` against Supabase's REST API — no bundled library. `content.js` and `popup.js` route reads/writes through `background.js`, which holds the session and calls Supabase. Terms saved in the extension appear in the web app's cheatsheet and vice-versa. Without sign-in, saving is disabled and nothing is transmitted.
 
 ## Files
 
 | File | Role |
 |------|------|
-| `manifest.json` | MV3 manifest — `storage` + `scripting` permissions, **optional** `<all_urls>` host access, popup, background worker |
-| `background.js` | Service worker: registers/unregisters the content script based on whether the user has granted access |
+| `manifest.json` | MV3 manifest — `storage`/`scripting`/`identity`, required `supabase.co` host, **optional** `<all_urls>`, popup, background worker |
+| `background.js` | Service worker: registers/unregisters the content script on opt-in, and routes cheatsheet reads/writes to Supabase |
+| `config.js` | Your Supabase URL + publishable key (same project as the web app) |
+| `supa.js` | Supabase auth (Google via `chrome.identity`) + REST helpers, plain `fetch` |
 | `concepts.js` | Shared concept data + status metadata (single source of truth) |
 | `content.js` | Page scanner, highlighter, and click-to-explain popover (injected after opt-in) |
 | `content.css` | Highlight style + popover/toast animations |
-| `popup.html` / `popup.js` | Toolbar cheatsheet + the "Enable on all sites" opt-in control |
+| `popup.html` / `popup.js` | Sign-in, the account cheatsheet, and the "Enable on all sites" opt-in control |
 
 ## Notes & scope
 

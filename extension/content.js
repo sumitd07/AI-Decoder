@@ -28,12 +28,19 @@
   let pop = null;
   let toastEl = null, toastTimer = null;
 
-  // ---- storage helpers ----
-  function getSaved(cb) {
-    try { chrome.storage.local.get(["decoder.saved"], r => cb(Array.isArray(r["decoder.saved"]) ? r["decoder.saved"] : [])); }
-    catch (e) { cb([]); }
+  // ---- account cheatsheet (saves go to the user's Supabase account via the background worker) ----
+  let signedIn = false;
+  let savedSet = new Set();
+  function refreshSaved(cb) {
+    try {
+      chrome.runtime.sendMessage({ type: "list" }, resp => {
+        if (chrome.runtime.lastError) { cb && cb(); return; }
+        if (resp && resp.needAuth) { signedIn = false; savedSet = new Set(); }
+        else if (resp && resp.saved) { signedIn = true; savedSet = new Set(resp.saved); }
+        cb && cb();
+      });
+    } catch (e) { cb && cb(); }
   }
-  function setSaved(arr) { try { chrome.storage.local.set({ "decoder.saved": arr }); } catch (e) {} }
 
   // ---- skip logic ----
   // Includes A (links) so we never underline or hijack link text — e.g. Google
@@ -108,8 +115,9 @@
     const m = STATUS[c.status] || {};
     return `<span style="display:inline-flex;align-items:center;gap:5px;font-family:${UI_FONT};font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:20px;color:${m.color};background:${m.bg}"><span>${m.sym}</span><span>${m.label}</span></span>`;
   }
-  function saveRowHTML(saved) {
-    return saved
+  function saveRowHTML(id) {
+    if (!signedIn) return `<div style="flex:1;padding:10px 12px;font-size:12px;line-height:1.4;color:#787c83;text-align:center">Sign in from the Decoder toolbar to save this to your cheatsheet</div>`;
+    return savedSet.has(id)
       ? `<button data-dcx-remove style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:#4a7c59"><span class="dcx-savepop">✓</span> Saved · remove</button>`
       : `<button data-dcx-save style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:${ACCENT}">＋ Save to my cheatsheet</button>`;
   }
@@ -130,7 +138,7 @@
         <p style="margin:0 0 6px;font-size:12.5px;line-height:1.5;color:#4a4e55;font-style:italic">${c.analogy}</p>
         <p style="margin:0;font-size:12px;line-height:1.5;color:#787c83">${c.example}</p>
       </div>
-      <div data-dcx-footer style="border-top:1px solid rgba(20,24,33,0.08);display:flex">${saveRowHTML(saved)}</div>`;
+      <div data-dcx-footer style="border-top:1px solid rgba(20,24,33,0.08);display:flex">${saveRowHTML(c.id)}</div>`;
     return el;
   }
   function positionPop(el, rect) {
@@ -149,31 +157,26 @@
     closePopover();
     const c = byId(id);
     if (!c) return;
-    getSaved(saved => {
-      const isSaved = saved.includes(id);
-      pop = renderPopover(c, isSaved);
-      document.body.appendChild(pop);
-      positionPop(pop, anchor.getBoundingClientRect());
-      pop.addEventListener("click", ev => {
-        if (ev.target.closest("[data-dcx-close]")) { closePopover(); return; }
-        if (ev.target.closest("[data-dcx-save]")) {
-          getSaved(cur => {
-            if (!cur.includes(id)) setSaved([...cur, id]);
-            const footer = pop && pop.querySelector("[data-dcx-footer]");
-            if (footer) footer.innerHTML = saveRowHTML(true);
-            toast("Saved to my cheatsheet");
-          });
-          return;
-        }
-        if (ev.target.closest("[data-dcx-remove]")) {
-          getSaved(cur => {
-            setSaved(cur.filter(x => x !== id));
-            const footer = pop && pop.querySelector("[data-dcx-footer]");
-            if (footer) footer.innerHTML = saveRowHTML(false);
-            toast("Removed from my cheatsheet");
-          });
-        }
-      });
+    pop = renderPopover(c);
+    document.body.appendChild(pop);
+    positionPop(pop, anchor.getBoundingClientRect());
+    const footer = () => pop && pop.querySelector("[data-dcx-footer]");
+    pop.addEventListener("click", ev => {
+      if (ev.target.closest("[data-dcx-close]")) { closePopover(); return; }
+      if (ev.target.closest("[data-dcx-save]")) {
+        chrome.runtime.sendMessage({ type: "save", id }, resp => {
+          if (resp && resp.needAuth) { signedIn = false; if (footer()) footer().innerHTML = saveRowHTML(id); toast("Sign in from the Decoder toolbar to save"); return; }
+          if (resp && resp.ok) { savedSet.add(id); if (footer()) footer().innerHTML = saveRowHTML(id); toast("Saved to your cheatsheet"); }
+          else toast("Couldn’t save — try again");
+        });
+        return;
+      }
+      if (ev.target.closest("[data-dcx-remove]")) {
+        chrome.runtime.sendMessage({ type: "remove", id }, resp => {
+          if (resp && resp.ok) { savedSet.delete(id); if (footer()) footer().innerHTML = saveRowHTML(id); toast("Removed from your cheatsheet"); }
+          else toast("Couldn’t remove — try again");
+        });
+      }
     });
   }
 
@@ -230,8 +233,15 @@
   window.__decoderRescan = () => { if (DATA.length) scanRoot(document.body); };
   function init() {
     if (!DATA.length) return;
+    refreshSaved();          // learn which terms are already in the account (for popover state)
     scanRoot(document.body);
     startObserver();
   }
+  // Keep popover state fresh if the user signs in/out or edits the cheatsheet elsewhere.
+  try {
+    chrome.storage.onChanged.addListener((changes, area) => {
+      if (area === "local" && changes["decoder.session"]) refreshSaved();
+    });
+  } catch (e) {}
   init();
 })();

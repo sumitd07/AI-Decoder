@@ -107,5 +107,18 @@ A running record of the meaningful decisions, trade-offs, and challenges on Deco
 **Verified vs. docs.** Confirmed against developer.chrome.com that optional host permissions avoid the submission-time broad-permission warning.
 **Untested caveat.** No browser in the sandbox, so the permission/register/inject flow is verified by construction + syntax only; real test is loading it unpacked and clicking "Enable on all sites."
 
+## 19. Extension → account sync (one shared cheatsheet)
+**Trigger (user caught it).** The privacy copy said the extension keeps saves "on-device," but the product intent is that clips sync to the account and show up in the web app. As built, the extension *was* local-only — a real gap, not a leak.
+**Decision.** Wire the extension to the same Supabase project/table as the web app so saves sync both ways.
+**Implementation choices.**
+- **Auth:** `chrome.identity.launchWebAuthFlow` → Supabase `/auth/v1/authorize?provider=google&redirect_to=<chromiumapp.org redirect>`; parse the returned `#access_token`/`refresh_token` from the fragment; store in `chrome.storage.local`; refresh via the GoTrue token endpoint. No Google-Chrome-extension OAuth client needed — Supabase brokers Google.
+- **Data:** plain `fetch` against Supabase's PostgREST (`/rest/v1/cheatsheet_items`) with `apikey` + `Bearer` — no bundled `supabase-js` (keeps the package small and MV3-CSP-clean). `user_id` comes from decoding the JWT `sub`; RLS enforces per-user access exactly like the web app.
+- **Architecture:** all reads/writes route through the background service worker (`background.js` message router); `content.js` and `popup.js` never touch tokens directly. `supa.js` is shared (importScripts in the worker, `<script>` in the popup). `config.js` holds the same Supabase URL + publishable key as the web app.
+- **Parity:** concept IDs are identical across `extension/concepts.js` and the web app, so a term saved in one surface resolves in the other.
+**Permissions impact.** Added `identity` (sign-in) and a **specific** host permission `https://*.supabase.co/*` (a single backend domain — does not trigger the broad-host review). `<all_urls>` stays optional.
+**Privacy/store impact (accounted for).** The extension now *does* collect data when signed in (email + saved term IDs) → updated `web/privacy.html`, `extension/PRIVACY.md`, and the store data-collection answers (PII: email; User activity: saved IDs; purpose: app functionality). Core highlighting still needs no login; reviewer note updated to say sign-in is optional.
+**Setup added.** New SETUP §8b: fill `config.js`, and add the extension's `https://<id>.chromiumapp.org/` redirect to Supabase Redirect URLs (plus the published ID later).
+**Untested caveat (important).** No browser/Supabase in the sandbox, so this is verified by syntax + message-contract checks only. OAuth/redirect/RLS almost always need one real-browser debugging pass — most likely snag is the Supabase redirect-URL allowlist or the implicit-vs-PKCE token return.
+
 ## Cross-cutting: verification under a constrained sandbox
 No browser, no jsdom, npm registry blocked. So I lean on: `node --check` for syntax (classic + module scripts), data-integrity scripts (every internal link/alias resolves, every concept well-formed), a matcher unit test for the extension, and a static CSS-var scope audit. Repeatedly flagged the one real gap this leaves — **visual/pixel QA must happen in the user's browser** — rather than claiming coverage I don't have.
