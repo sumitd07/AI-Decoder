@@ -30,35 +30,32 @@
     if (signedIn) {
       const email = (s && s.email) || "Signed in";
       const initial = (email[0] || "?").toUpperCase();
-      accountEl.className = "account on";
+      accountEl.className = "acct hairline";
       accountEl.innerHTML = `
-        <div class="arow">
-          <span class="avatar">${esc(initial)}</span>
-          <span class="aemail" title="${esc(email)}">${esc(email)}</span>
-          <button class="btn ghost small" id="signoutBtn">Sign out</button>
-        </div>`;
+        <span class="avatar">${esc(initial)}</span>
+        <span class="aemail" title="${esc(email)}">${esc(email)}</span>
+        <button class="linkbtn" id="signoutBtn">Sign out</button>`;
       document.getElementById("signoutBtn").addEventListener("click", async () => {
         try { await Supa.signOut(); } catch (e) {}
         await renderAll();
       });
     } else {
-      accountEl.className = "account";
+      accountEl.className = "acct hairline";
       accountEl.innerHTML = `
-        <p class="etitle">Sign in to save &amp; sync</p>
-        <p class="edesc">Save terms to your account so they appear in the Decoder web app too — and follow you across devices.</p>
-        <button class="btn google" id="signinBtn">${GOOGLE_G}<span>Sign in with Google</span></button>
-        <p class="err" id="signinErr" hidden></p>`;
+        <span class="aemail">Sign in to save &amp; sync</span>
+        <button class="gbtn" id="signinBtn">${GOOGLE_G}<span>Sign in</span></button>
+        <p class="err" id="signinErr" hidden style="flex-basis:100%;margin:6px 0 2px"></p>`;
       document.getElementById("signinBtn").addEventListener("click", async () => {
         const btn = document.getElementById("signinBtn");
         const err = document.getElementById("signinErr");
         err.hidden = true;
-        btn.disabled = true; btn.innerHTML = "Opening Google…";
+        btn.disabled = true; btn.innerHTML = "Opening…";
         try {
           if (!Supa) throw new Error("Supabase helper failed to load");
           await Supa.signIn();
           await renderAll();
         } catch (e) {
-          btn.disabled = false; btn.innerHTML = `${GOOGLE_G}<span>Sign in with Google</span>`;
+          btn.disabled = false; btn.innerHTML = `${GOOGLE_G}<span>Sign in</span>`;
           err.textContent = /configured/i.test(String(e && e.message)) ? "Sign-in isn't set up yet — add your Supabase keys to config.js." : "Sign-in didn't complete. Try again.";
           err.hidden = false;
         }
@@ -66,7 +63,7 @@
     }
   }
 
-  // ---- cheatsheet (read from the account) ----
+  // ---- saved terms (read from the account) ----
   function cardHTML(id) {
     const c = byId(id);
     if (!c) return "";
@@ -87,10 +84,10 @@
 
   async function renderList() {
     if (!signedIn) {
-      listEl.innerHTML = `<div class="empty"><div class="glyph">🔖</div><p class="t1">Your cheatsheet is in your account</p><p class="t2">Sign in above to see and sync the terms you save.</p></div>`;
+      listEl.innerHTML = `<div class="empty"><div class="glyph">🔖</div><p class="t1">Your saved terms are in your account</p><p class="t2">Sign in above to see and sync the terms you save.</p></div>`;
       return;
     }
-    listEl.innerHTML = `<div class="loading">Loading your cheatsheet…</div>`;
+    listEl.innerHTML = `<div class="loading">Loading your saved terms…</div>`;
     let res;
     try { res = await Supa.list(); } catch (e) { res = null; }
     if (res && res.needAuth) { await renderAccount(); return renderList(); }
@@ -114,19 +111,18 @@
   // ---- opt-in: highlight on all sites (optional host permission) ----
   function renderEnable(granted) {
     if (granted) {
-      enableEl.className = "enable on";
+      enableEl.className = "status hairline";
       enableEl.innerHTML = `
-        <p class="etitle"><span class="ok">✓</span> Highlighting is on for every site</p>
-        <p class="edesc">AI terms are underlined automatically as you read. Click one for a plain-language explanation.</p>
-        <button class="btn ghost" id="disableBtn">Turn off</button>`;
+        <span class="live"></span>
+        <span class="grow">Highlighting on for every site</span>
+        <button class="linkbtn" id="disableBtn">Turn off</button>`;
       document.getElementById("disableBtn").addEventListener("click", () => {
         chrome.permissions.remove(ALL, () => refreshEnable());
       });
     } else {
-      enableEl.className = "enable";
+      enableEl.className = "enable-off";
       enableEl.innerHTML = `
-        <p class="etitle">Turn on highlighting</p>
-        <p class="edesc">Decoder needs your OK to read pages so it can underline AI terms as you browse. Page text is read on your device only.</p>
+        <p style="margin:0 0 9px;font-size:12px;line-height:1.5;color:#6a6e75">Turn on highlighting to underline AI terms as you read. Page text is read on your device only.</p>
         <button class="btn primary" id="enableBtn">Enable on all sites</button>`;
       document.getElementById("enableBtn").addEventListener("click", () => {
         chrome.permissions.request(ALL, granted => {

@@ -120,5 +120,11 @@ A running record of the meaningful decisions, trade-offs, and challenges on Deco
 **Setup added.** New SETUP §8b: fill `config.js`, and add the extension's `https://<id>.chromiumapp.org/` redirect to Supabase Redirect URLs (plus the published ID later).
 **Untested caveat (important).** No browser/Supabase in the sandbox, so this is verified by syntax + message-contract checks only. OAuth/redirect/RLS almost always need one real-browser debugging pass — most likely snag is the Supabase redirect-URL allowlist or the implicit-vs-PKCE token return.
 
+## 20. Unified the glossary (single source)
+**Decision.** Removed the duplicated concept data. `web/concepts.js` is now the single source (`DECODER_CONCEPTS` + `DECODER_LENSES` + `DECODER_STATUS`); the web app loads it via a `<script>` tag (data no longer inline in `index.html`), and `extension/concepts.js` is an exact copy.
+**Why this shape (not a build step).** The web app and extension are separate deployment artifacts, so each needs its own physical file at runtime — a build tool isn't available/wanted. So: one authored file, copied to both, edit-one-place. The canonical file exposes all three globals; each surface uses what it needs (web ignores `DECODER_STATUS`, extension ignores `DECODER_LENSES`) so the two files stay byte-identical.
+**How.** Extracted the existing `DATA`/`LENSES` literals from `index.html` and the `DECODER_STATUS` from the old extension file programmatically (no retyping), assembled `concepts.js`, wrote it to both locations, and rewired `index.html` (`const DATA = window.DECODER_CONCEPTS`). Sync step documented: `cp web/concepts.js extension/concepts.js`. Verified identical + all files parse.
+**Size:** small, as estimated.
+
 ## Cross-cutting: verification under a constrained sandbox
 No browser, no jsdom, npm registry blocked. So I lean on: `node --check` for syntax (classic + module scripts), data-integrity scripts (every internal link/alias resolves, every concept well-formed), a matcher unit test for the extension, and a static CSS-var scope audit. Repeatedly flagged the one real gap this leaves — **visual/pixel QA must happen in the user's browser** — rather than claiming coverage I don't have.

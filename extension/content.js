@@ -28,7 +28,7 @@
   let pop = null;
   let toastEl = null, toastTimer = null;
 
-  // ---- account cheatsheet (saves go to the user's Supabase account via the background worker) ----
+  // ---- account saved terms (saves go to the user's Supabase account via the background worker) ----
   let signedIn = false;
   let savedSet = new Set();
   function refreshSaved(cb) {
@@ -116,10 +116,10 @@
     return `<span style="display:inline-flex;align-items:center;gap:5px;font-family:${UI_FONT};font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:20px;color:${m.color};background:${m.bg}"><span>${m.sym}</span><span>${m.label}</span></span>`;
   }
   function saveRowHTML(id) {
-    if (!signedIn) return `<div style="flex:1;padding:10px 12px;font-size:12px;line-height:1.4;color:#787c83;text-align:center">Sign in from the Decoder toolbar to save this to your cheatsheet</div>`;
+    if (!signedIn) return `<div style="flex:1;padding:10px 12px;font-size:12px;line-height:1.4;color:#787c83;text-align:center">Sign in from the Decoder toolbar to save it</div>`;
     return savedSet.has(id)
       ? `<button data-dcx-remove style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:#4a7c59"><span class="dcx-savepop">✓</span> Saved · remove</button>`
-      : `<button data-dcx-save style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:${ACCENT}">＋ Save to my cheatsheet</button>`;
+      : `<button data-dcx-save style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:${ACCENT}">＋ Save</button>`;
   }
   function renderPopover(c, saved) {
     const el = document.createElement("div");
@@ -166,14 +166,14 @@
       if (ev.target.closest("[data-dcx-save]")) {
         chrome.runtime.sendMessage({ type: "save", id }, resp => {
           if (resp && resp.needAuth) { signedIn = false; if (footer()) footer().innerHTML = saveRowHTML(id); toast("Sign in from the Decoder toolbar to save"); return; }
-          if (resp && resp.ok) { savedSet.add(id); if (footer()) footer().innerHTML = saveRowHTML(id); toast("Saved to your cheatsheet"); }
+          if (resp && resp.ok) { savedSet.add(id); if (footer()) footer().innerHTML = saveRowHTML(id); toast("Saved"); }
           else toast("Couldn’t save — try again");
         });
         return;
       }
       if (ev.target.closest("[data-dcx-remove]")) {
         chrome.runtime.sendMessage({ type: "remove", id }, resp => {
-          if (resp && resp.ok) { savedSet.delete(id); if (footer()) footer().innerHTML = saveRowHTML(id); toast("Removed from your cheatsheet"); }
+          if (resp && resp.ok) { savedSet.delete(id); if (footer()) footer().innerHTML = saveRowHTML(id); toast("Removed"); }
           else toast("Couldn’t remove — try again");
         });
       }
@@ -237,7 +237,7 @@
     scanRoot(document.body);
     startObserver();
   }
-  // Keep popover state fresh if the user signs in/out or edits the cheatsheet elsewhere.
+  // Keep popover state fresh if the user signs in/out or edits the saved terms elsewhere.
   try {
     chrome.storage.onChanged.addListener((changes, area) => {
       if (area === "local" && changes["decoder.session"]) refreshSaved();

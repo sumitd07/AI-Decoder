@@ -11,7 +11,7 @@ You'll create three free accounts along the way (Supabase, GitHub, Google Cloud)
 ## How sign-in works in the app (so the steps make sense)
 
 - **Looking up terms is free** — no account needed. Anyone can search and read.
-- **Saving to a cheatsheet needs sign-in.** When a signed-out person taps *Save to my cheatsheet*, a "Sign in with Google" prompt appears.
+- **Saving to a saved terms needs sign-in.** When a signed-out person taps *Save*, a "Sign in with Google" prompt appears.
 - **Once signed in,** their saved terms are stored online and follow them to any device.
 - Until you finish this guide, the app runs in **preview mode**: everything looks right, but the "Sign in with Google" button shows a little "not connected yet" message instead of actually signing in. That's expected — it starts working once you finish Step 6.
 
@@ -135,7 +135,7 @@ Now you hand Google's two codes to Supabase so they can talk. The links below us
 
 ## Step 7 — Test it
 
-Open your live address, click **Sign in with Google**, and pick your account. Then save a term and open **My cheatsheet** — it should be there. Reload the page; it should still be there. Open the same account on your phone to confirm it follows you across devices.
+Open your live address, click **Sign in with Google**, and pick your account. Then save a term and open **Saved** — it should be there. Reload the page; it should still be there. Open the same account on your phone to confirm it follows you across devices.
 
 If sign-in fails with `redirect_uri_mismatch`, go back to Step 5 Box 2 and make sure the address ends in `/auth/v1/callback`.
 
@@ -153,7 +153,7 @@ If sign-in fails with `redirect_uri_mismatch`, go back to Step 5 Box 2 and make 
 
 ### Step 8b — Connect the extension to your account (so clips sync with the web app)
 
-The extension can save terms straight to the same cheatsheet as the website. Two setup steps:
+The extension can save terms straight to the same saved terms as the website. Two setup steps:
 
 1. **Point the extension at your Supabase project.** Open `extension/config.js` in a text editor and paste the **same** two values you used in the web app (Step 2) — the Supabase URL and the publishable/anon key:
    ```js
@@ -164,7 +164,7 @@ The extension can save terms straight to the same cheatsheet as the website. Two
    - Note the extension's **ID** shown on its card. Its sign-in redirect address is:
      `https://<EXTENSION-ID>.chromiumapp.org/`
    - In Supabase → **Authentication → URL Configuration** (`https://supabase.com/dashboard/project/_/auth/url-configuration`) → add that address under **Redirect URLs** → **Save**.
-3. Now click the Decoder icon → **Sign in with Google**. Terms you save in the extension appear in the web app's **My cheatsheet**, and vice-versa.
+3. Now click the Decoder icon → **Sign in with Google**. Terms you save in the extension appear in the web app's **Saved**, and vice-versa.
 
 > When you later publish to the Web Store, Google assigns a **different, permanent** extension ID. Add that published ID's `https://<ID>.chromiumapp.org/` to the same Supabase Redirect URLs list so sign-in works in the published version too.
 

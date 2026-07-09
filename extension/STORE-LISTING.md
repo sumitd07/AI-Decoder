@@ -26,19 +26,19 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
   1. Load the unpacked extension (see the extension `README.md`), open an article-heavy page, and let it underline some terms.
   2. Click a term so the explanation popover shows.
   3. Screenshot on Mac with **⌘ + Shift + 4**, then resize/crop to exactly **1280×800** (Preview → Tools → Adjust Size, or any editor).
-  4. Good shots: (a) underlined terms in an article, (b) the click-to-explain popover open, (c) the toolbar cheatsheet popup.
+  4. Good shots: (a) underlined terms in an article, (b) the click-to-explain popover open, (c) the toolbar saved terms popup.
 
 ## 2. Store listing tab
 
 - **Item name:** `Decoder — AI terms, explained in place`
-- **Summary** (max 132 chars): `Underlines AI jargon on any page. Click a term for a plain-language explanation and save it to your cheatsheet.`
+- **Summary** (max 132 chars): `Underlines AI jargon on any page. Click a term for a plain-language explanation and save it.`
 - **Category:** Productivity
 - **Language:** English
 - **Description:**
 
   > Reading about AI and a term slides by that you're not quite sure about? Decoder quietly underlines AI jargon on any web page. Click one and get a plain explanation, an analogy, and a real example — right where you're reading, without leaving the page.
   >
-  > Save the ones you stumble on to your own cheatsheet, so the terms that trip you up become a short list you can skim before a meeting.
+  > Save the ones you stumble on, so the terms that trip you up become a short list you can skim before a meeting.
   >
   > • Plain-language explanations, not textbook definitions
   > • Works on any page; the underlines are subtle and easy to ignore
@@ -52,17 +52,17 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
 ## 3. Privacy tab (this is where extensions usually get held up — fill every field)
 
 - **Single purpose** (one sentence):
-  `Decoder underlines known AI/technical terms on the page you're reading and shows a plain-language explanation when you click one, with an option to sign in and save terms to your cheatsheet.`
+  `Decoder underlines known AI/technical terms on the page you're reading and shows a plain-language explanation when you click one, with an option to sign in and save terms to your account.`
 
 - **Permission justifications** — the manifest now declares four items to justify (the "all sites" access is still *optional* and won't appear here):
   - **storage:** `Holds the user's sign-in session on the device so they stay logged in between visits.`
   - **scripting:** `Injects the highlighter into a page after the user turns Decoder on, and registers it to run on pages they visit once they've opted in.`
-  - **identity:** `Used only to let the user sign in with Google (via the browser identity API) so their saved cheatsheet syncs with their account. No Google profile data beyond sign-in is accessed.`
-  - **host access to `https://*.supabase.co/*`:** `The extension reads and writes the user's saved cheatsheet to their Supabase account. This is a single specific backend domain, not broad web access.`
+  - **identity:** `Used only to let the user sign in with Google (via the browser identity API) so their saved terms sync with their account. No Google profile data beyond sign-in is accessed.`
+  - **host access to `https://*.supabase.co/*`:** `The extension reads and writes the user's saved terms to their Supabase account. This is a single specific backend domain, not broad web access.`
 
 - **Are you using remote code?** **No.** All code ships inside the package; the extension loads no external scripts and uses the system font. (It makes data requests to the Supabase backend, but does not load or run remote code.)
 
-- **Data collected — this changed now that saving syncs to an account.** Core highlighting collects nothing. **If the user signs in to sync their cheatsheet**, disclose in the Data-collection form:
+- **Data collected — this changed now that saving syncs to an account.** Core highlighting collects nothing. **If the user signs in to sync their saved terms**, disclose in the Data-collection form:
   - ✅ **Personally identifiable information** — the user's **email address** (to create/identify their account).
   - ✅ **User activity** — the list of term IDs the user chooses to save.
   - Purpose: **App functionality** (account + sync). Not for ads, analytics, personalization, or resale.
@@ -87,7 +87,7 @@ No login needed to review the core feature.
 1) Open the Decoder toolbar popup and click "Enable on all sites", approve the Chrome prompt.
 2) Open a page about AI, e.g. https://en.wikipedia.org/wiki/Large_language_model — known AI terms get a dotted underline.
 3) Click a term to see the in-page explanation.
-Saving is OPTIONAL and requires signing in with Google (it syncs the cheatsheet to the user's account) — not needed to evaluate highlighting. Page text is read locally; only signed-in saves are sent to the account backend.
+Saving is OPTIONAL and requires signing in with Google (it syncs the saved terms to the user's account) — not needed to evaluate highlighting. Page text is read locally; only signed-in saves are sent to the account backend.
 ```
 
 ## 4. Distribution

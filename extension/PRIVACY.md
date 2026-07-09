@@ -14,7 +14,7 @@ Decoder is a browser extension that underlines known AI/technical terms on web p
 
 ## Data we collect
 
-- **Only if you sign in:** your **email address** (to identify your account) and the **identifiers of the terms you save** (e.g. `rag`). These are stored in our Supabase project so your cheatsheet syncs across the extension and the web app.
+- **Only if you sign in:** your **email address** (to identify your account) and the **identifiers of the terms you save** (e.g. `rag`). These are stored in our Supabase project so your saved terms sync across the extension and the web app.
 - **If you don't sign in:** nothing is collected or transmitted.
 - We never sell or share your data, and we run no ads, analytics, or tracking.
 
@@ -23,7 +23,7 @@ Decoder is a browser extension that underlines known AI/technical terms on web p
 - **storage** — to hold your sign-in session on the device.
 - **scripting** — to add the highlighter to a page after you enable it.
 - **identity** — to let you sign in with Google (only used for sign-in).
-- **Access to your Supabase backend (`https://*.supabase.co`)** — to read and save your cheatsheet to your account.
+- **Access to your Supabase backend (`https://*.supabase.co`)** — to read and save your saved terms to your account.
 - **Access to pages you visit — optional** — granted only when you click "Enable on all sites," so it can read page text locally to underline terms.
 
 ## Changes

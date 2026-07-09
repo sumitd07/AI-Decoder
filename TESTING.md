@@ -16,7 +16,7 @@ Work top to bottom. Each check says what you should see. If something's off, the
 5. **Plain / In practice / Technical.** Click those three buttons — the one-line explanation should swap between them.
 6. **Dark mode.** Click the ☾ moon (top right). The whole page flips to dark; click again to go back.
 7. **Saving asks you to sign in.** Click **Sign in to save** (or the Save button). A "Sign in with Google" prompt should pop up instead of saving. Close it.
-8. **Cheatsheet tab.** Click **My cheatsheet** (top). Signed out, it should show a "Sign in to start your cheatsheet" panel.
+8. **Saved terms tab.** Click **Saved** (top). Signed out, it should show a "Sign in to start saving" panel.
 9. **Phone check.** Open the same URL on your phone. The header should collapse neatly (search becomes a small icon), and cards stack in one column.
 
 *If it's wrong:* if the page looks like an older version (no "Sign in" buttons anywhere), your last deploy didn't include the latest code — push again from GitHub Desktop and wait for Vercel to rebuild.
@@ -26,12 +26,12 @@ Work top to bottom. Each check says what you should see. If something's off, the
 > If you haven't finished the Supabase/Google setup yet, the "Sign in with Google" button will show a small "not connected yet" message. That's expected — do Steps 1–6 in `SETUP.md` first, then come back.
 
 1. **Sign in.** Click **Sign in with Google**, pick your account. You should be sent to Google, then bounced back to the site, now **signed in** — your email/initial shows in the top-right.
-2. **Save a term.** Open any card and click **Save to my cheatsheet**. You should see a small "Saved to my cheatsheet" confirmation.
-3. **It's in your cheatsheet.** Click **My cheatsheet** — the term you saved is there.
+2. **Save a term.** Open any card and click **Save**. You should see a small "Saved" confirmation.
+3. **It's in your saved terms.** Click **Saved** — the term you saved is there.
 4. **It sticks.** Reload the page. You're still signed in and the saved term is still there.
-5. **Remove.** In the cheatsheet, click the **×** on a term — it disappears, and the little count on the tab drops.
+5. **Remove.** In the saved terms, click the **×** on a term — it disappears, and the little count on the tab drops.
 6. **Cross-device.** On your phone, open the site and sign in with the **same Google account**. Your saved terms should already be there — that's the sync working.
-7. **Sign out.** Click your email → **Sign out**. The cheatsheet goes back to the "sign in" panel.
+7. **Sign out.** Click your email → **Sign out**. The saved terms goes back to the "sign in" panel.
 
 *If it's wrong:*
 - Sign-in fails with **`redirect_uri_mismatch`** → the redirect address in Google is missing the `/auth/v1/callback` ending (SETUP Step 5, Box 2).
@@ -45,8 +45,8 @@ Work top to bottom. Each check says what you should see. If something's off, the
 3. **It highlights.** Open a news or blog article about AI. Known terms (RAG, agents, hallucination, etc.) get a faint dotted underline. (If you opened the article before opting in, reload it.)
 4. **Click to explain.** Click an underlined term — a small card appears right there with the explanation.
 5. **Sign in (needed to save).** Click the Decoder icon → **Sign in with Google**, pick your account. (Requires the Step 8b setup: keys in `config.js` + the extension's redirect URL added to Supabase.) Before signing in, a term's card says "Sign in from the Decoder toolbar to save."
-6. **Save.** With a term's card open, click **＋ Save to my cheatsheet** — it changes to "Saved · remove."
-7. **Sync check (the whole point).** Open the web app, sign in with the **same** Google account, and open **My cheatsheet** — the term you saved in the extension is there. Save one on the website; it appears in the extension popup. One shared cheatsheet.
+6. **Save.** With a term's card open, click **＋ Save** — it changes to "Saved · remove."
+7. **Sync check (the whole point).** Open the web app, sign in with the **same** Google account, and open **Saved** — the term you saved in the extension is there. Save one on the website; it appears in the extension popup. One shared saved terms.
 8. **The popup.** Click the Decoder icon — it shows your account, your saved terms, and "Highlighting is on for every site."
 9. **Turn off.** In the popup, click **Turn off**. Reload the article — no underlines. Re-enable to bring them back.
 

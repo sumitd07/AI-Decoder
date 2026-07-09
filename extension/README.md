@@ -1,6 +1,6 @@
 # Decoder — Chrome extension
 
-Subtly underlines AI jargon on any web page. Click a term to understand it in seconds and save it to your cheatsheet — the browser adaptation of Decoder's "Read" surface.
+Subtly underlines AI jargon on any web page. Click a term to understand it in seconds and save it — the browser adaptation of Decoder's "Read" surface.
 
 ## Install (unpacked, for testing)
 
@@ -9,8 +9,8 @@ Subtly underlines AI jargon on any web page. Click a term to understand it in se
 3. Click **Load unpacked** and select this `extension/` folder.
 4. Click the Decoder toolbar icon and press **Enable on all sites** (approve Chrome's prompt). This is the one-time opt-in that grants page access.
 5. Visit any article-heavy page (news, blog, docs). Known AI terms get a faint dotted underline.
-6. Click an underlined term → an in-place card explains it, with **＋ Save to my cheatsheet**.
-7. Click the toolbar icon anytime to see your saved cheatsheet (or **Turn off** to revoke access).
+6. Click an underlined term → an in-place card explains it, with **＋ Save**.
+7. Click the toolbar icon anytime to see your saved terms (or **Turn off** to revoke access).
 
 ## How it works
 
@@ -19,20 +19,20 @@ Subtly underlines AI jargon on any web page. Click a term to understand it in se
 - `content.js` scans page text for the shelf terms (via each concept's alias list), wraps matches in a subtle highlight, and shows the popover on click. A re-injection guard (`window.__decoderLoaded`) prevents double-binding, and links (`<a>`, `role="link"`) are skipped so clicks aren't hijacked (e.g. Google result titles).
 - Matching is word-boundary aware and longest-first, so "context window" wins over "context", and short tokens (e.g. "rag") won't match inside other words ("storage").
 - It watches for dynamically loaded content (infinite scroll, SPAs) and highlights new text as it appears.
-- **Cheatsheet syncs with the web app account.** Sign-in (Google, via `chrome.identity` → Supabase) and saves are handled with plain `fetch` against Supabase's REST API — no bundled library. `content.js` and `popup.js` route reads/writes through `background.js`, which holds the session and calls Supabase. Terms saved in the extension appear in the web app's cheatsheet and vice-versa. Without sign-in, saving is disabled and nothing is transmitted.
+- **Saved terms syncs with the web app account.** Sign-in (Google, via `chrome.identity` → Supabase) and saves are handled with plain `fetch` against Supabase's REST API — no bundled library. `content.js` and `popup.js` route reads/writes through `background.js`, which holds the session and calls Supabase. Terms saved in the extension appear in the web app's saved terms and vice-versa. Without sign-in, saving is disabled and nothing is transmitted.
 
 ## Files
 
 | File | Role |
 |------|------|
 | `manifest.json` | MV3 manifest — `storage`/`scripting`/`identity`, required `supabase.co` host, **optional** `<all_urls>`, popup, background worker |
-| `background.js` | Service worker: registers/unregisters the content script on opt-in, and routes cheatsheet reads/writes to Supabase |
+| `background.js` | Service worker: registers/unregisters the content script on opt-in, and routes saved terms reads/writes to Supabase |
 | `config.js` | Your Supabase URL + publishable key (same project as the web app) |
 | `supa.js` | Supabase auth (Google via `chrome.identity`) + REST helpers, plain `fetch` |
-| `concepts.js` | Shared concept data + status metadata (single source of truth) |
+| `concepts.js` | Glossary data + status metadata. **Exact copy of `web/concepts.js`** (the single source) — edit there, then `cp web/concepts.js extension/concepts.js` |
 | `content.js` | Page scanner, highlighter, and click-to-explain popover (injected after opt-in) |
 | `content.css` | Highlight style + popover/toast animations |
-| `popup.html` / `popup.js` | Sign-in, the account cheatsheet, and the "Enable on all sites" opt-in control |
+| `popup.html` / `popup.js` | Sign-in, the account saved terms, and the "Enable on all sites" opt-in control |
 
 ## Notes & scope
 
