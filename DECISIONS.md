@@ -126,5 +126,30 @@ A running record of the meaningful decisions, trade-offs, and challenges on Deco
 **How.** Extracted the existing `DATA`/`LENSES` literals from `index.html` and the `DECODER_STATUS` from the old extension file programmatically (no retyping), assembled `concepts.js`, wrote it to both locations, and rewired `index.html` (`const DATA = window.DECODER_CONCEPTS`). Sync step documented: `cp web/concepts.js extension/concepts.js`. Verified identical + all files parse.
 **Size:** small, as estimated.
 
+## 21. Scaling the shelf: 15 → 1,000+ terms (DB-backed, scheduled batch generation)
+**Context.** The glossary needs to grow from a handful to 1,000+ terms so the app can be tested at real scale. The data currently lives in a static file; a per-user saves table exists but the glossary itself was never a database. Goal restated by the user: populate the DB with ≥1,000 terms; intermediate counts (15 vs 100) are irrelevant — come back when it's at scale. Auto-publish accepted; batching/schedulers/agents all authorized.
+
+**Decision.** Move the glossary into a `public.concepts` table (schema + RLS in `supabase/concepts.sql`), and generate content via a **resumable, scheduled batch pipeline**:
+- `content/backlog.json` — the full candidate term list (names + domain + status guess), the work queue.
+- `content/registry.json` — every id + alias already produced (dedup + cross-link source of truth). Seeded from the existing 31.
+- `content/STYLE.md` — the voice contract + exemplars, so any fresh agent run stays on-voice.
+- `scripts/validate_and_emit.js` — validates a batch (unique ids, resolvable `related` links, no alias collisions, required fields, valid status), emits `supabase/batches/seed_NNN.sql`, updates the registry, and regenerates a single `supabase/seed_all.sql`.
+- A **scheduled task** runs every few hours; each run drafts the next N terms, validates, emits SQL, updates registry + `PROGRESS.md`, and stops when the total reaches 1,000 — then notifies the user.
+
+**Hard limitation (named honestly).** This sandbox cannot reach Supabase (network-blocked). So the pipeline produces *runnable SQL*, not live inserts. The actual DB population is one manual step: run `supabase/seed_all.sql` in the Supabase SQL Editor. I cannot verify the live DB myself; the SQL is verified structurally (parses, integrity-checks pass) and the insert/visual check is the user's. Browser-automation into the Supabase dashboard was considered and rejected for autonomous runs (fragile, needs a live logged-in session).
+
+**Alternatives rejected.**
+- *In-session mega-batch (write all 1,000 now).* Infeasible: exceeds a single session's output/context budget, quality degrades badly at the tail, and it's one enormous token spike — the exact cost the user wants to pace.
+- *Parallel subagents, one per domain.* Faster wall-clock but token-expensive (many cold starts re-deriving context) and integrity-hostile: independent runs collide on ids/aliases and can't see each other's cross-links, forcing a messy reconcile pass. Kept as an *option inside* a scheduled run if a batch is large, but not the default.
+- *Keep it a static file.* Doesn't meet the "database with admin CRUD" requirement and won't scale to thousands shipped to every browser/extension.
+
+**Consequences / trade-offs.**
+- Reaching 1,000 is paced over ~2.5–3.5 days (≈60 terms/run, ~16 runs, every 4h), not instant. Accepted — the user prioritized scale over speed and wants token pacing.
+- Content is model-generated with no human review gate (auto-publish). Mitigation: every generated term is tagged (`tags` includes a batch marker) so the whole test population can be rolled back with one `delete from concepts where tags @> '{"seed"}'`. Voice risk is mitigated by STYLE.md + registry-enforced integrity, not by review.
+- Resumability: registry + PROGRESS make runs idempotent — a failed/partial run simply resumes; no double-inserts (SQL is upsert-on-id).
+- Extension is under review and stays frozen: all of this is DB + SQL + web-only. Nothing writes to `extension/`. The homepage shelf reads the static bundle, so these terms are reachable via search immediately and via the shelf only after an explicit export — a deliberate split, not a bug.
+
+**Engineering discipline applied.** ADR-style record (this entry); every script gets `node --check` + an integrity validator before use; SQL is idempotent (upsert) so re-runs are safe; rollback path defined before shipping; the one unverifiable step (live DB) is called out rather than papered over.
+
 ## Cross-cutting: verification under a constrained sandbox
 No browser, no jsdom, npm registry blocked. So I lean on: `node --check` for syntax (classic + module scripts), data-integrity scripts (every internal link/alias resolves, every concept well-formed), a matcher unit test for the extension, and a static CSS-var scope audit. Repeatedly flagged the one real gap this leaves — **visual/pixel QA must happen in the user's browser** — rather than claiming coverage I don't have.

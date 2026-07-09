@@ -233,7 +233,7 @@ const DATA = window.DECODER_CONCEPTS || [];
 // Alternate one-liners per audience. Default ("curious") uses each concept's own oneLiner.
 const LENSES = window.DECODER_LENSES || {};
 
-const state = { tab:'lookup', spotlightOpen:false, query:'', selIndex:0, openId:null, deeperOpen:false, saved:[], sel:null, selSaved:false, dark:false, lens:'curious' };
+const state = { tab:'lookup', spotlightOpen:false, query:'', selIndex:0, openId:null, deeperOpen:false, saved:[], sel:null, selSaved:false, dark:false, lens:'curious', remoteResults:[] };
 let toastTimer = null;
 try { const L = localStorage.getItem('decoder.lens.v1'); if (['curious','pm','eng'].includes(L)) state.lens = L; } catch (e) {}
 
@@ -329,7 +329,73 @@ function match(text){ const n = norm(text); if(!n) return null; return DATA.find
 function getResults(){
   const q = state.query.trim().toLowerCase();
   if(!q) return DATA;
-  return DATA.filter(c => (c.term+' '+c.aliases+' '+c.said+' '+c.oneLiner+' '+c.aliasList.join(' ')).toLowerCase().includes(q));
+  const local = DATA.filter(c => (c.term+' '+c.aliases+' '+c.said+' '+c.oneLiner+' '+c.aliasList.join(' ')).toLowerCase().includes(q));
+  const localIds = new Set(local.map(c=>c.id));
+  const remote = (state.remoteResults||[]).filter(c => !localIds.has(c.id));
+  return local.concat(remote);
+}
+
+/* ---------- long-tail remote search (web-only; DB terms outside the static bundle) ---------- */
+const REMOTE = { url:(window.DECODER_CONFIG||{}).SUPABASE_URL, key:(window.DECODER_CONFIG||{}).SUPABASE_ANON_KEY };
+const remoteCache = new Map();
+function rowToConcept(r){ return { id:r.id, term:r.term, aliases:r.aliases||'', said:r.said||'', aliasList:r.alias_list||[], status:r.status||'Core', oneLiner:r.one_liner||'', analogy:r.analogy||'', example:r.example||'', related:r.related||[], deeper:r.deeper||'' }; }
+async function rpc(fn, body){
+  if(!REMOTE.url || !REMOTE.key) return null;
+  try{
+    const res = await fetch(REMOTE.url+'/rest/v1/rpc/'+fn, { method:'POST', headers:{ 'Content-Type':'application/json', apikey:REMOTE.key, Authorization:'Bearer '+REMOTE.key }, body:JSON.stringify(body) });
+    if(!res.ok) return null;
+    return await res.json();
+  }catch(e){ return null; }
+}
+let remoteSeq = 0, remoteTimer = null;
+function scheduleRemoteSearch(){
+  clearTimeout(remoteTimer);
+  const q = state.query.trim();
+  if(q.length < 2){ state.remoteResults = []; return; }
+  remoteTimer = setTimeout(async () => {
+    const my = ++remoteSeq;
+    const rows = await rpc('search_concepts', { q, lim:20 });
+    if(my !== remoteSeq || !rows) return;
+    const known = new Set(DATA.map(c=>c.id));
+    state.remoteResults = rows.filter(r=>!known.has(r.id)).map(r=>({ id:r.id, term:r.term, aliases:r.aliases||'', said:'', status:r.status||'Core', oneLiner:r.one_liner||'', aliasList:[] }));
+    if(state.spotlightOpen) renderSpotResults();
+  }, 180);
+}
+async function ensureConcept(id){
+  if(find(id) && find(id).deeper) return find(id);
+  if(remoteCache.has(id)) return remoteCache.get(id);
+  const rows = await rpc('get_concept', { concept_id:id });
+  if(rows && rows[0]){
+    const c = rowToConcept(rows[0]); remoteCache.set(id, c); DATA.push(c);
+    if(rows[0].lens_pm || rows[0].lens_eng) LENSES[id] = { pm:rows[0].lens_pm||'', eng:rows[0].lens_eng||'' };
+    return c;
+  }
+  return null;
+}
+async function openRow(id){ if(!find(id) || !find(id).deeper){ await ensureConcept(id); } openCard(id); }
+
+/* Load the whole shelf from the DB on startup; static concepts.js stays as offline fallback. */
+async function loadShelfFromDB(){
+  if(!REMOTE.url || !REMOTE.key) return;
+  const cols = 'id,term,aliases,said,alias_list,status,one_liner,analogy,example,related,deeper,lens_pm,lens_eng';
+  const all = [];
+  try{
+    for(let offset=0; offset<20000; offset+=1000){
+      const res = await fetch(REMOTE.url+'/rest/v1/concepts?is_published=eq.true&select='+cols+'&order=priority.desc,term.asc&limit=1000&offset='+offset, { headers:{ apikey:REMOTE.key, Authorization:'Bearer '+REMOTE.key } });
+      if(!res.ok) return; // keep static fallback
+      const rows = await res.json();
+      all.push(...rows);
+      if(rows.length < 1000) break;
+    }
+  }catch(e){ return; }
+  if(!all.length) return;
+  DATA.length = 0;
+  for(const r of all){
+    DATA.push(rowToConcept(r));
+    if(r.lens_pm || r.lens_eng) LENSES[r.id] = { pm:r.lens_pm||'', eng:r.lens_eng||'' };
+  }
+  renderLookup(); renderSheet();
+  $("#s-lookup").style.display = state.tab==='lookup' ? '' : 'none';
 }
 function meta(c){ return statusMeta[c.status]; }
 function isSaved(id){ return state.saved.includes(id); }
@@ -484,7 +550,7 @@ function renderSpotlight(){
     </div>`;
   renderSpotResults();
   const inp = $("#spotInput");
-  inp.addEventListener('input', e => { state.query = e.target.value; state.selIndex = 0; renderSpotResults(); });
+  inp.addEventListener('input', e => { state.query = e.target.value; state.selIndex = 0; scheduleRemoteSearch(); renderSpotResults(); });
   setTimeout(() => inp && inp.focus(), 20);
   const box = $("#spotResults");
   box.addEventListener('mouseover', e => {
@@ -603,7 +669,7 @@ function setTab(t){
   if(t==='sheet') renderSheet();
   renderTabs(); renderSpotlight(); renderModal(false); renderPopover();
 }
-function openSpotlight(){ state.spotlightOpen = true; state.query = ''; state.selIndex = 0; renderSpotlight(); }
+function openSpotlight(){ state.spotlightOpen = true; state.query = ''; state.selIndex = 0; state.remoteResults = []; renderSpotlight(); }
 function toggleSpotlight(){ state.spotlightOpen ? (state.spotlightOpen=false, renderSpotlight()) : openSpotlight(); }
 function escapeAll(){ state.spotlightOpen=false; state.openId=null; state.sel=null; renderSpotlight(); renderModal(false); renderPopover(); closeSignin(); }
 
@@ -700,7 +766,7 @@ function spotlightNav(e){
   const r = getResults();
   if(e.key === 'ArrowDown'){ e.preventDefault(); state.selIndex = Math.min(state.selIndex+1, Math.max(r.length-1,0)); renderSpotResults(); }
   else if(e.key === 'ArrowUp'){ e.preventDefault(); state.selIndex = Math.max(state.selIndex-1, 0); renderSpotResults(); }
-  else if(e.key === 'Enter'){ e.preventDefault(); const c = r[state.selIndex] || r[0]; if(c) openCard(c.id); }
+  else if(e.key === 'Enter'){ e.preventDefault(); const c = r[state.selIndex] || r[0]; if(c) openRow(c.id); }
 }
 window.addEventListener('keydown', e => {
   const k = e.key;
@@ -717,7 +783,7 @@ document.addEventListener('click', e => {
   const tabBtn = t.closest('[data-tab]'); if(tabBtn){ setTab(tabBtn.getAttribute('data-tab')); return; }
   if(t.closest('[data-openspot]')){ openSpotlight(); return; }
   const openBtn = t.closest('[data-open]'); if(openBtn){ openCard(openBtn.getAttribute('data-open')); return; }
-  const rowBtn = t.closest('[data-openrow]'); if(rowBtn){ openCard(rowBtn.getAttribute('data-openrow')); return; }
+  const rowBtn = t.closest('[data-openrow]'); if(rowBtn){ openRow(rowBtn.getAttribute('data-openrow')); return; }
   const rmBtn = t.closest('[data-remove]'); if(rmBtn){ toggleSave(rmBtn.getAttribute('data-remove')); return; }
   if(t.closest('[data-close-modal]')){ closeCard(); return; }
   if(t.closest('[data-deeper]')){ toggleDeeper(); return; }
@@ -746,6 +812,7 @@ renderTabs();
 renderLookup();
 renderSheet();
 renderAuth();
+loadShelfFromDB();
 </script>
 </body>
 </html>

@@ -1,0 +1,6344 @@
+[
+ {
+  "term": "activation function",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "hidden state",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "layer",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "deep learning",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "machine learning",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "artificial intelligence",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "generative AI",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "autoregressive",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "next-token prediction",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "probability distribution",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "vector",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "dimensionality",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "latent space",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "representation",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "feature",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "weights and biases",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "bias term",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "forward pass",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "matrix multiplication",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "dot product",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "cosine similarity",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "normalization",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "layer normalization",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "batch normalization",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "dropout",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "overfitting",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "underfitting",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "generalization",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "inference",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "training",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "model size",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "model family",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "checkpoint",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "model card",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "open weights",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "closed model",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "dense model",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "sparse model",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "context length",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "sequence length",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "prompt",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "completion",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "system message",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "assistant message",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "user message",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "turn",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "conversation",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "stochastic",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "determinism",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "seed",
+  "domain": "Foundations",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "perplexity",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "log probability",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "beam search",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "repetition penalty",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "frequency penalty",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "presence penalty",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "max tokens",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "stop sequence",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "truncation",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "padding",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "attention mask",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "token limit",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "subword",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "byte-pair encoding",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "word embedding",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sentence embedding",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "one-hot encoding",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "softmax temperature",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "entropy",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cross-entropy",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "gradient",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "learning signal",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "capacity",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "emergent ability",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "in-context learning",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "zero-shot",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "few-shot",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "one-shot",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "instruction following",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "world model",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "grounding",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "knowledge cutoff",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "parametric knowledge",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "non-parametric memory",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "context stuffing",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "lost in the middle",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "needle in a haystack",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "effective context",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "multimodal input",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "text generation",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "language model",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "small language model",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "mixture model",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ensemble",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "teacher model",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "student model",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model checkpointing",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "warm start",
+  "domain": "Foundations",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "pretraining",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "RLHF",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "RLAIF",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reward model",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "preference data",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "DPO",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "constitutional AI",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "instruction tuning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "supervised fine-tuning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "alignment",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "LoRA",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "QLoRA",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "PEFT",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "adapter",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "distillation",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "knowledge distillation",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "continued pretraining",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "catastrophic forgetting",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "synthetic data",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "data augmentation",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "labeling",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "annotation",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "data contamination",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "deduplication",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "curriculum learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "self-supervised learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "unsupervised learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "supervised learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reinforcement learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "semi-supervised learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "transfer learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "multitask learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "meta-learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "few-shot learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "gradient descent",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "stochastic gradient descent",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "backpropagation",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "loss function",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "objective function",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "learning rate",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "learning rate schedule",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "warmup",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "batch size",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "epoch",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "iteration",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "optimizer",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Adam",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AdamW",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "weight decay",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "regularization",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "gradient clipping",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "gradient accumulation",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "mixed precision",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "checkpointing",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "early stopping",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "validation set",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "training set",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "test set",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "holdout",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cross-validation",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "hyperparameter",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "hyperparameter tuning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "grid search",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "scaling laws",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "compute-optimal",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Chinchilla scaling",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "data mixture",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tokens per parameter",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "emergence",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reward hacking",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reward shaping",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "policy gradient",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "PPO",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "KL divergence",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reward signal",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "human feedback",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "preference optimization",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "rejection sampling",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "best-of-n",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "self-distillation",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "teacher forcing",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "label smoothing",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "data curation",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "data filtering",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "quality filtering",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "data pipeline",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "pretraining corpus",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "web crawl",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Common Crawl",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tokenizer training",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "vocabulary size",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "context extension",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "long-context training",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "alignment tax",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "refusal training",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "safety fine-tuning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "red-teaming data",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "instruction dataset",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "chat template",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "turn-based training",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reward model training",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "annotator agreement",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "gold labels",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "weak supervision",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "active learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "data flywheel",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model merging",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model soup",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "weight averaging",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "EMA",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "fine-tune vs prompt",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "overfit to eval",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "train-test leakage",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "checkpoint averaging",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "continual learning",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "domain adaptation",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "catastrophic interference",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "replay buffer",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "synthetic bootstrapping",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "distillation dataset",
+  "domain": "Training",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "transformer",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "self-attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cross-attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "multi-head attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "feed-forward network",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "residual connection",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "skip connection",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "encoder",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "decoder",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "encoder-decoder",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "attention head",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "query key value",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "scaled dot-product attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "masked attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "causal attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "mixture of experts",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sparse attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "flash attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sliding window attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "grouped-query attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "multi-query attention",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "KV cache",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "rotary embeddings",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ALiBi",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "positional embedding",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "convolutional neural network",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "recurrent neural network",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "LSTM",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GRU",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "state space model",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Mamba",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "RWKV",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "diffusion model",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "denoising diffusion",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GAN",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "generative adversarial network",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "VAE",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "variational autoencoder",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "autoencoder",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "U-Net",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ResNet",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "BERT",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GPT architecture",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "T5",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "seq2seq",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "attention is all you need",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reasoning model",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tree of thought",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "test-time compute",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "inference-time scaling",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "expert routing",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "gating network",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "router network",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tokenizer-free",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "byte-level model",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "hybrid architecture",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "retrieval-augmented architecture",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "memory-augmented network",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "pointer network",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "graph neural network",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "embedding layer",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "output head",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "language modeling head",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "classification head",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "pooling",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "mean pooling",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "CLS token",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "context parallelism",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tensor parallelism",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "pipeline parallelism",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model parallelism",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "activation checkpointing",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "attention sink",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "long-context architecture",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sparse mixture",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "dense transformer",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "decoder-only",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "encoder-only",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "bidirectional model",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "causal language model",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "masked language model",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prefix LM",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "speculative architecture",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "draft model",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "MoE routing",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "load balancing loss",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "capacity factor",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "expert parallelism",
+  "domain": "Architectures",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tool use",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "function calling",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ReAct",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "planning",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "orchestration",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "multi-agent",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent loop",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "autonomy",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tool schema",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "API calling",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "code interpreter",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "computer use",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "browser agent",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "router agent",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "supervisor agent",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "worker agent",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "handoff",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "scratchpad",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent memory",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reflection",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "self-correction",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agentic coding",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "copilot",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "code generation",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "SWE agent",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tool calling",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "structured tool use",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tool result",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "observation",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "action space",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "environment",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "trajectory",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "rollout",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent state",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "task decomposition",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "subtask",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "goal",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "subgoal",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "plan execution",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "replanning",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "chain of tools",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tool chaining",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "retrieval tool",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "search tool",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "calculator tool",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sandbox execution",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "approval gate",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "autonomous agent",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "semi-autonomous",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent framework",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent runtime",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent harness",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "looping",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "stop condition",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "max iterations",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent evaluation",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tool registry",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "capability discovery",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "permissions",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "scoped access",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent guardrails",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "delegation",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "manager-worker",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "swarm",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "blackboard",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "shared memory",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "episodic memory",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "working memory",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "long-term memory",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "memory retrieval",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "context management",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent persona",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "role assignment",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "task queue",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "event loop",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "function schema",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "JSON schema tools",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "parallel tool calls",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tool error handling",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "retry logic",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "fallback tool",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent observability",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "trace",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "span",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "step logging",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cost tracking",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "token budget",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "agent orchestrator",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "workflow engine",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "deterministic workflow",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "dynamic workflow",
+  "domain": "Agents & tools",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "retrieval",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "chunking",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "chunk overlap",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "vector database",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "semantic search",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "similarity search",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reranking",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "hybrid search",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "BM25",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "top-k retrieval",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "embedding model",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "vector index",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "HNSW",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "approximate nearest neighbor",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "exact nearest neighbor",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "metadata filtering",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "short-term memory",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "conversation history",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "summarization memory",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "knowledge base",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GraphRAG",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "dense retrieval",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sparse retrieval",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "lexical search",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "keyword search",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "query expansion",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "query rewriting",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "hypothetical document embeddings",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "HyDE",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "passage retrieval",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "document store",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "index",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "inverted index",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "recall at k",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "precision at k",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "retrieval quality",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "chunk size",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sentence splitting",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "recursive chunking",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "semantic chunking",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "embedding dimension",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "vector similarity",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "dot product search",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "euclidean distance",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "IVF index",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "product quantization",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "FAISS",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "pgvector",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "retrieval pipeline",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ingestion",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "embedding cache",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "re-embedding",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "context assembly",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "citation grounding",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "source attribution",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "retrieval augmentation",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "multi-vector retrieval",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ColBERT",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "late interaction",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cross-encoder",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "bi-encoder",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "retriever",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "reader",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "fusion retrieval",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reciprocal rank fusion",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "contextual retrieval",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "parent-child chunks",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "hierarchical retrieval",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "memory store",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "vector store",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "knowledge graph",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "entity linking",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "fact retrieval",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "freshness",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "staleness",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "index refresh",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "embedding drift",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "semantic cache",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt caching",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "retrieval latency",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "recall vs precision",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "chunk boundaries",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "overlap window",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "document loader",
+  "domain": "Retrieval & memory",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "confabulation",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sycophancy",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "bias",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "toxicity",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "refusal",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "over-refusal",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "jailbreak",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "specification gaming",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "indirect prompt injection",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "data poisoning",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model extraction",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "adversarial example",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "jailbreak prompt",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "guardrails",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "content filter",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "red teaming",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sandboxing",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "output validation",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "moderation",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AI safety",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "existential risk",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "interpretability",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "mechanistic interpretability",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model welfare",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "responsible AI",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "watermarking",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "deepfake",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "misinformation",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "disinformation",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "hallucination detection",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "grounding check",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "fact-checking",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "safety classifier",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "harmful content",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "CSAM detection",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "PII detection",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "data leakage",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "membership inference",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model inversion",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "backdoor attack",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "trojan",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "poisoned data",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "adversarial robustness",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "jailbreak resistance",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "refusal rate",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "false refusal",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "alignment faking",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "deceptive alignment",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "goal misgeneralization",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "instrumental convergence",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "corrigibility",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "oversight",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "scalable oversight",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "weak-to-strong generalization",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "constitutional classifier",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "safety filter",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "input sanitization",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "output sanitization",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "rate limiting",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "abuse prevention",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "trust and safety",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "content policy",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "usage policy",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "safety evaluation",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "dangerous capabilities",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "biorisk",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cyber risk",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "autonomy risk",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "situational awareness",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "power seeking",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reward tampering",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sandbagging",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "evaluation gaming",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "honeypot",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "canary",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tripwire",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "kill switch",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "containment",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "air gap",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "principle of least privilege",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "defense in depth",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "threat model",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "attack surface",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "supply chain risk",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model provenance",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "provenance",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "transparency",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "explainability",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "fairness",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "accountability",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "privacy",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "differential privacy",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "federated learning",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "data minimization",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "consent",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "alignment research",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "value alignment",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reward misspecification",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "proxy gaming",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Goodhart's law",
+  "domain": "Safety, security & alignment",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "benchmark",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "LLM-as-judge",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "rubric grading",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "exact match",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "pass at k",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "A/B test",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "human eval",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "gold set",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ground truth",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "MMLU",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "HumanEval",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GSM8K",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "HellaSwag",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ARC",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GPQA",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "SWE-bench",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "MT-Bench",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "accuracy",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "precision",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "recall",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "F1 score",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "BLEU",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ROUGE",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "win rate",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "latency",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "throughput",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "regression testing",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "eval set",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "benchmark contamination",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "overfitting to benchmarks",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "leaderboard",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Elo rating",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "arena",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "pairwise comparison",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "preference judgment",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "annotator",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "inter-annotator agreement",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "calibration",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "confidence calibration",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "hallucination rate",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "factuality",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "faithfulness",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "answer relevance",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "context relevance",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "retrieval evaluation",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "RAGAS",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "golden dataset",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "test harness",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "unit test for prompts",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "assertion",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "grader",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "automated grading",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "rubric",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "scoring function",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reference answer",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reference-free evaluation",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "self-consistency check",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "majority voting",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ensemble evaluation",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "holdout eval",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "offline evaluation",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "online evaluation",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "shadow testing",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "canary evaluation",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "eval-driven development",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "coverage",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "edge case testing",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "stress testing",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "adversarial evaluation",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "robustness testing",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "capability evaluation",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "red-team evaluation",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "human preference",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reward model eval",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "distribution shift",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "out-of-distribution",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "in-distribution",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "eval leakage",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "contamination check",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "statistical significance",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "confidence interval",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "variance",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "noise floor",
+  "domain": "Evaluation & quality",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "serving",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "time to first token",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tokens per second",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "batching",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "continuous batching",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "speculative decoding",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "quantization",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "INT8",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "INT4",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "FP16",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "BF16",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "pruning",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model compression",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GPU",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "TPU",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "VRAM",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "CUDA",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "accelerator",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cluster",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "node",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "API",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "endpoint",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "rate limit",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cost per token",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "caching",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cold start",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "autoscaling",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "MLOps",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "LLMOps",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "observability",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model serving",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "inference server",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "vLLM",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "TensorRT",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ONNX",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model quantization",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "weight quantization",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "activation quantization",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GPTQ",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AWQ",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GGUF",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "llama.cpp",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "batch inference",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "streaming",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "server-sent events",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "load balancing",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GPU memory",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "memory bandwidth",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "compute bound",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "memory bound",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "FLOPS",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "utilization",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "concurrency",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "request queue",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "token streaming",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "first token latency",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tail latency",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "p99 latency",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "SLA",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "uptime",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "failover",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "redundancy",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "horizontal scaling",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "vertical scaling",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model routing",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "fallback model",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cascade",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cost optimization",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "spot instances",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "on-demand",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reserved capacity",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "inference cost",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "training cost",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "total cost of ownership",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "edge deployment",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "on-device inference",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "local inference",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "serverless inference",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "containerization",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Kubernetes",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model registry",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "versioning",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "canary deployment",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "blue-green deployment",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "rollback",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "monitoring",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "alerting",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tracing",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "logging",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "metrics",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "dashboards",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "throughput optimization",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "paged attention",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "tensor cores",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "distributed inference",
+  "domain": "Infrastructure & serving",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "vision model",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "VLM",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "image encoder",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "OCR",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "object detection",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "segmentation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "image captioning",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "CLIP",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "image generation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "text-to-image",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "diffusion",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Stable Diffusion",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "inpainting",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "outpainting",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ControlNet",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "upscaling",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "super-resolution",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "speech-to-text",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ASR",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "text-to-speech",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "TTS",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "voice cloning",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "text-to-video",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "video generation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "multimodal",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "any-to-any",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cross-modal",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "modality",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "image embedding",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "visual question answering",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "VQA",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "scene understanding",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "depth estimation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "pose estimation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "face detection",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "image classification",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "zero-shot classification",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt-to-image",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "latent diffusion",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "denoising",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "noise schedule",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "guidance scale",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "classifier-free guidance",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "negative prompt",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "image-to-image",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "style transfer",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "texture synthesis",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "frame interpolation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "optical flow",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "audio generation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "music generation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sound effect generation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "voice synthesis",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "speaker diarization",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "phoneme",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "mel spectrogram",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "vocoder",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "lip sync",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "talking head",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "avatar generation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "3D generation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "NeRF",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Gaussian splatting",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "point cloud",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "mesh generation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "video understanding",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "action recognition",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "temporal modeling",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "multimodal fusion",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "early fusion",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "late fusion",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "cross-attention fusion",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "vision transformer",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ViT",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "patch embedding",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "image tokenization",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "visual grounding",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "referring expression",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "image editing",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "semantic segmentation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "instance segmentation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "panoptic segmentation",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "bounding box",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "keypoint detection",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "document understanding",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "layout analysis",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "chart understanding",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "handwriting recognition",
+  "domain": "Multimodal",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "system prompt",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": true
+ },
+ {
+  "term": "few-shot prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "zero-shot prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt template",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "role prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "self-consistency",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "structured output",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "JSON mode",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "output parsing",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "citation",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "guardrail prompt",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "meta-prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt chaining",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "chatbot",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "conversational AI",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "multi-turn",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "assistant persona",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt library",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt optimization",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "automatic prompt engineering",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt tuning",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "soft prompts",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prefix tuning",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "delimiter",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "few-shot examples",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "exemplar selection",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "instruction",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "constraint",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "format specification",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "persona prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "step-by-step prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "least-to-most prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "decomposition prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "self-ask",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ReAct prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reflexion",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "scratchpad prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "output schema",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "function schema prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "system message design",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "context window management",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt compression",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "token optimization",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt versioning",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt registry",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "dynamic prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "conditional prompting",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "template variables",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt leaking",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt extraction",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "guard prompt",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "refusal prompt",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "adversarial prompt",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt robustness",
+  "domain": "Prompting & interaction",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "OpenAI",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Anthropic",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Google DeepMind",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Meta AI",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Mistral",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Cohere",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "xAI",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Hugging Face",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GPT",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Claude",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Gemini",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Llama",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Grok",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Phi",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Qwen",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "DeepSeek",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GPT-4",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ChatGPT",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Codex",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Whisper",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "DALL-E",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Sora",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Midjourney",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "LangChain",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "LlamaIndex",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Pinecone",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Weaviate",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Chroma",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Qdrant",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Milvus",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Ollama",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "transformers library",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "PyTorch",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "TensorFlow",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "JAX",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Triton",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "NVIDIA",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "H100",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "A100",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Groq",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Cerebras",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Together AI",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Replicate",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Modal",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Fireworks",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "OpenRouter",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Cursor",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GitHub Copilot",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Devin",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AutoGPT",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "BabyAGI",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "CrewAI",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AutoGen",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Semantic Kernel",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Haystack",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Weights & Biases",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "MLflow",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "LangSmith",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "LangGraph",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "DSPy",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Guidance",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Instructor",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Pydantic AI",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "open source AI",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model licensing",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Apache 2.0",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "MIT license",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "inference provider",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AI wrapper",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "moat",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "API platform",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "playground",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "fine-tuning API",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "assistants API",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "batch API",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "embeddings API",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "vision API",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "realtime API",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "function calling API",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GPTs",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "custom instructions",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "system card",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "model spec",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "responsible scaling policy",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "frontier safety",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AI agent platform",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "foundation model provider",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "hyperscaler",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AI chip",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "TPU pod",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GPU cloud",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "token pricing",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "context caching",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "prompt caching API",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "structured outputs API",
+  "domain": "Ecosystem, products & orgs",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "expert systems",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "symbolic AI",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GOFAI",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Turing test",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ELIZA",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "word2vec",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "GloVe",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "n-gram model",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "bag of words",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "TF-IDF",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AGI",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "artificial general intelligence",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ASI",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "superintelligence",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "connectionism",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "perceptron",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Markov chain",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "hidden Markov model",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "support vector machine",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "decision tree",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "random forest",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "k-means",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "naive Bayes",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "logistic regression",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "feature engineering",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "hand-crafted features",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "rule-based system",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "knowledge base system",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "semantic web",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ontology",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "chatterbot",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AIML",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "statistical machine translation",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "recurrent language model",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "LSTM language model",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "ImageNet moment",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "AI winter",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "expert system shell",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "frame",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "production rules",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "fuzzy logic",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "genetic algorithm",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "swarm intelligence",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "reinforcement learning classic",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Q-learning",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "temporal difference",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "Boltzmann machine",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "restricted Boltzmann machine",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "deep belief network",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "autoencoder classic",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sparse coding",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "bag-of-features",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "sentiment lexicon",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "stop words",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "stemming",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "lemmatization",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "part-of-speech tagging",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "named entity recognition classic",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "dependency parsing",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ },
+ {
+  "term": "constituency parsing",
+  "domain": "History & deprecated",
+  "status": "",
+  "done": false
+ }
+]

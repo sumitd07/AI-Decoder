@@ -1,0 +1,502 @@
+{
+ "ids": {
+  "rag": {
+   "term": "RAG",
+   "status": "Core"
+  },
+  "evals": {
+   "term": "Evals",
+   "status": "Core"
+  },
+  "contextwindow": {
+   "term": "Context window",
+   "status": "Core"
+  },
+  "hitl": {
+   "term": "HITL",
+   "status": "Core"
+  },
+  "agents": {
+   "term": "Agents",
+   "status": "Rising"
+  },
+  "embeddings": {
+   "term": "Embeddings",
+   "status": "Core"
+  },
+  "finetuning": {
+   "term": "Fine-tuning",
+   "status": "Fading"
+  },
+  "vibecoding": {
+   "term": "Vibe coding",
+   "status": "Historical"
+  },
+  "promptengineering": {
+   "term": "Prompt engineering",
+   "status": "Fading"
+  },
+  "tokens": {
+   "term": "Tokens",
+   "status": "Core"
+  },
+  "hallucination": {
+   "term": "Hallucination",
+   "status": "Core"
+  },
+  "mcp": {
+   "term": "MCP",
+   "status": "Rising"
+  },
+  "chainofthought": {
+   "term": "Chain of thought",
+   "status": "Core"
+  },
+  "temperature": {
+   "term": "Temperature",
+   "status": "Core"
+  },
+  "promptinjection": {
+   "term": "Prompt injection",
+   "status": "Rising"
+  },
+  "llm": {
+   "term": "LLM",
+   "status": "Core"
+  },
+  "tokenization": {
+   "term": "Tokenization",
+   "status": "Core"
+  },
+  "parameters": {
+   "term": "Parameters",
+   "status": "Core"
+  },
+  "weights": {
+   "term": "Weights",
+   "status": "Core"
+  },
+  "neuralnetwork": {
+   "term": "Neural network",
+   "status": "Core"
+  },
+  "foundationmodel": {
+   "term": "Foundation model",
+   "status": "Core"
+  },
+  "basemodel": {
+   "term": "Base model",
+   "status": "Core"
+  },
+  "frontiermodel": {
+   "term": "Frontier model",
+   "status": "Rising"
+  },
+  "logits": {
+   "term": "Logits",
+   "status": "Core"
+  },
+  "softmax": {
+   "term": "Softmax",
+   "status": "Core"
+  },
+  "sampling": {
+   "term": "Sampling",
+   "status": "Core"
+  },
+  "topp": {
+   "term": "Top-p",
+   "status": "Core"
+  },
+  "topk": {
+   "term": "Top-k",
+   "status": "Core"
+  },
+  "greedydecoding": {
+   "term": "Greedy decoding",
+   "status": "Core"
+  },
+  "positionalencoding": {
+   "term": "Positional encoding",
+   "status": "Fading"
+  },
+  "vocabulary": {
+   "term": "Vocabulary",
+   "status": "Core"
+  },
+  "vectordatabase": {
+   "term": "Vector database",
+   "status": "Core"
+  },
+  "reranking": {
+   "term": "Reranking",
+   "status": "Rising"
+  },
+  "retrieval": {
+   "term": "Retrieval",
+   "status": "Core"
+  },
+  "chunking": {
+   "term": "Chunking",
+   "status": "Core"
+  },
+  "activationfunction": {
+   "term": "Activation function",
+   "status": "Core"
+  },
+  "hiddenstate": {
+   "term": "Hidden state",
+   "status": "Core"
+  },
+  "layer": {
+   "term": "Layer",
+   "status": "Core"
+  },
+  "deeplearning": {
+   "term": "Deep learning",
+   "status": "Core"
+  },
+  "machinelearning": {
+   "term": "Machine learning",
+   "status": "Core"
+  },
+  "artificialintelligence": {
+   "term": "Artificial intelligence",
+   "status": "Core"
+  },
+  "generativeai": {
+   "term": "Generative AI",
+   "status": "Core"
+  },
+  "autoregressive": {
+   "term": "Autoregressive",
+   "status": "Core"
+  },
+  "nexttokenprediction": {
+   "term": "Next-token prediction",
+   "status": "Core"
+  },
+  "probabilitydistribution": {
+   "term": "Probability distribution",
+   "status": "Core"
+  },
+  "vector": {
+   "term": "Vector",
+   "status": "Core"
+  },
+  "dimensionality": {
+   "term": "Dimensionality",
+   "status": "Core"
+  },
+  "latentspace": {
+   "term": "Latent space",
+   "status": "Core"
+  },
+  "representation": {
+   "term": "Representation",
+   "status": "Core"
+  },
+  "feature": {
+   "term": "Feature",
+   "status": "Core"
+  },
+  "weightsandbiases": {
+   "term": "Weights and biases",
+   "status": "Core"
+  },
+  "biasterm": {
+   "term": "Bias term",
+   "status": "Core"
+  },
+  "forwardpass": {
+   "term": "Forward pass",
+   "status": "Core"
+  },
+  "matrixmultiplication": {
+   "term": "Matrix multiplication",
+   "status": "Core"
+  },
+  "dotproduct": {
+   "term": "Dot product",
+   "status": "Core"
+  },
+  "cosinesimilarity": {
+   "term": "Cosine similarity",
+   "status": "Core"
+  },
+  "normalization": {
+   "term": "Normalization",
+   "status": "Core"
+  },
+  "layernormalization": {
+   "term": "Layer normalization",
+   "status": "Core"
+  },
+  "batchnormalization": {
+   "term": "Batch normalization",
+   "status": "Fading"
+  },
+  "dropout": {
+   "term": "Dropout",
+   "status": "Core"
+  },
+  "overfitting": {
+   "term": "Overfitting",
+   "status": "Core"
+  },
+  "underfitting": {
+   "term": "Underfitting",
+   "status": "Core"
+  },
+  "generalization": {
+   "term": "Generalization",
+   "status": "Core"
+  },
+  "inference": {
+   "term": "Inference",
+   "status": "Core"
+  },
+  "training": {
+   "term": "Training",
+   "status": "Core"
+  },
+  "modelsize": {
+   "term": "Model size",
+   "status": "Core"
+  },
+  "modelfamily": {
+   "term": "Model family",
+   "status": "Core"
+  },
+  "checkpoint": {
+   "term": "Checkpoint",
+   "status": "Core"
+  },
+  "modelcard": {
+   "term": "Model card",
+   "status": "Rising"
+  },
+  "openweights": {
+   "term": "Open weights",
+   "status": "Rising"
+  },
+  "closedmodel": {
+   "term": "Closed model",
+   "status": "Core"
+  },
+  "densemodel": {
+   "term": "Dense model",
+   "status": "Core"
+  },
+  "sparsemodel": {
+   "term": "Sparse model",
+   "status": "Rising"
+  },
+  "contextlength": {
+   "term": "Context length",
+   "status": "Core"
+  },
+  "sequencelength": {
+   "term": "Sequence length",
+   "status": "Core"
+  },
+  "prompt": {
+   "term": "Prompt",
+   "status": "Core"
+  },
+  "completion": {
+   "term": "Completion",
+   "status": "Core"
+  },
+  "systemmessage": {
+   "term": "System message",
+   "status": "Core"
+  },
+  "assistantmessage": {
+   "term": "Assistant message",
+   "status": "Core"
+  },
+  "usermessage": {
+   "term": "User message",
+   "status": "Core"
+  },
+  "turn": {
+   "term": "Turn",
+   "status": "Core"
+  },
+  "conversation": {
+   "term": "Conversation",
+   "status": "Core"
+  },
+  "stochastic": {
+   "term": "Stochastic",
+   "status": "Core"
+  },
+  "determinism": {
+   "term": "Determinism",
+   "status": "Core"
+  },
+  "seed": {
+   "term": "Seed",
+   "status": "Core"
+  }
+ },
+ "aliases": {
+  "rag": "rag",
+  "retrieval augmented generation": "rag",
+  "retrieval-augmented generation": "rag",
+  "evals": "evals",
+  "eval": "evals",
+  "evaluations": "evals",
+  "evaluation": "evals",
+  "context window": "contextwindow",
+  "hitl": "hitl",
+  "human in the loop": "hitl",
+  "agent": "agents",
+  "agents": "agents",
+  "agentic": "agents",
+  "embedding": "embeddings",
+  "embeddings": "embeddings",
+  "fine-tuning": "finetuning",
+  "fine tuning": "finetuning",
+  "finetuning": "finetuning",
+  "vibe coding": "vibecoding",
+  "vibe-coding": "vibecoding",
+  "vibecoding": "vibecoding",
+  "prompt engineering": "promptengineering",
+  "token": "tokens",
+  "tokens": "tokens",
+  "hallucinate": "hallucination",
+  "hallucination": "hallucination",
+  "hallucinations": "hallucination",
+  "mcp": "mcp",
+  "model context protocol": "mcp",
+  "chain of thought": "chainofthought",
+  "cot": "chainofthought",
+  "temperature": "temperature",
+  "prompt injection": "promptinjection",
+  "llm": "llm",
+  "large language model": "llm",
+  "large language models": "llm",
+  "tokenization": "tokenization",
+  "tokenize": "tokenization",
+  "tokenizer": "tokenization",
+  "parameter": "parameters",
+  "parameters": "parameters",
+  "weight": "weights",
+  "weights": "weights",
+  "model weights": "weights",
+  "neural network": "neuralnetwork",
+  "neural net": "neuralnetwork",
+  "neural networks": "neuralnetwork",
+  "foundation model": "foundationmodel",
+  "foundation models": "foundationmodel",
+  "base model": "basemodel",
+  "pretrained model": "basemodel",
+  "frontier model": "frontiermodel",
+  "frontier models": "frontiermodel",
+  "logit": "logits",
+  "logits": "logits",
+  "softmax": "softmax",
+  "sampling": "sampling",
+  "sample": "sampling",
+  "top-p": "topp",
+  "top p": "topp",
+  "topp": "topp",
+  "nucleus sampling": "topp",
+  "top-k": "topk",
+  "top k": "topk",
+  "topk": "topk",
+  "greedy decoding": "greedydecoding",
+  "greedy": "greedydecoding",
+  "greedy search": "greedydecoding",
+  "positional encoding": "positionalencoding",
+  "position embedding": "positionalencoding",
+  "positional embeddings": "positionalencoding",
+  "vocabulary": "vocabulary",
+  "vocab": "vocabulary",
+  "vector database": "vectordatabase",
+  "vector db": "vectordatabase",
+  "vector store": "vectordatabase",
+  "reranking": "reranking",
+  "reranker": "reranking",
+  "re-rank": "reranking",
+  "retrieval": "retrieval",
+  "retriever": "retrieval",
+  "chunking": "chunking",
+  "chunk": "chunking",
+  "chunk overlap": "chunking",
+  "activation function": "activationfunction",
+  "activation": "activationfunction",
+  "hidden state": "hiddenstate",
+  "layer": "layer",
+  "deep learning": "deeplearning",
+  "dl": "deeplearning",
+  "machine learning": "machinelearning",
+  "ml": "machinelearning",
+  "artificial intelligence": "artificialintelligence",
+  "ai": "artificialintelligence",
+  "generative ai": "generativeai",
+  "genai": "generativeai",
+  "autoregressive": "autoregressive",
+  "auto-regressive": "autoregressive",
+  "next-token prediction": "nexttokenprediction",
+  "next token prediction": "nexttokenprediction",
+  "probability distribution": "probabilitydistribution",
+  "vector": "vector",
+  "dimensionality": "dimensionality",
+  "dimensions": "dimensionality",
+  "latent space": "latentspace",
+  "representation": "representation",
+  "feature": "feature",
+  "weights and biases": "weightsandbiases",
+  "bias term": "biasterm",
+  "bias": "biasterm",
+  "forward pass": "forwardpass",
+  "matrix multiplication": "matrixmultiplication",
+  "matmul": "matrixmultiplication",
+  "dot product": "dotproduct",
+  "cosine similarity": "cosinesimilarity",
+  "normalization": "normalization",
+  "normalize": "normalization",
+  "layer normalization": "layernormalization",
+  "layernorm": "layernormalization",
+  "batch normalization": "batchnormalization",
+  "batchnorm": "batchnormalization",
+  "dropout": "dropout",
+  "overfitting": "overfitting",
+  "overfit": "overfitting",
+  "underfitting": "underfitting",
+  "underfit": "underfitting",
+  "generalization": "generalization",
+  "generalize": "generalization",
+  "inference": "inference",
+  "training": "training",
+  "train": "training",
+  "model size": "modelsize",
+  "model family": "modelfamily",
+  "checkpoint": "checkpoint",
+  "model card": "modelcard",
+  "open weights": "openweights",
+  "open-weights": "openweights",
+  "closed model": "closedmodel",
+  "proprietary model": "closedmodel",
+  "dense model": "densemodel",
+  "sparse model": "sparsemodel",
+  "context length": "contextlength",
+  "sequence length": "sequencelength",
+  "seq len": "sequencelength",
+  "prompt": "prompt",
+  "completion": "completion",
+  "system message": "systemmessage",
+  "system prompt": "systemmessage",
+  "assistant message": "assistantmessage",
+  "user message": "usermessage",
+  "turn": "turn",
+  "conversation": "conversation",
+  "stochastic": "stochastic",
+  "determinism": "determinism",
+  "deterministic": "determinism",
+  "seed": "seed"
+ }
+}
