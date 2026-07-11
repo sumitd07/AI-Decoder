@@ -6,6 +6,7 @@ Compact snapshot so a new session doesn't re-derive everything. For deep history
 A plain-language glossary for AI terms. Look a term up (or click it while reading) → get a simple explanation + example + status (Core/Rising/Fading/Historical). Sign in to save terms; they sync across the web app and the browser extension.
 
 - **Live site:** https://aidecoder.app (Vercel; also `ai-decoder-nine.vercel.app`).
+- **Live extension:** https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh (Chrome Web Store). Local code is at v1.0.1 (popup gained a web-app footer link) — needs a re-zip + store upload to ship.
 - **Terminology:** the saved collection is called **"saved terms"** (NOT "cheatsheet" — renamed). Tone: simple, direct, minimal formatting.
 
 ## Layout
@@ -26,9 +27,13 @@ A plain-language glossary for AI terms. Look a term up (or click it while readin
 
 ## Known gaps / TODO
 - **Domain:** DONE — `aidecoder.app` live on Vercel.
+- **Store submission:** DONE — extension is live (see link above).
+- **Ship v1.0.1:** re-zip `extension/` and upload to the Web Store dashboard (popup footer link + version bump are local-only until then).
+- **Deploy web changes:** push/redeploy `web/` to Vercel (store CTA, favicon, `cheatsheet_items` table fix, perf pass — all local until deployed).
 - **Extension OAuth untested** — needs the extension's `https://<id>.chromiumapp.org/` redirect added to Supabase Redirect URLs, and one real-browser debug pass.
-- **Store submission:** needs real 1280×800 screenshots; permission justifications/data-collection/reviewer note are written in `STORE-LISTING.md`.
+- **DB `related` text quality:** DB-seeded terms show fragment-y Related rows ("The window itself is the") — flagged as a separate task.
 
 ## Working constraints
-- No browser / no Supabase / npm registry blocked in this sandbox. Verify code with `node --check` + static/grep checks; visual + OAuth testing happens in the user's browser.
+- Cowork sessions CAN now use a browser preview + reach Supabase over the network (both were blocked in earlier sandboxes; DECISIONS entries 1–21 predate this). Preview: `scripts/preview-server.js` serves `web/` on :8743 (and `/extension/popup.html`); a `decoder-web` entry exists in Cowork's `.claude/launch.json`.
+- Still off-limits: signing into Google/Supabase accounts and entering credentials — OAuth flows and store uploads are the user's.
 - Contact email: sumitd0704@gmail.com.

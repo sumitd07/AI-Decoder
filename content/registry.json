@@ -739,6 +739,606 @@
   "gradientaccumulation": {
    "term": "Gradient accumulation",
    "status": "Core"
+  },
+  "mixedprecision": {
+   "term": "Mixed precision",
+   "status": "Core"
+  },
+  "checkpointing": {
+   "term": "Checkpointing",
+   "status": "Core"
+  },
+  "earlystopping": {
+   "term": "Early stopping",
+   "status": "Core"
+  },
+  "validationset": {
+   "term": "Validation set",
+   "status": "Core"
+  },
+  "trainingset": {
+   "term": "Training set",
+   "status": "Core"
+  },
+  "testset": {
+   "term": "Test set",
+   "status": "Core"
+  },
+  "holdout": {
+   "term": "Holdout",
+   "status": "Core"
+  },
+  "crossvalidation": {
+   "term": "Cross-validation",
+   "status": "Core"
+  },
+  "hyperparameter": {
+   "term": "Hyperparameter",
+   "status": "Core"
+  },
+  "hyperparametertuning": {
+   "term": "Hyperparameter tuning",
+   "status": "Core"
+  },
+  "gridsearch": {
+   "term": "Grid search",
+   "status": "Fading"
+  },
+  "scalinglaws": {
+   "term": "Scaling laws",
+   "status": "Core"
+  },
+  "computeoptimal": {
+   "term": "Compute-optimal",
+   "status": "Rising"
+  },
+  "chinchillascaling": {
+   "term": "Chinchilla scaling",
+   "status": "Rising"
+  },
+  "datamixture": {
+   "term": "Data mixture",
+   "status": "Rising"
+  },
+  "tokensperparameter": {
+   "term": "Tokens per parameter",
+   "status": "Rising"
+  },
+  "emergence": {
+   "term": "Emergence",
+   "status": "Rising"
+  },
+  "rewardhacking": {
+   "term": "Reward hacking",
+   "status": "Rising"
+  },
+  "rewardshaping": {
+   "term": "Reward shaping",
+   "status": "Core"
+  },
+  "policygradient": {
+   "term": "Policy gradient",
+   "status": "Core"
+  },
+  "ppo": {
+   "term": "PPO",
+   "status": "Core"
+  },
+  "kldivergence": {
+   "term": "KL divergence",
+   "status": "Core"
+  },
+  "rewardsignal": {
+   "term": "Reward signal",
+   "status": "Core"
+  },
+  "humanfeedback": {
+   "term": "Human feedback",
+   "status": "Core"
+  },
+  "preferenceoptimization": {
+   "term": "Preference optimization",
+   "status": "Rising"
+  },
+  "rejectionsampling": {
+   "term": "Rejection sampling",
+   "status": "Rising"
+  },
+  "bestofn": {
+   "term": "Best-of-n",
+   "status": "Rising"
+  },
+  "selfdistillation": {
+   "term": "Self-distillation",
+   "status": "Rising"
+  },
+  "teacherforcing": {
+   "term": "Teacher forcing",
+   "status": "Core"
+  },
+  "labelsmoothing": {
+   "term": "Label smoothing",
+   "status": "Core"
+  },
+  "datacuration": {
+   "term": "Data curation",
+   "status": "Core"
+  },
+  "datafiltering": {
+   "term": "Data filtering",
+   "status": "Core"
+  },
+  "qualityfiltering": {
+   "term": "Quality filtering",
+   "status": "Rising"
+  },
+  "datapipeline": {
+   "term": "Data pipeline",
+   "status": "Core"
+  },
+  "pretrainingcorpus": {
+   "term": "Pretraining corpus",
+   "status": "Core"
+  },
+  "webcrawl": {
+   "term": "Web crawl",
+   "status": "Core"
+  },
+  "commoncrawl": {
+   "term": "Common Crawl",
+   "status": "Core"
+  },
+  "tokenizertraining": {
+   "term": "Tokenizer training",
+   "status": "Core"
+  },
+  "vocabularysize": {
+   "term": "Vocabulary size",
+   "status": "Core"
+  },
+  "contextextension": {
+   "term": "Context extension",
+   "status": "Rising"
+  },
+  "longcontexttraining": {
+   "term": "Long-context training",
+   "status": "Rising"
+  },
+  "alignmenttax": {
+   "term": "Alignment tax",
+   "status": "Rising"
+  },
+  "refusaltraining": {
+   "term": "Refusal training",
+   "status": "Rising"
+  },
+  "safetyfinetuning": {
+   "term": "Safety fine-tuning",
+   "status": "Rising"
+  },
+  "redteamingdata": {
+   "term": "Red-teaming data",
+   "status": "Rising"
+  },
+  "instructiondataset": {
+   "term": "Instruction dataset",
+   "status": "Core"
+  },
+  "chattemplate": {
+   "term": "Chat template",
+   "status": "Core"
+  },
+  "turnbasedtraining": {
+   "term": "Turn-based training",
+   "status": "Rising"
+  },
+  "rewardmodeltraining": {
+   "term": "Reward model training",
+   "status": "Core"
+  },
+  "annotatoragreement": {
+   "term": "Annotator agreement",
+   "status": "Core"
+  },
+  "goldlabels": {
+   "term": "Gold Labels",
+   "status": "Core"
+  },
+  "weaksupervision": {
+   "term": "Weak Supervision",
+   "status": "Rising"
+  },
+  "activelearning": {
+   "term": "Active Learning",
+   "status": "Core"
+  },
+  "dataflywheel": {
+   "term": "Data Flywheel",
+   "status": "Rising"
+  },
+  "modelmerging": {
+   "term": "Model Merging",
+   "status": "Rising"
+  },
+  "modelsoup": {
+   "term": "Model Soup",
+   "status": "Rising"
+  },
+  "weightaveraging": {
+   "term": "Weight Averaging",
+   "status": "Core"
+  },
+  "ema": {
+   "term": "EMA",
+   "status": "Core"
+  },
+  "finetunevsprompt": {
+   "term": "Fine-tune vs Prompt",
+   "status": "Core"
+  },
+  "overfittoeval": {
+   "term": "Overfit to Eval",
+   "status": "Rising"
+  },
+  "traintestleakage": {
+   "term": "Train-Test Leakage",
+   "status": "Core"
+  },
+  "checkpointaveraging": {
+   "term": "Checkpoint Averaging",
+   "status": "Core"
+  },
+  "continuallearning": {
+   "term": "Continual Learning",
+   "status": "Rising"
+  },
+  "domainadaptation": {
+   "term": "Domain Adaptation",
+   "status": "Core"
+  },
+  "replaybuffer": {
+   "term": "Replay Buffer",
+   "status": "Core"
+  },
+  "syntheticbootstrapping": {
+   "term": "Synthetic Bootstrapping",
+   "status": "Rising"
+  },
+  "distillationdataset": {
+   "term": "Distillation Dataset",
+   "status": "Rising"
+  },
+  "transformer": {
+   "term": "Transformer",
+   "status": "Core"
+  },
+  "attention": {
+   "term": "Attention",
+   "status": "Core"
+  },
+  "selfattention": {
+   "term": "Self-Attention",
+   "status": "Core"
+  },
+  "crossattention": {
+   "term": "Cross-Attention",
+   "status": "Core"
+  },
+  "multiheadattention": {
+   "term": "Multi-Head Attention",
+   "status": "Core"
+  },
+  "feedforwardnetwork": {
+   "term": "Feed-Forward Network",
+   "status": "Core"
+  },
+  "residualconnection": {
+   "term": "Residual Connection",
+   "status": "Core"
+  },
+  "skipconnection": {
+   "term": "Skip Connection",
+   "status": "Core"
+  },
+  "encoder": {
+   "term": "Encoder",
+   "status": "Core"
+  },
+  "decoder": {
+   "term": "Decoder",
+   "status": "Core"
+  },
+  "encoderdecoder": {
+   "term": "Encoder-Decoder",
+   "status": "Core"
+  },
+  "attentionhead": {
+   "term": "Attention Head",
+   "status": "Core"
+  },
+  "querykeyvalue": {
+   "term": "Query, Key, Value",
+   "status": "Core"
+  },
+  "scaleddotproductattention": {
+   "term": "Scaled Dot-Product Attention",
+   "status": "Core"
+  },
+  "maskedattention": {
+   "term": "Masked Attention",
+   "status": "Core"
+  },
+  "causalattention": {
+   "term": "Causal Attention",
+   "status": "Core"
+  },
+  "mixtureofexperts": {
+   "term": "Mixture of Experts",
+   "status": "Rising"
+  },
+  "sparseattention": {
+   "term": "Sparse Attention",
+   "status": "Rising"
+  },
+  "flashattention": {
+   "term": "Flash Attention",
+   "status": "Rising"
+  },
+  "slidingwindowattention": {
+   "term": "Sliding Window Attention",
+   "status": "Rising"
+  },
+  "groupedqueryattention": {
+   "term": "Grouped-Query Attention",
+   "status": "Rising"
+  },
+  "multiqueryattention": {
+   "term": "Multi-Query Attention",
+   "status": "Rising"
+  },
+  "kvcache": {
+   "term": "KV Cache",
+   "status": "Core"
+  },
+  "rotaryembeddings": {
+   "term": "Rotary Embeddings",
+   "status": "Rising"
+  },
+  "alibi": {
+   "term": "ALiBi",
+   "status": "Fading"
+  },
+  "positionalembedding": {
+   "term": "Positional Embedding",
+   "status": "Core"
+  },
+  "convolutionalneuralnetwork": {
+   "term": "Convolutional Neural Network",
+   "status": "Core"
+  },
+  "recurrentneuralnetwork": {
+   "term": "Recurrent Neural Network",
+   "status": "Fading"
+  },
+  "lstm": {
+   "term": "LSTM",
+   "status": "Fading"
+  },
+  "gru": {
+   "term": "GRU",
+   "status": "Fading"
+  },
+  "statespacemodel": {
+   "term": "State Space Model",
+   "status": "Rising"
+  },
+  "mamba": {
+   "term": "Mamba",
+   "status": "Rising"
+  },
+  "rwkv": {
+   "term": "RWKV",
+   "status": "Rising"
+  },
+  "diffusionmodel": {
+   "term": "Diffusion Model",
+   "status": "Core"
+  },
+  "denoisingdiffusion": {
+   "term": "Denoising Diffusion",
+   "status": "Core"
+  },
+  "gan": {
+   "term": "GAN",
+   "status": "Fading"
+  },
+  "generativeadversarialnetwork": {
+   "term": "Generative Adversarial Network",
+   "status": "Fading"
+  },
+  "vae": {
+   "term": "VAE",
+   "status": "Core"
+  },
+  "variationalautoencoder": {
+   "term": "Variational Autoencoder",
+   "status": "Core"
+  },
+  "autoencoder": {
+   "term": "Autoencoder",
+   "status": "Core"
+  },
+  "unet": {
+   "term": "U-Net",
+   "status": "Core"
+  },
+  "resnet": {
+   "term": "ResNet",
+   "status": "Core"
+  },
+  "bert": {
+   "term": "BERT",
+   "status": "Fading"
+  },
+  "gptarchitecture": {
+   "term": "GPT Architecture",
+   "status": "Core"
+  },
+  "t5": {
+   "term": "T5",
+   "status": "Fading"
+  },
+  "attentionisallyouneed": {
+   "term": "Attention Is All You Need",
+   "status": "Historical"
+  },
+  "reasoningmodel": {
+   "term": "Reasoning Model",
+   "status": "Rising"
+  },
+  "treeofthought": {
+   "term": "Tree of Thought",
+   "status": "Rising"
+  },
+  "testtimecompute": {
+   "term": "Test-Time Compute",
+   "status": "Rising"
+  },
+  "inferencetimescaling": {
+   "term": "Inference-Time Scaling",
+   "status": "Rising"
+  },
+  "expertrouting": {
+   "term": "Expert Routing",
+   "status": "Rising"
+  },
+  "gatingnetwork": {
+   "term": "Gating Network",
+   "status": "Rising"
+  },
+  "routernetwork": {
+   "term": "Router Network",
+   "status": "Rising"
+  },
+  "tokenizerfree": {
+   "term": "Tokenizer-Free",
+   "status": "Rising"
+  },
+  "bytelevelmodel": {
+   "term": "Byte-Level Model",
+   "status": "Rising"
+  },
+  "hybridarchitecture": {
+   "term": "Hybrid Architecture",
+   "status": "Rising"
+  },
+  "retrievalaugmentedarchitecture": {
+   "term": "Retrieval-Augmented Architecture",
+   "status": "Core"
+  },
+  "memoryaugmentednetwork": {
+   "term": "Memory-Augmented Network",
+   "status": "Fading"
+  },
+  "pointernetwork": {
+   "term": "Pointer Network",
+   "status": "Fading"
+  },
+  "graphneuralnetwork": {
+   "term": "Graph Neural Network",
+   "status": "Core"
+  },
+  "embeddinglayer": {
+   "term": "Embedding Layer",
+   "status": "Core"
+  },
+  "outputhead": {
+   "term": "Output Head",
+   "status": "Core"
+  },
+  "languagemodelinghead": {
+   "term": "Language Modeling Head",
+   "status": "Core"
+  },
+  "classificationhead": {
+   "term": "Classification Head",
+   "status": "Core"
+  },
+  "pooling": {
+   "term": "Pooling",
+   "status": "Core"
+  },
+  "meanpooling": {
+   "term": "Mean Pooling",
+   "status": "Core"
+  },
+  "clstoken": {
+   "term": "CLS Token",
+   "status": "Fading"
+  },
+  "contextparallelism": {
+   "term": "Context Parallelism",
+   "status": "Rising"
+  },
+  "tensorparallelism": {
+   "term": "Tensor Parallelism",
+   "status": "Core"
+  },
+  "pipelineparallelism": {
+   "term": "Pipeline Parallelism",
+   "status": "Core"
+  },
+  "modelparallelism": {
+   "term": "Model Parallelism",
+   "status": "Core"
+  },
+  "attentionsink": {
+   "term": "Attention Sink",
+   "status": "Rising"
+  },
+  "longcontextarchitecture": {
+   "term": "Long-Context Architecture",
+   "status": "Rising"
+  },
+  "sparsemixture": {
+   "term": "Sparse Mixture",
+   "status": "Rising"
+  },
+  "densetransformer": {
+   "term": "Dense Transformer",
+   "status": "Core"
+  },
+  "encoderonly": {
+   "term": "Encoder-Only",
+   "status": "Fading"
+  },
+  "bidirectionalmodel": {
+   "term": "Bidirectional Model",
+   "status": "Fading"
+  },
+  "causallanguagemodel": {
+   "term": "Causal Language Model",
+   "status": "Core"
+  },
+  "maskedlanguagemodel": {
+   "term": "Masked Language Model",
+   "status": "Fading"
+  },
+  "prefixlm": {
+   "term": "Prefix LM",
+   "status": "Fading"
+  },
+  "speculativearchitecture": {
+   "term": "Speculative Architecture",
+   "status": "Rising"
+  },
+  "draftmodel": {
+   "term": "Draft Model",
+   "status": "Rising"
+  },
+  "moerouting": {
+   "term": "MoE Routing",
+   "status": "Rising"
   }
  },
  "aliases": {
@@ -1151,6 +1751,399 @@
   "grad clipping": "gradientclipping",
   "clip gradients": "gradientclipping",
   "gradient accumulation": "gradientaccumulation",
-  "grad accumulation": "gradientaccumulation"
+  "grad accumulation": "gradientaccumulation",
+  "mixed precision": "mixedprecision",
+  "mixed-precision training": "mixedprecision",
+  "fp16 training": "mixedprecision",
+  "bf16 training": "mixedprecision",
+  "checkpointing": "checkpointing",
+  "gradient checkpointing": "checkpointing",
+  "activation checkpointing": "checkpointing",
+  "early stopping": "earlystopping",
+  "early-stopping": "earlystopping",
+  "validation set": "validationset",
+  "dev set": "validationset",
+  "development set": "validationset",
+  "val set": "validationset",
+  "training set": "trainingset",
+  "train split": "trainingset",
+  "training data split": "trainingset",
+  "test set": "testset",
+  "test split": "testset",
+  "held-out test set": "testset",
+  "holdout": "holdout",
+  "holdout set": "holdout",
+  "held-out data": "holdout",
+  "cross-validation": "crossvalidation",
+  "cross validation": "crossvalidation",
+  "k-fold": "crossvalidation",
+  "k-fold cross-validation": "crossvalidation",
+  "hyperparameter": "hyperparameter",
+  "hyper-parameter": "hyperparameter",
+  "hyperparameters": "hyperparameter",
+  "hyperparameter tuning": "hyperparametertuning",
+  "hyperparameter optimization": "hyperparametertuning",
+  "hpo": "hyperparametertuning",
+  "hyperparameter search": "hyperparametertuning",
+  "grid search": "gridsearch",
+  "grid-search": "gridsearch",
+  "scaling laws": "scalinglaws",
+  "scaling law": "scalinglaws",
+  "neural scaling laws": "scalinglaws",
+  "compute-optimal": "computeoptimal",
+  "compute optimal": "computeoptimal",
+  "compute-optimal training": "computeoptimal",
+  "chinchilla scaling": "chinchillascaling",
+  "chinchilla-optimal": "chinchillascaling",
+  "chinchilla scaling laws": "chinchillascaling",
+  "data mixture": "datamixture",
+  "data mix": "datamixture",
+  "training data mixture": "datamixture",
+  "tokens per parameter": "tokensperparameter",
+  "token-to-parameter ratio": "tokensperparameter",
+  "tokens-per-parameter": "tokensperparameter",
+  "emergence": "emergence",
+  "emergent behavior": "emergence",
+  "emergent behaviour": "emergence",
+  "reward hacking": "rewardhacking",
+  "specification gaming": "rewardhacking",
+  "reward gaming": "rewardhacking",
+  "reward shaping": "rewardshaping",
+  "shaped reward": "rewardshaping",
+  "policy gradient": "policygradient",
+  "policy gradients": "policygradient",
+  "policy gradient methods": "policygradient",
+  "ppo": "ppo",
+  "proximal policy optimization": "ppo",
+  "kl divergence": "kldivergence",
+  "kullback-leibler divergence": "kldivergence",
+  "kl penalty": "kldivergence",
+  "reward signal": "rewardsignal",
+  "reward": "rewardsignal",
+  "human feedback": "humanfeedback",
+  "human preferences": "humanfeedback",
+  "human ratings": "humanfeedback",
+  "preference optimization": "preferenceoptimization",
+  "preference-based optimization": "preferenceoptimization",
+  "preference learning": "preferenceoptimization",
+  "rejection sampling": "rejectionsampling",
+  "rejection-sampling": "rejectionsampling",
+  "best-of-n": "bestofn",
+  "best of n": "bestofn",
+  "bon sampling": "bestofn",
+  "self-distillation": "selfdistillation",
+  "self distillation": "selfdistillation",
+  "teacher forcing": "teacherforcing",
+  "teacher-forcing": "teacherforcing",
+  "label smoothing": "labelsmoothing",
+  "label-smoothing": "labelsmoothing",
+  "data curation": "datacuration",
+  "dataset curation": "datacuration",
+  "data curating": "datacuration",
+  "data filtering": "datafiltering",
+  "data filter": "datafiltering",
+  "content filtering": "datafiltering",
+  "quality filtering": "qualityfiltering",
+  "quality filter": "qualityfiltering",
+  "quality classifier": "qualityfiltering",
+  "data pipeline": "datapipeline",
+  "data-processing pipeline": "datapipeline",
+  "preprocessing pipeline": "datapipeline",
+  "pretraining corpus": "pretrainingcorpus",
+  "pretraining data": "pretrainingcorpus",
+  "training corpus": "pretrainingcorpus",
+  "web crawl": "webcrawl",
+  "web-crawled data": "webcrawl",
+  "crawled web data": "webcrawl",
+  "common crawl": "commoncrawl",
+  "commoncrawl": "commoncrawl",
+  "tokenizer training": "tokenizertraining",
+  "training a tokenizer": "tokenizertraining",
+  "tokenizer fitting": "tokenizertraining",
+  "vocabulary size": "vocabularysize",
+  "vocab size": "vocabularysize",
+  "context extension": "contextextension",
+  "context window extension": "contextextension",
+  "context length extension": "contextextension",
+  "long-context training": "longcontexttraining",
+  "long context training": "longcontexttraining",
+  "alignment tax": "alignmenttax",
+  "safety tax": "alignmenttax",
+  "refusal training": "refusaltraining",
+  "refusal tuning": "refusaltraining",
+  "teaching refusals": "refusaltraining",
+  "safety fine-tuning": "safetyfinetuning",
+  "safety finetuning": "safetyfinetuning",
+  "safety tuning": "safetyfinetuning",
+  "red-teaming data": "redteamingdata",
+  "red-team data": "redteamingdata",
+  "red teaming data": "redteamingdata",
+  "instruction dataset": "instructiondataset",
+  "instruction data": "instructiondataset",
+  "instruction-tuning dataset": "instructiondataset",
+  "chat template": "chattemplate",
+  "chat formatting": "chattemplate",
+  "conversation template": "chattemplate",
+  "turn-based training": "turnbasedtraining",
+  "multi-turn training": "turnbasedtraining",
+  "multi-turn fine-tuning": "turnbasedtraining",
+  "reward model training": "rewardmodeltraining",
+  "training the reward model": "rewardmodeltraining",
+  "reward modeling": "rewardmodeltraining",
+  "annotator agreement": "annotatoragreement",
+  "inter-annotator agreement": "annotatoragreement",
+  "inter-rater reliability": "annotatoragreement",
+  "gold labels": "goldlabels",
+  "gold standard labels": "goldlabels",
+  "ground truth labels": "goldlabels",
+  "weak supervision": "weaksupervision",
+  "weakly supervised": "weaksupervision",
+  "active learning": "activelearning",
+  "data flywheel": "dataflywheel",
+  "data flywheels": "dataflywheel",
+  "model merging": "modelmerging",
+  "merged model": "modelmerging",
+  "model soup": "modelsoup",
+  "model soups": "modelsoup",
+  "weight averaging": "weightaveraging",
+  "averaged weights": "weightaveraging",
+  "ema": "ema",
+  "exponential moving average": "ema",
+  "fine-tune vs prompt": "finetunevsprompt",
+  "fine-tuning vs prompting": "finetunevsprompt",
+  "finetune vs prompt": "finetunevsprompt",
+  "overfit to eval": "overfittoeval",
+  "overfitting to the eval": "overfittoeval",
+  "teaching to the test": "overfittoeval",
+  "train-test leakage": "traintestleakage",
+  "data leakage": "traintestleakage",
+  "test set leakage": "traintestleakage",
+  "checkpoint averaging": "checkpointaveraging",
+  "averaged checkpoints": "checkpointaveraging",
+  "continual learning": "continuallearning",
+  "lifelong learning": "continuallearning",
+  "incremental learning": "continuallearning",
+  "domain adaptation": "domainadaptation",
+  "domain adapting": "domainadaptation",
+  "replay buffer": "replaybuffer",
+  "experience replay": "replaybuffer",
+  "synthetic bootstrapping": "syntheticbootstrapping",
+  "bootstrapping data": "syntheticbootstrapping",
+  "distillation dataset": "distillationdataset",
+  "distillation data": "distillationdataset",
+  "transformer": "transformer",
+  "transformers": "transformer",
+  "attention": "attention",
+  "attention mechanism": "attention",
+  "self-attention": "selfattention",
+  "self attention": "selfattention",
+  "cross-attention": "crossattention",
+  "cross attention": "crossattention",
+  "multi-head attention": "multiheadattention",
+  "multihead attention": "multiheadattention",
+  "mha": "multiheadattention",
+  "feed-forward network": "feedforwardnetwork",
+  "feedforward network": "feedforwardnetwork",
+  "ffn": "feedforwardnetwork",
+  "mlp": "feedforwardnetwork",
+  "residual connection": "residualconnection",
+  "residual connections": "residualconnection",
+  "skip connection": "skipconnection",
+  "skip connections": "skipconnection",
+  "encoder": "encoder",
+  "encoders": "encoder",
+  "decoder": "decoder",
+  "decoders": "decoder",
+  "decoder-only": "decoder",
+  "decoder only": "decoder",
+  "encoder-decoder": "encoderdecoder",
+  "encoder decoder": "encoderdecoder",
+  "seq2seq": "encoderdecoder",
+  "sequence to sequence": "encoderdecoder",
+  "attention head": "attentionhead",
+  "attention heads": "attentionhead",
+  "query key value": "querykeyvalue",
+  "qkv": "querykeyvalue",
+  "queries keys values": "querykeyvalue",
+  "scaled dot-product attention": "scaleddotproductattention",
+  "scaled dot product attention": "scaleddotproductattention",
+  "masked attention": "maskedattention",
+  "attention masking": "maskedattention",
+  "causal attention": "causalattention",
+  "causal masking": "causalattention",
+  "autoregressive masking": "causalattention",
+  "mixture of experts": "mixtureofexperts",
+  "moe": "mixtureofexperts",
+  "sparse attention": "sparseattention",
+  "flash attention": "flashattention",
+  "flashattention": "flashattention",
+  "sliding window attention": "slidingwindowattention",
+  "local attention": "slidingwindowattention",
+  "grouped-query attention": "groupedqueryattention",
+  "grouped query attention": "groupedqueryattention",
+  "gqa": "groupedqueryattention",
+  "multi-query attention": "multiqueryattention",
+  "multi query attention": "multiqueryattention",
+  "mqa": "multiqueryattention",
+  "kv cache": "kvcache",
+  "key-value cache": "kvcache",
+  "kv caching": "kvcache",
+  "rotary embeddings": "rotaryembeddings",
+  "rotary position embedding": "rotaryembeddings",
+  "rope": "rotaryembeddings",
+  "alibi": "alibi",
+  "attention with linear biases": "alibi",
+  "positional embedding": "positionalembedding",
+  "learned position embedding": "positionalembedding",
+  "convolutional neural network": "convolutionalneuralnetwork",
+  "cnn": "convolutionalneuralnetwork",
+  "convnet": "convolutionalneuralnetwork",
+  "recurrent neural network": "recurrentneuralnetwork",
+  "rnn": "recurrentneuralnetwork",
+  "lstm": "lstm",
+  "long short-term memory": "lstm",
+  "gru": "gru",
+  "gated recurrent unit": "gru",
+  "state space model": "statespacemodel",
+  "ssm": "statespacemodel",
+  "mamba": "mamba",
+  "rwkv": "rwkv",
+  "diffusionmodel": "diffusionmodel",
+  "diffusion model": "diffusionmodel",
+  "diffusion models": "diffusionmodel",
+  "denoisingdiffusion": "denoisingdiffusion",
+  "denoising diffusion": "denoisingdiffusion",
+  "ddpm": "denoisingdiffusion",
+  "gan": "gan",
+  "gans": "gan",
+  "generative adversarial network": "gan",
+  "generativeadversarialnetwork": "generativeadversarialnetwork",
+  "vae": "vae",
+  "vaes": "vae",
+  "variational autoencoder": "vae",
+  "variationalautoencoder": "variationalautoencoder",
+  "autoencoder": "autoencoder",
+  "autoencoders": "autoencoder",
+  "auto-encoder": "autoencoder",
+  "unet": "unet",
+  "u-net": "unet",
+  "u net": "unet",
+  "resnet": "resnet",
+  "resnets": "resnet",
+  "residual network": "resnet",
+  "bert": "bert",
+  "berts": "bert",
+  "gptarchitecture": "gptarchitecture",
+  "gpt architecture": "gptarchitecture",
+  "decoder-only transformer": "gptarchitecture",
+  "t5": "t5",
+  "text-to-text transfer transformer": "t5",
+  "attentionisallyouneed": "attentionisallyouneed",
+  "attention is all you need": "attentionisallyouneed",
+  "reasoningmodel": "reasoningmodel",
+  "reasoning model": "reasoningmodel",
+  "reasoning llm": "reasoningmodel",
+  "treeofthought": "treeofthought",
+  "tree of thought": "treeofthought",
+  "tree-of-thoughts": "treeofthought",
+  "tot": "treeofthought",
+  "testtimecompute": "testtimecompute",
+  "test-time compute": "testtimecompute",
+  "test time compute": "testtimecompute",
+  "inferencetimescaling": "inferencetimescaling",
+  "inference-time scaling": "inferencetimescaling",
+  "inference time scaling": "inferencetimescaling",
+  "expertrouting": "expertrouting",
+  "expert routing": "expertrouting",
+  "gatingnetwork": "gatingnetwork",
+  "gating network": "gatingnetwork",
+  "gate network": "gatingnetwork",
+  "routernetwork": "routernetwork",
+  "router network": "routernetwork",
+  "router": "routernetwork",
+  "tokenizerfree": "tokenizerfree",
+  "tokenizer-free": "tokenizerfree",
+  "tokenizer free": "tokenizerfree",
+  "bytelevelmodel": "bytelevelmodel",
+  "byte-level model": "bytelevelmodel",
+  "byte level model": "bytelevelmodel",
+  "hybridarchitecture": "hybridarchitecture",
+  "hybrid architecture": "hybridarchitecture",
+  "hybrid model": "hybridarchitecture",
+  "retrievalaugmentedarchitecture": "retrievalaugmentedarchitecture",
+  "retrieval-augmented architecture": "retrievalaugmentedarchitecture",
+  "memoryaugmentednetwork": "memoryaugmentednetwork",
+  "memory-augmented network": "memoryaugmentednetwork",
+  "memory augmented network": "memoryaugmentednetwork",
+  "pointernetwork": "pointernetwork",
+  "pointer network": "pointernetwork",
+  "pointer net": "pointernetwork",
+  "graphneuralnetwork": "graphneuralnetwork",
+  "graph neural network": "graphneuralnetwork",
+  "gnn": "graphneuralnetwork",
+  "gnns": "graphneuralnetwork",
+  "embeddinglayer": "embeddinglayer",
+  "embedding layer": "embeddinglayer",
+  "outputhead": "outputhead",
+  "output head": "outputhead",
+  "head": "outputhead",
+  "languagemodelinghead": "languagemodelinghead",
+  "language modeling head": "languagemodelinghead",
+  "lm head": "languagemodelinghead",
+  "classificationhead": "classificationhead",
+  "classification head": "classificationhead",
+  "pooling": "pooling",
+  "meanpooling": "meanpooling",
+  "mean pooling": "meanpooling",
+  "average pooling": "meanpooling",
+  "clstoken": "clstoken",
+  "cls token": "clstoken",
+  "classification token": "clstoken",
+  "[cls]": "clstoken",
+  "contextparallelism": "contextparallelism",
+  "context parallelism": "contextparallelism",
+  "sequence parallelism": "contextparallelism",
+  "tensorparallelism": "tensorparallelism",
+  "tensor parallelism": "tensorparallelism",
+  "pipelineparallelism": "pipelineparallelism",
+  "pipeline parallelism": "pipelineparallelism",
+  "modelparallelism": "modelparallelism",
+  "model parallelism": "modelparallelism",
+  "attentionsink": "attentionsink",
+  "attention sink": "attentionsink",
+  "attention sinks": "attentionsink",
+  "longcontextarchitecture": "longcontextarchitecture",
+  "long-context architecture": "longcontextarchitecture",
+  "long context model": "longcontextarchitecture",
+  "sparsemixture": "sparsemixture",
+  "sparse mixture": "sparsemixture",
+  "sparse moe": "sparsemixture",
+  "densetransformer": "densetransformer",
+  "dense transformer": "densetransformer",
+  "dense architecture": "densetransformer",
+  "encoderonly": "encoderonly",
+  "encoder-only": "encoderonly",
+  "encoder only": "encoderonly",
+  "bidirectionalmodel": "bidirectionalmodel",
+  "bidirectional model": "bidirectionalmodel",
+  "bidirectional": "bidirectionalmodel",
+  "causallanguagemodel": "causallanguagemodel",
+  "causal language model": "causallanguagemodel",
+  "causal lm": "causallanguagemodel",
+  "maskedlanguagemodel": "maskedlanguagemodel",
+  "masked language model": "maskedlanguagemodel",
+  "mlm": "maskedlanguagemodel",
+  "prefixlm": "prefixlm",
+  "prefix lm": "prefixlm",
+  "prefix language model": "prefixlm",
+  "speculativearchitecture": "speculativearchitecture",
+  "speculative architecture": "speculativearchitecture",
+  "speculative decoding": "speculativearchitecture",
+  "draftmodel": "draftmodel",
+  "draft model": "draftmodel",
+  "drafter": "draftmodel",
+  "moerouting": "moerouting",
+  "moe routing": "moerouting",
+  "mixture-of-experts routing": "moerouting"
  }
 }

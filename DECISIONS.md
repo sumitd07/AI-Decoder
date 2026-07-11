@@ -151,5 +151,28 @@ A running record of the meaningful decisions, trade-offs, and challenges on Deco
 
 **Engineering discipline applied.** ADR-style record (this entry); every script gets `node --check` + an integrity validator before use; SQL is idempotent (upsert) so re-runs are safe; rollback path defined before shipping; the one unverifiable step (live DB) is called out rather than papered over.
 
+## 22. CHALLENGE — the "cheatsheet → saved terms" rename broke web saves
+**Symptom (caught during a doc review, not by a bug report).** `web/index.html` called `sb.from("saved terms_items")` — a table that doesn't exist. The real table is `cheatsheet_items` (schema + extension both use it). Every web-app save/list/remove had been failing silently since the copy rename.
+**Root cause.** The decision-6 voice rename ("cheatsheet" → "saved terms") was applied by find-and-replace without word-boundary care, and it caught a *table name* inside a code string. The same sweep also garbled prose in `web/privacy.html` ("your saved terms follows you", "save a saved terms that syncs") — fixed in the same pass.
+**Verified live.** From the browser: `GET /rest/v1/cheatsheet_items` → 200; `GET /rest/v1/saved terms_items` → 404. The fix is provably correct and the old name provably broken.
+**Lesson.** After any rename sweep, grep the result for the new phrase in *code* positions (identifiers, table names, URLs) — user-facing copy and machine names must never be renamed by the same pass.
+
+## 23. Extension is live — homepage CTA + popup web link
+**Context.** The extension shipped on the Chrome Web Store (v1.0.0). Two cross-links were added so each surface advertises the other.
+**Homepage CTA (design per Emil).** A ghost-pill `<a>` directly below the hero search button: monochrome Chrome glyph + "Get the Chrome extension" + muted tagline + accent arrow. Deliberately *secondary*: the search button keeps the visual weight (filled shadow, larger), the pill reads as a quieter sibling; it joins the hero stagger at .25s so it feels part of one composition rather than an ad. On ≤640px the tagline hides, leaving the pill compact. Rejected: header placement (competes with search + auth), a banner (AI-slop pattern), a card in the shelf (mixes chrome with content).
+**Popup → web app.** A single hairline-separated footer in the popup: "Your saved terms, on the web — aidecoder.app →" (11.5px, muted, hover-darkens). One quiet line, always visible, so users learn where their data lives without the popup selling anything. Version bumped to 1.0.1 — needs a store re-upload to ship.
+**Also:** shelf heading dropped the term count ("The shelf · N terms" → "The shelf") — the number was pipeline trivia, not user value; favicon wired from the existing "d" mark (16/32/apple-touch PNGs + link tags).
+
+## 24. Performance pass at 335 DB terms
+**Symptom.** The app was designed around 15 static terms; with 335 (target 1000+) loaded from the DB it felt laggy.
+**Fixes (all verified in the browser preview at 335 terms).**
+- *Spotlight:* was rebuilding the full results innerHTML (335 rows) on every keystroke, arrow key, AND mouse hover. Now: rows capped at 60 with a "N more — keep typing to narrow" footer, and selection changes patch a `.on` class between two rows instead of rebuilding (verified: DOM nodes persist across arrow-key navigation).
+- *Card entrance stagger:* `i*45ms` delays meant card #285 stayed invisible for 12.8s. Now only the first 24 cards animate (30ms stagger); the rest appear instantly.
+- *Offscreen rendering:* `content-visibility:auto; contain-intrinsic-size:auto 160px` on `.card` skips layout/paint for offscreen cards.
+- *Rising-dot pulse:* the infinite `box-shadow` glow animation (paint work on every Rising card, forever) replaced with a `::after` ring animating transform/opacity only (compositor-friendly).
+- *No replay:* `loadShelfFromDB()`'s re-render used to replay all hero/card entrance animations ~1s after load (visible flash). `renderLookup(still)` now suppresses entrance animations on every re-render after first paint.
+- *`.srow` hover:* animated `padding-left` (layout) → background-color only.
+**Lesson.** Entrance animations, per-item infinite animations, and full-list rebuilds are all fine at 15 items and disqualifying at 300+; scale changes which patterns are acceptable.
+
 ## Cross-cutting: verification under a constrained sandbox
 No browser, no jsdom, npm registry blocked. So I lean on: `node --check` for syntax (classic + module scripts), data-integrity scripts (every internal link/alias resolves, every concept well-formed), a matcher unit test for the extension, and a static CSS-var scope audit. Repeatedly flagged the one real gap this leaves — **visual/pixel QA must happen in the user's browser** — rather than claiming coverage I don't have.

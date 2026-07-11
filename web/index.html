@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Decoder — a decoder ring for the language of AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,17 +32,21 @@
   @keyframes rise{from{opacity:0;transform:translate(-50%,8px) scale(.96)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
   @keyframes toastin{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
   @keyframes cardin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(240,150,55,0)}50%{box-shadow:0 0 0 4px rgba(240,150,55,.18)}}
+  @keyframes pulsering{0%,100%{transform:scale(.7);opacity:0}50%{transform:scale(1);opacity:1}}
   @keyframes savepop{0%{transform:scale(.4);opacity:0}55%{transform:scale(1.25)}100%{transform:scale(1);opacity:1}}
   @keyframes heroin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-  .card{position:relative;animation:cardin .5s cubic-bezier(.2,.75,.3,1) both;transition:transform .18s cubic-bezier(.2,.75,.3,1),box-shadow .18s,border-color .18s}
+  .card{position:relative;animation:cardin .5s cubic-bezier(.2,.75,.3,1) both;transition:transform .18s cubic-bezier(.2,.75,.3,1),box-shadow .18s,border-color .18s;content-visibility:auto;contain-intrinsic-size:auto 160px}
   .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(20,24,33,.06);border-color:var(--border-strong)}
   .card .go{position:absolute;right:16px;bottom:15px;opacity:0;transform:translateX(-5px);transition:opacity .2s,transform .2s;color:var(--accent);font-size:16px}
   .card:hover .go{opacity:1;transform:translateX(0)}
-  .srow{transition:background .13s,padding-left .13s}
-  .srow:hover{padding-left:22px}
-  .pulse{animation:glow 2.6s ease-in-out infinite;border-radius:20px}
+  .srow{transition:background .13s}
+  .srow:hover{background:var(--hover)}
+  .srow .ret{color:transparent}
+  .srow.on{background:var(--hover);border-left-color:var(--accent)}
+  .srow.on .ret{color:var(--accent)}
+  .pulse{position:relative;border-radius:20px}
+  .pulse::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid rgba(240,150,55,.35);animation:pulsering 2.6s ease-in-out infinite}
   .mstack>*{animation:sl .5s cubic-bezier(.2,.75,.3,1) both}
   .mstack>*:nth-child(1){animation-delay:.04s}
   .mstack>*:nth-child(2){animation-delay:.1s}
@@ -47,6 +54,7 @@
   .mstack.still>*{animation:none}
   #lensLine{transition:opacity .18s ease}
   .hero-line{animation:heroin .6s cubic-bezier(.2,.75,.3,1) both}
+  .still-render .hero-line,.still-render .card{animation:none !important}
   .tabu{transition:transform .32s cubic-bezier(.4,1.1,.3,1)}
   .savepop{display:inline-block;animation:savepop .4s cubic-bezier(.3,1.3,.4,1) both}
 
@@ -62,6 +70,8 @@
   .jterm:hover{background:var(--hover)}
   .popclose:hover{color:var(--muted-2)}
   .rm:hover{color:var(--error)}
+  .ext-cta:hover{border-color:var(--border-strong);color:var(--text-2);opacity:1}
+  .ext-cta:active{transform:scale(0.98)}
 
   .dm-shell{
     --bg:#fdfdfc;--surface:#ffffff;--surface-2:#fbfbfc;--surface-3:#f7f7f8;--hover:#eef1f6;--hover-strong:#ebecef;--header-bg:rgba(253,253,252,0.82);
@@ -107,7 +117,7 @@
   @media (hover:none){
     .card:hover{ transform:none; box-shadow:none; border-color:var(--border); }
     .card:hover .go{ opacity:0; }
-    .srow:hover{ padding-left:16px; background:transparent; }
+    .srow:hover{ background:transparent; }
   }
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.05s !important; }
@@ -129,6 +139,7 @@
     .modal-card{ border-radius:16px 16px 0 0 !important; }
     .modal-pad{ padding:22px 18px 20px !important; }
     .sheet-pad{ padding:44px 0 64px !important; }
+    .ext-cta .cta-sub{ display:none !important; }
   }
   @media (max-width:380px){
     nav#tabs button span:first-child{ font-size:12.5px !important; }
@@ -198,12 +209,12 @@
       signIn: () => sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.href.split("#")[0] } }),
       signOut: () => sb.auth.signOut(),
       async list() {
-        const { data, error } = await sb.from("saved terms_items").select("concept_id");
+        const { data, error } = await sb.from("cheatsheet_items").select("concept_id");
         if (error) { console.warn("[decoder] list failed", error.message); return []; }
         return data.map(r => r.concept_id);
       },
-      async add(uid, id) { await sb.from("saved terms_items").upsert({ user_id: uid, concept_id: id }); },
-      async remove(id) { await sb.from("saved terms_items").delete().eq("concept_id", id); },
+      async add(uid, id) { await sb.from("cheatsheet_items").upsert({ user_id: uid, concept_id: id }); },
+      async remove(id) { await sb.from("cheatsheet_items").delete().eq("concept_id", id); },
     };
     window.__decoderCloud = api;
     sb.auth.onAuthStateChange((_evt, session) => {
@@ -263,14 +274,14 @@ window.addEventListener("decoder-auth", async e => {
     if (toUpload.length) { await Promise.all(toUpload.map(id => cloud.api.add(cloud.user.id, id))); remote = remote.concat(toUpload); }
     state.saved = remote.filter(id => DATA.some(c => c.id === id));
     try { localStorage.removeItem(STORE_KEY); } catch (e2) {}
-    renderTabs(); renderLookup(); updateGridFlags(); if (state.tab === 'sheet') renderSheet(); renderModal(false);
+    renderTabs(); renderLookup(true); updateGridFlags(); if (state.tab === 'sheet') renderSheet(); renderModal(false);
   } else if (wasSignedIn && !cloud.user) {
     // Signed out — clear the in-memory saved terms and re-gate the UI.
     state.saved = [];
-    renderTabs(); renderLookup(); updateGridFlags(); if (state.tab === 'sheet') renderSheet();
+    renderTabs(); renderLookup(true); updateGridFlags(); if (state.tab === 'sheet') renderSheet();
   } else {
     // Config resolved while logged out — make sure gated UI (shelf CTA) reflects it.
-    renderLookup();
+    renderLookup(true);
   }
 });
 function isSignedIn(){ return !!cloud.user; }
@@ -394,7 +405,7 @@ async function loadShelfFromDB(){
     DATA.push(rowToConcept(r));
     if(r.lens_pm || r.lens_eng) LENSES[r.id] = { pm:r.lens_pm||'', eng:r.lens_eng||'' };
   }
-  renderLookup(); renderSheet();
+  renderLookup(true); renderSheet();
   $("#s-lookup").style.display = state.tab==='lookup' ? '' : 'none';
 }
 function meta(c){ return statusMeta[c.status]; }
@@ -418,7 +429,8 @@ function renderTabs(){
 function cardHTML(c, i){
   const m = meta(c);
   const aliasBit = c.aliases ? `<span style="font-size:11.5px;color:var(--faint)">${esc(c.aliases)}</span>` : '';
-  return `<button class="card" data-open="${c.id}" style="text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 19px 34px;cursor:pointer;display:flex;flex-direction:column;gap:9px;animation-delay:${i*45}ms">
+  const anim = i < 24 ? `animation-delay:${i*30}ms` : `animation:none`;
+  return `<button class="card" data-open="${c.id}" style="text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 19px 34px;cursor:pointer;display:flex;flex-direction:column;gap:9px;${anim}">
     <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap">
       <span class="${m.cls} ${c.status==='Rising'?'pulse':''}" title="${m.label}" style="width:7px;height:7px;border-radius:50%;background:var(--stc);flex:none;align-self:center"></span>
       <span class="term dsp" style="font-weight:600;font-size:20px;line-height:1.15;letter-spacing:-.02em">${esc(c.term)}</span>
@@ -430,7 +442,7 @@ function cardHTML(c, i){
   </button>`;
 }
 const LOGGED_OUT_LIMIT = 100;
-function renderLookup(){
+function renderLookup(still){
   const shown = isSignedIn() ? DATA : DATA.slice(0, LOGGED_OUT_LIMIT);
   const grid = shown.map((c,i)=>cardHTML(c,i)).join('');
   const cta = !isSignedIn() ? `
@@ -441,7 +453,7 @@ function renderLookup(){
         <button data-signin style="display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer">${GOOGLE_G_WHITE}<span>Sign in with Google</span></button>
       </div>` : '';
   $("#s-lookup").innerHTML = `
-    <div class="hero-pad" style="padding:76px 0 84px">
+    <div class="hero-pad${still?' still-render':''}" style="padding:76px 0 84px">
       <div style="max-width:760px">
         <div class="hero-line" style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:22px">Plain-language AI glossary</div>
         <h1 class="dsp hero-line" style="font-weight:600;font-size:clamp(34px,5.4vw,60px);line-height:1.02;letter-spacing:-.035em;margin:0 0 20px;color:var(--text);animation-delay:.07s">Understand any AI term in seconds.</h1>
@@ -451,9 +463,15 @@ function renderLookup(){
           <span style="color:var(--muted-2);font-size:15px">Type a term… RAG, evals, context window</span>
           <span class="search-kbd" style="margin-left:auto;font-family:var(--font-primary);font-size:11px;color:var(--faint);border:1px solid var(--border-2);border-radius:6px;padding:2px 7px">⌘K</span>
         </button>
+        <a href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" target="_blank" rel="noopener" class="hero-line ext-cta" style="animation-delay:.25s;margin-top:14px;display:inline-flex;align-items:center;gap:9px;padding:10px 15px;background:var(--surface);border:1px solid var(--border-2);border-radius:10px;font-size:13.5px;font-weight:500;color:var(--text-3);box-shadow:0 1px 2px rgba(20,24,33,0.04);transition:border-color .15s,color .15s">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.4" fill="currentColor"/><line x1="12" y1="2.5" x2="12" y2="8.6" stroke="currentColor" stroke-width="1.6"/><line x1="4" y1="17.2" x2="9.3" y2="14.1" stroke="currentColor" stroke-width="1.6"/><line x1="20" y1="17.2" x2="14.7" y2="14.1" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span>Get the Chrome extension</span>
+          <span class="cta-sub" style="color:var(--faint);font-weight:400">decode terms as you read</span>
+          <span style="color:var(--accent)">→</span>
+        </a>
       </div>
       <div style="display:flex;align-items:baseline;justify-content:space-between;margin:68px 0 22px;border-top:1px solid var(--border);padding-top:24px">
-        <h2 style="font-family:var(--font-primary);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin:0">The shelf · ${DATA.length} terms</h2>
+        <h2 style="font-family:var(--font-primary);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin:0">The shelf</h2>
         <span style="font-size:12px;color:var(--faint)">click any card</span>
       </div>
       <div class="shelf-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">${grid}</div>
@@ -502,7 +520,7 @@ function renderSheet(){
     body = `<div style="border:1px dashed var(--border-3);border-radius:16px;padding:52px 28px;text-align:center;max-width:520px">
       <div style="font-family:var(--font-primary);font-size:40px;line-height:1;color:var(--faint-2);margin-bottom:16px">∅</div>
       <p style="font-size:16px;line-height:1.5;color:var(--text-4);margin:0 0 8px;font-weight:500">Nothing saved yet.</p>
-      <p style="font-size:14px;line-height:1.55;color:var(--muted-2);margin:0 0 20px">Open any card and hit save — or use the browser extension while you read. Saved terms show up here.</p>
+      <p style="font-size:14px;line-height:1.55;color:var(--muted-2);margin:0 0 20px">Open any card and hit save — or use the <a href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" target="_blank" rel="noopener">browser extension</a> while you read. Saved terms show up here.</p>
       <button data-openspot style="background:var(--accent);color:#fff;border:none;border-radius:9px;padding:9px 16px;font-size:13.5px;font-weight:500;cursor:pointer">Look something up</button>
     </div>`;
   }
@@ -510,25 +528,39 @@ function renderSheet(){
 }
 
 /* ---------- spotlight ---------- */
+const SPOT_MAX = 60; // cap rendered rows — full result set can be 1000+; selection never rebuilds the list
 function renderSpotResults(){
   const box = $("#spotResults"); if(!box) return;
   const results = getResults();
-  if(state.selIndex > results.length-1) state.selIndex = Math.max(results.length-1,0);
+  const capped = Math.min(results.length, SPOT_MAX);
+  if(state.selIndex > capped-1) state.selIndex = Math.max(capped-1,0);
   if(results.length === 0){
     box.innerHTML = `<div style="padding:34px 20px;text-align:center;color:var(--muted-2);font-size:14px;line-height:1.5">No match. It might be too new to have a card yet.</div>`;
   } else {
-    box.innerHTML = results.map((c,i) => {
+    const shown = results.slice(0, SPOT_MAX);
+    const rows = shown.map((c,i) => {
       const active = i === state.selIndex;
-      return `<button class="srow" data-openrow="${c.id}" data-idx="${i}" style="width:100%;text-align:left;background:${active?'var(--hover)':'transparent'};border:none;border-bottom:1px solid var(--hairline);border-left:2px solid ${active?'var(--accent)':'transparent'};cursor:pointer;padding:12px 18px 12px 16px;display:flex;align-items:center;gap:12px">
+      return `<button class="srow${active?' on':''}" data-openrow="${c.id}" data-idx="${i}" style="width:100%;text-align:left;background:transparent;border:none;border-bottom:1px solid var(--hairline);border-left:2px solid transparent;cursor:pointer;padding:12px 18px 12px 16px;display:flex;align-items:center;gap:12px">
         <span class="dsp" style="flex:none;font-weight:600;font-size:15px;letter-spacing:-.01em">${esc(c.term)}</span>
         <span style="flex:1;font-size:13px;color:var(--muted-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(c.oneLiner)}</span>
-        <span style="flex:none;font-size:11px;color:${active?'var(--accent)':'transparent'}">↵</span>
+        <span class="ret" style="flex:none;font-size:11px">↵</span>
       </button>`;
     }).join('');
+    const more = results.length > SPOT_MAX ? `<div style="padding:10px 18px;font-size:12px;color:var(--faint)">${results.length - SPOT_MAX} more — keep typing to narrow</div>` : '';
+    box.innerHTML = rows + more;
   }
-  const cnt = $("#spotCount"); if(cnt) cnt.textContent = results.length + " shown";
+  const cnt = $("#spotCount");
+  if(cnt) cnt.textContent = results.length > SPOT_MAX ? `${capped} of ${results.length}` : `${results.length} shown`;
   const activeEl = box.querySelector('.srow[data-idx="'+state.selIndex+'"]');
   if(activeEl) activeEl.scrollIntoView({block:'nearest'});
+}
+// Selection-only update: toggles .on between rows without touching innerHTML (full rebuild only on query change).
+function setSpotSel(idx){
+  const box = $("#spotResults"); if(!box) return;
+  const old = box.querySelector('.srow.on'); if(old) old.classList.remove('on');
+  const next = box.querySelector('.srow[data-idx="'+idx+'"]');
+  if(next){ next.classList.add('on'); next.scrollIntoView({block:'nearest'}); }
+  state.selIndex = idx;
 }
 function renderSpotlight(){
   const root = $("#spotRoot");
@@ -556,7 +588,7 @@ function renderSpotlight(){
   box.addEventListener('mouseover', e => {
     const row = e.target.closest('[data-idx]'); if(!row) return;
     const idx = +row.getAttribute('data-idx');
-    if(idx !== state.selIndex){ state.selIndex = idx; renderSpotResults(); }
+    if(idx !== state.selIndex) setSpotSel(idx);
   });
 }
 
@@ -596,7 +628,7 @@ function renderModal(animate){
           <p id="lensLine" style="font-family:var(--font-primary);font-weight:500;font-size:19px;line-height:1.5;color:var(--text-2);margin:0 0 22px">${esc(lensLine)}</p>
           <div class="mstack${animate?'':' still'}" style="display:flex;flex-direction:column;gap:16px">
             <div>
-              <div style="font-family:var(--font-primary);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">It's like</div>
+              <div style="font-family:var(--font-primary);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">It’s like</div>
               <p style="margin:0;font-size:15px;line-height:1.55;color:var(--text-3);font-style:italic">${esc(c.analogy)}</p>
             </div>
             <div>
@@ -764,8 +796,9 @@ function toggleTheme(){
 /* ---------- global event wiring ---------- */
 function spotlightNav(e){
   const r = getResults();
-  if(e.key === 'ArrowDown'){ e.preventDefault(); state.selIndex = Math.min(state.selIndex+1, Math.max(r.length-1,0)); renderSpotResults(); }
-  else if(e.key === 'ArrowUp'){ e.preventDefault(); state.selIndex = Math.max(state.selIndex-1, 0); renderSpotResults(); }
+  const capped = Math.min(r.length, SPOT_MAX); // never navigate past the rendered (sliced) rows
+  if(e.key === 'ArrowDown'){ e.preventDefault(); setSpotSel(Math.min(state.selIndex+1, Math.max(capped-1,0))); }
+  else if(e.key === 'ArrowUp'){ e.preventDefault(); setSpotSel(Math.max(state.selIndex-1, 0)); }
   else if(e.key === 'Enter'){ e.preventDefault(); const c = r[state.selIndex] || r[0]; if(c) openRow(c.id); }
 }
 window.addEventListener('keydown', e => {

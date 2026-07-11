@@ -66,6 +66,10 @@
   .status .live{ width:7px; height:7px; border-radius:50%; background:#4a7c59; flex:none }
   .status .grow{ flex:1 }
   .enable-off{ background:#fbfbfc; border:1px solid rgba(20,24,33,.09); border-radius:10px; padding:12px 13px; margin:8px 0 4px }
+  .webfoot{ margin-top:14px; padding-top:12px; border-top:1px solid rgba(20,24,33,.07); text-align:center }
+  .webfoot a{ font-size:11.5px; color:#9a9ea5; text-decoration:none; transition:color .15s }
+  .webfoot a:hover{ color:#6a6e75 }
+  .webfoot .arr{ color:#4f77a6 }
 </style>
 </head>
 <body>
@@ -79,6 +83,9 @@
     <div id="enable"></div>
     <p class="lede">Your saved terms</p>
     <div id="list"></div>
+    <footer class="webfoot">
+      <a href="https://aidecoder.app" target="_blank" rel="noopener">Your saved terms, on the web — aidecoder.app <span class="arr">→</span></a>
+    </footer>
   </main>
   <script src="config.js"></script>
   <script src="concepts.js"></script>

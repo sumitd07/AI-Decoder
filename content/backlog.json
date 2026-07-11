@@ -903,385 +903,385 @@
   "term": "mixed precision",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "checkpointing",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "early stopping",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "validation set",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "training set",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "test set",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "holdout",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cross-validation",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "hyperparameter",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "hyperparameter tuning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "grid search",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "scaling laws",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "compute-optimal",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Chinchilla scaling",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "data mixture",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tokens per parameter",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "emergence",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reward hacking",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reward shaping",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "policy gradient",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "PPO",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "KL divergence",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reward signal",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "human feedback",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "preference optimization",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "rejection sampling",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "best-of-n",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "self-distillation",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "teacher forcing",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "label smoothing",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "data curation",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "data filtering",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "quality filtering",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "data pipeline",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "pretraining corpus",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "web crawl",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Common Crawl",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tokenizer training",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "vocabulary size",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "context extension",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "long-context training",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "alignment tax",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "refusal training",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "safety fine-tuning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "red-teaming data",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "instruction dataset",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "chat template",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "turn-based training",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reward model training",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "annotator agreement",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "gold labels",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "weak supervision",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "active learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "data flywheel",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model merging",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model soup",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "weight averaging",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "EMA",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "fine-tune vs prompt",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "overfit to eval",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "train-test leakage",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "checkpoint averaging",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "continual learning",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "domain adaptation",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "catastrophic interference",
@@ -1293,535 +1293,535 @@
   "term": "replay buffer",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "synthetic bootstrapping",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "distillation dataset",
   "domain": "Training",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "transformer",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "self-attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cross-attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "multi-head attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "feed-forward network",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "residual connection",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "skip connection",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "encoder",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "decoder",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "encoder-decoder",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "attention head",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "query key value",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "scaled dot-product attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "masked attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "causal attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "mixture of experts",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sparse attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "flash attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sliding window attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "grouped-query attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "multi-query attention",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "KV cache",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "rotary embeddings",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ALiBi",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "positional embedding",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "convolutional neural network",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "recurrent neural network",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "LSTM",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GRU",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "state space model",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Mamba",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "RWKV",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "diffusion model",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "denoising diffusion",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GAN",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "generative adversarial network",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "VAE",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "variational autoencoder",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "autoencoder",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "U-Net",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ResNet",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "BERT",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GPT architecture",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "T5",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "seq2seq",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "attention is all you need",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reasoning model",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tree of thought",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "test-time compute",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "inference-time scaling",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "expert routing",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "gating network",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "router network",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tokenizer-free",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "byte-level model",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "hybrid architecture",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "retrieval-augmented architecture",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "memory-augmented network",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "pointer network",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "graph neural network",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "embedding layer",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "output head",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "language modeling head",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "classification head",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "pooling",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "mean pooling",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "CLS token",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "context parallelism",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tensor parallelism",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "pipeline parallelism",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model parallelism",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "activation checkpointing",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "attention sink",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "long-context architecture",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sparse mixture",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "dense transformer",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "decoder-only",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "encoder-only",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "bidirectional model",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "causal language model",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "masked language model",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prefix LM",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "speculative architecture",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "draft model",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "MoE routing",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "load balancing loss",
@@ -2937,7 +2937,7 @@
   "term": "specification gaming",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "indirect prompt injection",
@@ -3111,7 +3111,7 @@
   "term": "data leakage",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "membership inference",
@@ -3711,7 +3711,7 @@
   "term": "inter-annotator agreement",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "calibration",
@@ -4023,7 +4023,7 @@
   "term": "speculative decoding",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "quantization",
