@@ -59,7 +59,7 @@ Work top to bottom. Each check says what you should see. If something's off, the
 - Open **https://aidecoder.app/privacy** — it should show the policy with your email (sumitd0704@gmail.com) at the bottom.
 
 ## Part E — Cross-links (added 2026-07-11, after the web redeploy + v1.0.1 store upload)
-1. **Homepage → store.** On https://aidecoder.app, under the big search button there's a pill: **Get the Chrome extension**. Click it — it opens the extension's Chrome Web Store page in a new tab.
+1. **Homepage → store.** On https://aidecoder.app, the hero's main button is a filled blue **Add Decoder to Chrome**. Click it — it opens the extension's Chrome Web Store page in a new tab. (The search field sits just below it.)
 2. **Popup → web app.** Click the Decoder icon; at the bottom of the popup there's a quiet line "Your saved terms, on the web — aidecoder.app →". Click it — the web app opens in a new tab.
 3. **Favicon.** The aidecoder.app browser tab shows the "d" mark, not a blank page icon.
 4. **Web saves actually stick (bug fix check).** Signed in on the web app, save any term, reload the page — it's still in **Saved**. (Before this fix, web saves silently failed; extension saves were unaffected.)
