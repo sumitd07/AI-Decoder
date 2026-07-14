@@ -41,7 +41,14 @@ function main(){
     if(registry.ids[c.id]) problems.push(`${c.id}: id already in registry`);
     if(seenId.has(c.id)) problems.push(`${c.id}: duplicate id in batch`);
     seenId.add(c.id);
-    for(const r of (c.related||[])) if(r.id && !knownIds.has(r.id)) problems.push(`${c.id}: related -> unknown id "${r.id}"`);
+    for(const r of (c.related||[])){
+      if(r.id && !knownIds.has(r.id)) problems.push(`${c.id}: related -> unknown id "${r.id}"`);
+      const t = (r.text||'').trim();
+      // STYLE.md: text is a self-contained phrase; the renderer prints it verbatim.
+      // Fragment-style lead-ins ("Measured in") shipped in batches 002/004 — see DECISIONS.md #25.
+      if(!t) problems.push(`${c.id}: related entry has empty text`);
+      else if(!/[.!?…]["”')\]]?$/.test(t)) problems.push(`${c.id}: related text looks like a fragment (no terminal punctuation): "${t}"`);
+    }
     for(const a of (c.aliasList||[])){
       const k=a.toLowerCase();
       if(registry.aliases[k]) problems.push(`${c.id}: alias "${a}" collides with existing ${registry.aliases[k]}`);

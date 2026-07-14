@@ -1339,6 +1339,1446 @@
   "moerouting": {
    "term": "MoE Routing",
    "status": "Rising"
+  },
+  "load-balancing-loss": {
+   "term": "Load Balancing Loss",
+   "status": "Rising"
+  },
+  "capacity-factor": {
+   "term": "Capacity Factor",
+   "status": "Rising"
+  },
+  "expert-parallelism": {
+   "term": "Expert Parallelism",
+   "status": "Rising"
+  },
+  "tool-use": {
+   "term": "Tool Use",
+   "status": "Core"
+  },
+  "function-calling": {
+   "term": "Function Calling",
+   "status": "Core"
+  },
+  "react": {
+   "term": "ReAct",
+   "status": "Core"
+  },
+  "planning": {
+   "term": "Planning",
+   "status": "Core"
+  },
+  "orchestration": {
+   "term": "Orchestration",
+   "status": "Core"
+  },
+  "multi-agent": {
+   "term": "Multi-Agent",
+   "status": "Rising"
+  },
+  "agent-loop": {
+   "term": "Agent Loop",
+   "status": "Core"
+  },
+  "autonomy": {
+   "term": "Autonomy",
+   "status": "Core"
+  },
+  "tool-schema": {
+   "term": "Tool Schema",
+   "status": "Core"
+  },
+  "api-calling": {
+   "term": "API Calling",
+   "status": "Core"
+  },
+  "code-interpreter": {
+   "term": "Code Interpreter",
+   "status": "Core"
+  },
+  "computer-use": {
+   "term": "Computer Use",
+   "status": "Rising"
+  },
+  "browser-agent": {
+   "term": "Browser Agent",
+   "status": "Rising"
+  },
+  "router-agent": {
+   "term": "Router Agent",
+   "status": "Rising"
+  },
+  "supervisor-agent": {
+   "term": "Supervisor Agent",
+   "status": "Rising"
+  },
+  "worker-agent": {
+   "term": "Worker Agent",
+   "status": "Rising"
+  },
+  "handoff": {
+   "term": "Handoff",
+   "status": "Rising"
+  },
+  "scratchpad": {
+   "term": "Scratchpad",
+   "status": "Core"
+  },
+  "agent-memory": {
+   "term": "Agent Memory",
+   "status": "Core"
+  },
+  "reflection": {
+   "term": "Reflection",
+   "status": "Rising"
+  },
+  "self-correction": {
+   "term": "Self-Correction",
+   "status": "Rising"
+  },
+  "agentic-coding": {
+   "term": "Agentic Coding",
+   "status": "Rising"
+  },
+  "copilot": {
+   "term": "Copilot",
+   "status": "Core"
+  },
+  "code-generation": {
+   "term": "Code Generation",
+   "status": "Core"
+  },
+  "swe-agent": {
+   "term": "SWE Agent",
+   "status": "Rising"
+  },
+  "tool-calling": {
+   "term": "Tool Calling",
+   "status": "Core"
+  },
+  "structured-tool-use": {
+   "term": "Structured Tool Use",
+   "status": "Rising"
+  },
+  "tool-result": {
+   "term": "Tool Result",
+   "status": "Core"
+  },
+  "observation": {
+   "term": "Observation",
+   "status": "Core"
+  },
+  "action-space": {
+   "term": "Action Space",
+   "status": "Core"
+  },
+  "environment": {
+   "term": "Environment",
+   "status": "Core"
+  },
+  "trajectory": {
+   "term": "Trajectory",
+   "status": "Core"
+  },
+  "rollout": {
+   "term": "Rollout",
+   "status": "Core"
+  },
+  "agent-state": {
+   "term": "Agent State",
+   "status": "Core"
+  },
+  "task-decomposition": {
+   "term": "Task Decomposition",
+   "status": "Core"
+  },
+  "subtask": {
+   "term": "Subtask",
+   "status": "Core"
+  },
+  "goal": {
+   "term": "Goal",
+   "status": "Core"
+  },
+  "subgoal": {
+   "term": "Subgoal",
+   "status": "Core"
+  },
+  "plan-execution": {
+   "term": "Plan Execution",
+   "status": "Core"
+  },
+  "replanning": {
+   "term": "Replanning",
+   "status": "Rising"
+  },
+  "chain-of-tools": {
+   "term": "Chain of Tools",
+   "status": "Rising"
+  },
+  "tool-chaining": {
+   "term": "Tool Chaining",
+   "status": "Core"
+  },
+  "retrieval-tool": {
+   "term": "Retrieval Tool",
+   "status": "Core"
+  },
+  "search-tool": {
+   "term": "Search Tool",
+   "status": "Core"
+  },
+  "calculator-tool": {
+   "term": "Calculator Tool",
+   "status": "Core"
+  },
+  "sandbox-execution": {
+   "term": "Sandbox Execution",
+   "status": "Core"
+  },
+  "approval-gate": {
+   "term": "Approval Gate",
+   "status": "Rising"
+  },
+  "autonomous-agent": {
+   "term": "Autonomous Agent",
+   "status": "Rising"
+  },
+  "semi-autonomous": {
+   "term": "Semi-Autonomous",
+   "status": "Rising"
+  },
+  "agent-framework": {
+   "term": "Agent Framework",
+   "status": "Rising"
+  },
+  "agent-runtime": {
+   "term": "Agent Runtime",
+   "status": "Rising"
+  },
+  "agent-harness": {
+   "term": "Agent Harness",
+   "status": "Rising"
+  },
+  "looping": {
+   "term": "Looping",
+   "status": "Rising"
+  },
+  "stop-condition": {
+   "term": "Stop Condition",
+   "status": "Rising"
+  },
+  "max-iterations": {
+   "term": "Max Iterations",
+   "status": "Rising"
+  },
+  "agent-evaluation": {
+   "term": "Agent Evaluation",
+   "status": "Rising"
+  },
+  "tool-registry": {
+   "term": "Tool Registry",
+   "status": "Rising"
+  },
+  "capability-discovery": {
+   "term": "Capability Discovery",
+   "status": "Rising"
+  },
+  "permissions": {
+   "term": "Permissions",
+   "status": "Core"
+  },
+  "scoped-access": {
+   "term": "Scoped Access",
+   "status": "Core"
+  },
+  "agent-guardrails": {
+   "term": "Agent Guardrails",
+   "status": "Rising"
+  },
+  "delegation": {
+   "term": "Delegation",
+   "status": "Rising"
+  },
+  "manager-worker": {
+   "term": "Manager-Worker",
+   "status": "Rising"
+  },
+  "swarm": {
+   "term": "Swarm",
+   "status": "Rising"
+  },
+  "blackboard": {
+   "term": "Blackboard",
+   "status": "Rising"
+  },
+  "shared-memory": {
+   "term": "Shared Memory",
+   "status": "Rising"
+  },
+  "episodic-memory": {
+   "term": "Episodic Memory",
+   "status": "Rising"
+  },
+  "working-memory": {
+   "term": "Working Memory",
+   "status": "Rising"
+  },
+  "memory-retrieval": {
+   "term": "Memory Retrieval",
+   "status": "Rising"
+  },
+  "context-management": {
+   "term": "Context Management",
+   "status": "Rising"
+  },
+  "agent-persona": {
+   "term": "Agent Persona",
+   "status": "Rising"
+  },
+  "role-assignment": {
+   "term": "Role Assignment",
+   "status": "Rising"
+  },
+  "task-queue": {
+   "term": "Task Queue",
+   "status": "Core"
+  },
+  "event-loop": {
+   "term": "Event Loop",
+   "status": "Core"
+  },
+  "function-schema": {
+   "term": "Function Schema",
+   "status": "Core"
+  },
+  "json-schema-tools": {
+   "term": "JSON Schema Tools",
+   "status": "Core"
+  },
+  "parallel-tool-calls": {
+   "term": "Parallel Tool Calls",
+   "status": "Rising"
+  },
+  "tool-error-handling": {
+   "term": "Tool Error Handling",
+   "status": "Rising"
+  },
+  "retry-logic": {
+   "term": "Retry Logic",
+   "status": "Core"
+  },
+  "fallback-tool": {
+   "term": "Fallback Tool",
+   "status": "Rising"
+  },
+  "agent-observability": {
+   "term": "Agent Observability",
+   "status": "Rising"
+  },
+  "trace": {
+   "term": "Trace",
+   "status": "Core"
+  },
+  "span": {
+   "term": "Span",
+   "status": "Core"
+  },
+  "step-logging": {
+   "term": "Step Logging",
+   "status": "Rising"
+  },
+  "cost-tracking": {
+   "term": "Cost Tracking",
+   "status": "Rising"
+  },
+  "token-budget": {
+   "term": "Token Budget",
+   "status": "Rising"
+  },
+  "agent-orchestrator": {
+   "term": "Agent Orchestrator",
+   "status": "Rising"
+  },
+  "workflow-engine": {
+   "term": "Workflow Engine",
+   "status": "Rising"
+  },
+  "deterministic-workflow": {
+   "term": "Deterministic Workflow",
+   "status": "Rising"
+  },
+  "dynamic-workflow": {
+   "term": "Dynamic Workflow",
+   "status": "Rising"
+  },
+  "semantic-search": {
+   "term": "Semantic Search",
+   "status": "Core"
+  },
+  "similarity-search": {
+   "term": "Similarity Search",
+   "status": "Core"
+  },
+  "hybrid-search": {
+   "term": "Hybrid Search",
+   "status": "Core"
+  },
+  "bm25": {
+   "term": "BM25",
+   "status": "Core"
+  },
+  "top-k-retrieval": {
+   "term": "Top-K Retrieval",
+   "status": "Core"
+  },
+  "embedding-model": {
+   "term": "Embedding Model",
+   "status": "Core"
+  },
+  "vector-index": {
+   "term": "Vector Index",
+   "status": "Core"
+  },
+  "hnsw": {
+   "term": "HNSW",
+   "status": "Core"
+  },
+  "approximate-nearest-neighbor": {
+   "term": "Approximate Nearest Neighbor",
+   "status": "Core"
+  },
+  "exact-nearest-neighbor": {
+   "term": "Exact Nearest Neighbor",
+   "status": "Rising"
+  },
+  "metadata-filtering": {
+   "term": "Metadata Filtering",
+   "status": "Core"
+  },
+  "short-term-memory": {
+   "term": "Short-Term Memory",
+   "status": "Core"
+  },
+  "conversation-history": {
+   "term": "Conversation History",
+   "status": "Core"
+  },
+  "summarization-memory": {
+   "term": "Summarization Memory",
+   "status": "Rising"
+  },
+  "knowledge-base": {
+   "term": "Knowledge Base",
+   "status": "Core"
+  },
+  "graphrag": {
+   "term": "GraphRAG",
+   "status": "Rising"
+  },
+  "dense-retrieval": {
+   "term": "Dense Retrieval",
+   "status": "Core"
+  },
+  "sparse-retrieval": {
+   "term": "Sparse Retrieval",
+   "status": "Core"
+  },
+  "lexical-search": {
+   "term": "Lexical Search",
+   "status": "Core"
+  },
+  "keyword-search": {
+   "term": "Keyword Search",
+   "status": "Core"
+  },
+  "query-expansion": {
+   "term": "Query Expansion",
+   "status": "Rising"
+  },
+  "query-rewriting": {
+   "term": "Query Rewriting",
+   "status": "Rising"
+  },
+  "hypothetical-document-embeddings": {
+   "term": "Hypothetical Document Embeddings",
+   "status": "Rising"
+  },
+  "hyde": {
+   "term": "HyDE",
+   "status": "Rising"
+  },
+  "passage-retrieval": {
+   "term": "Passage Retrieval",
+   "status": "Core"
+  },
+  "document-store": {
+   "term": "Document Store",
+   "status": "Core"
+  },
+  "index": {
+   "term": "Index",
+   "status": "Core"
+  },
+  "inverted-index": {
+   "term": "Inverted Index",
+   "status": "Core"
+  },
+  "recall-at-k": {
+   "term": "Recall at K",
+   "status": "Core"
+  },
+  "precision-at-k": {
+   "term": "Precision at K",
+   "status": "Core"
+  },
+  "retrieval-quality": {
+   "term": "Retrieval Quality",
+   "status": "Core"
+  },
+  "chunk-size": {
+   "term": "Chunk Size",
+   "status": "Core"
+  },
+  "sentence-splitting": {
+   "term": "Sentence Splitting",
+   "status": "Core"
+  },
+  "recursive-chunking": {
+   "term": "Recursive Chunking",
+   "status": "Rising"
+  },
+  "semantic-chunking": {
+   "term": "Semantic Chunking",
+   "status": "Rising"
+  },
+  "embedding-dimension": {
+   "term": "Embedding Dimension",
+   "status": "Core"
+  },
+  "vector-similarity": {
+   "term": "Vector Similarity",
+   "status": "Core"
+  },
+  "dot-product-search": {
+   "term": "Dot Product Search",
+   "status": "Rising"
+  },
+  "euclidean-distance": {
+   "term": "Euclidean Distance",
+   "status": "Core"
+  },
+  "ivf-index": {
+   "term": "IVF Index",
+   "status": "Rising"
+  },
+  "product-quantization": {
+   "term": "Product Quantization",
+   "status": "Rising"
+  },
+  "faiss": {
+   "term": "FAISS",
+   "status": "Core"
+  },
+  "pgvector": {
+   "term": "pgvector",
+   "status": "Rising"
+  },
+  "retrieval-pipeline": {
+   "term": "Retrieval Pipeline",
+   "status": "Core"
+  },
+  "ingestion": {
+   "term": "Ingestion",
+   "status": "Core"
+  },
+  "embedding-cache": {
+   "term": "Embedding Cache",
+   "status": "Rising"
+  },
+  "re-embedding": {
+   "term": "Re-embedding",
+   "status": "Rising"
+  },
+  "context-assembly": {
+   "term": "Context Assembly",
+   "status": "Rising"
+  },
+  "citation-grounding": {
+   "term": "Citation Grounding",
+   "status": "Rising"
+  },
+  "source-attribution": {
+   "term": "Source Attribution",
+   "status": "Rising"
+  },
+  "retrieval-augmentation": {
+   "term": "Retrieval Augmentation",
+   "status": "Core"
+  },
+  "multi-vector-retrieval": {
+   "term": "Multi-Vector Retrieval",
+   "status": "Rising"
+  },
+  "colbert": {
+   "term": "ColBERT",
+   "status": "Rising"
+  },
+  "late-interaction": {
+   "term": "Late Interaction",
+   "status": "Rising"
+  },
+  "cross-encoder": {
+   "term": "Cross-Encoder",
+   "status": "Core"
+  },
+  "bi-encoder": {
+   "term": "Bi-Encoder",
+   "status": "Core"
+  },
+  "reader": {
+   "term": "Reader",
+   "status": "Fading"
+  },
+  "fusion-retrieval": {
+   "term": "Fusion Retrieval",
+   "status": "Rising"
+  },
+  "reciprocal-rank-fusion": {
+   "term": "Reciprocal Rank Fusion",
+   "status": "Rising"
+  },
+  "contextual-retrieval": {
+   "term": "Contextual Retrieval",
+   "status": "Rising"
+  },
+  "parent-child-chunks": {
+   "term": "Parent-Child Chunks",
+   "status": "Rising"
+  },
+  "hierarchical-retrieval": {
+   "term": "Hierarchical Retrieval",
+   "status": "Rising"
+  },
+  "memory-store": {
+   "term": "Memory Store",
+   "status": "Rising"
+  },
+  "knowledge-graph": {
+   "term": "Knowledge Graph",
+   "status": "Core"
+  },
+  "entity-linking": {
+   "term": "Entity Linking",
+   "status": "Rising"
+  },
+  "fact-retrieval": {
+   "term": "Fact Retrieval",
+   "status": "Rising"
+  },
+  "freshness": {
+   "term": "Freshness",
+   "status": "Core"
+  },
+  "staleness": {
+   "term": "Staleness",
+   "status": "Core"
+  },
+  "index-refresh": {
+   "term": "Index Refresh",
+   "status": "Core"
+  },
+  "embedding-drift": {
+   "term": "Embedding Drift",
+   "status": "Rising"
+  },
+  "semantic-cache": {
+   "term": "Semantic Cache",
+   "status": "Rising"
+  },
+  "prompt-caching": {
+   "term": "Prompt Caching",
+   "status": "Rising"
+  },
+  "retrieval-latency": {
+   "term": "Retrieval Latency",
+   "status": "Core"
+  },
+  "recall-vs-precision": {
+   "term": "Recall vs Precision",
+   "status": "Core"
+  },
+  "chunk-boundaries": {
+   "term": "Chunk Boundaries",
+   "status": "Rising"
+  },
+  "overlap-window": {
+   "term": "Overlap Window",
+   "status": "Rising"
+  },
+  "document-loader": {
+   "term": "Document Loader",
+   "status": "Rising"
+  },
+  "confabulation": {
+   "term": "Confabulation",
+   "status": "Rising"
+  },
+  "sycophancy": {
+   "term": "Sycophancy",
+   "status": "Rising"
+  },
+  "toxicity": {
+   "term": "Toxicity",
+   "status": "Core"
+  },
+  "refusal": {
+   "term": "Refusal",
+   "status": "Core"
+  },
+  "over-refusal": {
+   "term": "Over-Refusal",
+   "status": "Rising"
+  },
+  "jailbreak": {
+   "term": "Jailbreak",
+   "status": "Core"
+  },
+  "indirect-prompt-injection": {
+   "term": "Indirect Prompt Injection",
+   "status": "Rising"
+  },
+  "data-poisoning": {
+   "term": "Data Poisoning",
+   "status": "Rising"
+  },
+  "model-extraction": {
+   "term": "Model Extraction",
+   "status": "Rising"
+  },
+  "adversarial-example": {
+   "term": "Adversarial Example",
+   "status": "Core"
+  },
+  "jailbreak-prompt": {
+   "term": "Jailbreak Prompt",
+   "status": "Rising"
+  },
+  "content-filter": {
+   "term": "Content Filter",
+   "status": "Core"
+  },
+  "red-teaming": {
+   "term": "Red Teaming",
+   "status": "Core"
+  },
+  "output-validation": {
+   "term": "Output Validation",
+   "status": "Rising"
+  },
+  "moderation": {
+   "term": "Moderation",
+   "status": "Core"
+  },
+  "ai-safety": {
+   "term": "AI Safety",
+   "status": "Core"
+  },
+  "existential-risk": {
+   "term": "Existential Risk",
+   "status": "Rising"
+  },
+  "interpretability": {
+   "term": "Interpretability",
+   "status": "Core"
+  },
+  "mechanistic-interpretability": {
+   "term": "Mechanistic Interpretability",
+   "status": "Rising"
+  },
+  "model-welfare": {
+   "term": "Model Welfare",
+   "status": "Rising"
+  },
+  "responsible-ai": {
+   "term": "Responsible AI",
+   "status": "Core"
+  },
+  "watermarking": {
+   "term": "Watermarking",
+   "status": "Rising"
+  },
+  "deepfake": {
+   "term": "Deepfake",
+   "status": "Core"
+  },
+  "misinformation": {
+   "term": "Misinformation",
+   "status": "Core"
+  },
+  "disinformation": {
+   "term": "Disinformation",
+   "status": "Core"
+  },
+  "hallucination-detection": {
+   "term": "Hallucination Detection",
+   "status": "Rising"
+  },
+  "grounding-check": {
+   "term": "Grounding Check",
+   "status": "Rising"
+  },
+  "fact-checking": {
+   "term": "Fact-Checking",
+   "status": "Core"
+  },
+  "safety-classifier": {
+   "term": "Safety Classifier",
+   "status": "Core"
+  },
+  "harmful-content": {
+   "term": "Harmful Content",
+   "status": "Core"
+  },
+  "csamdetection": {
+   "term": "CSAM detection",
+   "status": "Core"
+  },
+  "piidetection": {
+   "term": "PII detection",
+   "status": "Core"
+  },
+  "membershipinference": {
+   "term": "Membership inference",
+   "status": "Rising"
+  },
+  "modelinversion": {
+   "term": "Model inversion",
+   "status": "Rising"
+  },
+  "backdoorattack": {
+   "term": "Backdoor attack",
+   "status": "Rising"
+  },
+  "trojan": {
+   "term": "Trojan",
+   "status": "Rising"
+  },
+  "poisoneddata": {
+   "term": "Poisoned data",
+   "status": "Rising"
+  },
+  "adversarialrobustness": {
+   "term": "Adversarial robustness",
+   "status": "Core"
+  },
+  "jailbreakresistance": {
+   "term": "Jailbreak resistance",
+   "status": "Rising"
+  },
+  "refusalrate": {
+   "term": "Refusal rate",
+   "status": "Rising"
+  },
+  "alignmentfaking": {
+   "term": "Alignment faking",
+   "status": "Rising"
+  },
+  "deceptivealignment": {
+   "term": "Deceptive alignment",
+   "status": "Rising"
+  },
+  "goalmisgeneralization": {
+   "term": "Goal misgeneralization",
+   "status": "Rising"
+  },
+  "instrumentalconvergence": {
+   "term": "Instrumental convergence",
+   "status": "Rising"
+  },
+  "corrigibility": {
+   "term": "Corrigibility",
+   "status": "Rising"
+  },
+  "oversight": {
+   "term": "Oversight",
+   "status": "Core"
+  },
+  "scalableoversight": {
+   "term": "Scalable oversight",
+   "status": "Rising"
+  },
+  "weaktostronggeneralization": {
+   "term": "Weak-to-strong generalization",
+   "status": "Rising"
+  },
+  "constitutionalclassifier": {
+   "term": "Constitutional classifier",
+   "status": "Rising"
+  },
+  "inputsanitization": {
+   "term": "Input sanitization",
+   "status": "Core"
+  },
+  "outputsanitization": {
+   "term": "Output sanitization",
+   "status": "Core"
+  },
+  "ratelimiting": {
+   "term": "Rate limiting",
+   "status": "Core"
+  },
+  "abuseprevention": {
+   "term": "Abuse prevention",
+   "status": "Core"
+  },
+  "trustandsafety": {
+   "term": "Trust and safety",
+   "status": "Core"
+  },
+  "contentpolicy": {
+   "term": "Content policy",
+   "status": "Core"
+  },
+  "usagepolicy": {
+   "term": "Usage policy",
+   "status": "Core"
+  },
+  "safetyevaluation": {
+   "term": "Safety evaluation",
+   "status": "Core"
+  },
+  "dangerouscapabilities": {
+   "term": "Dangerous capabilities",
+   "status": "Rising"
+  },
+  "biorisk": {
+   "term": "Biorisk",
+   "status": "Rising"
+  },
+  "cyberrisk": {
+   "term": "Cyber risk",
+   "status": "Rising"
+  },
+  "autonomyrisk": {
+   "term": "Autonomy risk",
+   "status": "Rising"
+  },
+  "situationalawareness": {
+   "term": "Situational awareness",
+   "status": "Rising"
+  },
+  "powerseeking": {
+   "term": "Power seeking",
+   "status": "Rising"
+  },
+  "rewardtampering": {
+   "term": "Reward tampering",
+   "status": "Rising"
+  },
+  "sandbagging": {
+   "term": "Sandbagging",
+   "status": "Rising"
+  },
+  "evaluationgaming": {
+   "term": "Evaluation gaming",
+   "status": "Rising"
+  },
+  "honeypot": {
+   "term": "Honeypot",
+   "status": "Rising"
+  },
+  "canary": {
+   "term": "Canary",
+   "status": "Rising"
+  },
+  "tripwire": {
+   "term": "Tripwire",
+   "status": "Rising"
+  },
+  "killswitch": {
+   "term": "Kill switch",
+   "status": "Rising"
+  },
+  "containment": {
+   "term": "Containment",
+   "status": "Rising"
+  },
+  "airgap": {
+   "term": "Air gap",
+   "status": "Core"
+  },
+  "principleofleastprivilege": {
+   "term": "Principle of least privilege",
+   "status": "Core"
+  },
+  "defenseindepth": {
+   "term": "Defense in depth",
+   "status": "Core"
+  },
+  "threatmodel": {
+   "term": "Threat model",
+   "status": "Core"
+  },
+  "attacksurface": {
+   "term": "Attack surface",
+   "status": "Core"
+  },
+  "supplychainrisk": {
+   "term": "Supply chain risk",
+   "status": "Rising"
+  },
+  "modelprovenance": {
+   "term": "Model provenance",
+   "status": "Rising"
+  },
+  "transparency": {
+   "term": "Transparency",
+   "status": "Core"
+  },
+  "fairness": {
+   "term": "Fairness",
+   "status": "Core"
+  },
+  "accountability": {
+   "term": "Accountability",
+   "status": "Rising"
+  },
+  "privacy": {
+   "term": "Privacy",
+   "status": "Core"
+  },
+  "differential-privacy": {
+   "term": "Differential Privacy",
+   "status": "Rising"
+  },
+  "federated-learning": {
+   "term": "Federated Learning",
+   "status": "Rising"
+  },
+  "data-minimization": {
+   "term": "Data Minimization",
+   "status": "Rising"
+  },
+  "consent": {
+   "term": "Consent",
+   "status": "Core"
+  },
+  "alignment-research": {
+   "term": "Alignment Research",
+   "status": "Rising"
+  },
+  "value-alignment": {
+   "term": "Value Alignment",
+   "status": "Rising"
+  },
+  "reward-misspecification": {
+   "term": "Reward Misspecification",
+   "status": "Rising"
+  },
+  "proxy-gaming": {
+   "term": "Proxy Gaming",
+   "status": "Rising"
+  },
+  "goodharts-law": {
+   "term": "Goodhart's Law",
+   "status": "Rising"
+  },
+  "benchmark": {
+   "term": "Benchmark",
+   "status": "Core"
+  },
+  "llm-as-judge": {
+   "term": "LLM-as-Judge",
+   "status": "Rising"
+  },
+  "rubric-grading": {
+   "term": "Rubric Grading",
+   "status": "Core"
+  },
+  "exact-match": {
+   "term": "Exact Match",
+   "status": "Fading"
+  },
+  "pass-at-k": {
+   "term": "Pass at k",
+   "status": "Rising"
+  },
+  "ab-test": {
+   "term": "A/B Test",
+   "status": "Core"
+  },
+  "human-eval": {
+   "term": "Human Eval",
+   "status": "Core"
+  },
+  "gold-set": {
+   "term": "Gold Set",
+   "status": "Core"
+  },
+  "ground-truth": {
+   "term": "Ground Truth",
+   "status": "Core"
+  },
+  "mmlu": {
+   "term": "MMLU",
+   "status": "Core"
+  },
+  "humaneval": {
+   "term": "HumanEval",
+   "status": "Core"
+  },
+  "gsm8k": {
+   "term": "GSM8K",
+   "status": "Core"
+  },
+  "hellaswag": {
+   "term": "HellaSwag",
+   "status": "Core"
+  },
+  "arc": {
+   "term": "ARC",
+   "status": "Core"
+  },
+  "gpqa": {
+   "term": "GPQA",
+   "status": "Rising"
+  },
+  "swe-bench": {
+   "term": "SWE-bench",
+   "status": "Rising"
+  },
+  "mt-bench": {
+   "term": "MT-Bench",
+   "status": "Rising"
+  },
+  "accuracy": {
+   "term": "Accuracy",
+   "status": "Core"
+  },
+  "precision": {
+   "term": "Precision",
+   "status": "Core"
+  },
+  "recall": {
+   "term": "Recall",
+   "status": "Core"
+  },
+  "f1-score": {
+   "term": "F1 Score",
+   "status": "Core"
+  },
+  "bleu": {
+   "term": "BLEU",
+   "status": "Fading"
+  },
+  "rouge": {
+   "term": "ROUGE",
+   "status": "Core"
+  },
+  "win-rate": {
+   "term": "Win Rate",
+   "status": "Core"
+  },
+  "latency": {
+   "term": "Latency",
+   "status": "Core"
+  },
+  "throughput": {
+   "term": "Throughput",
+   "status": "Core"
+  },
+  "regression-testing": {
+   "term": "Regression Testing",
+   "status": "Core"
+  },
+  "eval-set": {
+   "term": "Eval Set",
+   "status": "Core"
+  },
+  "overfitting-to-benchmarks": {
+   "term": "Overfitting to Benchmarks",
+   "status": "Rising"
+  },
+  "leaderboard": {
+   "term": "Leaderboard",
+   "status": "Core"
+  },
+  "elo-rating": {
+   "term": "Elo Rating",
+   "status": "Rising"
+  },
+  "arena": {
+   "term": "Arena",
+   "status": "Rising"
+  },
+  "pairwise-comparison": {
+   "term": "Pairwise Comparison",
+   "status": "Core"
+  },
+  "preference-judgment": {
+   "term": "Preference Judgment",
+   "status": "Core"
+  },
+  "calibration": {
+   "term": "Calibration",
+   "status": "Core"
+  },
+  "confidence-calibration": {
+   "term": "Confidence Calibration",
+   "status": "Rising"
+  },
+  "hallucination-rate": {
+   "term": "Hallucination Rate",
+   "status": "Rising"
+  },
+  "factuality": {
+   "term": "Factuality",
+   "status": "Core"
+  },
+  "faithfulness": {
+   "term": "Faithfulness",
+   "status": "Rising"
+  },
+  "answer-relevance": {
+   "term": "Answer Relevance",
+   "status": "Rising"
+  },
+  "context-relevance": {
+   "term": "Context Relevance",
+   "status": "Rising"
+  },
+  "ragas": {
+   "term": "RAGAS",
+   "status": "Rising"
+  },
+  "golden-dataset": {
+   "term": "Golden Dataset",
+   "status": "Core"
+  },
+  "test-harness": {
+   "term": "Test Harness",
+   "status": "Core"
+  },
+  "unit-test-for-prompts": {
+   "term": "Unit Test for Prompts",
+   "status": "Rising"
+  },
+  "assertion": {
+   "term": "Assertion",
+   "status": "Core"
+  },
+  "grader": {
+   "term": "Grader",
+   "status": "Rising"
+  },
+  "automated-grading": {
+   "term": "Automated Grading",
+   "status": "Rising"
+  },
+  "rubric": {
+   "term": "Rubric",
+   "status": "Core"
+  },
+  "retrievalevaluation": {
+   "term": "Retrieval evaluation",
+   "status": "Core"
+  },
+  "scoringfunction": {
+   "term": "Scoring function",
+   "status": "Core"
+  },
+  "referenceanswer": {
+   "term": "Reference answer",
+   "status": "Core"
+  },
+  "referencefreeeval": {
+   "term": "Reference-free evaluation",
+   "status": "Rising"
+  },
+  "selfconsistencycheck": {
+   "term": "Self-consistency check",
+   "status": "Rising"
+  },
+  "majorityvoting": {
+   "term": "Majority voting",
+   "status": "Core"
+  },
+  "ensembleeval": {
+   "term": "Ensemble evaluation",
+   "status": "Rising"
+  },
+  "holdouteval": {
+   "term": "Holdout eval",
+   "status": "Core"
+  },
+  "offlineeval": {
+   "term": "Offline evaluation",
+   "status": "Core"
+  },
+  "onlineeval": {
+   "term": "Online evaluation",
+   "status": "Core"
+  },
+  "shadowtesting": {
+   "term": "Shadow testing",
+   "status": "Rising"
+  },
+  "canaryeval": {
+   "term": "Canary evaluation",
+   "status": "Rising"
+  },
+  "evaldrivendev": {
+   "term": "Eval-driven development",
+   "status": "Rising"
+  },
+  "coverage": {
+   "term": "Coverage",
+   "status": "Core"
+  },
+  "edgecasetesting": {
+   "term": "Edge case testing",
+   "status": "Core"
+  },
+  "stresstesting": {
+   "term": "Stress testing",
+   "status": "Core"
+  },
+  "adversarialeval": {
+   "term": "Adversarial evaluation",
+   "status": "Rising"
+  },
+  "robustnesstest": {
+   "term": "Robustness testing",
+   "status": "Rising"
+  },
+  "capabilityeval": {
+   "term": "Capability evaluation",
+   "status": "Core"
+  },
+  "redteameval": {
+   "term": "Red-team evaluation",
+   "status": "Rising"
+  },
+  "rewardmodeleval": {
+   "term": "Reward model eval",
+   "status": "Rising"
+  },
+  "distributionshift": {
+   "term": "Distribution shift",
+   "status": "Core"
+  },
+  "ooddetection": {
+   "term": "Out-of-distribution",
+   "status": "Core"
+  },
+  "indistribution": {
+   "term": "In-distribution",
+   "status": "Core"
+  },
+  "evalleakage": {
+   "term": "Eval leakage",
+   "status": "Core"
+  },
+  "contaminationcheck": {
+   "term": "Contamination check",
+   "status": "Core"
+  },
+  "statsignificance": {
+   "term": "Statistical significance",
+   "status": "Core"
+  },
+  "confidenceinterval": {
+   "term": "Confidence interval",
+   "status": "Core"
+  },
+  "modelvariance": {
+   "term": "Variance",
+   "status": "Core"
+  },
+  "noisefloor": {
+   "term": "Noise floor",
+   "status": "Core"
+  },
+  "serving": {
+   "term": "Serving",
+   "status": "Core"
+  },
+  "timetofirsttoken": {
+   "term": "Time to first token",
+   "status": "Core"
+  },
+  "tokensperscond": {
+   "term": "Tokens per second",
+   "status": "Core"
+  },
+  "batching": {
+   "term": "Batching",
+   "status": "Core"
+  },
+  "continuousbatching": {
+   "term": "Continuous batching",
+   "status": "Rising"
+  },
+  "quantization": {
+   "term": "Quantization",
+   "status": "Core"
+  },
+  "int8": {
+   "term": "INT8",
+   "status": "Core"
+  },
+  "int4": {
+   "term": "INT4",
+   "status": "Core"
+  },
+  "fp16": {
+   "term": "FP16",
+   "status": "Core"
+  },
+  "bf16": {
+   "term": "BF16",
+   "status": "Rising"
+  },
+  "pruning": {
+   "term": "Pruning",
+   "status": "Fading"
+  },
+  "modelcompression": {
+   "term": "Model compression",
+   "status": "Core"
+  },
+  "gpu": {
+   "term": "GPU",
+   "status": "Core"
+  },
+  "tpu": {
+   "term": "TPU",
+   "status": "Core"
+  },
+  "vram": {
+   "term": "VRAM",
+   "status": "Core"
+  },
+  "cuda": {
+   "term": "CUDA",
+   "status": "Core"
+  },
+  "accelerator": {
+   "term": "Accelerator",
+   "status": "Rising"
+  },
+  "cluster": {
+   "term": "Cluster",
+   "status": "Core"
+  },
+  "node": {
+   "term": "Node",
+   "status": "Core"
+  },
+  "apiserver": {
+   "term": "API",
+   "status": "Core"
   }
  },
  "aliases": {
@@ -2144,6 +3584,974 @@
   "drafter": "draftmodel",
   "moerouting": "moerouting",
   "moe routing": "moerouting",
-  "mixture-of-experts routing": "moerouting"
+  "mixture-of-experts routing": "moerouting",
+  "load-balancing-loss": "load-balancing-loss",
+  "load balancing loss": "load-balancing-loss",
+  "balance loss": "load-balancing-loss",
+  "auxiliary load loss": "load-balancing-loss",
+  "capacity-factor": "capacity-factor",
+  "capacity factor": "capacity-factor",
+  "expert capacity": "capacity-factor",
+  "expert-parallelism": "expert-parallelism",
+  "expert parallelism": "expert-parallelism",
+  "ep sharding": "expert-parallelism",
+  "tool-use": "tool-use",
+  "tool use": "tool-use",
+  "using tools": "tool-use",
+  "function-calling": "function-calling",
+  "function calling": "function-calling",
+  "function call": "function-calling",
+  "react": "react",
+  "reason and act": "react",
+  "reason+act": "react",
+  "reasoning and acting": "react",
+  "planning": "planning",
+  "agent planning": "planning",
+  "task planning": "planning",
+  "orchestration": "orchestration",
+  "agent orchestration": "orchestration",
+  "workflow orchestration": "orchestration",
+  "multi-agent": "multi-agent",
+  "multi agent": "multi-agent",
+  "multiagent": "multi-agent",
+  "agent team": "multi-agent",
+  "agent-loop": "agent-loop",
+  "agent loop": "agent-loop",
+  "agentic loop": "agent-loop",
+  "act-observe loop": "agent-loop",
+  "autonomy": "autonomy",
+  "autonomous": "autonomy",
+  "agent autonomy": "autonomy",
+  "autonomy level": "autonomy",
+  "tool-schema": "tool-schema",
+  "tool schema": "tool-schema",
+  "tool definition": "tool-schema",
+  "tool spec": "tool-schema",
+  "api-calling": "api-calling",
+  "api calling": "api-calling",
+  "calling apis": "api-calling",
+  "api tool": "api-calling",
+  "code-interpreter": "code-interpreter",
+  "code interpreter": "code-interpreter",
+  "python tool": "code-interpreter",
+  "code execution tool": "code-interpreter",
+  "computer-use": "computer-use",
+  "computer use": "computer-use",
+  "desktop agent": "computer-use",
+  "gui agent": "computer-use",
+  "browser-agent": "browser-agent",
+  "browser agent": "browser-agent",
+  "web agent": "browser-agent",
+  "web browsing agent": "browser-agent",
+  "router-agent": "router-agent",
+  "router agent": "router-agent",
+  "routing agent": "router-agent",
+  "dispatcher agent": "router-agent",
+  "supervisor-agent": "supervisor-agent",
+  "supervisor agent": "supervisor-agent",
+  "manager agent": "supervisor-agent",
+  "lead agent": "supervisor-agent",
+  "worker-agent": "worker-agent",
+  "worker agent": "worker-agent",
+  "sub-agent": "worker-agent",
+  "subagent": "worker-agent",
+  "specialist agent": "worker-agent",
+  "handoff": "handoff",
+  "hand-off": "handoff",
+  "agent handoff": "handoff",
+  "control handoff": "handoff",
+  "scratchpad": "scratchpad",
+  "scratch pad": "scratchpad",
+  "working notes": "scratchpad",
+  "thinking scratchpad": "scratchpad",
+  "agent-memory": "agent-memory",
+  "agent memory": "agent-memory",
+  "long-term memory": "agent-memory",
+  "persistent memory": "agent-memory",
+  "reflection": "reflection",
+  "self-reflection": "reflection",
+  "reflexion": "reflection",
+  "self-correction": "self-correction",
+  "self correction": "self-correction",
+  "self-repair": "self-correction",
+  "error correction": "self-correction",
+  "agentic-coding": "agentic-coding",
+  "agentic coding": "agentic-coding",
+  "ai coding agent": "agentic-coding",
+  "autonomous coding": "agentic-coding",
+  "copilot": "copilot",
+  "coding copilot": "copilot",
+  "ai copilot": "copilot",
+  "code assistant": "copilot",
+  "code-generation": "code-generation",
+  "code generation": "code-generation",
+  "codegen": "code-generation",
+  "code synthesis": "code-generation",
+  "swe-agent": "swe-agent",
+  "swe agent": "swe-agent",
+  "software engineering agent": "swe-agent",
+  "swe-bench agent": "swe-agent",
+  "tool-calling": "tool-calling",
+  "tool calling": "tool-calling",
+  "tool call": "tool-calling",
+  "calling tools": "tool-calling",
+  "structured-tool-use": "structured-tool-use",
+  "structured tool use": "structured-tool-use",
+  "validated tool use": "structured-tool-use",
+  "typed tool calls": "structured-tool-use",
+  "tool-result": "tool-result",
+  "tool result": "tool-result",
+  "tool output": "tool-result",
+  "tool response": "tool-result",
+  "observation": "observation",
+  "observations": "observation",
+  "percept": "observation",
+  "feedback observation": "observation",
+  "action-space": "action-space",
+  "action space": "action-space",
+  "set of actions": "action-space",
+  "available actions": "action-space",
+  "environment": "environment",
+  "agent environment": "environment",
+  "execution environment": "environment",
+  "trajectory": "trajectory",
+  "agent trajectory": "trajectory",
+  "episode trace": "trajectory",
+  "run trace": "trajectory",
+  "rollout": "rollout",
+  "rollouts": "rollout",
+  "sampled episode": "rollout",
+  "policy rollout": "rollout",
+  "agent-state": "agent-state",
+  "agent state": "agent-state",
+  "working state": "agent-state",
+  "session state": "agent-state",
+  "task-decomposition": "task-decomposition",
+  "task decomposition": "task-decomposition",
+  "decomposition": "task-decomposition",
+  "breaking down tasks": "task-decomposition",
+  "subtask": "subtask",
+  "sub-task": "subtask",
+  "sub task": "subtask",
+  "work item": "subtask",
+  "goal": "goal",
+  "agent goal": "goal",
+  "task objective": "goal",
+  "end goal": "goal",
+  "subgoal": "subgoal",
+  "sub-goal": "subgoal",
+  "sub goal": "subgoal",
+  "intermediate goal": "subgoal",
+  "plan-execution": "plan-execution",
+  "plan execution": "plan-execution",
+  "executing the plan": "plan-execution",
+  "plan-and-execute": "plan-execution",
+  "replanning": "replanning",
+  "re-planning": "replanning",
+  "plan revision": "replanning",
+  "dynamic planning": "replanning",
+  "chain-of-tools": "chain-of-tools",
+  "chain of tools": "chain-of-tools",
+  "tool chain": "chain-of-tools",
+  "tool pipeline": "chain-of-tools",
+  "tool-chaining": "tool-chaining",
+  "tool chaining": "tool-chaining",
+  "chaining tools": "tool-chaining",
+  "sequential tools": "tool-chaining",
+  "retrieval-tool": "retrieval-tool",
+  "retrieval tool": "retrieval-tool",
+  "knowledge lookup tool": "retrieval-tool",
+  "document retriever": "retrieval-tool",
+  "search-tool": "search-tool",
+  "search tool": "search-tool",
+  "web search tool": "search-tool",
+  "search connector": "search-tool",
+  "calculator-tool": "calculator-tool",
+  "calculator tool": "calculator-tool",
+  "math tool": "calculator-tool",
+  "arithmetic tool": "calculator-tool",
+  "sandbox-execution": "sandbox-execution",
+  "sandbox execution": "sandbox-execution",
+  "sandboxing": "sandbox-execution",
+  "isolated execution": "sandbox-execution",
+  "approval-gate": "approval-gate",
+  "approval gate": "approval-gate",
+  "human approval": "approval-gate",
+  "confirmation gate": "approval-gate",
+  "human-in-the-loop gate": "approval-gate",
+  "autonomous-agent": "autonomous-agent",
+  "autonomous agent": "autonomous-agent",
+  "fully autonomous agent": "autonomous-agent",
+  "semi-autonomous": "semi-autonomous",
+  "semi autonomous": "semi-autonomous",
+  "human-in-the-loop agent": "semi-autonomous",
+  "agent-framework": "agent-framework",
+  "agent framework": "agent-framework",
+  "agent library": "agent-framework",
+  "agent-runtime": "agent-runtime",
+  "agent runtime": "agent-runtime",
+  "execution runtime": "agent-runtime",
+  "agent-harness": "agent-harness",
+  "agent harness": "agent-harness",
+  "scaffolding": "agent-harness",
+  "looping": "looping",
+  "agent looping": "looping",
+  "stuck in a loop": "looping",
+  "stop-condition": "stop-condition",
+  "stop condition": "stop-condition",
+  "termination condition": "stop-condition",
+  "max-iterations": "max-iterations",
+  "max iterations": "max-iterations",
+  "iteration cap": "max-iterations",
+  "step limit": "max-iterations",
+  "agent-evaluation": "agent-evaluation",
+  "agent evaluation": "agent-evaluation",
+  "agent evals": "agent-evaluation",
+  "tool-registry": "tool-registry",
+  "tool registry": "tool-registry",
+  "tool catalog": "tool-registry",
+  "capability-discovery": "capability-discovery",
+  "capability discovery": "capability-discovery",
+  "tool discovery": "capability-discovery",
+  "permissions": "permissions",
+  "agent permissions": "permissions",
+  "scoped-access": "scoped-access",
+  "scoped access": "scoped-access",
+  "least privilege": "scoped-access",
+  "agent-guardrails": "agent-guardrails",
+  "agent guardrails": "agent-guardrails",
+  "guardrails": "agent-guardrails",
+  "delegation": "delegation",
+  "task delegation": "delegation",
+  "manager-worker": "manager-worker",
+  "manager worker": "manager-worker",
+  "supervisor-worker": "manager-worker",
+  "orchestrator-worker": "manager-worker",
+  "swarm": "swarm",
+  "agent swarm": "swarm",
+  "swarm of agents": "swarm",
+  "blackboard": "blackboard",
+  "blackboard pattern": "blackboard",
+  "shared workspace": "blackboard",
+  "shared-memory": "shared-memory",
+  "shared memory": "shared-memory",
+  "shared context": "shared-memory",
+  "episodic-memory": "episodic-memory",
+  "episodic memory": "episodic-memory",
+  "working-memory": "working-memory",
+  "working memory": "working-memory",
+  "scratch memory": "working-memory",
+  "memory-retrieval": "memory-retrieval",
+  "memory retrieval": "memory-retrieval",
+  "context-management": "context-management",
+  "context management": "context-management",
+  "context engineering": "context-management",
+  "agent-persona": "agent-persona",
+  "agent persona": "agent-persona",
+  "agent role": "agent-persona",
+  "role-assignment": "role-assignment",
+  "role assignment": "role-assignment",
+  "task-queue": "task-queue",
+  "task queue": "task-queue",
+  "work queue": "task-queue",
+  "event-loop": "event-loop",
+  "event loop": "event-loop",
+  "function-schema": "function-schema",
+  "function schema": "function-schema",
+  "json-schema-tools": "json-schema-tools",
+  "json schema tools": "json-schema-tools",
+  "json schema": "json-schema-tools",
+  "parallel-tool-calls": "parallel-tool-calls",
+  "parallel tool calls": "parallel-tool-calls",
+  "parallel function calling": "parallel-tool-calls",
+  "tool-error-handling": "tool-error-handling",
+  "tool error handling": "tool-error-handling",
+  "retry-logic": "retry-logic",
+  "retry logic": "retry-logic",
+  "retries": "retry-logic",
+  "fallback-tool": "fallback-tool",
+  "fallback tool": "fallback-tool",
+  "backup tool": "fallback-tool",
+  "agent-observability": "agent-observability",
+  "agent observability": "agent-observability",
+  "agent monitoring": "agent-observability",
+  "trace": "trace",
+  "execution trace": "trace",
+  "agent trace": "trace",
+  "span": "span",
+  "trace span": "span",
+  "step-logging": "step-logging",
+  "step logging": "step-logging",
+  "action logging": "step-logging",
+  "cost-tracking": "cost-tracking",
+  "cost tracking": "cost-tracking",
+  "spend tracking": "cost-tracking",
+  "token-budget": "token-budget",
+  "token budget": "token-budget",
+  "token limit per run": "token-budget",
+  "agent-orchestrator": "agent-orchestrator",
+  "agent orchestrator": "agent-orchestrator",
+  "orchestrator": "agent-orchestrator",
+  "workflow-engine": "workflow-engine",
+  "workflow engine": "workflow-engine",
+  "deterministic-workflow": "deterministic-workflow",
+  "deterministic workflow": "deterministic-workflow",
+  "fixed workflow": "deterministic-workflow",
+  "dynamic-workflow": "dynamic-workflow",
+  "dynamic workflow": "dynamic-workflow",
+  "agentic workflow": "dynamic-workflow",
+  "semantic-search": "semantic-search",
+  "semantic search": "semantic-search",
+  "meaning-based search": "semantic-search",
+  "similarity-search": "similarity-search",
+  "similarity search": "similarity-search",
+  "nearest neighbor search": "similarity-search",
+  "hybrid-search": "hybrid-search",
+  "hybrid search": "hybrid-search",
+  "bm25": "bm25",
+  "okapi bm25": "bm25",
+  "keyword ranking": "bm25",
+  "top-k-retrieval": "top-k-retrieval",
+  "top-k retrieval": "top-k-retrieval",
+  "top k retrieval": "top-k-retrieval",
+  "embedding-model": "embedding-model",
+  "embedding model": "embedding-model",
+  "embedder": "embedding-model",
+  "vector-index": "vector-index",
+  "vector index": "vector-index",
+  "hnsw": "hnsw",
+  "hierarchical navigable small world": "hnsw",
+  "approximate nearest neighbor": "approximate-nearest-neighbor",
+  "ann": "approximate-nearest-neighbor",
+  "exact nearest neighbor": "exact-nearest-neighbor",
+  "brute-force search": "exact-nearest-neighbor",
+  "exact knn": "exact-nearest-neighbor",
+  "metadata filtering": "metadata-filtering",
+  "filtered search": "metadata-filtering",
+  "short-term memory": "short-term-memory",
+  "conversation history": "conversation-history",
+  "chat history": "conversation-history",
+  "summarization memory": "summarization-memory",
+  "memory compression": "summarization-memory",
+  "knowledge base": "knowledge-base",
+  "kb": "knowledge-base",
+  "graphrag": "graphrag",
+  "graph rag": "graphrag",
+  "graph-based rag": "graphrag",
+  "dense retrieval": "dense-retrieval",
+  "embedding retrieval": "dense-retrieval",
+  "sparse retrieval": "sparse-retrieval",
+  "lexical retrieval": "sparse-retrieval",
+  "lexical search": "lexical-search",
+  "term-based search": "lexical-search",
+  "keyword search": "keyword-search",
+  "keyword matching": "keyword-search",
+  "query expansion": "query-expansion",
+  "query enrichment": "query-expansion",
+  "query rewriting": "query-rewriting",
+  "query reformulation": "query-rewriting",
+  "hypothetical document embeddings": "hypothetical-document-embeddings",
+  "hyde": "hyde",
+  "hyde retrieval": "hyde",
+  "passage retrieval": "passage-retrieval",
+  "passage search": "passage-retrieval",
+  "document store": "document-store",
+  "doc store": "document-store",
+  "index": "index",
+  "search index": "index",
+  "inverted index": "inverted-index",
+  "postings list": "inverted-index",
+  "recall at k": "recall-at-k",
+  "recall@k": "recall-at-k",
+  "precision at k": "precision-at-k",
+  "precision@k": "precision-at-k",
+  "retrieval quality": "retrieval-quality",
+  "retrieval effectiveness": "retrieval-quality",
+  "chunk size": "chunk-size",
+  "chunk length": "chunk-size",
+  "sentence splitting": "sentence-splitting",
+  "sentence segmentation": "sentence-splitting",
+  "recursive chunking": "recursive-chunking",
+  "recursive splitting": "recursive-chunking",
+  "semantic chunking": "semantic-chunking",
+  "meaning-based chunking": "semantic-chunking",
+  "embedding dimension": "embedding-dimension",
+  "vector dimensionality": "embedding-dimension",
+  "embedding dimensions": "embedding-dimension",
+  "vector similarity": "vector-similarity",
+  "similarity measure": "vector-similarity",
+  "dot product search": "dot-product-search",
+  "inner product search": "dot-product-search",
+  "maximum inner product search": "dot-product-search",
+  "euclidean distance": "euclidean-distance",
+  "l2 distance": "euclidean-distance",
+  "ivf index": "ivf-index",
+  "inverted file index": "ivf-index",
+  "ivf": "ivf-index",
+  "product quantization": "product-quantization",
+  "pq": "product-quantization",
+  "faiss": "faiss",
+  "facebook ai similarity search": "faiss",
+  "pgvector": "pgvector",
+  "postgres vector extension": "pgvector",
+  "retrieval pipeline": "retrieval-pipeline",
+  "rag pipeline": "retrieval-pipeline",
+  "ingestion": "ingestion",
+  "indexing pipeline": "ingestion",
+  "embedding cache": "embedding-cache",
+  "vector cache": "embedding-cache",
+  "re-embedding": "re-embedding",
+  "reindexing": "re-embedding",
+  "context assembly": "context-assembly",
+  "prompt assembly": "context-assembly",
+  "citation grounding": "citation-grounding",
+  "answer attribution": "citation-grounding",
+  "source attribution": "source-attribution",
+  "provenance": "source-attribution",
+  "retrieval augmentation": "retrieval-augmentation",
+  "multi-vector retrieval": "multi-vector-retrieval",
+  "multi-representation retrieval": "multi-vector-retrieval",
+  "colbert": "colbert",
+  "contextualized late interaction over bert": "colbert",
+  "late interaction": "late-interaction",
+  "late-interaction scoring": "late-interaction",
+  "cross-encoder": "cross-encoder",
+  "cross encoder": "cross-encoder",
+  "bi-encoder": "bi-encoder",
+  "dual encoder": "bi-encoder",
+  "reader": "reader",
+  "reader model": "reader",
+  "fusion-retrieval": "fusion-retrieval",
+  "fusion retrieval": "fusion-retrieval",
+  "retrieval fusion": "fusion-retrieval",
+  "reciprocal-rank-fusion": "reciprocal-rank-fusion",
+  "reciprocal rank fusion": "reciprocal-rank-fusion",
+  "rrf": "reciprocal-rank-fusion",
+  "contextual-retrieval": "contextual-retrieval",
+  "contextual retrieval": "contextual-retrieval",
+  "contextual chunk embeddings": "contextual-retrieval",
+  "parent-child-chunks": "parent-child-chunks",
+  "parent-child chunks": "parent-child-chunks",
+  "parent document retrieval": "parent-child-chunks",
+  "small-to-big retrieval": "parent-child-chunks",
+  "hierarchical-retrieval": "hierarchical-retrieval",
+  "hierarchical retrieval": "hierarchical-retrieval",
+  "multi-level retrieval": "hierarchical-retrieval",
+  "memory-store": "memory-store",
+  "memory store": "memory-store",
+  "knowledge-graph": "knowledge-graph",
+  "knowledge graph": "knowledge-graph",
+  "kg": "knowledge-graph",
+  "entity-linking": "entity-linking",
+  "entity linking": "entity-linking",
+  "entity resolution": "entity-linking",
+  "named entity linking": "entity-linking",
+  "fact-retrieval": "fact-retrieval",
+  "fact retrieval": "fact-retrieval",
+  "factual lookup": "fact-retrieval",
+  "freshness": "freshness",
+  "data freshness": "freshness",
+  "recency": "freshness",
+  "staleness": "staleness",
+  "stale data": "staleness",
+  "stale index": "staleness",
+  "index-refresh": "index-refresh",
+  "index refresh": "index-refresh",
+  "reindex": "index-refresh",
+  "embedding-drift": "embedding-drift",
+  "embedding drift": "embedding-drift",
+  "model drift (embeddings)": "embedding-drift",
+  "semantic-cache": "semantic-cache",
+  "semantic cache": "semantic-cache",
+  "semantic caching": "semantic-cache",
+  "prompt-caching": "prompt-caching",
+  "prompt caching": "prompt-caching",
+  "context caching": "prompt-caching",
+  "retrieval-latency": "retrieval-latency",
+  "retrieval latency": "retrieval-latency",
+  "search latency": "retrieval-latency",
+  "recall-vs-precision": "recall-vs-precision",
+  "recall vs precision": "recall-vs-precision",
+  "precision and recall": "recall-vs-precision",
+  "precision-recall": "recall-vs-precision",
+  "chunk-boundaries": "chunk-boundaries",
+  "chunk boundaries": "chunk-boundaries",
+  "chunk splitting": "chunk-boundaries",
+  "overlap-window": "overlap-window",
+  "overlap window": "overlap-window",
+  "sliding window": "overlap-window",
+  "document-loader": "document-loader",
+  "document loader": "document-loader",
+  "data loader": "document-loader",
+  "ingestion loader": "document-loader",
+  "confabulation": "confabulation",
+  "confabulate": "confabulation",
+  "sycophancy": "sycophancy",
+  "sycophantic": "sycophancy",
+  "people-pleasing": "sycophancy",
+  "toxicity": "toxicity",
+  "toxic output": "toxicity",
+  "toxic content": "toxicity",
+  "refusal": "refusal",
+  "model refusal": "refusal",
+  "declining": "refusal",
+  "over-refusal": "over-refusal",
+  "overrefusal": "over-refusal",
+  "false refusal": "over-refusal",
+  "jailbreak": "jailbreak",
+  "jailbreaking": "jailbreak",
+  "ai jailbreak": "jailbreak",
+  "indirect-prompt-injection": "indirect-prompt-injection",
+  "indirect prompt injection": "indirect-prompt-injection",
+  "data-poisoning": "data-poisoning",
+  "data poisoning": "data-poisoning",
+  "training data poisoning": "data-poisoning",
+  "model-extraction": "model-extraction",
+  "model extraction": "model-extraction",
+  "model stealing": "model-extraction",
+  "model theft": "model-extraction",
+  "adversarial-example": "adversarial-example",
+  "adversarial example": "adversarial-example",
+  "adversarial input": "adversarial-example",
+  "adversarial attack": "adversarial-example",
+  "jailbreak-prompt": "jailbreak-prompt",
+  "jailbreak prompt": "jailbreak-prompt",
+  "dan prompt": "jailbreak-prompt",
+  "content-filter": "content-filter",
+  "content filter": "content-filter",
+  "safety filter": "content-filter",
+  "input filter": "content-filter",
+  "red-teaming": "red-teaming",
+  "red teaming": "red-teaming",
+  "red team": "red-teaming",
+  "ai red teaming": "red-teaming",
+  "output-validation": "output-validation",
+  "output validation": "output-validation",
+  "response validation": "output-validation",
+  "output guardrails": "output-validation",
+  "moderation": "moderation",
+  "content moderation": "moderation",
+  "moderation api": "moderation",
+  "ai-safety": "ai-safety",
+  "ai safety": "ai-safety",
+  "existential-risk": "existential-risk",
+  "existential risk": "existential-risk",
+  "x-risk": "existential-risk",
+  "xrisk": "existential-risk",
+  "interpretability": "interpretability",
+  "explainability": "interpretability",
+  "model interpretability": "interpretability",
+  "mechanistic-interpretability": "mechanistic-interpretability",
+  "mechanistic interpretability": "mechanistic-interpretability",
+  "mech interp": "mechanistic-interpretability",
+  "mechinterp": "mechanistic-interpretability",
+  "model-welfare": "model-welfare",
+  "model welfare": "model-welfare",
+  "ai welfare": "model-welfare",
+  "digital welfare": "model-welfare",
+  "responsible-ai": "responsible-ai",
+  "responsible ai": "responsible-ai",
+  "ethical ai": "responsible-ai",
+  "trustworthy ai": "responsible-ai",
+  "watermarking": "watermarking",
+  "ai watermarking": "watermarking",
+  "content watermarking": "watermarking",
+  "provenance watermark": "watermarking",
+  "deepfake": "deepfake",
+  "deep fake": "deepfake",
+  "synthetic media": "deepfake",
+  "misinformation": "misinformation",
+  "false information": "misinformation",
+  "disinformation": "disinformation",
+  "deliberate misinformation": "disinformation",
+  "hallucination-detection": "hallucination-detection",
+  "hallucination detection": "hallucination-detection",
+  "grounding-check": "grounding-check",
+  "grounding check": "grounding-check",
+  "groundedness check": "grounding-check",
+  "faithfulness check": "grounding-check",
+  "fact-checking": "fact-checking",
+  "fact checking": "fact-checking",
+  "automated fact-checking": "fact-checking",
+  "safety-classifier": "safety-classifier",
+  "safety classifier": "safety-classifier",
+  "harm classifier": "safety-classifier",
+  "harmful-content": "harmful-content",
+  "harmful content": "harmful-content",
+  "disallowed content": "harmful-content",
+  "csam detection": "csamdetection",
+  "csam": "csamdetection",
+  "child safety detection": "csamdetection",
+  "pii detection": "piidetection",
+  "pii": "piidetection",
+  "personal data detection": "piidetection",
+  "membership inference": "membershipinference",
+  "membership inference attack": "membershipinference",
+  "mia": "membershipinference",
+  "model inversion": "modelinversion",
+  "model inversion attack": "modelinversion",
+  "backdoor attack": "backdoorattack",
+  "backdoor": "backdoorattack",
+  "neural backdoor": "backdoorattack",
+  "trojan": "trojan",
+  "trojaned model": "trojan",
+  "neural trojan": "trojan",
+  "poisoned data": "poisoneddata",
+  "data poisoning attack": "poisoneddata",
+  "adversarial robustness": "adversarialrobustness",
+  "adversarial examples": "adversarialrobustness",
+  "robustness": "adversarialrobustness",
+  "jailbreak resistance": "jailbreakresistance",
+  "jailbreak robustness": "jailbreakresistance",
+  "refusal rate": "refusalrate",
+  "refusals": "refusalrate",
+  "alignment faking": "alignmentfaking",
+  "faking alignment": "alignmentfaking",
+  "deceptive alignment": "deceptivealignment",
+  "goal misgeneralization": "goalmisgeneralization",
+  "goal misgen": "goalmisgeneralization",
+  "instrumental convergence": "instrumentalconvergence",
+  "convergent instrumental goals": "instrumentalconvergence",
+  "corrigibility": "corrigibility",
+  "corrigible ai": "corrigibility",
+  "oversight": "oversight",
+  "human oversight": "oversight",
+  "ai oversight": "oversight",
+  "scalable oversight": "scalableoversight",
+  "weak-to-strong generalization": "weaktostronggeneralization",
+  "weak to strong": "weaktostronggeneralization",
+  "w2sg": "weaktostronggeneralization",
+  "constitutional classifier": "constitutionalclassifier",
+  "constitutional classifiers": "constitutionalclassifier",
+  "input sanitization": "inputsanitization",
+  "input filtering": "inputsanitization",
+  "prompt sanitization": "inputsanitization",
+  "output sanitization": "outputsanitization",
+  "output filtering": "outputsanitization",
+  "rate limiting": "ratelimiting",
+  "rate limits": "ratelimiting",
+  "throttling": "ratelimiting",
+  "abuse prevention": "abuseprevention",
+  "anti-abuse": "abuseprevention",
+  "abuse mitigation": "abuseprevention",
+  "trust and safety": "trustandsafety",
+  "t&s": "trustandsafety",
+  "trust & safety": "trustandsafety",
+  "content policy": "contentpolicy",
+  "content guidelines": "contentpolicy",
+  "content moderation policy": "contentpolicy",
+  "usage policy": "usagepolicy",
+  "acceptable use policy": "usagepolicy",
+  "aup": "usagepolicy",
+  "safety evaluation": "safetyevaluation",
+  "safety evals": "safetyevaluation",
+  "safety testing": "safetyevaluation",
+  "dangerous capabilities": "dangerouscapabilities",
+  "dangerous capability evals": "dangerouscapabilities",
+  "frontier risks": "dangerouscapabilities",
+  "biorisk": "biorisk",
+  "biological risk": "biorisk",
+  "bio uplift": "biorisk",
+  "cyber risk": "cyberrisk",
+  "cyber uplift": "cyberrisk",
+  "offensive cyber capabilities": "cyberrisk",
+  "autonomy risk": "autonomyrisk",
+  "autonomous capability risk": "autonomyrisk",
+  "self-replication risk": "autonomyrisk",
+  "situational awareness": "situationalawareness",
+  "model self-awareness": "situationalawareness",
+  "power seeking": "powerseeking",
+  "power-seeking behavior": "powerseeking",
+  "power-seeking ai": "powerseeking",
+  "reward tampering": "rewardtampering",
+  "reward channel tampering": "rewardtampering",
+  "sandbagging": "sandbagging",
+  "capability sandbagging": "sandbagging",
+  "strategic underperformance": "sandbagging",
+  "evaluation gaming": "evaluationgaming",
+  "eval gaming": "evaluationgaming",
+  "gaming the benchmark": "evaluationgaming",
+  "honeypot": "honeypot",
+  "honeytoken": "honeypot",
+  "canary": "canary",
+  "canary string": "canary",
+  "canary token": "canary",
+  "tripwire": "tripwire",
+  "safety tripwire": "tripwire",
+  "kill switch": "killswitch",
+  "emergency stop": "killswitch",
+  "off-switch": "killswitch",
+  "containment": "containment",
+  "ai containment": "containment",
+  "boxing": "containment",
+  "air gap": "airgap",
+  "air-gapped": "airgap",
+  "air gapping": "airgap",
+  "principle of least privilege": "principleofleastprivilege",
+  "polp": "principleofleastprivilege",
+  "defense in depth": "defenseindepth",
+  "layered security": "defenseindepth",
+  "defense-in-depth": "defenseindepth",
+  "threat model": "threatmodel",
+  "threat modeling": "threatmodel",
+  "attack surface": "attacksurface",
+  "attack surface area": "attacksurface",
+  "supply chain risk": "supplychainrisk",
+  "ai supply chain risk": "supplychainrisk",
+  "ml supply chain": "supplychainrisk",
+  "model provenance": "modelprovenance",
+  "model lineage": "modelprovenance",
+  "weight provenance": "modelprovenance",
+  "transparency": "transparency",
+  "ai transparency": "transparency",
+  "model transparency": "transparency",
+  "fairness": "fairness",
+  "algorithmic fairness": "fairness",
+  "ml fairness": "fairness",
+  "accountability": "accountability",
+  "who's responsible": "accountability",
+  "responsible for ai": "accountability",
+  "privacy": "privacy",
+  "data privacy": "privacy",
+  "user privacy": "privacy",
+  "private data": "privacy",
+  "differential privacy": "differential-privacy",
+  "dp": "differential-privacy",
+  "privacy budget": "differential-privacy",
+  "federated learning": "federated-learning",
+  "federated": "federated-learning",
+  "distributed training": "federated-learning",
+  "data minimization": "data-minimization",
+  "minimal data": "data-minimization",
+  "lean datasets": "data-minimization",
+  "consent": "consent",
+  "informed consent": "consent",
+  "data consent": "consent",
+  "user agreement": "consent",
+  "alignment research": "alignment-research",
+  "value alignment": "value-alignment",
+  "values": "value-alignment",
+  "human values": "value-alignment",
+  "reward misspecification": "reward-misspecification",
+  "misspecified reward": "reward-misspecification",
+  "wrong objective": "reward-misspecification",
+  "proxy gaming": "proxy-gaming",
+  "goodharting": "proxy-gaming",
+  "gaming metrics": "proxy-gaming",
+  "goodhart's law": "goodharts-law",
+  "goodhart": "goodharts-law",
+  "measure becomes target": "goodharts-law",
+  "benchmark": "benchmark",
+  "benchmark dataset": "benchmark",
+  "standardized test": "benchmark",
+  "llm-as-judge": "llm-as-judge",
+  "model judge": "llm-as-judge",
+  "llm evaluation": "llm-as-judge",
+  "rubric grading": "rubric-grading",
+  "exact match": "exact-match",
+  "em": "exact-match",
+  "string match": "exact-match",
+  "pass@k": "pass-at-k",
+  "pass at k": "pass-at-k",
+  "multiple attempts": "pass-at-k",
+  "a/b test": "ab-test",
+  "a/b testing": "ab-test",
+  "split test": "ab-test",
+  "randomized trial": "ab-test",
+  "human eval": "human-eval",
+  "human evaluation": "human-eval",
+  "human raters": "human-eval",
+  "gold set": "gold-set",
+  "gold standard": "gold-set",
+  "ground truth set": "gold-set",
+  "ground truth": "ground-truth",
+  "correct answer": "ground-truth",
+  "true label": "ground-truth",
+  "mmlu": "mmlu",
+  "massive multitask language understanding": "mmlu",
+  "humaneval": "humaneval",
+  "human eval benchmark": "humaneval",
+  "gsm8k": "gsm8k",
+  "grade school math": "gsm8k",
+  "hellaswag": "hellaswag",
+  "arc": "arc",
+  "ai2 reasoning challenge": "arc",
+  "gpqa": "gpqa",
+  "graduate-level google-proof questions": "gpqa",
+  "swe-bench": "swe-bench",
+  "software engineering benchmark": "swe-bench",
+  "mt-bench": "mt-bench",
+  "multi-turn bench": "mt-bench",
+  "accuracy": "accuracy",
+  "correct rate": "accuracy",
+  "precision": "precision",
+  "positive predictive value": "precision",
+  "recall": "recall",
+  "sensitivity": "recall",
+  "true positive rate": "recall",
+  "f1 score": "f1-score",
+  "f1": "f1-score",
+  "harmonic mean": "f1-score",
+  "bleu": "bleu",
+  "bilingual evaluation understudy": "bleu",
+  "rouge": "rouge",
+  "recall-oriented understudy for gisting evaluation": "rouge",
+  "win rate": "win-rate",
+  "win %": "win-rate",
+  "preference rate": "win-rate",
+  "latency": "latency",
+  "response time": "latency",
+  "inference time": "latency",
+  "throughput": "throughput",
+  "requests per second": "throughput",
+  "rps": "throughput",
+  "regression testing": "regression-testing",
+  "regression test": "regression-testing",
+  "non-regression test": "regression-testing",
+  "eval set": "eval-set",
+  "evaluation set": "eval-set",
+  "overfitting to benchmarks": "overfitting-to-benchmarks",
+  "benchmark overfitting": "overfitting-to-benchmarks",
+  "leaderboard": "leaderboard",
+  "benchmark leaderboard": "leaderboard",
+  "elo rating": "elo-rating",
+  "elo": "elo-rating",
+  "arena": "arena",
+  "model arena": "arena",
+  "lmsys arena": "arena",
+  "pairwise comparison": "pairwise-comparison",
+  "pairwise eval": "pairwise-comparison",
+  "head-to-head": "pairwise-comparison",
+  "preference judgment": "preference-judgment",
+  "preference": "preference-judgment",
+  "human preference": "preference-judgment",
+  "calibration": "calibration",
+  "model calibration": "calibration",
+  "calibration error": "confidence-calibration",
+  "hallucination rate": "hallucination-rate",
+  "hallucination frequency": "hallucination-rate",
+  "factuality": "factuality",
+  "factual accuracy": "factuality",
+  "truthfulness": "factuality",
+  "faithfulness": "faithfulness",
+  "faithful to context": "faithfulness",
+  "answer relevance": "answer-relevance",
+  "response relevance": "answer-relevance",
+  "context relevance": "context-relevance",
+  "retrieval relevance": "context-relevance",
+  "ragas": "ragas",
+  "retrieval-augmented generation assessment": "ragas",
+  "golden dataset": "golden-dataset",
+  "golden set": "golden-dataset",
+  "test harness": "test-harness",
+  "eval harness": "test-harness",
+  "unit test for prompts": "unit-test-for-prompts",
+  "prompt tests": "unit-test-for-prompts",
+  "assertion": "assertion",
+  "assert": "assertion",
+  "test assertion": "assertion",
+  "grader": "grader",
+  "automatic grader": "grader",
+  "automated grading": "automated-grading",
+  "automatic scoring": "automated-grading",
+  "retrieval eval": "retrievalevaluation",
+  "ranking function": "scoringfunction",
+  "relevance score": "scoringfunction",
+  "gold answer": "referenceanswer",
+  "gold reference": "referenceanswer",
+  "llm-judge": "referencefreeeval",
+  "self-evaluation": "referencefreeeval",
+  "consistency checking": "selfconsistencycheck",
+  "ensemble agreement": "selfconsistencycheck",
+  "ensemble voting": "majorityvoting",
+  "plurality": "majorityvoting",
+  "voting evaluation": "ensembleeval",
+  "multi-judge": "ensembleeval",
+  "holdout evaluation": "holdouteval",
+  "train-test split": "holdouteval",
+  "batch evaluation": "offlineeval",
+  "pre-deployment": "offlineeval",
+  "live eval": "onlineeval",
+  "production evaluation": "onlineeval",
+  "shadow deployment": "shadowtesting",
+  "shadow mode": "shadowtesting",
+  "canary rollout": "canaryeval",
+  "gradual rollout": "canaryeval",
+  "metric-driven": "evaldrivendev",
+  "test-first": "evaldrivendev",
+  "scenario coverage": "coverage",
+  "domain coverage": "coverage",
+  "corner cases": "edgecasetesting",
+  "boundary testing": "edgecasetesting",
+  "load testing": "stresstesting",
+  "scalability": "stresstesting",
+  "jailbreak testing": "adversarialeval",
+  "attack testing": "adversarialeval",
+  "perturbation testing": "robustnesstest",
+  "invariance": "robustnesstest",
+  "skills testing": "capabilityeval",
+  "ability measure": "capabilityeval",
+  "vulnerability testing": "redteameval",
+  "human attack": "redteameval",
+  "preference eval": "rewardmodeleval",
+  "ranking measurement": "rewardmodeleval",
+  "data drift": "distributionshift",
+  "covariate shift": "distributionshift",
+  "ood": "ooddetection",
+  "anomaly detection": "ooddetection",
+  "on-distribution": "indistribution",
+  "id examples": "indistribution",
+  "test contamination": "evalleakage",
+  "leakage detection": "evalleakage",
+  "decontamination": "contaminationcheck",
+  "overlap check": "contaminationcheck",
+  "p-value": "statsignificance",
+  "hypothesis test": "statsignificance",
+  "ci": "confidenceinterval",
+  "error bars": "confidenceinterval",
+  "eval variance": "modelvariance",
+  "measurement variability": "modelvariance",
+  "baseline variance": "noisefloor",
+  "detection limit": "noisefloor",
+  "inference server": "serving",
+  "model deployment": "serving",
+  "ttft": "timetofirsttoken",
+  "first token latency": "timetofirsttoken",
+  "tps": "tokensperscond",
+  "generation speed": "tokensperscond",
+  "request batching": "batching",
+  "batch processing": "batching",
+  "token-level batching": "continuousbatching",
+  "dynamic batching": "continuousbatching",
+  "weight quantization": "quantization",
+  "quantized model": "quantization",
+  "8-bit integer": "int8",
+  "byte quantization": "int8",
+  "4-bit integer": "int4",
+  "nibble": "int4",
+  "half precision": "fp16",
+  "float16 format": "fp16",
+  "brain float": "bf16",
+  "bfloat16 format": "bf16",
+  "weight pruning": "pruning",
+  "sparsity": "pruning",
+  "compression techniques": "modelcompression",
+  "model reduction": "modelcompression",
+  "graphics processing unit": "gpu",
+  "nvidia": "gpu",
+  "tensor processing unit": "tpu",
+  "google tpu": "tpu",
+  "gpu memory": "vram",
+  "video memory": "vram",
+  "gpu programming": "cuda",
+  "cuda kernels": "cuda",
+  "hardware accelerator": "accelerator",
+  "specialized chip": "accelerator",
+  "gpu cluster": "cluster",
+  "distributed compute": "cluster",
+  "compute node": "node",
+  "server instance": "node",
+  "rest api": "apiserver",
+  "inference endpoint": "apiserver"
  }
 }

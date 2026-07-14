@@ -12,6 +12,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       if (msg && msg.type === "list") sendResponse(await self.DecoderSupa.list());
       else if (msg && msg.type === "save") sendResponse(await self.DecoderSupa.save(msg.id));
       else if (msg && msg.type === "remove") sendResponse(await self.DecoderSupa.remove(msg.id));
+      // Auth runs here, not in the popup — the popup closes when the OAuth window opens,
+      // which would kill launchWebAuthFlow before it could save the session.
+      else if (msg && msg.type === "signin") { const s = await self.DecoderSupa.signIn(); sendResponse({ ok: true, email: s.email }); }
+      else if (msg && msg.type === "signout") { await self.DecoderSupa.signOut(); sendResponse({ ok: true }); }
       else sendResponse({ ok: false });
     } catch (e) { sendResponse({ ok: false, error: String(e) }); }
   })();

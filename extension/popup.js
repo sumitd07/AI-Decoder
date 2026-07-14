@@ -36,7 +36,7 @@
         <span class="aemail" title="${esc(email)}">${esc(email)}</span>
         <button class="linkbtn" id="signoutBtn">Sign out</button>`;
       document.getElementById("signoutBtn").addEventListener("click", async () => {
-        try { await Supa.signOut(); } catch (e) {}
+        try { await chrome.runtime.sendMessage({ type: "signout" }); } catch (e) {}
         await renderAll();
       });
     } else {
@@ -51,9 +51,17 @@
         err.hidden = true;
         btn.disabled = true; btn.innerHTML = "Opening…";
         try {
-          if (!Supa) throw new Error("Supabase helper failed to load");
-          await Supa.signIn();
-          await renderAll();
+          // Auth runs in the background worker (see background.js) so it survives the
+          // popup closing. In the common case the OAuth window steals focus, Chrome
+          // closes this popup, and this response never arrives — that's expected; the
+          // next popup open reads the session background.js saved via Supa.session().
+          const res = await chrome.runtime.sendMessage({ type: "signin" });
+          if (res && res.ok) { await renderAll(); }
+          else if (res && res.error) {
+            btn.disabled = false; btn.innerHTML = `${GOOGLE_G}<span>Sign in</span>`;
+            err.textContent = /configured/i.test(String(res.error)) ? "Sign-in isn't set up yet — add your Supabase keys to config.js." : "Sign-in didn't complete. Try again.";
+            err.hidden = false;
+          }
         } catch (e) {
           btn.disabled = false; btn.innerHTML = `${GOOGLE_G}<span>Sign in</span>`;
           err.textContent = /configured/i.test(String(e && e.message)) ? "Sign-in isn't set up yet — add your Supabase keys to config.js." : "Sign-in didn't complete. Try again.";

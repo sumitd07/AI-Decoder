@@ -21,6 +21,8 @@
     return s;
   }
 
+  // Must run in the background service worker, not the popup — the popup is
+  // destroyed when the auth window steals focus, killing the pending flow.
   async function signIn() {
     const { url } = cfg();
     if (!url) throw new Error("Supabase isn’t configured (see config.js)");

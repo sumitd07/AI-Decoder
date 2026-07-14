@@ -49,6 +49,7 @@ Work top to bottom. Each check says what you should see. If something's off, the
 7. **Sync check (the whole point).** Open the web app, sign in with the **same** Google account, and open **Saved** — the term you saved in the extension is there. Save one on the website; it appears in the extension popup. One shared saved terms.
 8. **The popup.** Click the Decoder icon — it shows your account, your saved terms, and "Highlighting is on for every site."
 9. **Turn off.** In the popup, click **Turn off**. Reload the article — no underlines. Re-enable to bring them back.
+10. **Sign-in survives the popup closing.** Click the Decoder icon → **Sign in**, complete Google OAuth in the window that opens. The popup closes when that window opens — expected. Reopen the popup: the account row shows your email, and your saved terms load.
 
 *If it's wrong:*
 - Nothing underlines on a page that was already open → reload it. Some pages (browser settings, the Web Store, blank tabs) are off-limits to extensions by design.

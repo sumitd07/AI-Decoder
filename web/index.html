@@ -202,7 +202,7 @@
   if (!cfg.SUPABASE_URL || !cfg.SUPABASE_ANON_KEY) {
     window.__decoderConfigured = false;
     emit({ configured: false });
-  } else {
+  } else try {
     window.__decoderConfigured = true;
     const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2");
     const sb = createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
@@ -223,6 +223,11 @@
     });
     const { data: { session } } = await sb.auth.getSession();
     emit({ configured: true, user: session ? { id: session.user.id, email: session.user.email } : null, api });
+  } catch (e) {
+    // supabase-js failed to load (network hiccup, blocked CDN, etc.)
+    console.warn("[decoder] cloud bridge failed to load", e);
+    window.__decoderCloudError = true;
+    emit({ configured: true, loadError: true });
   }
 </script>
 
@@ -286,7 +291,20 @@ window.addEventListener("decoder-auth", async e => {
   }
 });
 function isSignedIn(){ return !!cloud.user; }
-function doSignIn(){ if (cloud.api) cloud.api.signIn(); else showToast('Sign-in isn’t connected yet — see SETUP.md'); }
+function doSignIn(){
+  if (cloud.api) { cloud.api.signIn(); return; }
+  if (window.__decoderConfigured === false) { showToast('Sign-in isn’t available on this copy of the app.'); return; }
+  if (window.__decoderCloudError) { showToast('Couldn’t reach the sign-in service — check your connection and reload the page.'); return; }
+  // Configured, no error — the cloud bridge is still loading. Wait for it briefly.
+  showToast('Connecting…');
+  const started = Date.now();
+  (function waitForApi(){
+    if (cloud.api || window.__decoderCloud) { (cloud.api || window.__decoderCloud).signIn(); return; }
+    if (window.__decoderCloudError) { showToast('Couldn’t reach the sign-in service — check your connection and reload the page.'); return; }
+    if (Date.now() - started > 8000) { showToast('Sign-in is taking too long to load — reload the page and try again.'); return; }
+    setTimeout(waitForApi, 250);
+  })();
+}
 // mirror a save/remove into the cloud when signed in (fire-and-forget)
 function cloudSync(id, added){
   if (!cloud.user || !cloud.api) return;

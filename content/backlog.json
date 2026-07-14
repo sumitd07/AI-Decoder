@@ -1827,565 +1827,565 @@
   "term": "load balancing loss",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "capacity factor",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "expert parallelism",
   "domain": "Architectures",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tool use",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "function calling",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ReAct",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "planning",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "orchestration",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "multi-agent",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent loop",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "autonomy",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tool schema",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "API calling",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "code interpreter",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "computer use",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "browser agent",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "router agent",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "supervisor agent",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "worker agent",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "handoff",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "scratchpad",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent memory",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reflection",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "self-correction",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agentic coding",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "copilot",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "code generation",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "SWE agent",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tool calling",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "structured tool use",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tool result",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "observation",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "action space",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "environment",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "trajectory",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "rollout",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent state",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "task decomposition",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "subtask",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "goal",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "subgoal",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "plan execution",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "replanning",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "chain of tools",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tool chaining",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "retrieval tool",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "search tool",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "calculator tool",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sandbox execution",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "approval gate",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "autonomous agent",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "semi-autonomous",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent framework",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent runtime",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent harness",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "looping",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "stop condition",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "max iterations",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent evaluation",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tool registry",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "capability discovery",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "permissions",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "scoped access",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent guardrails",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "delegation",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "manager-worker",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "swarm",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "blackboard",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "shared memory",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "episodic memory",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "working memory",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "long-term memory",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "memory retrieval",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "context management",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent persona",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "role assignment",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "task queue",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "event loop",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "function schema",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "JSON schema tools",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "parallel tool calls",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tool error handling",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "retry logic",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "fallback tool",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent observability",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "trace",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "span",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "step logging",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cost tracking",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "token budget",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "agent orchestrator",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "workflow engine",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "deterministic workflow",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "dynamic workflow",
   "domain": "Agents & tools",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "retrieval",
@@ -2415,13 +2415,13 @@
   "term": "semantic search",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "similarity search",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reranking",
@@ -2433,325 +2433,325 @@
   "term": "hybrid search",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "BM25",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "top-k retrieval",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "embedding model",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "vector index",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "HNSW",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "approximate nearest neighbor",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "exact nearest neighbor",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "metadata filtering",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "short-term memory",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "conversation history",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "summarization memory",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "knowledge base",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GraphRAG",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "dense retrieval",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sparse retrieval",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "lexical search",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "keyword search",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "query expansion",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "query rewriting",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "hypothetical document embeddings",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "HyDE",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "passage retrieval",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "document store",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "index",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "inverted index",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "recall at k",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "precision at k",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "retrieval quality",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "chunk size",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sentence splitting",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "recursive chunking",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "semantic chunking",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "embedding dimension",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "vector similarity",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "dot product search",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "euclidean distance",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "IVF index",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "product quantization",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "FAISS",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "pgvector",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "retrieval pipeline",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ingestion",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "embedding cache",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "re-embedding",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "context assembly",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "citation grounding",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "source attribution",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "retrieval augmentation",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "multi-vector retrieval",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ColBERT",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "late interaction",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cross-encoder",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "bi-encoder",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "retriever",
@@ -2763,43 +2763,43 @@
   "term": "reader",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "fusion retrieval",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reciprocal rank fusion",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "contextual retrieval",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "parent-child chunks",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "hierarchical retrieval",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "memory store",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "vector store",
@@ -2811,97 +2811,97 @@
   "term": "knowledge graph",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "entity linking",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "fact retrieval",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "freshness",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "staleness",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "index refresh",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "embedding drift",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "semantic cache",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt caching",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "retrieval latency",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "recall vs precision",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "chunk boundaries",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "overlap window",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "document loader",
   "domain": "Retrieval & memory",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "confabulation",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sycophancy",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "bias",
@@ -2913,25 +2913,25 @@
   "term": "toxicity",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "refusal",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "over-refusal",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "jailbreak",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "specification gaming",
@@ -2943,169 +2943,169 @@
   "term": "indirect prompt injection",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "data poisoning",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model extraction",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "adversarial example",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "jailbreak prompt",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "guardrails",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "content filter",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "red teaming",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sandboxing",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "output validation",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "moderation",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "AI safety",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "existential risk",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "interpretability",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "mechanistic interpretability",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model welfare",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "responsible AI",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "watermarking",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "deepfake",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "misinformation",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "disinformation",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "hallucination detection",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "grounding check",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "fact-checking",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "safety classifier",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "harmful content",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "CSAM detection",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "PII detection",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "data leakage",
@@ -3117,547 +3117,547 @@
   "term": "membership inference",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model inversion",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "backdoor attack",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "trojan",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "poisoned data",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "adversarial robustness",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "jailbreak resistance",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "refusal rate",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "false refusal",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "alignment faking",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "deceptive alignment",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "goal misgeneralization",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "instrumental convergence",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "corrigibility",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "oversight",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "scalable oversight",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "weak-to-strong generalization",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "constitutional classifier",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "safety filter",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "input sanitization",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "output sanitization",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "rate limiting",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "abuse prevention",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "trust and safety",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "content policy",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "usage policy",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "safety evaluation",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "dangerous capabilities",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "biorisk",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cyber risk",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "autonomy risk",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "situational awareness",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "power seeking",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reward tampering",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sandbagging",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "evaluation gaming",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "honeypot",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "canary",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tripwire",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "kill switch",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "containment",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "air gap",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "principle of least privilege",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "defense in depth",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "threat model",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "attack surface",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "supply chain risk",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model provenance",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "provenance",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "transparency",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "explainability",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "fairness",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "accountability",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "privacy",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "differential privacy",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "federated learning",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "data minimization",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "consent",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "alignment research",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "value alignment",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reward misspecification",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "proxy gaming",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Goodhart's law",
   "domain": "Safety, security & alignment",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "benchmark",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "LLM-as-judge",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "rubric grading",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "exact match",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "pass at k",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "A/B test",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "human eval",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "gold set",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ground truth",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "MMLU",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "HumanEval",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GSM8K",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "HellaSwag",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ARC",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GPQA",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "SWE-bench",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "MT-Bench",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "accuracy",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "precision",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "recall",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "F1 score",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "BLEU",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ROUGE",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "win rate",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "latency",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "throughput",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "regression testing",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "eval set",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "benchmark contamination",
@@ -3669,37 +3669,37 @@
   "term": "overfitting to benchmarks",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "leaderboard",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Elo rating",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "arena",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "pairwise comparison",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "preference judgment",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "annotator",
@@ -3717,307 +3717,307 @@
   "term": "calibration",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "confidence calibration",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "hallucination rate",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "factuality",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "faithfulness",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "answer relevance",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "context relevance",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "retrieval evaluation",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "RAGAS",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "golden dataset",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "test harness",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "unit test for prompts",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "assertion",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "grader",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "automated grading",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "rubric",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "scoring function",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reference answer",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reference-free evaluation",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "self-consistency check",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "majority voting",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ensemble evaluation",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "holdout eval",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "offline evaluation",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "online evaluation",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "shadow testing",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "canary evaluation",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "eval-driven development",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "coverage",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "edge case testing",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "stress testing",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "adversarial evaluation",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "robustness testing",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "capability evaluation",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "red-team evaluation",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "human preference",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reward model eval",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "distribution shift",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "out-of-distribution",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "in-distribution",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "eval leakage",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "contamination check",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "statistical significance",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "confidence interval",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "variance",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "noise floor",
   "domain": "Evaluation & quality",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "serving",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "time to first token",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tokens per second",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "batching",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "continuous batching",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "speculative decoding",
@@ -4029,91 +4029,91 @@
   "term": "quantization",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "INT8",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "INT4",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "FP16",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "BF16",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "pruning",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model compression",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GPU",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "TPU",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "VRAM",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "CUDA",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "accelerator",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cluster",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "node",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "API",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "endpoint",
@@ -4179,7 +4179,7 @@
   "term": "inference server",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "vLLM",
@@ -4209,7 +4209,7 @@
   "term": "weight quantization",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "activation quantization",
@@ -4269,7 +4269,7 @@
   "term": "GPU memory",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "memory bandwidth",
@@ -4323,7 +4323,7 @@
   "term": "first token latency",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tail latency",
@@ -5301,7 +5301,7 @@
   "term": "reflexion",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "scratchpad prompting",
@@ -5631,7 +5631,7 @@
   "term": "NVIDIA",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "H100",
@@ -5967,7 +5967,7 @@
   "term": "context caching",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt caching API",

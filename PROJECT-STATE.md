@@ -6,7 +6,7 @@ Compact snapshot so a new session doesn't re-derive everything. For deep history
 A plain-language glossary for AI terms. Look a term up (or click it while reading) → get a simple explanation + example + status (Core/Rising/Fading/Historical). Sign in to save terms; they sync across the web app and the browser extension.
 
 - **Live site:** https://aidecoder.app (Vercel; also `ai-decoder-nine.vercel.app`).
-- **Live extension:** https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh (Chrome Web Store). Local code is at v1.0.1 (popup gained a web-app footer link) — needs a re-zip + store upload to ship.
+- **Live extension:** https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh (Chrome Web Store). Store has v1.0.0; local code is at v1.0.2 (v1.0.1: popup web-app footer link; v1.0.2: OAuth moved to background worker). `decoder-extension-v1.0.2.zip` at repo root is ready to upload.
 - **Terminology:** the saved collection is called **"saved terms"** (NOT "cheatsheet" — renamed). Tone: simple, direct, minimal formatting.
 
 ## Layout
@@ -28,8 +28,8 @@ A plain-language glossary for AI terms. Look a term up (or click it while readin
 ## Known gaps / TODO
 - **Domain:** DONE — `aidecoder.app` live on Vercel.
 - **Store submission:** DONE — extension is live (see link above).
-- **Ship v1.0.1:** re-zip `extension/` and upload to the Web Store dashboard (popup footer link + version bump are local-only until then).
-- **Deploy web changes:** push/redeploy `web/` to Vercel (store CTA, favicon, `cheatsheet_items` table fix, perf pass — all local until deployed).
+- **Ship v1.0.2:** upload `decoder-extension-v1.0.2.zip` to the Web Store dashboard (footer link + OAuth fix are local-only until then).
+- **Deploy web changes:** push/redeploy `web/` to Vercel. Latest local-only change: sign-in robustness fix in `index.html` — the old "Sign-in isn't connected yet — see SETUP.md" toast fired whenever supabase-js (esm.sh) failed or hadn't finished loading, not just when keys were blank; `doSignIn` now waits up to 8s for the cloud bridge and shows user-facing messages, and the bridge import is wrapped in try/catch (`window.__decoderCloudError`).
 - **Extension OAuth untested** — needs the extension's `https://<id>.chromiumapp.org/` redirect added to Supabase Redirect URLs, and one real-browser debug pass.
 - **DB `related` text quality:** DB-seeded terms show fragment-y Related rows ("The window itself is the") — flagged as a separate task.
 
