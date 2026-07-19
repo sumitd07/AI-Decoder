@@ -1,11 +1,11 @@
 # Glossary population progress
 
-**Terms generated:** 695
-**Backlog remaining:** 358
+**Terms generated:** 838
+**Backlog remaining:** 206
 **Target:** 1000
 **Status:** in progress
 
-Batches emitted: 14. Latest: seed_014.sql (50 terms).
+Batches emitted: 17. Latest: seed_017.sql (50 terms).
 Run `supabase/seed_all.sql` in the Supabase SQL Editor to load everything (after the schema files).
 
-_Updated: 2026-07-14T21:25:23.319Z_
+_Updated: 2026-07-16T12:47:07.839Z_

@@ -2779,6 +2779,578 @@
   "apiserver": {
    "term": "API",
    "status": "Core"
+  },
+  "endpoint": {
+   "term": "Endpoint",
+   "status": "Core"
+  },
+  "ratelimit": {
+   "term": "Rate limit",
+   "status": "Core"
+  },
+  "costpertoken": {
+   "term": "Cost per token",
+   "status": "Core"
+  },
+  "caching": {
+   "term": "Caching",
+   "status": "Core"
+  },
+  "coldstart": {
+   "term": "Cold start",
+   "status": "Core"
+  },
+  "autoscaling": {
+   "term": "Autoscaling",
+   "status": "Core"
+  },
+  "mlops": {
+   "term": "MLOps",
+   "status": "Rising"
+  },
+  "llmops": {
+   "term": "LLMOps",
+   "status": "Rising"
+  },
+  "observability": {
+   "term": "Observability",
+   "status": "Core"
+  },
+  "modelserving": {
+   "term": "Model serving",
+   "status": "Core"
+  },
+  "vllm": {
+   "term": "vLLM",
+   "status": "Rising"
+  },
+  "tensorrt": {
+   "term": "TensorRT",
+   "status": "Rising"
+  },
+  "onnx": {
+   "term": "ONNX",
+   "status": "Rising"
+  },
+  "modelquantization": {
+   "term": "Model quantization",
+   "status": "Rising"
+  },
+  "activationquantization": {
+   "term": "Activation quantization",
+   "status": "Rising"
+  },
+  "gptq": {
+   "term": "GPTQ",
+   "status": "Rising"
+  },
+  "awq": {
+   "term": "AWQ",
+   "status": "Rising"
+  },
+  "gguf": {
+   "term": "GGUF",
+   "status": "Rising"
+  },
+  "llamacpp": {
+   "term": "llama.cpp",
+   "status": "Rising"
+  },
+  "batchinference": {
+   "term": "Batch inference",
+   "status": "Core"
+  },
+  "streaming": {
+   "term": "Streaming",
+   "status": "Core"
+  },
+  "serversent events": {
+   "term": "Server-sent events",
+   "status": "Core"
+  },
+  "loadbalancing": {
+   "term": "Load balancing",
+   "status": "Core"
+  },
+  "memorybandwidth": {
+   "term": "Memory bandwidth",
+   "status": "Core"
+  },
+  "computebound": {
+   "term": "Compute bound",
+   "status": "Core"
+  },
+  "memorybound": {
+   "term": "Memory bound",
+   "status": "Core"
+  },
+  "flops": {
+   "term": "FLOPS",
+   "status": "Core"
+  },
+  "utilization": {
+   "term": "Utilization",
+   "status": "Core"
+  },
+  "concurrency": {
+   "term": "Concurrency",
+   "status": "Core"
+  },
+  "requestqueue": {
+   "term": "Request queue",
+   "status": "Core"
+  },
+  "tokenstreaming": {
+   "term": "Token streaming",
+   "status": "Core"
+  },
+  "taillatency": {
+   "term": "Tail latency",
+   "status": "Core"
+  },
+  "p99latency": {
+   "term": "P99 latency",
+   "status": "Core"
+  },
+  "sla": {
+   "term": "SLA",
+   "status": "Core"
+  },
+  "uptime": {
+   "term": "Uptime",
+   "status": "Core"
+  },
+  "failover": {
+   "term": "Failover",
+   "status": "Core"
+  },
+  "redundancy": {
+   "term": "Redundancy",
+   "status": "Core"
+  },
+  "horizontalscaling": {
+   "term": "Horizontal scaling",
+   "status": "Core"
+  },
+  "verticalscaling": {
+   "term": "Vertical scaling",
+   "status": "Core"
+  },
+  "modelrouting": {
+   "term": "Model routing",
+   "status": "Rising"
+  },
+  "fallbackmodel": {
+   "term": "Fallback model",
+   "status": "Rising"
+  },
+  "cascade": {
+   "term": "Cascade",
+   "status": "Rising"
+  },
+  "costoptimization": {
+   "term": "Cost optimization",
+   "status": "Core"
+  },
+  "spotinstances": {
+   "term": "Spot instances",
+   "status": "Rising"
+  },
+  "ondemand": {
+   "term": "On-demand",
+   "status": "Core"
+  },
+  "reservedcapacity": {
+   "term": "Reserved capacity",
+   "status": "Core"
+  },
+  "inferencecost": {
+   "term": "Inference cost",
+   "status": "Core"
+  },
+  "trainingcost": {
+   "term": "Training cost",
+   "status": "Core"
+  },
+  "totalcostofownership": {
+   "term": "Total cost of ownership",
+   "status": "Core"
+  },
+  "edgedeployment": {
+   "term": "Edge deployment",
+   "status": "Rising"
+  },
+  "ondeviceinference": {
+   "term": "On-Device Inference",
+   "status": "Core"
+  },
+  "localinference": {
+   "term": "Local Inference",
+   "status": "Core"
+  },
+  "serverlessinferen": {
+   "term": "Serverless Inference",
+   "status": "Rising"
+  },
+  "containerization": {
+   "term": "Containerization",
+   "status": "Core"
+  },
+  "kubernetes": {
+   "term": "Kubernetes",
+   "status": "Core"
+  },
+  "modelregistry": {
+   "term": "Model Registry",
+   "status": "Rising"
+  },
+  "versioning": {
+   "term": "Versioning",
+   "status": "Core"
+  },
+  "canarydeploym": {
+   "term": "Canary Deployment",
+   "status": "Core"
+  },
+  "bluegreendep": {
+   "term": "Blue-Green Deployment",
+   "status": "Core"
+  },
+  "rollback": {
+   "term": "Rollback",
+   "status": "Core"
+  },
+  "alerting": {
+   "term": "Alerting",
+   "status": "Core"
+  },
+  "tracing": {
+   "term": "Tracing",
+   "status": "Rising"
+  },
+  "metrics": {
+   "term": "Metrics",
+   "status": "Core"
+  },
+  "dashboards": {
+   "term": "Dashboards",
+   "status": "Core"
+  },
+  "throughputopt": {
+   "term": "Throughput Optimization",
+   "status": "Rising"
+  },
+  "pagedattention": {
+   "term": "Paged Attention",
+   "status": "Rising"
+  },
+  "tensorcores": {
+   "term": "Tensor Cores",
+   "status": "Rising"
+  },
+  "distributedinferen": {
+   "term": "Distributed Inference",
+   "status": "Rising"
+  },
+  "visionmodel": {
+   "term": "Vision Model",
+   "status": "Core"
+  },
+  "vlm": {
+   "term": "VLM",
+   "status": "Core"
+  },
+  "imageencoder": {
+   "term": "Image Encoder",
+   "status": "Core"
+  },
+  "ocr": {
+   "term": "OCR",
+   "status": "Core"
+  },
+  "objectdetect": {
+   "term": "Object Detection",
+   "status": "Core"
+  },
+  "segmentation": {
+   "term": "Segmentation",
+   "status": "Core"
+  },
+  "imagecaption": {
+   "term": "Image Captioning",
+   "status": "Core"
+  },
+  "clip": {
+   "term": "CLIP",
+   "status": "Core"
+  },
+  "imagegeneration": {
+   "term": "Image Generation",
+   "status": "Core"
+  },
+  "texttoimagegeneration": {
+   "term": "Text-to-Image",
+   "status": "Core"
+  },
+  "diffusionmodelpm": {
+   "term": "Diffusion",
+   "status": "Core"
+  },
+  "stablediffusion": {
+   "term": "Stable Diffusion",
+   "status": "Core"
+  },
+  "inpainting": {
+   "term": "Inpainting",
+   "status": "Core"
+  },
+  "outpainting": {
+   "term": "Outpainting",
+   "status": "Core"
+  },
+  "controlnet": {
+   "term": "ControlNet",
+   "status": "Core"
+  },
+  "upscaling": {
+   "term": "Upscaling",
+   "status": "Core"
+  },
+  "superresolution": {
+   "term": "Super-Resolution",
+   "status": "Core"
+  },
+  "speechtotext": {
+   "term": "Speech-to-Text",
+   "status": "Core"
+  },
+  "asr": {
+   "term": "ASR",
+   "status": "Core"
+  },
+  "texttospeech": {
+   "term": "Text-to-Speech",
+   "status": "Core"
+  },
+  "voicecloning": {
+   "term": "Voice Cloning",
+   "status": "Core"
+  },
+  "texttovideo": {
+   "term": "Text-to-Video",
+   "status": "Core"
+  },
+  "videogeneration": {
+   "term": "Video Generation",
+   "status": "Core"
+  },
+  "anytoany": {
+   "term": "Any-to-Any",
+   "status": "Rising"
+  },
+  "crossmodal": {
+   "term": "Cross-Modal",
+   "status": "Core"
+  },
+  "modality": {
+   "term": "Modality",
+   "status": "Core"
+  },
+  "visualquestionanswering": {
+   "term": "Visual Question Answering",
+   "status": "Core"
+  },
+  "vqa": {
+   "term": "VQA",
+   "status": "Core"
+  },
+  "sceneunderstanding": {
+   "term": "Scene Understanding",
+   "status": "Rising"
+  },
+  "depthestimation": {
+   "term": "Depth Estimation",
+   "status": "Rising"
+  },
+  "poseestimation": {
+   "term": "Pose Estimation",
+   "status": "Rising"
+  },
+  "facedetection": {
+   "term": "Face Detection",
+   "status": "Core"
+  },
+  "imageclassification": {
+   "term": "Image Classification",
+   "status": "Core"
+  },
+  "zeroshotclassification": {
+   "term": "Zero-Shot Classification",
+   "status": "Rising"
+  },
+  "latentdiffusion": {
+   "term": "Latent Diffusion",
+   "status": "Rising"
+  },
+  "noiseschedule": {
+   "term": "Noise Schedule",
+   "status": "Core"
+  },
+  "guidancescale": {
+   "term": "Guidance Scale",
+   "status": "Core"
+  },
+  "classifierfreeguidance": {
+   "term": "Classifier-Free Guidance",
+   "status": "Rising"
+  },
+  "negativeprompt": {
+   "term": "Negative Prompt",
+   "status": "Rising"
+  },
+  "imagetoimage": {
+   "term": "Image-to-Image",
+   "status": "Rising"
+  },
+  "styletransfer": {
+   "term": "Style Transfer",
+   "status": "Fading"
+  },
+  "texturesynthesis": {
+   "term": "Texture Synthesis",
+   "status": "Fading"
+  },
+  "frameinterpolation": {
+   "term": "Frame Interpolation",
+   "status": "Rising"
+  },
+  "opticalflow": {
+   "term": "Optical Flow",
+   "status": "Core"
+  },
+  "audiogeneration": {
+   "term": "Audio Generation",
+   "status": "Rising"
+  },
+  "musicgeneration": {
+   "term": "Music Generation",
+   "status": "Rising"
+  },
+  "soundeffectgeneration": {
+   "term": "Sound Effect Generation",
+   "status": "Rising"
+  },
+  "speakerdiarization": {
+   "term": "Speaker Diarization",
+   "status": "Rising"
+  },
+  "phoneme": {
+   "term": "Phoneme",
+   "status": "Core"
+  },
+  "melspectrogram": {
+   "term": "Mel Spectrogram",
+   "status": "Core"
+  },
+  "vocoder": {
+   "term": "Vocoder",
+   "status": "Rising"
+  },
+  "lipsync": {
+   "term": "Lip Sync",
+   "status": "Rising"
+  },
+  "talkinghead": {
+   "term": "Talking Head",
+   "status": "Rising"
+  },
+  "avatargeneration": {
+   "term": "Avatar Generation",
+   "status": "Rising"
+  },
+  "3dgeneration": {
+   "term": "3D Generation",
+   "status": "Rising"
+  },
+  "nerf": {
+   "term": "NeRF",
+   "status": "Rising"
+  },
+  "gaussiansplatting": {
+   "term": "Gaussian Splatting",
+   "status": "Rising"
+  },
+  "pointcloud": {
+   "term": "Point Cloud",
+   "status": "Rising"
+  },
+  "meshgeneration": {
+   "term": "Mesh Generation",
+   "status": "Rising"
+  },
+  "videounderstanding": {
+   "term": "Video Understanding",
+   "status": "Rising"
+  },
+  "actionrecognition": {
+   "term": "Action Recognition",
+   "status": "Core"
+  },
+  "temporalmodeling": {
+   "term": "Temporal Modeling",
+   "status": "Core"
+  },
+  "multimodalfusion": {
+   "term": "Multimodal Fusion",
+   "status": "Core"
+  },
+  "earlyfusion": {
+   "term": "Early Fusion",
+   "status": "Rising"
+  },
+  "latefusion": {
+   "term": "Late Fusion",
+   "status": "Core"
+  },
+  "crossattentionfusion": {
+   "term": "Cross-Attention Fusion",
+   "status": "Rising"
+  },
+  "visiontransformer": {
+   "term": "Vision Transformer",
+   "status": "Rising"
+  },
+  "vit": {
+   "term": "ViT",
+   "status": "Rising"
+  },
+  "patchembedding": {
+   "term": "Patch Embedding",
+   "status": "Core"
+  },
+  "imagetokenization": {
+   "term": "Image Tokenization",
+   "status": "Rising"
+  },
+  "visualgrounding": {
+   "term": "Visual Grounding",
+   "status": "Rising"
+  },
+  "referringexpression": {
+   "term": "Referring Expression",
+   "status": "Rising"
+  },
+  "imageediting": {
+   "term": "Image Editing",
+   "status": "Rising"
+  },
+  "instancesegmentation": {
+   "term": "Instance Segmentation",
+   "status": "Core"
+  },
+  "panopticsegmentation": {
+   "term": "Panoptic Segmentation",
+   "status": "Rising"
   }
  },
  "aliases": {
@@ -4552,6 +5124,433 @@
   "compute node": "node",
   "server instance": "node",
   "rest api": "apiserver",
-  "inference endpoint": "apiserver"
+  "inference endpoint": "apiserver",
+  "endpoint": "endpoint",
+  "api endpoint": "endpoint",
+  "serving endpoint": "endpoint",
+  "rate limit": "ratelimit",
+  "throttle": "ratelimit",
+  "cost per token": "costpertoken",
+  "token cost": "costpertoken",
+  "pricing": "costpertoken",
+  "caching": "caching",
+  "cache": "caching",
+  "cold start": "coldstart",
+  "startup time": "coldstart",
+  "initialization": "coldstart",
+  "autoscaling": "autoscaling",
+  "auto scaling": "autoscaling",
+  "scale automatically": "autoscaling",
+  "mlops": "mlops",
+  "machine learning operations": "mlops",
+  "ml operations": "mlops",
+  "llmops": "llmops",
+  "llm operations": "llmops",
+  "large language model ops": "llmops",
+  "observability": "observability",
+  "monitoring": "observability",
+  "logging": "observability",
+  "traces": "observability",
+  "model serving": "modelserving",
+  "serving": "modelserving",
+  "inference serving": "modelserving",
+  "vllm": "vllm",
+  "v-llm": "vllm",
+  "vllm inference engine": "vllm",
+  "tensorrt": "tensorrt",
+  "tensor-rt": "tensorrt",
+  "nvidia tensorrt": "tensorrt",
+  "onnx": "onnx",
+  "open neural network exchange": "onnx",
+  "quantization": "modelquantization",
+  "model quantization": "modelquantization",
+  "quantize": "modelquantization",
+  "activation quantization": "activationquantization",
+  "act quantization": "activationquantization",
+  "kv cache quantization": "activationquantization",
+  "gptq": "gptq",
+  "gpt quantization": "gptq",
+  "awq": "awq",
+  "activation-weighted quantization": "awq",
+  "gguf": "gguf",
+  "ggml file format": "gguf",
+  "llama.cpp format": "gguf",
+  "llama.cpp": "llamacpp",
+  "llamacpp": "llamacpp",
+  "llama-cpp": "llamacpp",
+  "batch inference": "batchinference",
+  "batching": "batchinference",
+  "inference batching": "batchinference",
+  "streaming": "streaming",
+  "streaming response": "streaming",
+  "server-sent events": "serversent events",
+  "sse": "serversent events",
+  "event stream": "serversent events",
+  "load balancing": "loadbalancing",
+  "load balancer": "loadbalancing",
+  "distribute requests": "loadbalancing",
+  "memory bandwidth": "memorybandwidth",
+  "bandwidth": "memorybandwidth",
+  "compute bound": "computebound",
+  "compute-bound": "computebound",
+  "cpu bound": "computebound",
+  "memory bound": "memorybound",
+  "memory-bound": "memorybound",
+  "bandwidth limited": "memorybound",
+  "flops": "flops",
+  "floating point operations per second": "flops",
+  "gflops": "flops",
+  "tflops": "flops",
+  "utilization": "utilization",
+  "gpu utilization": "utilization",
+  "resource utilization": "utilization",
+  "concurrency": "concurrency",
+  "concurrent requests": "concurrency",
+  "parallel requests": "concurrency",
+  "request queue": "requestqueue",
+  "queue": "requestqueue",
+  "request backlog": "requestqueue",
+  "token-streaming": "tokenstreaming",
+  "tail latency": "taillatency",
+  "worst-case latency": "taillatency",
+  "p99": "p99latency",
+  "99th percentile": "p99latency",
+  "sla": "sla",
+  "service level agreement": "sla",
+  "uptime": "uptime",
+  "failover": "failover",
+  "fail over": "failover",
+  "automatic failover": "failover",
+  "redundancy": "redundancy",
+  "backup": "redundancy",
+  "redundant system": "redundancy",
+  "horizontal scaling": "horizontalscaling",
+  "scale out": "horizontalscaling",
+  "adding instances": "horizontalscaling",
+  "vertical scaling": "verticalscaling",
+  "scale up": "verticalscaling",
+  "bigger machine": "verticalscaling",
+  "model routing": "modelrouting",
+  "model selection": "modelrouting",
+  "fallback model": "fallbackmodel",
+  "backup model": "fallbackmodel",
+  "fallback": "fallbackmodel",
+  "cascade": "cascade",
+  "cascading": "cascade",
+  "chain": "cascade",
+  "cost optimization": "costoptimization",
+  "cost savings": "costoptimization",
+  "reduce costs": "costoptimization",
+  "spot instances": "spotinstances",
+  "spot": "spotinstances",
+  "spot vms": "spotinstances",
+  "on-demand": "ondemand",
+  "on demand": "ondemand",
+  "pay as you go": "ondemand",
+  "reserved capacity": "reservedcapacity",
+  "reserved instance": "reservedcapacity",
+  "commitment": "reservedcapacity",
+  "inference cost": "inferencecost",
+  "inference expense": "inferencecost",
+  "serving cost": "inferencecost",
+  "training cost": "trainingcost",
+  "training expense": "trainingcost",
+  "training budget": "trainingcost",
+  "total cost of ownership": "totalcostofownership",
+  "tco": "totalcostofownership",
+  "lifetime cost": "totalcostofownership",
+  "edge deployment": "edgedeployment",
+  "edge computing": "edgedeployment",
+  "on-device": "edgedeployment",
+  "edge inference": "ondeviceinference",
+  "self-hosted": "localinference",
+  "serverless": "serverlessinferen",
+  "function-as-service": "serverlessinferen",
+  "container": "containerization",
+  "docker": "containerization",
+  "oci": "containerization",
+  "k8s": "kubernetes",
+  "model store": "modelregistry",
+  "model catalog": "modelregistry",
+  "model version": "versioning",
+  "version control": "versioning",
+  "semantic versioning": "versioning",
+  "canary release": "canarydeploym",
+  "blue-green": "bluegreendep",
+  "twin deployment": "bluegreendep",
+  "revert": "rollback",
+  "rollback": "rollback",
+  "alert": "alerting",
+  "alert rule": "alerting",
+  "alarm": "alerting",
+  "distributed tracing": "tracing",
+  "metric": "metrics",
+  "time-series": "metrics",
+  "kpi": "metrics",
+  "dashboard": "dashboards",
+  "grafana": "dashboards",
+  "data viz": "dashboards",
+  "batch optimization": "throughputopt",
+  "qps": "throughputopt",
+  "paged attention": "pagedattention",
+  "attention paging": "pagedattention",
+  "tensor core": "tensorcores",
+  "nvidia tensor core": "tensorcores",
+  "specialized compute": "tensorcores",
+  "distributed inference": "distributedinferen",
+  "sharded inference": "distributedinferen",
+  "multi-gpu": "distributedinferen",
+  "vision": "visionmodel",
+  "visual model": "visionmodel",
+  "image model": "visionmodel",
+  "vision language model": "vlm",
+  "multimodal model": "vlm",
+  "vision llm": "vlm",
+  "image embedding": "imageencoder",
+  "visual encoder": "imageencoder",
+  "image feature extractor": "imageencoder",
+  "optical character recognition": "ocr",
+  "text recognition": "ocr",
+  "document reading": "ocr",
+  "detection": "objectdetect",
+  "yolo": "objectdetect",
+  "bounding box": "objectdetect",
+  "semantic segmentation": "segmentation",
+  "pixel-level": "segmentation",
+  "segmentation mask": "segmentation",
+  "caption generation": "imagecaption",
+  "image description": "imagecaption",
+  "visual description": "imagecaption",
+  "clip": "clip",
+  "contrastive vision": "clip",
+  "zero-shot vision": "clip",
+  "generative model": "imagegeneration",
+  "image synthesis": "imagegeneration",
+  "conditional generation": "imagegeneration",
+  "text2image": "texttoimagegeneration",
+  "prompt-to-image": "texttoimagegeneration",
+  "generative image": "texttoimagegeneration",
+  "denoising": "diffusionmodelpm",
+  "diffusion process": "diffusionmodelpm",
+  "sd": "stablediffusion",
+  "sd1.5": "stablediffusion",
+  "sd2.1": "stablediffusion",
+  "stability ai": "stablediffusion",
+  "inpaint": "inpainting",
+  "context inpainting": "inpainting",
+  "image inpainting": "inpainting",
+  "outpaint": "outpainting",
+  "image extension": "outpainting",
+  "canvas expansion": "outpainting",
+  "controlnet": "controlnet",
+  "condition": "controlnet",
+  "guided generation": "controlnet",
+  "upscale": "upscaling",
+  "super-resolution": "upscaling",
+  "image enlargement": "upscaling",
+  "super-res": "superresolution",
+  "sr": "superresolution",
+  "image enhancement": "superresolution",
+  "stt": "speechtotext",
+  "asr": "speechtotext",
+  "transcription": "speechtotext",
+  "automatic speech recognition": "asr",
+  "tts": "texttospeech",
+  "speech synthesis": "texttospeech",
+  "voice synthesis": "texttospeech",
+  "voice clone": "voicecloning",
+  "speaker cloning": "voicecloning",
+  "voice conversion": "voicecloning",
+  "text2video": "texttovideo",
+  "video generation": "texttovideo",
+  "prompt-to-video": "texttovideo",
+  "video synthesis": "videogeneration",
+  "generative video": "videogeneration",
+  "video diffusion": "videogeneration",
+  "any2any": "anytoany",
+  "unified model": "anytoany",
+  "cross-modality": "crossmodal",
+  "multimodal interaction": "crossmodal",
+  "modality": "modality",
+  "input modality": "modality",
+  "output modality": "modality",
+  "sensory mode": "modality",
+  "visual question answering": "visualquestionanswering",
+  "image qa": "visualquestionanswering",
+  "visual reasoning": "visualquestionanswering",
+  "vqa": "vqa",
+  "visual qa": "vqa",
+  "scene understanding": "sceneunderstanding",
+  "scene parsing": "sceneunderstanding",
+  "scene comprehension": "sceneunderstanding",
+  "image understanding": "sceneunderstanding",
+  "depth estimation": "depthestimation",
+  "monocular depth": "depthestimation",
+  "stereo depth": "depthestimation",
+  "depth prediction": "depthestimation",
+  "pose estimation": "poseestimation",
+  "body pose": "poseestimation",
+  "joint detection": "poseestimation",
+  "skeleton detection": "poseestimation",
+  "face detection": "facedetection",
+  "face localization": "facedetection",
+  "face finding": "facedetection",
+  "facial detection": "facedetection",
+  "image classification": "imageclassification",
+  "image categorization": "imageclassification",
+  "visual classification": "imageclassification",
+  "object recognition": "imageclassification",
+  "zero-shot classification": "zeroshotclassification",
+  "unseen classes": "zeroshotclassification",
+  "semantic generalization": "zeroshotclassification",
+  "latent diffusion": "latentdiffusion",
+  "latent diffusion model": "latentdiffusion",
+  "ldm": "latentdiffusion",
+  "diffusion in latent space": "latentdiffusion",
+  "noise schedule": "noiseschedule",
+  "timestep schedule": "noiseschedule",
+  "beta schedule": "noiseschedule",
+  "noise level": "noiseschedule",
+  "guidance scale": "guidancescale",
+  "guidance weight": "guidancescale",
+  "conditional strength": "guidancescale",
+  "cfg scale": "guidancescale",
+  "classifier-free guidance": "classifierfreeguidance",
+  "cfg": "classifierfreeguidance",
+  "unconditional guidance": "classifierfreeguidance",
+  "negative prompt": "negativeprompt",
+  "negative prompting": "negativeprompt",
+  "what not to generate": "negativeprompt",
+  "exclusion prompt": "negativeprompt",
+  "image-to-image": "imagetoimage",
+  "img2img": "imagetoimage",
+  "style transfer": "styletransfer",
+  "neural style transfer": "styletransfer",
+  "artistic style": "styletransfer",
+  "style adaptation": "styletransfer",
+  "texture synthesis": "texturesynthesis",
+  "procedural texture": "texturesynthesis",
+  "texture generation": "texturesynthesis",
+  "pattern synthesis": "texturesynthesis",
+  "frame interpolation": "frameinterpolation",
+  "motion interpolation": "frameinterpolation",
+  "in-between frames": "frameinterpolation",
+  "optical flow synthesis": "frameinterpolation",
+  "optical flow": "opticalflow",
+  "motion field": "opticalflow",
+  "motion vectors": "opticalflow",
+  "scene flow": "opticalflow",
+  "audio generation": "audiogeneration",
+  "waveform generation": "audiogeneration",
+  "audio synthesis": "audiogeneration",
+  "music generation": "musicgeneration",
+  "automatic composition": "musicgeneration",
+  "generative music": "musicgeneration",
+  "melody generation": "musicgeneration",
+  "sound effect generation": "soundeffectgeneration",
+  "sfx generation": "soundeffectgeneration",
+  "foley synthesis": "soundeffectgeneration",
+  "speaker diarization": "speakerdiarization",
+  "speaker segmentation": "speakerdiarization",
+  "who spoke when": "speakerdiarization",
+  "speaker attribution": "speakerdiarization",
+  "phoneme": "phoneme",
+  "speech unit": "phoneme",
+  "sound unit": "phoneme",
+  "distinctive sound": "phoneme",
+  "mel spectrogram": "melspectrogram",
+  "mel-scale spectrogram": "melspectrogram",
+  "mel-frequency spectrogram": "melspectrogram",
+  "vocoder": "vocoder",
+  "neural vocoder": "vocoder",
+  "spectrogram-to-speech": "vocoder",
+  "waveform synthesis": "vocoder",
+  "lip sync": "lipsync",
+  "lip-sync": "lipsync",
+  "audio-visual alignment": "lipsync",
+  "speech sync": "lipsync",
+  "talking head": "talkinghead",
+  "talking avatar": "talkinghead",
+  "animated avatar": "talkinghead",
+  "speech-driven animation": "talkinghead",
+  "avatar generation": "avatargeneration",
+  "character synthesis": "avatargeneration",
+  "digital avatar": "avatargeneration",
+  "virtual character": "avatargeneration",
+  "3d generation": "3dgeneration",
+  "text-to-3d": "3dgeneration",
+  "3d synthesis": "3dgeneration",
+  "generative 3d": "3dgeneration",
+  "nerf": "nerf",
+  "neural radiance field": "nerf",
+  "implicit neural representation": "nerf",
+  "radiance field": "nerf",
+  "gaussian splatting": "gaussiansplatting",
+  "gaussian splats": "gaussiansplatting",
+  "3d gaussian splatting": "gaussiansplatting",
+  "3dgs": "gaussiansplatting",
+  "point cloud": "pointcloud",
+  "point set": "pointcloud",
+  "3d points": "pointcloud",
+  "lidar cloud": "pointcloud",
+  "mesh generation": "meshgeneration",
+  "mesh synthesis": "meshgeneration",
+  "3d mesh generation": "meshgeneration",
+  "geometry generation": "meshgeneration",
+  "video understanding": "videounderstanding",
+  "video analysis": "videounderstanding",
+  "action understanding": "videounderstanding",
+  "event recognition": "videounderstanding",
+  "action recognition": "actionrecognition",
+  "activity recognition": "actionrecognition",
+  "gesture recognition": "actionrecognition",
+  "skeletal action": "actionrecognition",
+  "temporal modeling": "temporalmodeling",
+  "temporal reasoning": "temporalmodeling",
+  "sequence modeling": "temporalmodeling",
+  "time-aware learning": "temporalmodeling",
+  "multimodal fusion": "multimodalfusion",
+  "modality fusion": "multimodalfusion",
+  "cross-modal fusion": "multimodalfusion",
+  "fusion strategy": "multimodalfusion",
+  "early fusion": "earlyfusion",
+  "input fusion": "earlyfusion",
+  "raw fusion": "earlyfusion",
+  "concatenated input": "earlyfusion",
+  "late fusion": "latefusion",
+  "output fusion": "latefusion",
+  "decision fusion": "latefusion",
+  "ensemble fusion": "latefusion",
+  "cross-attention fusion": "crossattentionfusion",
+  "cross-modal attention": "crossattentionfusion",
+  "modality attention": "crossattentionfusion",
+  "vision transformer": "visiontransformer",
+  "image transformer": "visiontransformer",
+  "vit": "vit",
+  "patch embedding": "patchembedding",
+  "patch projection": "patchembedding",
+  "patch tokenization": "patchembedding",
+  "image patches": "patchembedding",
+  "image tokenization": "imagetokenization",
+  "image discretization": "imagetokenization",
+  "visual tokens": "imagetokenization",
+  "image coding": "imagetokenization",
+  "visual grounding": "visualgrounding",
+  "image grounding": "visualgrounding",
+  "phrase grounding": "visualgrounding",
+  "referring expression": "referringexpression",
+  "referring expression comprehension": "referringexpression",
+  "visual reference": "referringexpression",
+  "object reference": "referringexpression",
+  "image editing": "imageediting",
+  "inpainting": "imageediting",
+  "guided editing": "imageediting",
+  "instance segmentation": "instancesegmentation",
+  "object instance segmentation": "instancesegmentation",
+  "individual object segmentation": "instancesegmentation",
+  "panoptic segmentation": "panopticsegmentation",
+  "panoptic": "panopticsegmentation",
+  "unified segmentation": "panopticsegmentation",
+  "stuff and things": "panopticsegmentation"
  }
 }

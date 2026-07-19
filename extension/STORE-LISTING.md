@@ -30,17 +30,20 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
 
 ## 2. Store listing tab
 
-- **Item name:** `Decoder — AI terms, explained in place`
-- **Summary** (max 132 chars): `Underlines AI jargon on any page. Click a term for a plain-language explanation and save it.`
+- **Item name:** `Decoder — AI Dictionary: AI Terms Explained`
+  *(SEO note: the title is the strongest ranking field. "AI dictionary" is the head keyword, "AI terms explained" is the phrase people actually type. 43 chars — under the ~45-char sweet spot.)*
+- **Summary** (max 132 chars): `Free AI dictionary in your browser. Underlines AI jargon on any page — click a term for a plain-English explanation and example.`
+  *(128 chars.)*
 - **Category:** Productivity
 - **Language:** English
-- **Description:**
+- **Description:** *(the first paragraph carries most of the ranking weight — keywords live there; the rest stays human)*
 
-  > Reading about AI and a term slides by that you're not quite sure about? Decoder quietly underlines AI jargon on any web page. Click one and get a plain explanation, an analogy, and a real example — right where you're reading, without leaving the page.
+  > Decoder is an AI dictionary for your browser. It underlines AI jargon — RAG, MCP, embeddings, context window, hallucination and more — on any web page, and explains each term in plain English when you click it. You get a simple explanation, an analogy, and a real example, right where you're reading, without leaving the page.
   >
-  > Save the ones you stumble on, so the terms that trip you up become a short list you can skim before a meeting.
+  > Save the ones you stumble on, so the terms that trip you up become a short list you can skim before a meeting. Signed-in saves sync with the Decoder web app.
   >
   > • Plain-language explanations, not textbook definitions
+  > • Each term shows its status — Core, Rising, Fading or Historical — so you know what's still worth learning
   > • Works on any page; the underlines are subtle and easy to ignore
   > • One click to understand a term
   > • Optional sign-in saves terms to your account and syncs them with the Decoder web app

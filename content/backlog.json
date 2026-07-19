@@ -4119,61 +4119,61 @@
   "term": "endpoint",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "rate limit",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cost per token",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "caching",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cold start",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "autoscaling",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "MLOps",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "LLMOps",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "observability",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model serving",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "inference server",
@@ -4185,25 +4185,25 @@
   "term": "vLLM",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "TensorRT",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ONNX",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model quantization",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "weight quantization",
@@ -4215,55 +4215,55 @@
   "term": "activation quantization",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GPTQ",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "AWQ",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GGUF",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "llama.cpp",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "batch inference",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "streaming",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "server-sent events",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "load balancing",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GPU memory",
@@ -4275,49 +4275,49 @@
   "term": "memory bandwidth",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "compute bound",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "memory bound",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "FLOPS",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "utilization",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "concurrency",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "request queue",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "token streaming",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "first token latency",
@@ -4329,379 +4329,379 @@
   "term": "tail latency",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "p99 latency",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "SLA",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "uptime",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "failover",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "redundancy",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "horizontal scaling",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "vertical scaling",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model routing",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "fallback model",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cascade",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cost optimization",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "spot instances",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "on-demand",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reserved capacity",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "inference cost",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "training cost",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "total cost of ownership",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "edge deployment",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "on-device inference",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "local inference",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "serverless inference",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "containerization",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Kubernetes",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model registry",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "versioning",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "canary deployment",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "blue-green deployment",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "rollback",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "monitoring",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "alerting",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tracing",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "logging",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "metrics",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "dashboards",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "throughput optimization",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "paged attention",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "tensor cores",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "distributed inference",
   "domain": "Infrastructure & serving",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "vision model",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "VLM",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "image encoder",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "OCR",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "object detection",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "segmentation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "image captioning",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "CLIP",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "image generation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "text-to-image",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "diffusion",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Stable Diffusion",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "inpainting",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "outpainting",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ControlNet",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "upscaling",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "super-resolution",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "speech-to-text",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ASR",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "text-to-speech",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "TTS",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "voice cloning",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "text-to-video",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "video generation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "multimodal",
@@ -4713,349 +4713,349 @@
   "term": "any-to-any",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cross-modal",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "modality",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "image embedding",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "visual question answering",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "VQA",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "scene understanding",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "depth estimation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "pose estimation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "face detection",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "image classification",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "zero-shot classification",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt-to-image",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "latent diffusion",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "denoising",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "noise schedule",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "guidance scale",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "classifier-free guidance",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "negative prompt",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "image-to-image",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "style transfer",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "texture synthesis",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "frame interpolation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "optical flow",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "audio generation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "music generation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "sound effect generation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "voice synthesis",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "speaker diarization",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "phoneme",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "mel spectrogram",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "vocoder",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "lip sync",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "talking head",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "avatar generation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "3D generation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "NeRF",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Gaussian splatting",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "point cloud",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "mesh generation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "video understanding",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "action recognition",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "temporal modeling",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "multimodal fusion",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "early fusion",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "late fusion",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "cross-attention fusion",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "vision transformer",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ViT",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "patch embedding",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "image tokenization",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "visual grounding",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "referring expression",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "image editing",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "semantic segmentation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "instance segmentation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "panoptic segmentation",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "bounding box",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "keypoint detection",
