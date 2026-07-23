@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KL divergence — what it means in AI | Decoder</title>
+<meta name="description" content="A measure of how far one probability distribution has drifted from another — used as a leash to keep a fine-tuned model near its original.">
+<link rel="canonical" href="https://aidecoder.app/term/kldivergence">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Decoder">
+<meta property="og:title" content="KL divergence — what it means in AI | Decoder">
+<meta property="og:description" content="A measure of how far one probability distribution has drifted from another — used as a leash to keep a fine-tuned model near its original.">
+<meta property="og:url" content="https://aidecoder.app/term/kldivergence">
+<meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>:root{
+  --bg:#fdfdfc;--surface:#ffffff;--surface-2:#f7f7f8;--text:#0e0f12;--text-2:#22252b;--text-3:#3f4249;--muted:#6a6e75;--faint:#9a9ea5;
+  --border:rgba(20,24,33,.10);--border-2:rgba(20,24,33,.14);--hairline:rgba(20,24,33,.08);--accent:#4f77a6;--secondary:#f09637;
+  --st-core-c:oklch(.5 .085 155);--st-core-bg:oklch(.955 .03 155);
+  --st-rising-c:oklch(.56 .12 55);--st-rising-bg:oklch(.955 .05 72);
+  --st-fading-c:oklch(.55 .05 250);--st-fading-bg:oklch(.955 .022 250);
+  --st-historical-c:oklch(.5 0 0);--st-historical-bg:oklch(.925 0 0);
+  --font-primary:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-secondary:"Newsreader",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#131519;--surface:#1c1f25;--surface-2:#23272e;--text:#f4f5f7;--text-2:#e6e8ec;--text-3:#c6cad1;--muted:#969ba3;--faint:#6d727a;
+  --border:rgba(255,255,255,.12);--border-2:rgba(255,255,255,.17);--hairline:rgba(255,255,255,.10);
+  --st-core-c:oklch(.82 .11 155);--st-core-bg:oklch(.33 .05 155);
+  --st-rising-c:oklch(.83 .12 68);--st-rising-bg:oklch(.35 .06 60);
+  --st-fading-c:oklch(.82 .07 250);--st-fading-bg:oklch(.33 .04 250);
+  --st-historical-c:oklch(.78 0 0);--st-historical-bg:oklch(.34 0 0);
+}}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font-primary);-webkit-font-smoothing:antialiased;letter-spacing:-.006em;line-height:1.62}
+a{color:var(--accent);text-decoration:none}a:hover{opacity:.72}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 72px}
+.site-h{display:flex;align-items:center;justify-content:space-between;padding-bottom:22px;border-bottom:1px solid var(--hairline);margin-bottom:24px}
+.brand{font-family:var(--font-secondary);font-weight:600;font-size:20px;color:var(--text)}
+.brand .dot{color:var(--secondary)}
+.brand-sub{font-size:12.5px;color:var(--muted)}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:14px}.crumb a{color:var(--muted)}
+h1{font-family:var(--font-secondary);font-weight:600;font-size:40px;line-height:1.08;letter-spacing:-.02em;margin:2px 0 12px;color:var(--text)}
+.meta-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.badge{display:inline-flex;align-items:center;gap:5px;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.03em;border-radius:20px;padding:4px 10px}
+.said{color:var(--muted);font-style:italic;font-family:var(--font-secondary);font-size:16px}
+.aka{color:var(--text-3);font-size:15px;margin:0 0 4px}
+.lead{font-size:20px;line-height:1.5;color:var(--text);margin:16px 0 30px;font-weight:450}
+.blk{margin:0 0 24px}
+.blk h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;margin:0 0 7px}
+.blk p{margin:0;font-size:16.5px;color:var(--text-2)}
+.deeper{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+.lenses{display:grid;gap:12px;grid-template-columns:1fr 1fr;margin:0 0 24px}
+@media (max-width:560px){.lenses{grid-template-columns:1fr}}
+.lens{background:var(--surface-2);border:1px solid var(--hairline);border-radius:12px;padding:14px 16px}
+.lens h3{margin:0 0 6px;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+.lens p{margin:0;font-size:14.5px;color:var(--text-2)}
+ul.rel{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+ul.rel li{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 14px;font-size:15px;color:var(--text-2)}
+ul.rel li a{font-weight:600}
+.cta{margin-top:38px;background:var(--surface);border:1px solid var(--border-2);border-radius:16px;padding:24px;text-align:center}
+.cta h2{color:var(--text-2);font-size:16px;margin:0 0 6px;font-weight:600}
+.cta p{color:var(--muted);font-size:14px;margin:0 0 16px}
+.btn{display:inline-block;background:var(--accent);color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:10px}
+.btn:hover{opacity:1;box-shadow:0 4px 16px rgba(79,119,166,.38)}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--border-2);margin-left:8px}
+.site-f{margin-top:52px;padding-top:20px;border-top:1px solid var(--hairline);font-size:13px;color:var(--faint);display:flex;gap:16px;flex-wrap:wrap}
+.site-f a{color:var(--muted)}
+.idx-intro{font-size:17px;color:var(--text-2);margin:0 0 28px}
+.idx-group{margin:0 0 26px}
+.idx-group h2{font-family:var(--font-secondary);font-size:22px;color:var(--text);margin:0 0 10px;border-bottom:1px solid var(--hairline);padding-bottom:4px}
+.idx-list{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.idx-list li{font-size:15px;color:var(--muted)}
+.idx-list li a{font-weight:600}
+.jump{font-size:13px;color:var(--muted);margin:0 0 26px;line-height:2}.jump a{margin-right:8px}</style>
+</head>
+<body><main class="wrap">
+<header class="site-h">
+<a class="brand" href="/">Decoder<span class="dot">.</span></a>
+<span class="brand-sub">plain-English AI glossary</span>
+</header>
+<nav class="crumb"><a href="/">Decoder</a> › <a href="/term/">AI glossary</a> › KL divergence</nav>
+<h1>KL divergence</h1>
+<div class="meta-row"><span class="badge" style="color:var(--st-core-c);background:var(--st-core-bg)">● Core</span><span class="said">“K-L divergence”</span></div>
+<p class="aka">Also called <strong>Kullback–Leibler Divergence</strong></p>
+<p class="lead">A measure of how far one probability distribution has drifted from another — used as a leash to keep a fine-tuned model near its original.</p>
+<section class="blk"><h2>Think of it like</h2><p>A tether on a climber: it lets them move around but yanks back if they stray too far from base camp.</p></section>
+<section class="blk"><h2>Example</h2><p>In RLHF, a KL penalty rises as the tuned model&#39;s outputs diverge from the base model, discouraging it from going off the rails to chase reward.</p></section>
+<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>KL divergence quantifies the difference between two distributions and is not symmetric — the direction matters. In RL fine-tuning it appears as a penalty term measuring how far the current policy has moved from the reference model; this keeps the model from exploiting the reward at the cost of coherence or safety. It also shows up broadly in training objectives like variational methods.</p></div></section>
+<div class="lenses"><div class="lens"><h3>For product teams</h3><p>The safety tether that stops reward-chasing from turning a good model into a weird one.</p></div><div class="lens"><h3>For engineers</h3><p>A non-symmetric distance between distributions; used as a regularizing penalty against a reference policy in RLHF.</p></div></div>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/ppo">PPO</a> — Uses it as a constraint each step.</li><li><a href="/term/crossentropy">Cross-entropy</a> — A related information-theoretic loss.</li></ul></section>
+<div class="cta">
+<h2>Read anything AI without the jargon</h2>
+<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
+</div>
+<footer class="site-f">
+<a href="/">Home</a>
+<a href="/term/">All terms</a>
+<a href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Chrome extension</a>
+<a href="/privacy">Privacy</a>
+</footer>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"DefinedTerm","name":"KL divergence","description":"A measure of how far one probability distribution has drifted from another — used as a leash to keep a fine-tuned model near its original.","termCode":"kldivergence","url":"https://aidecoder.app/term/kldivergence","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Decoder — AI glossary","url":"https://aidecoder.app/term/"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Decoder","item":"https://aidecoder.app/"},{"@type":"ListItem","position":2,"name":"AI glossary","item":"https://aidecoder.app/term/"},{"@type":"ListItem","position":3,"name":"KL divergence","item":"https://aidecoder.app/term/kldivergence"}]}]</script>
+</main></body></html>
