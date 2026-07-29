@@ -5061,31 +5061,31 @@
   "term": "keypoint detection",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "document understanding",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "layout analysis",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "chart understanding",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "handwriting recognition",
   "domain": "Multimodal",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "system prompt",
@@ -5103,199 +5103,199 @@
   "term": "zero-shot prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt template",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "role prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "self-consistency",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "structured output",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "JSON mode",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "output parsing",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "citation",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "guardrail prompt",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "meta-prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt chaining",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "chatbot",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "conversational AI",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "multi-turn",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "assistant persona",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt library",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt optimization",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "automatic prompt engineering",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt tuning",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "soft prompts",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prefix tuning",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "delimiter",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "few-shot examples",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "exemplar selection",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "instruction",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "constraint",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "format specification",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "persona prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "step-by-step prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "least-to-most prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "decomposition prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "self-ask",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ReAct prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "reflexion",
@@ -5307,325 +5307,325 @@
   "term": "scratchpad prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "output schema",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "function schema prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "system message design",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "context window management",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt compression",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "token optimization",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt versioning",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt registry",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "dynamic prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "conditional prompting",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "template variables",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt leaking",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt extraction",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "guard prompt",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "refusal prompt",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "adversarial prompt",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "prompt robustness",
   "domain": "Prompting & interaction",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "OpenAI",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Anthropic",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Google DeepMind",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Meta AI",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Mistral",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Cohere",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "xAI",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Hugging Face",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GPT",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Claude",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Gemini",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Llama",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Grok",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Phi",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Qwen",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "DeepSeek",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GPT-4",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ChatGPT",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Codex",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Whisper",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "DALL-E",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Sora",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Midjourney",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "LangChain",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "LlamaIndex",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Pinecone",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Weaviate",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Chroma",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Qdrant",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Milvus",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Ollama",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "transformers library",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "PyTorch",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "TensorFlow",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "JAX",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Triton",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "NVIDIA",
@@ -5637,49 +5637,49 @@
   "term": "H100",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "A100",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Groq",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Cerebras",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Together AI",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Replicate",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Modal",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Fireworks",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "OpenRouter",

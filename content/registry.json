@@ -3351,6 +3351,406 @@
   "panopticsegmentation": {
    "term": "Panoptic Segmentation",
    "status": "Rising"
+  },
+  "keypointdetection": {
+   "term": "Keypoint detection",
+   "status": "Rising"
+  },
+  "documentunderstanding": {
+   "term": "Document understanding",
+   "status": "Rising"
+  },
+  "layoutanalysis": {
+   "term": "Layout analysis",
+   "status": "Rising"
+  },
+  "chartunderstanding": {
+   "term": "Chart understanding",
+   "status": "Rising"
+  },
+  "handwritingrecognition": {
+   "term": "Handwriting recognition",
+   "status": "Fading"
+  },
+  "zeroshprompting": {
+   "term": "Zero-shot prompting",
+   "status": "Core"
+  },
+  "prompttemplate": {
+   "term": "Prompt template",
+   "status": "Core"
+  },
+  "roleprompting": {
+   "term": "Role prompting",
+   "status": "Core"
+  },
+  "selfconsistency": {
+   "term": "Self-consistency",
+   "status": "Core"
+  },
+  "structuredoutput": {
+   "term": "Structured output",
+   "status": "Core"
+  },
+  "jsonmode": {
+   "term": "JSON mode",
+   "status": "Core"
+  },
+  "outputparsing": {
+   "term": "Output parsing",
+   "status": "Core"
+  },
+  "citation": {
+   "term": "Citation",
+   "status": "Core"
+  },
+  "guardrailprompt": {
+   "term": "Guardrail prompt",
+   "status": "Rising"
+  },
+  "metaprompting": {
+   "term": "Meta-prompting",
+   "status": "Rising"
+  },
+  "promptchaining": {
+   "term": "Prompt chaining",
+   "status": "Core"
+  },
+  "chatbot": {
+   "term": "Chatbot",
+   "status": "Core"
+  },
+  "conversationalai": {
+   "term": "Conversational AI",
+   "status": "Core"
+  },
+  "multiturn": {
+   "term": "Multi-turn",
+   "status": "Core"
+  },
+  "assistantpersona": {
+   "term": "Assistant persona",
+   "status": "Core"
+  },
+  "promptlibrary": {
+   "term": "Prompt library",
+   "status": "Rising"
+  },
+  "promptoptimization": {
+   "term": "Prompt optimization",
+   "status": "Rising"
+  },
+  "automaticpromptengineering": {
+   "term": "Automatic prompt engineering",
+   "status": "Rising"
+  },
+  "prompttuning": {
+   "term": "Prompt tuning",
+   "status": "Core"
+  },
+  "softprompts": {
+   "term": "Soft prompts",
+   "status": "Rising"
+  },
+  "prefixtuning": {
+   "term": "Prefix tuning",
+   "status": "Rising"
+  },
+  "delimiter": {
+   "term": "Delimiter",
+   "status": "Core"
+  },
+  "fewshotexamples": {
+   "term": "Few-shot examples",
+   "status": "Core"
+  },
+  "exemplarselection": {
+   "term": "Exemplar selection",
+   "status": "Rising"
+  },
+  "instruction": {
+   "term": "Instruction",
+   "status": "Core"
+  },
+  "constraint": {
+   "term": "Constraint",
+   "status": "Core"
+  },
+  "formatspecification": {
+   "term": "Format specification",
+   "status": "Core"
+  },
+  "personaprompting": {
+   "term": "Persona prompting",
+   "status": "Core"
+  },
+  "stepbystepprompting": {
+   "term": "Step-by-step prompting",
+   "status": "Core"
+  },
+  "leasttomostprompting": {
+   "term": "Least-to-most prompting",
+   "status": "Rising"
+  },
+  "decompositionprompting": {
+   "term": "Decomposition prompting",
+   "status": "Rising"
+  },
+  "selfask": {
+   "term": "Self-ask",
+   "status": "Rising"
+  },
+  "reactprompting": {
+   "term": "ReAct prompting",
+   "status": "Rising"
+  },
+  "scratchpadprompting": {
+   "term": "Scratchpad prompting",
+   "status": "Rising"
+  },
+  "outputschema": {
+   "term": "Output schema",
+   "status": "Core"
+  },
+  "functionschemaprompting": {
+   "term": "Function schema prompting",
+   "status": "Rising"
+  },
+  "systemmessagedesign": {
+   "term": "System message design",
+   "status": "Rising"
+  },
+  "contextwindowmanagement": {
+   "term": "Context window management",
+   "status": "Rising"
+  },
+  "promptcompression": {
+   "term": "Prompt compression",
+   "status": "Rising"
+  },
+  "tokenoptimization": {
+   "term": "Token optimization",
+   "status": "Rising"
+  },
+  "promptversioning": {
+   "term": "Prompt versioning",
+   "status": "Rising"
+  },
+  "promptregistry": {
+   "term": "Prompt registry",
+   "status": "Rising"
+  },
+  "dynamicprompting": {
+   "term": "Dynamic prompting",
+   "status": "Rising"
+  },
+  "conditionalprompting": {
+   "term": "Conditional prompting",
+   "status": "Rising"
+  },
+  "templatevariables": {
+   "term": "Template variables",
+   "status": "Core"
+  },
+  "promptleaking": {
+   "term": "Prompt leaking",
+   "status": "Rising"
+  },
+  "promptextraction": {
+   "term": "Prompt extraction",
+   "status": "Rising"
+  },
+  "guardprompt": {
+   "term": "Guard prompt",
+   "status": "Rising"
+  },
+  "refusalprompt": {
+   "term": "Refusal prompt",
+   "status": "Rising"
+  },
+  "adversarialprompt": {
+   "term": "Adversarial prompt",
+   "status": "Rising"
+  },
+  "promptrobustness": {
+   "term": "Prompt robustness",
+   "status": "Rising"
+  },
+  "openai": {
+   "term": "OpenAI",
+   "status": "Core"
+  },
+  "anthropic": {
+   "term": "Anthropic",
+   "status": "Core"
+  },
+  "googledeepind": {
+   "term": "Google DeepMind",
+   "status": "Core"
+  },
+  "metaai": {
+   "term": "Meta AI",
+   "status": "Core"
+  },
+  "mistral": {
+   "term": "Mistral",
+   "status": "Rising"
+  },
+  "cohere": {
+   "term": "Cohere",
+   "status": "Core"
+  },
+  "xai": {
+   "term": "xAI",
+   "status": "Rising"
+  },
+  "huggingface": {
+   "term": "Hugging Face",
+   "status": "Core"
+  },
+  "gpt": {
+   "term": "GPT",
+   "status": "Core"
+  },
+  "claude": {
+   "term": "Claude",
+   "status": "Core"
+  },
+  "gemini": {
+   "term": "Gemini",
+   "status": "Core"
+  },
+  "llama": {
+   "term": "Llama",
+   "status": "Core"
+  },
+  "grok": {
+   "term": "Grok",
+   "status": "Rising"
+  },
+  "phi": {
+   "term": "Phi",
+   "status": "Rising"
+  },
+  "qwen": {
+   "term": "Qwen",
+   "status": "Rising"
+  },
+  "deepseek": {
+   "term": "DeepSeek",
+   "status": "Rising"
+  },
+  "gpt4": {
+   "term": "GPT-4",
+   "status": "Core"
+  },
+  "chatgpt": {
+   "term": "ChatGPT",
+   "status": "Core"
+  },
+  "codex": {
+   "term": "Codex",
+   "status": "Fading"
+  },
+  "whisper": {
+   "term": "Whisper",
+   "status": "Core"
+  },
+  "dalle": {
+   "term": "DALL-E",
+   "status": "Core"
+  },
+  "sora": {
+   "term": "Sora",
+   "status": "Rising"
+  },
+  "midjourney": {
+   "term": "Midjourney",
+   "status": "Core"
+  },
+  "langchain": {
+   "term": "LangChain",
+   "status": "Core"
+  },
+  "llamaindex": {
+   "term": "LlamaIndex",
+   "status": "Core"
+  },
+  "pinecone": {
+   "term": "Pinecone",
+   "status": "Core"
+  },
+  "weaviate": {
+   "term": "Weaviate",
+   "status": "Core"
+  },
+  "chroma": {
+   "term": "Chroma",
+   "status": "Rising"
+  },
+  "qdrant": {
+   "term": "Qdrant",
+   "status": "Rising"
+  },
+  "milvus": {
+   "term": "Milvus",
+   "status": "Rising"
+  },
+  "ollama": {
+   "term": "Ollama",
+   "status": "Rising"
+  },
+  "transformerslibrary": {
+   "term": "Transformers library",
+   "status": "Core"
+  },
+  "pytorch": {
+   "term": "PyTorch",
+   "status": "Core"
+  },
+  "tensorflow": {
+   "term": "TensorFlow",
+   "status": "Core"
+  },
+  "jax": {
+   "term": "JAX",
+   "status": "Rising"
+  },
+  "triton": {
+   "term": "Triton",
+   "status": "Rising"
+  },
+  "h100": {
+   "term": "H100",
+   "status": "Core"
+  },
+  "a100": {
+   "term": "A100",
+   "status": "Core"
+  },
+  "groq": {
+   "term": "Groq",
+   "status": "Rising"
+  },
+  "cerebras": {
+   "term": "Cerebras",
+   "status": "Rising"
+  },
+  "togetherai": {
+   "term": "Together AI",
+   "status": "Rising"
+  },
+  "replicate": {
+   "term": "Replicate",
+   "status": "Rising"
+  },
+  "modal": {
+   "term": "Modal",
+   "status": "Rising"
+  },
+  "fireworks": {
+   "term": "Fireworks",
+   "status": "Rising"
   }
  },
  "aliases": {
@@ -5551,6 +5951,313 @@
   "panoptic segmentation": "panopticsegmentation",
   "panoptic": "panopticsegmentation",
   "unified segmentation": "panopticsegmentation",
-  "stuff and things": "panopticsegmentation"
+  "stuff and things": "panopticsegmentation",
+  "keypoint": "keypointdetection",
+  "landmark detection": "keypointdetection",
+  "document analysis": "documentunderstanding",
+  "ocr": "documentunderstanding",
+  "document intelligence": "documentunderstanding",
+  "document processing": "documentunderstanding",
+  "document layout": "layoutanalysis",
+  "spatial structure": "layoutanalysis",
+  "layout understanding": "layoutanalysis",
+  "page segmentation": "layoutanalysis",
+  "chart reading": "chartunderstanding",
+  "diagram understanding": "chartunderstanding",
+  "plot interpretation": "chartunderstanding",
+  "graph ocr": "chartunderstanding",
+  "handwriting ocr": "handwritingrecognition",
+  "character recognition": "handwritingrecognition",
+  "script recognition": "handwritingrecognition",
+  "cursive recognition": "handwritingrecognition",
+  "unfamiliar task": "zeroshprompting",
+  "no examples": "zeroshprompting",
+  "instruction only": "zeroshprompting",
+  "prompt skeleton": "prompttemplate",
+  "prompt pattern": "prompttemplate",
+  "reusable prompt": "prompttemplate",
+  "prompt boilerplate": "prompttemplate",
+  "persona prompting": "roleprompting",
+  "role-playing": "roleprompting",
+  "character prompting": "roleprompting",
+  "identity assignment": "roleprompting",
+  "consistency voting": "selfconsistency",
+  "majority voting": "selfconsistency",
+  "path aggregation": "selfconsistency",
+  "ensemble reasoning": "selfconsistency",
+  "structured format": "structuredoutput",
+  "schema enforcement": "structuredoutput",
+  "constrained generation": "structuredoutput",
+  "typed output": "structuredoutput",
+  "json output": "jsonmode",
+  "forced json": "jsonmode",
+  "schema mode": "jsonmode",
+  "structured json": "jsonmode",
+  "response parsing": "outputparsing",
+  "extraction": "outputparsing",
+  "post-processing": "outputparsing",
+  "result parsing": "outputparsing",
+  "citations": "citation",
+  "quote attribution": "citation",
+  "evidence attribution": "citation",
+  "source reference": "citation",
+  "safety prompt": "guardrailprompt",
+  "alignment prompt": "guardrailprompt",
+  "constraint prompt": "guardrailprompt",
+  "boundary prompt": "guardrailprompt",
+  "prompting about prompts": "metaprompting",
+  "recursive prompting": "metaprompting",
+  "prompt generation": "metaprompting",
+  "self-prompting": "metaprompting",
+  "chained prompts": "promptchaining",
+  "sequential prompting": "promptchaining",
+  "multi-step prompting": "promptchaining",
+  "pipeline prompts": "promptchaining",
+  "conversational bot": "chatbot",
+  "chat agent": "chatbot",
+  "dialogue system": "chatbot",
+  "conversational interface": "chatbot",
+  "conversational agents": "conversationalai",
+  "dialogue ai": "conversationalai",
+  "chat ai": "conversationalai",
+  "conversational nlp": "conversationalai",
+  "multi-turn conversation": "multiturn",
+  "multiple turns": "multiturn",
+  "dialogue turns": "multiturn",
+  "turn-taking": "multiturn",
+  "assistant personality": "assistantpersona",
+  "bot personality": "assistantpersona",
+  "character traits": "assistantpersona",
+  "personality definition": "assistantpersona",
+  "prompt repository": "promptlibrary",
+  "prompt collection": "promptlibrary",
+  "prompt database": "promptlibrary",
+  "prompt management system": "promptlibrary",
+  "prompt tuning": "promptoptimization",
+  "prompt improvement": "promptoptimization",
+  "prompt refinement": "promptoptimization",
+  "engineering optimization": "promptoptimization",
+  "ape": "automaticpromptengineering",
+  "automatic optimization": "automaticpromptengineering",
+  "prompt search": "automaticpromptengineering",
+  "prompt synthesis": "automaticpromptengineering",
+  "soft prompting": "prompttuning",
+  "trainable prompts": "prompttuning",
+  "prompt optimization": "prompttuning",
+  "trainable prefixes": "prompttuning",
+  "embedding prompts": "softprompts",
+  "vector prompts": "softprompts",
+  "continuous prompts": "softprompts",
+  "learned instructions": "softprompts",
+  "prefix learning": "prefixtuning",
+  "learnable prefixes": "prefixtuning",
+  "prefix prompts": "prefixtuning",
+  "prefix adaptation": "prefixtuning",
+  "separator": "delimiter",
+  "boundary marker": "delimiter",
+  "section delimiter": "delimiter",
+  "input delimiter": "delimiter",
+  "in-context examples": "fewshotexamples",
+  "demonstration": "fewshotexamples",
+  "exemplars": "fewshotexamples",
+  "few-shot instances": "fewshotexamples",
+  "example selection": "exemplarselection",
+  "demonstration selection": "exemplarselection",
+  "few-shot selection": "exemplarselection",
+  "dynamic selection": "exemplarselection",
+  "task instruction": "instruction",
+  "command": "instruction",
+  "directive": "instruction",
+  "task description": "instruction",
+  "limitation": "constraint",
+  "restriction": "constraint",
+  "rule": "constraint",
+  "boundary": "constraint",
+  "output format": "formatspecification",
+  "format constraints": "formatspecification",
+  "response format": "formatspecification",
+  "output specification": "formatspecification",
+  "persona": "personaprompting",
+  "character adoption": "personaprompting",
+  "role adoption": "personaprompting",
+  "persona definition": "personaprompting",
+  "step-by-step reasoning": "stepbystepprompting",
+  "sequential reasoning": "stepbystepprompting",
+  "breaking down": "stepbystepprompting",
+  "step decomposition": "stepbystepprompting",
+  "least-to-most": "leasttomostprompting",
+  "progressive prompting": "leasttomostprompting",
+  "hierarchical prompting": "leasttomostprompting",
+  "problem progression": "leasttomostprompting",
+  "problem breakdown": "decompositionprompting",
+  "hierarchical decomposition": "decompositionprompting",
+  "divide and conquer": "decompositionprompting",
+  "subtask splitting": "decompositionprompting",
+  "self-questioning": "selfask",
+  "asking follow-ups": "selfask",
+  "self-dialogue": "selfask",
+  "recursive questioning": "selfask",
+  "reason + act": "reactprompting",
+  "reasoning and action": "reactprompting",
+  "thought-action-observation": "reactprompting",
+  "action loop": "reactprompting",
+  "working space": "scratchpadprompting",
+  "internal reasoning": "scratchpadprompting",
+  "thinking space": "scratchpadprompting",
+  "hidden reasoning": "scratchpadprompting",
+  "response schema": "outputschema",
+  "output structure": "outputschema",
+  "schema definition": "outputschema",
+  "output template": "outputschema",
+  "function specification": "functionschemaprompting",
+  "schema prompting": "functionschemaprompting",
+  "tool specification": "functionschemaprompting",
+  "api schema": "functionschemaprompting",
+  "system prompt design": "systemmessagedesign",
+  "system instruction": "systemmessagedesign",
+  "system context": "systemmessagedesign",
+  "system definition": "systemmessagedesign",
+  "token budgeting": "contextwindowmanagement",
+  "context limits": "contextwindowmanagement",
+  "memory management": "contextwindowmanagement",
+  "context optimization": "contextwindowmanagement",
+  "context compression": "promptcompression",
+  "prompt condensing": "promptcompression",
+  "information compression": "promptcompression",
+  "context reduction": "promptcompression",
+  "token efficiency": "tokenoptimization",
+  "token reduction": "tokenoptimization",
+  "efficient prompting": "tokenoptimization",
+  "efficiency optimization": "tokenoptimization",
+  "version control for prompts": "promptversioning",
+  "prompt history": "promptversioning",
+  "version tracking": "promptversioning",
+  "prompt iterations": "promptversioning",
+  "prompt catalog": "promptregistry",
+  "prompt management": "promptregistry",
+  "prompt store": "promptregistry",
+  "prompt catalog system": "promptregistry",
+  "adaptive prompting": "dynamicprompting",
+  "context-aware prompting": "dynamicprompting",
+  "data-driven prompting": "dynamicprompting",
+  "personalized prompting": "dynamicprompting",
+  "branching prompts": "conditionalprompting",
+  "if-then prompts": "conditionalprompting",
+  "conditional logic": "conditionalprompting",
+  "branching logic": "conditionalprompting",
+  "variables": "templatevariables",
+  "placeholders": "templatevariables",
+  "substitution": "templatevariables",
+  "parameter binding": "templatevariables",
+  "prompt leaking": "promptleaking",
+  "prompt exposure": "promptleaking",
+  "system prompt leak": "promptleaking",
+  "prompt extraction": "promptextraction",
+  "reverse engineering prompts": "promptextraction",
+  "prompt recovery": "promptextraction",
+  "guard prompt": "guardprompt",
+  "safety instruction": "guardprompt",
+  "content filter prompt": "guardprompt",
+  "refusal prompt": "refusalprompt",
+  "refusal instruction": "refusalprompt",
+  "adversarial prompt": "adversarialprompt",
+  "attack prompt": "adversarialprompt",
+  "jailbreak attempt": "adversarialprompt",
+  "prompt robustness": "promptrobustness",
+  "prompt stability": "promptrobustness",
+  "attack resistance": "promptrobustness",
+  "openai": "openai",
+  "open ai": "openai",
+  "anthropic": "anthropic",
+  "anthropic pbc": "anthropic",
+  "google deepmind": "googledeepind",
+  "deepmind": "googledeepind",
+  "alphabet deepmind": "googledeepind",
+  "meta ai": "metaai",
+  "facebook ai research": "metaai",
+  "fair": "metaai",
+  "mistral ai": "mistral",
+  "mistral": "mistral",
+  "cohere": "cohere",
+  "cohere ai": "cohere",
+  "xai": "xai",
+  "x.ai": "xai",
+  "hugging face": "huggingface",
+  "hf": "huggingface",
+  "gpt": "gpt",
+  "generative pre-trained transformer": "gpt",
+  "claude": "claude",
+  "claude ai": "claude",
+  "claude model": "claude",
+  "gemini": "gemini",
+  "google gemini": "gemini",
+  "llama": "llama",
+  "meta llama": "llama",
+  "llama 2": "llama",
+  "grok": "grok",
+  "xai grok": "grok",
+  "phi": "phi",
+  "microsoft phi": "phi",
+  "qwen": "qwen",
+  "alibaba qwen": "qwen",
+  "deepseek": "deepseek",
+  "deepseek ai": "deepseek",
+  "gpt-4": "gpt4",
+  "gpt-4 turbo": "gpt4",
+  "chatgpt": "chatgpt",
+  "chat gpt": "chatgpt",
+  "chatgpt plus": "chatgpt",
+  "codex": "codex",
+  "openai codex": "codex",
+  "whisper": "whisper",
+  "openai whisper": "whisper",
+  "dall-e": "dalle",
+  "dall·e": "dalle",
+  "dall-e 3": "dalle",
+  "sora": "sora",
+  "openai sora": "sora",
+  "midjourney": "midjourney",
+  "midjourney ai": "midjourney",
+  "langchain": "langchain",
+  "llamaindex": "llamaindex",
+  "llama index": "llamaindex",
+  "pinecone": "pinecone",
+  "pinecone.io": "pinecone",
+  "weaviate": "weaviate",
+  "weaviate.io": "weaviate",
+  "chroma": "chroma",
+  "chroma db": "chroma",
+  "qdrant": "qdrant",
+  "qdrant db": "qdrant",
+  "milvus": "milvus",
+  "zilliz milvus": "milvus",
+  "ollama": "ollama",
+  "ollama.ai": "ollama",
+  "transformers library": "transformerslibrary",
+  "hf transformers": "transformerslibrary",
+  "huggingface library": "transformerslibrary",
+  "pytorch": "pytorch",
+  "torch": "pytorch",
+  "tensorflow": "tensorflow",
+  "tf": "tensorflow",
+  "jax": "jax",
+  "triton": "triton",
+  "openai triton": "triton",
+  "h100": "h100",
+  "nvidia h100": "h100",
+  "a100": "a100",
+  "nvidia a100": "a100",
+  "groq": "groq",
+  "groq inc": "groq",
+  "cerebras": "cerebras",
+  "cerebras ai": "cerebras",
+  "together ai": "togetherai",
+  "together.ai": "togetherai",
+  "replicate": "replicate",
+  "replicate.com": "replicate",
+  "modal": "modal",
+  "modal.com": "modal",
+  "fireworks": "fireworks",
+  "fireworks ai": "fireworks"
  }
 }
