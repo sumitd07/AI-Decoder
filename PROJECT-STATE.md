@@ -22,11 +22,34 @@ A plain-language glossary for AI terms. Look a term up (or click it while readin
 - **Web app:** single HTML file; Supabase via ESM CDN in a small module bridge; keys in `window.DECODER_CONFIG` (filled). Signed-out = gated (save prompts sign-in; shelf shows a sign-in CTA). Mobile-optimized. "Go deeper" uses a WAAPI height animation.
 - **Extension (MV3):** `manifest.json` — `storage`+`scripting`+`identity`, required host `https://*.supabase.co/*`, **optional** `<all_urls>` (opt-in, so no broad-permission warning). `background.js` registers the content script after opt-in, routes save/list/remove to Supabase, **and fetches `concepts.json` from `aidecoder.app` on install/startup** (caches in `chrome.storage.local`). `supa.js` = auth (chrome.identity→Supabase) + REST (plain fetch). `config.js` = Supabase keys (filled). `content.js` = highlighter + popover (skips links); prefers cached concepts over bundled. `popup.js/html` = sign-in + saved-terms list + "Enable on all sites"; also prefers cached concepts. Icons = "d" with a dot.
 
-## Glossary source (unified)
-- **95 terms** (33 agentic/LLM-ops + 25 foundational + a 37-term practical batch added 2026-07-31: systemprompt, attention, moe, lora, quantization, distillation, fewshot, zeroshot, incontext, chunking, semanticsearch, alignment, dpo, redteaming, syntheticdata, benchmark, openweights, langchain, langgraph, huggingface, ollama, scalinglaws, aisafety, stablediffusion, midjourney, claude, gemini, latentspace, bias, nlp, bert, copilot, transferlearning, agenticframework, constitutionalai, tokenizer, topptopk). The practical batch filled the "stuff people actually hit in tutorials and articles" gap — frameworks, techniques, safety concepts, and major products/platforms.
-- **Single source:** `web/concepts.js` defines `DECODER_CONCEPTS` (full: term, aliases, aliasList, status, oneLiner, analogy, example, related, deeper), `DECODER_LENSES`, `DECODER_STATUS`. Every concept id needs a matching `DECODER_LENSES` entry (pm/eng). Web app loads it via `<script src="concepts.js">` (DATA/LENSES no longer inline); extension loads it in the content script + popup.
-- **`extension/concepts.js` is a bundled fallback copy.** The extension now fetches `concepts.json` from `aidecoder.app` at startup and caches it in `chrome.storage.local`. If the cache has more terms than the bundled file, the extension uses the cached version. This means **glossary updates only require a web deploy, not an extension re-upload.**
-- **To change the glossary:** edit `web/concepts.js`, run `node scripts/build-concepts-json.js`, `cp web/concepts.js extension/concepts.js`, push to deploy. The extension picks up the new terms on next browser restart. Only re-zip/re-upload the extension for code changes, not glossary changes.
+## Glossary data — where it lives and how it flows
+
+**There are TWO data sources. Understanding which feeds what is critical.**
+
+1. **Supabase `concepts` table** — the PRIMARY source for the live web app (~900 terms). The web app's `loadShelfFromDB()` in `index.html` fetches all published rows on page load. If the DB is reachable, DB data is what users see. Terms were inserted via terminal scripts using the service_role key.
+
+2. **`web/concepts.js`** (95 terms as of 2026-07-31) — serves as:
+   - **Offline/fallback for the web app** — if the DB fetch fails, concepts.js data renders. `loadShelfFromDB()` merges: any concept in concepts.js not in the DB still appears.
+   - **Source for the extension** — bundled as `extension/concepts.js` (offline fallback). Extension also fetches `web/concepts.json` from `aidecoder.app` at startup and caches it.
+   - Defines `DECODER_CONCEPTS`, `DECODER_LENSES`, `DECODER_STATUS`. Every concept id needs a matching `DECODER_LENSES` entry (pm/eng).
+
+**To add new terms (full workflow):**
+1. Add to `web/concepts.js` (with matching lenses entry).
+2. Insert into the Supabase DB — see "Adding terms to Supabase" below.
+3. Run `node scripts/build-concepts-json.js` (generates `web/concepts.json` for the extension).
+4. Run `cp web/concepts.js extension/concepts.js` (update extension fallback).
+5. Push via GitHub Desktop (Vercel auto-deploys).
+
+**Adding terms to Supabase (terminal):**
+```
+cd ~/Documents/Mitsu/AI\ Dictionary
+SUPABASE_SERVICE_KEY=your_key node scripts/insert-missing-to-supabase.js
+```
+This script compares `web/concepts.js` against the DB and inserts only the missing rows. You need the **service_role key** from Supabase Dashboard → Settings → API → service_role (NOT the anon/publishable key).
+
+**Scripts:**
+- `scripts/insert-missing-to-supabase.js` — diff concepts.js vs DB, insert missing. Requires `SUPABASE_SERVICE_KEY` env var.
+- `scripts/build-concepts-json.js` — generates `web/concepts.json` from `web/concepts.js` for the extension.
 
 ## Known gaps / TODO
 - **Domain:** DONE — `aidecoder.app` live on Vercel.

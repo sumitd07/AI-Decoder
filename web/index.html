@@ -419,11 +419,14 @@ async function loadShelfFromDB(){
     }
   }catch(e){ return; }
   if(!all.length) return;
+  const dbIds = new Set(all.map(r => r.id));
+  const staticOnly = DATA.filter(c => !dbIds.has(c.id));
   DATA.length = 0;
   for(const r of all){
     DATA.push(rowToConcept(r));
     if(r.lens_pm || r.lens_eng) LENSES[r.id] = { pm:r.lens_pm||'', eng:r.lens_eng||'' };
   }
+  for(const c of staticOnly) DATA.push(c);
   renderLookup(true); renderSheet();
   $("#s-lookup").style.display = state.tab==='lookup' ? '' : 'none';
 }
