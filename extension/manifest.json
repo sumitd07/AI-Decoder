@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Decoder — AI terms, explained in place",
-  "version": "1.0.2",
-  "description": "Highlights AI jargon on any page. Click a term to understand it in seconds and save it to your cheatsheet.",
+  "version": "1.0.3",
+  "description": "Highlights AI jargon on any page. Click a term to understand it in seconds and save it to your saved terms.",
   "permissions": ["storage", "scripting", "identity"],
   "host_permissions": ["https://*.supabase.co/*"],
   "optional_host_permissions": ["<all_urls>"],
@@ -17,7 +17,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Decoder — my cheatsheet",
+    "default_title": "Decoder — my saved terms",
     "default_icon": {
       "16": "icons/16.png",
       "32": "icons/32.png",

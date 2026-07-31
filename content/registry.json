@@ -3751,6 +3751,198 @@
   "fireworks": {
    "term": "Fireworks",
    "status": "Rising"
+  },
+  "openrouter": {
+   "term": "OpenRouter",
+   "status": "Rising"
+  },
+  "cursor": {
+   "term": "Cursor",
+   "status": "Rising"
+  },
+  "githubcopilot": {
+   "term": "GitHub Copilot",
+   "status": "Core"
+  },
+  "devin": {
+   "term": "Devin",
+   "status": "Rising"
+  },
+  "autogpt": {
+   "term": "AutoGPT",
+   "status": "Fading"
+  },
+  "babyagi": {
+   "term": "BabyAGI",
+   "status": "Fading"
+  },
+  "crewai": {
+   "term": "CrewAI",
+   "status": "Rising"
+  },
+  "autogen": {
+   "term": "AutoGen",
+   "status": "Rising"
+  },
+  "semantickernel": {
+   "term": "Semantic Kernel",
+   "status": "Rising"
+  },
+  "haystack": {
+   "term": "Haystack",
+   "status": "Rising"
+  },
+  "mlflow": {
+   "term": "MLflow",
+   "status": "Core"
+  },
+  "langsmith": {
+   "term": "LangSmith",
+   "status": "Core"
+  },
+  "langgraph": {
+   "term": "LangGraph",
+   "status": "Rising"
+  },
+  "dspy": {
+   "term": "DSPy",
+   "status": "Rising"
+  },
+  "guidance": {
+   "term": "Guidance",
+   "status": "Rising"
+  },
+  "instructor": {
+   "term": "Instructor",
+   "status": "Rising"
+  },
+  "pydanticai": {
+   "term": "Pydantic AI",
+   "status": "Rising"
+  },
+  "opensourceai": {
+   "term": "open source AI",
+   "status": "Core"
+  },
+  "modellicensing": {
+   "term": "model licensing",
+   "status": "Core"
+  },
+  "apache20": {
+   "term": "Apache 2.0",
+   "status": "Core"
+  },
+  "mitlicense": {
+   "term": "MIT license",
+   "status": "Core"
+  },
+  "inferenceprovider": {
+   "term": "inference provider",
+   "status": "Core"
+  },
+  "aiwrapper": {
+   "term": "AI wrapper",
+   "status": "Rising"
+  },
+  "moat": {
+   "term": "moat",
+   "status": "Core"
+  },
+  "apiplatform": {
+   "term": "API platform",
+   "status": "Core"
+  },
+  "playground": {
+   "term": "playground",
+   "status": "Core"
+  },
+  "finetuningapi": {
+   "term": "fine-tuning API",
+   "status": "Core"
+  },
+  "assistantsapi": {
+   "term": "assistants API",
+   "status": "Core"
+  },
+  "batchapi": {
+   "term": "batch API",
+   "status": "Core"
+  },
+  "embeddingsapi": {
+   "term": "embeddings API",
+   "status": "Core"
+  },
+  "visionapi": {
+   "term": "vision API",
+   "status": "Core"
+  },
+  "realtimeapi": {
+   "term": "realtime API",
+   "status": "Rising"
+  },
+  "functioncallingapi": {
+   "term": "function calling API",
+   "status": "Core"
+  },
+  "gpts": {
+   "term": "GPTs",
+   "status": "Core"
+  },
+  "custominstructions": {
+   "term": "custom instructions",
+   "status": "Core"
+  },
+  "systemcard": {
+   "term": "system card",
+   "status": "Rising"
+  },
+  "modelspec": {
+   "term": "model spec",
+   "status": "Rising"
+  },
+  "responsiblescalingpolicy": {
+   "term": "responsible scaling policy",
+   "status": "Rising"
+  },
+  "frontiersafety": {
+   "term": "frontier safety",
+   "status": "Rising"
+  },
+  "aiagentplatform": {
+   "term": "AI agent platform",
+   "status": "Rising"
+  },
+  "foundationmodelprovider": {
+   "term": "foundation model provider",
+   "status": "Core"
+  },
+  "hyperscaler": {
+   "term": "hyperscaler",
+   "status": "Core"
+  },
+  "aichip": {
+   "term": "AI chip",
+   "status": "Core"
+  },
+  "tpupod": {
+   "term": "TPU pod",
+   "status": "Core"
+  },
+  "gpucloud": {
+   "term": "GPU cloud",
+   "status": "Core"
+  },
+  "tokenpricing": {
+   "term": "token pricing",
+   "status": "Core"
+  },
+  "promptcachingapi": {
+   "term": "prompt caching API",
+   "status": "Rising"
+  },
+  "structuredoutputsapi": {
+   "term": "structured outputs API",
+   "status": "Rising"
   }
  },
  "aliases": {
@@ -6258,6 +6450,73 @@
   "modal": "modal",
   "modal.com": "modal",
   "fireworks": "fireworks",
-  "fireworks ai": "fireworks"
+  "fireworks ai": "fireworks",
+  "open router": "openrouter",
+  "cursor editor": "cursor",
+  "cursor ide": "cursor",
+  "github copilot x": "githubcopilot",
+  "devin ai": "devin",
+  "cognition devin": "devin",
+  "auto-gpt": "autogpt",
+  "baby agi": "babyagi",
+  "crew ai": "crewai",
+  "microsoft autogen": "autogen",
+  "semantic kernel sdk": "semantickernel",
+  "sk sdk": "semantickernel",
+  "deepset haystack": "haystack",
+  "mlflow tracking": "mlflow",
+  "langsmith platform": "langsmith",
+  "langchain observability": "langsmith",
+  "langgraph framework": "langgraph",
+  "stanford dspy": "dspy",
+  "guidance language": "guidance",
+  "instructor library": "instructor",
+  "structured outputs": "instructor",
+  "pydantic ai framework": "pydanticai",
+  "open-source models": "opensourceai",
+  "oss models": "opensourceai",
+  "model license": "modellicensing",
+  "apache license 2.0": "apache20",
+  "mit license": "mitlicense",
+  "model provider": "inferenceprovider",
+  "llm provider": "inferenceprovider",
+  "wrapper startup": "aiwrapper",
+  "competitive moat": "moat",
+  "economic moat": "moat",
+  "api service": "apiplatform",
+  "model playground": "playground",
+  "interactive ui": "playground",
+  "fine-tune api": "finetuningapi",
+  "assistants endpoint": "assistantsapi",
+  "assistant": "assistantsapi",
+  "async batching": "batchapi",
+  "embedding endpoint": "embeddingsapi",
+  "image api": "visionapi",
+  "multimodal api": "visionapi",
+  "real-time api": "realtimeapi",
+  "streaming audio": "realtimeapi",
+  "voice api": "realtimeapi",
+  "tool use api": "functioncallingapi",
+  "gpts (openai)": "gpts",
+  "custom gpt": "gpts",
+  "custom system prompt": "custominstructions",
+  "system card report": "systemcard",
+  "responsible release": "systemcard",
+  "model specification": "modelspec",
+  "scaling policy": "responsiblescalingpolicy",
+  "rsp": "responsiblescalingpolicy",
+  "frontier ai safety": "frontiersafety",
+  "advanced ai safety": "frontiersafety",
+  "agent platform": "aiagentplatform",
+  "model lab": "foundationmodelprovider",
+  "cloud hyperscaler": "hyperscaler",
+  "megacloud": "hyperscaler",
+  "ai accelerator": "aichip",
+  "tensor processing unit cluster": "tpupod",
+  "gpu rental": "gpucloud",
+  "compute cloud": "gpucloud",
+  "pricing model": "tokenpricing",
+  "cache api": "promptcachingapi",
+  "structured generation": "structuredoutputsapi"
  }
 }

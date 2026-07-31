@@ -5685,61 +5685,61 @@
   "term": "OpenRouter",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Cursor",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GitHub Copilot",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Devin",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "AutoGPT",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "BabyAGI",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "CrewAI",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "AutoGen",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Semantic Kernel",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Haystack",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Weights & Biases",
@@ -5751,217 +5751,217 @@
   "term": "MLflow",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "LangSmith",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "LangGraph",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "DSPy",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Guidance",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Instructor",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Pydantic AI",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "open source AI",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model licensing",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Apache 2.0",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "MIT license",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "inference provider",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "AI wrapper",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "moat",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "API platform",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "playground",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "fine-tuning API",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "assistants API",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "batch API",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "embeddings API",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "vision API",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "realtime API",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "function calling API",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GPTs",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "custom instructions",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "system card",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "model spec",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "responsible scaling policy",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "frontier safety",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "AI agent platform",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "foundation model provider",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "hyperscaler",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "AI chip",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "TPU pod",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GPU cloud",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "token pricing",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "context caching",
@@ -5973,13 +5973,13 @@
   "term": "prompt caching API",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "structured outputs API",
   "domain": "Ecosystem, products & orgs",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "expert systems",

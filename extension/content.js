@@ -5,21 +5,44 @@
   if (window.__decoderLoaded) { if (window.__decoderRescan) window.__decoderRescan(); return; }
   window.__decoderLoaded = true;
 
-  const DATA = window.DECODER_CONCEPTS || [];
-  const STATUS = window.DECODER_STATUS || {};
+  let DATA = window.DECODER_CONCEPTS || [];
+  let STATUS = window.DECODER_STATUS || {};
   const ACCENT = "#4f77a6";
   const UI_FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,'Helvetica Neue',Arial,sans-serif";
 
   // ---- build alias index + matching regexes ----
-  const aliasPairs = [];
-  DATA.forEach(c => c.aliasList.forEach(a => aliasPairs.push([a, c.id])));
-  aliasPairs.sort((a, b) => b[0].length - a[0].length); // longest-first: "context window" before "context"
-  const aliasMap = new Map(aliasPairs.map(([a, id]) => [a.toLowerCase(), id]));
+  let aliasMap, reFind, reTest;
   const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const pattern = aliasPairs.map(([a]) => esc(a)).join("|");
-  const reFind = new RegExp("(?<![\\w-])(" + pattern + ")(?![\\w-])", "gi");
-  const reTest = new RegExp("(?<![\\w-])(" + pattern + ")(?![\\w-])", "i");
+
+  function buildIndex() {
+    const aliasPairs = [];
+    DATA.forEach(c => c.aliasList.forEach(a => aliasPairs.push([a, c.id])));
+    aliasPairs.sort((a, b) => b[0].length - a[0].length);
+    aliasMap = new Map(aliasPairs.map(([a, id]) => [a.toLowerCase(), id]));
+    const pattern = aliasPairs.map(([a]) => esc(a)).join("|");
+    if (!pattern) { reFind = reTest = null; return; }
+    reFind = new RegExp("(?<![\\w-])(" + pattern + ")(?![\\w-])", "gi");
+    reTest = new RegExp("(?<![\\w-])(" + pattern + ")(?![\\w-])", "i");
+  }
+  buildIndex();
+
   const byId = id => DATA.find(c => c.id === id);
+
+  // ---- try loading fresher concepts from cache (background fetches from aidecoder.app) ----
+  function tryCachedConcepts() {
+    try {
+      chrome.storage.local.get("decoder.conceptsData", store => {
+        if (chrome.runtime.lastError) return;
+        const cached = store["decoder.conceptsData"];
+        if (!cached || !cached.concepts || cached.concepts.length <= DATA.length) return;
+        DATA = cached.concepts;
+        if (cached.status) STATUS = cached.status;
+        buildIndex();
+        removeAllHighlights();
+        scanRoot(document.body);
+      });
+    } catch (e) {}
+  }
 
   let enabled = true;
   let scanTimer = null;
@@ -64,6 +87,7 @@
 
   // ---- highlight one text node ----
   function highlightNode(node) {
+    if (!reFind) return;
     const text = node.nodeValue;
     reFind.lastIndex = 0;
     let match, last = 0, frag = null;
@@ -89,6 +113,7 @@
     if (!root || (root.nodeType === 1 && root.classList && root.classList.contains("dcx-term"))) return;
     const start = root.nodeType === 3 ? (root.parentElement || document.body) : root;
     if (!start) return;
+    if (!reTest) return;
     const walker = document.createTreeWalker(start, NodeFilter.SHOW_TEXT, {
       acceptNode(n) {
         if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
@@ -236,6 +261,7 @@
     refreshSaved();          // learn which terms are already in the account (for popover state)
     scanRoot(document.body);
     startObserver();
+    tryCachedConcepts();     // async: if a fresher glossary is cached, rebuild + rescan
   }
   // Keep popover state fresh if the user signs in/out or edits the saved terms elsewhere.
   try {

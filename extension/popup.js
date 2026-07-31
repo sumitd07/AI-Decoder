@@ -1,9 +1,24 @@
 (function () {
   "use strict";
-  const DATA = window.DECODER_CONCEPTS || [];
-  const STATUS = window.DECODER_STATUS || {};
+  let DATA = window.DECODER_CONCEPTS || [];
+  let STATUS = window.DECODER_STATUS || {};
   const Supa = self.DecoderSupa;
   const byId = id => DATA.find(c => c.id === id);
+
+  // Prefer fresher concepts cached by the background worker (fetched from aidecoder.app).
+  // If cache has more terms than the bundled file, swap in and re-render.
+  function tryCachedConcepts() {
+    try {
+      chrome.storage.local.get("decoder.conceptsData", store => {
+        if (chrome.runtime.lastError) return;
+        const cached = store["decoder.conceptsData"];
+        if (!cached || !cached.concepts || cached.concepts.length <= DATA.length) return;
+        DATA = cached.concepts;
+        if (cached.status) STATUS = cached.status;
+        renderAll();
+      });
+    } catch (e) {}
+  }
   const listEl = document.getElementById("list");
   const enableEl = document.getElementById("enable");
   const accountEl = document.getElementById("account");
@@ -156,4 +171,5 @@
   // init
   refreshEnable();
   renderAll();
+  tryCachedConcepts();
 })();

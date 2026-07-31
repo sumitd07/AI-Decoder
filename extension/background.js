@@ -4,6 +4,22 @@
 
 importScripts("config.js", "supa.js");
 
+// ---- Remote glossary: fetch concepts.json from the web app and cache in storage ----
+const CONCEPTS_URL = "https://aidecoder.app/concepts.json";
+const CONCEPTS_KEY = "decoder.conceptsData";
+
+async function refreshConcepts() {
+  try {
+    const res = await fetch(CONCEPTS_URL, { cache: "no-cache" });
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data && data.concepts && data.concepts.length) {
+      await chrome.storage.local.set({ [CONCEPTS_KEY]: data });
+      console.log("[decoder] cached", data.v, "terms from web app");
+    }
+  } catch (e) { console.warn("[decoder] concepts fetch failed (offline?)", e); }
+}
+
 // Route cheatsheet reads/writes from the content script and popup through here,
 // so account/token handling lives in one place.
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
@@ -16,6 +32,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       // which would kill launchWebAuthFlow before it could save the session.
       else if (msg && msg.type === "signin") { const s = await self.DecoderSupa.signIn(); sendResponse({ ok: true, email: s.email }); }
       else if (msg && msg.type === "signout") { await self.DecoderSupa.signOut(); sendResponse({ ok: true }); }
+      else if (msg && msg.type === "getConcepts") {
+        const store = await chrome.storage.local.get(CONCEPTS_KEY);
+        sendResponse(store[CONCEPTS_KEY] || null);
+      }
       else sendResponse({ ok: false });
     } catch (e) { sendResponse({ ok: false, error: String(e) }); }
   })();
@@ -51,7 +71,7 @@ async function sync() {
   }
 }
 
-chrome.runtime.onInstalled.addListener(sync);
-chrome.runtime.onStartup.addListener(sync);
+chrome.runtime.onInstalled.addListener(() => { sync(); refreshConcepts(); });
+chrome.runtime.onStartup.addListener(() => { sync(); refreshConcepts(); });
 chrome.permissions.onAdded.addListener(sync);
 chrome.permissions.onRemoved.addListener(sync);
