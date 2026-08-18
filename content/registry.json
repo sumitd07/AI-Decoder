@@ -3943,6 +3943,62 @@
   "structuredoutputsapi": {
    "term": "structured outputs API",
    "status": "Rising"
+  },
+  "expertsystems": {
+   "term": "Expert systems",
+   "status": "Historical"
+  },
+  "symbolicai": {
+   "term": "Symbolic AI",
+   "status": "Historical"
+  },
+  "gofai": {
+   "term": "GOFAI",
+   "status": "Historical"
+  },
+  "turingtest": {
+   "term": "Turing test",
+   "status": "Historical"
+  },
+  "eliza": {
+   "term": "ELIZA",
+   "status": "Historical"
+  },
+  "ngrammodel": {
+   "term": "N-gram model",
+   "status": "Fading"
+  },
+  "bagofwords": {
+   "term": "Bag of words",
+   "status": "Fading"
+  },
+  "tfidf": {
+   "term": "TF-IDF",
+   "status": "Fading"
+  },
+  "agi": {
+   "term": "AGI",
+   "status": "Rising"
+  },
+  "artificialgeneralintelligence": {
+   "term": "Artificial general intelligence",
+   "status": "Rising"
+  },
+  "asi": {
+   "term": "ASI",
+   "status": "Rising"
+  },
+  "superintelligence": {
+   "term": "Superintelligence",
+   "status": "Rising"
+  },
+  "connectionism": {
+   "term": "Connectionism",
+   "status": "Historical"
+  },
+  "perceptron": {
+   "term": "Perceptron",
+   "status": "Historical"
   }
  },
  "aliases": {
@@ -6517,6 +6573,38 @@
   "compute cloud": "gpucloud",
   "pricing model": "tokenpricing",
   "cache api": "promptcachingapi",
-  "structured generation": "structuredoutputsapi"
+  "structured generation": "structuredoutputsapi",
+  "expert system": "expertsystems",
+  "knowledge-based system": "expertsystems",
+  "rule-based system": "expertsystems",
+  "symbolic artificial intelligence": "symbolicai",
+  "logic-based ai": "symbolicai",
+  "classical artificial intelligence": "symbolicai",
+  "good old-fashioned ai": "gofai",
+  "traditional ai": "gofai",
+  "imitation game": "turingtest",
+  "turing machine test": "turingtest",
+  "conversational ai test": "turingtest",
+  "eliza chatbot": "eliza",
+  "doctor script": "eliza",
+  "eliza effect": "eliza",
+  "n-gram": "ngrammodel",
+  "statistical language model": "ngrammodel",
+  "bow": "bagofwords",
+  "bag-of-words": "bagofwords",
+  "word frequency": "bagofwords",
+  "term frequency inverse document frequency": "tfidf",
+  "tf-idf scoring": "tfidf",
+  "artificial general intelligence": "agi",
+  "human-level ai": "agi",
+  "agi": "artificialgeneralintelligence",
+  "general ai": "artificialgeneralintelligence",
+  "artificial superintelligence": "asi",
+  "superintelligent ai": "asi",
+  "superintelligent": "superintelligence",
+  "connectionist ai": "connectionism",
+  "connectionists": "connectionism",
+  "perceptron model": "perceptron",
+  "mcculloch-pitts neuron": "perceptron"
  }
 }

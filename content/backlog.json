@@ -5985,31 +5985,31 @@
   "term": "expert systems",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "symbolic AI",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "GOFAI",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Turing test",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ELIZA",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "word2vec",
@@ -6027,55 +6027,55 @@
   "term": "n-gram model",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "bag of words",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "TF-IDF",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "AGI",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "artificial general intelligence",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "ASI",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "superintelligence",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "connectionism",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "perceptron",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "Markov chain",
@@ -6141,7 +6141,7 @@
   "term": "rule-based system",
   "domain": "History & deprecated",
   "status": "",
-  "done": false
+  "done": true
  },
  {
   "term": "knowledge base system",
