@@ -132,6 +132,7 @@ node eval/run.js --label=real                 # 39 sentences → eval/out/<shelf
 node eval/score-retrieval.js  <results.json>  # code
 node eval/score-explanation.js <results.json> # judge
 node eval/report.js <run>                     # summary
+node eval/export-csv.js <run-dir>             # one CSV, row by row, for reading
 node eval/report.js <runA> <runB>             # is the change a regression?
 ```
 

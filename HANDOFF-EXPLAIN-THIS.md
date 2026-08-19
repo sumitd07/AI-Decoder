@@ -28,6 +28,7 @@ node --test                           # 66 tests
 node eval/run.js --label=<name>
 node eval/score-retrieval.js  eval/out/<version>/<name>/results.json
 node eval/score-explanation.js eval/out/<version>/<name>/results.json
+node eval/export-csv.js eval/out/<version>/<name>   # one CSV, row by row, for reading
 ```
 
 ## Where it stands
