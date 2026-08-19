@@ -154,3 +154,39 @@ the latency is unchanged.
 ~$1.15 of the Rs 1000 credit this session. Generation $0.025, embeddings $0.010,
 judge $1.11 across four runs (three of them wasted on the harness bugs above).
 A clean cycle — rebuild index, run 39 rows, judge them — is about $0.28.
+
+## What the D-numbers mean
+
+`D<n>` refers to an entry in `Mitsu/Docs/DECISIONS-Explain-This.md`. **D1–D19 predate
+this build**; **D20–D30 were appended during it.** Full reasoning, alternatives, and
+revisit triggers live in that file — this is just a lookup so the notes above read
+without it.
+
+| # | In plain English |
+|---|---|
+| D1 | Fixed pipeline, no agent loop — results stay comparable between runs |
+| D4 | Build the web version before the extension |
+| D5 | No login. Spend ceiling and rate limit deferred to Phase 3 |
+| D8 | If nothing matches the shelf, say so — never guess |
+| D9 | Explain only the terms the sentence hinges on, not every card found |
+| D11 | Retrieval is meaning-matching first, exact word-matching second |
+| D13 | Compare 2–3 models on the golden set and pick one. **Never run** |
+| D14 | Embed each card's title + definition, nothing else |
+| D16 | Rank the matches, keep the top 5 |
+| D17 | Use a small fast model; accept invention risk because Phase 3 is the backstop |
+| D18 | Send the full card — title, definition, examples — into the prompt |
+| D19 | Decode page first, extension second |
+| D20 | 768-dim embeddings, not 3072 — the bigger index was 40MB |
+| D21 | The index is built once offline, never per request |
+| D22 | The index build checkpoints and resumes after a rate-limit stall |
+| D23 | 27 duplicate cards collapsed in the export; 36 more reported, not merged |
+| D24 | Keep the card's `deeper` text out of the embedded text — it hurts precision |
+| D25 | Prompt rewrite that stopped the model pasting card definitions verbatim |
+| D26 | Gemini for embeddings, generation and judging |
+| D27 | The judge must be a different model from the generator |
+| D28 | Chips open cards in-app, never via a `/term/` URL |
+| D29 | Raising the retrieval cap to 8 was tested and reverted — it made things worse |
+| D30 | Score what the reader sees, not just what retrieval found |
+
+`C8` is from `EXPLAIN-THIS-SCOPE.md` and means the Phase 3 verification gate — the
+step that would *enforce* zero invention rather than just measure it.
