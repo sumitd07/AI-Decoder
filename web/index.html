@@ -35,6 +35,30 @@
   @keyframes pulsering{0%,100%{transform:scale(.7);opacity:0}50%{transform:scale(1);opacity:1}}
   @keyframes savepop{0%{transform:scale(.4);opacity:0}55%{transform:scale(1.25)}100%{transform:scale(1);opacity:1}}
   @keyframes heroin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  /* Decode box (Explain This, surface 1a).
+   Press feedback: the button must feel like it heard the click. Gated behind
+   hover:hover so a tap on touch doesn't leave it stuck in the pressed state. */
+.h-decode:not(:disabled):active{ transform:scale(.97); }
+@media (hover:hover) and (pointer:fine){ .h-decode:not(:disabled):hover{ opacity:.92; } }
+/* The answer arrives rather than blinking in. ease-out so the movement is visible
+   immediately — the moment the reader is watching. */
+.explain-answer{ animation:explainIn 260ms cubic-bezier(0.23,1,0.32,1) both; }
+@keyframes explainIn{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+/* Chips are decorative on arrival; stagger is short so nothing feels delayed. */
+.explain-answer .rel{ animation:explainIn 220ms cubic-bezier(0.23,1,0.32,1) both; transition:border-color 150ms ease,background 150ms ease,transform 150ms cubic-bezier(0.23,1,0.32,1); }
+.explain-answer .rel:nth-child(1){ animation-delay:60ms } .explain-answer .rel:nth-child(2){ animation-delay:100ms }
+.explain-answer .rel:nth-child(3){ animation-delay:140ms } .explain-answer .rel:nth-child(4){ animation-delay:180ms }
+.explain-answer .rel:nth-child(5){ animation-delay:220ms }
+.explain-answer .rel:active{ transform:scale(.97); }
+@media (hover:hover) and (pointer:fine){ .explain-answer .rel:hover{ border-color:var(--border-3); background:var(--surface-2); } }
+@media (prefers-reduced-motion:reduce){
+  .explain-answer, .explain-answer .rel{ animation:none; }
+  .h-decode:not(:disabled):active{ transform:none; }
+}
+/* Visually hidden but read aloud — the Decode page's h1 already carries the
+   visible label, so a second one on screen would be redundant. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+@keyframes spin{to{transform:rotate(360deg)}}
 
   .card{position:relative;animation:cardin .5s cubic-bezier(.2,.75,.3,1) both;transition:transform .18s cubic-bezier(.2,.75,.3,1),box-shadow .18s,border-color .18s;content-visibility:auto;contain-intrinsic-size:auto 160px}
   .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(20,24,33,.06);border-color:var(--border-strong)}
@@ -155,7 +179,7 @@
       <div style="display:flex;align-items:center;gap:9px;margin-right:8px">
         <span style="width:9px;height:9px;border-radius:50%;background:var(--accent);display:inline-block"></span>
         <span class="dsp" style="font-weight:600;font-size:22px;line-height:1;letter-spacing:-.02em">Decoder</span>
-        <span class="hdr-tag" style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">for AI</span>
+        <span class="hdr-tag" style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">For AI</span>
       </div>
       <nav id="tabs" style="display:flex;gap:2px"></nav>
       <button id="searchBtn" class="h-bd" aria-label="Search a term" style="margin-left:auto;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border-2);border-radius:10px;padding:7px 10px 7px 12px;cursor:pointer;color:var(--muted-2);font-size:13px;min-width:210px;transition:border-color .15s">
@@ -170,6 +194,7 @@
 
   <main id="main" style="flex:1;width:100%;max-width:1040px;margin:0 auto;padding:0 24px">
     <section id="s-lookup"></section>
+    <section id="s-decode" style="display:none"></section>
     <section id="s-sheet" style="display:none"></section>
   </main>
 
@@ -402,7 +427,16 @@ async function ensureConcept(id){
   }
   return null;
 }
-async function openRow(id){ if(!find(id) || !find(id).deeper){ await ensureConcept(id); } openCard(id); }
+async function openRow(id){
+  if(!find(id) || !find(id).deeper){ await ensureConcept(id); }
+  // Guard: if the id still isn't resolvable (unreachable Supabase, or an id the loaded
+  // shelf genuinely doesn't have), don't open a modal with an undefined card — that
+  // throws inside renderModal. Say so instead. Real gap, surfaced by the Decode box's
+  // chips (card_id can reference any of the ~1010 shelf cards, most of which aren't in
+  // the 95-concept static bundle) but it protects every data-openrow caller, spotlight included.
+  if(!find(id)){ showToast('Couldn’t find that term.'); return; }
+  openCard(id);
+}
 
 /* Load the whole shelf from the DB on startup; static concepts.js stays as offline fallback. */
 async function loadShelfFromDB(){
@@ -429,12 +463,13 @@ async function loadShelfFromDB(){
   for(const c of staticOnly) DATA.push(c);
   renderLookup(true); renderSheet();
   $("#s-lookup").style.display = state.tab==='lookup' ? '' : 'none';
+  $("#s-decode").style.display = state.tab==='decode' ? '' : 'none';
 }
 function meta(c){ return statusMeta[c.status]; }
 function isSaved(id){ return state.saved.includes(id); }
 
 /* ---------- header / tabs ---------- */
-const TABS = [{key:'lookup',label:'Lookup'},{key:'sheet',label:'Saved'}];
+const TABS = [{key:'lookup',label:'Lookup'},{key:'decode',label:'Decode'},{key:'sheet',label:'Saved'}];
 function renderTabs(){
   $("#tabs").innerHTML = TABS.map(t => {
     const active = state.tab === t.key;
@@ -477,7 +512,7 @@ function renderLookup(still){
   $("#s-lookup").innerHTML = `
     <div class="hero-pad${still?' still-render':''}" style="padding:76px 0 84px">
       <div style="max-width:760px">
-        <div class="hero-line" style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:22px">Plain-language AI glossary</div>
+        <div class="hero-line" style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:22px">Plain-Language AI Glossary</div>
         <h1 class="dsp hero-line" style="font-weight:600;font-size:clamp(34px,5.4vw,60px);line-height:1.02;letter-spacing:-.035em;margin:0 0 20px;color:var(--text);animation-delay:.07s">Understand any AI term in seconds.</h1>
         <p class="hero-line" style="font-size:17px;line-height:1.55;color:var(--text-3);margin:0 0 32px;max-width:560px;animation-delay:.13s">Search a term, or click one while you read. You get a plain explanation, a real example, and whether it still matters. Free to look up.</p>
         <div class="hero-line" style="animation-delay:.19s;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
@@ -494,12 +529,130 @@ function renderLookup(still){
         </button>
       </div>
       <div style="display:flex;align-items:baseline;justify-content:space-between;margin:68px 0 22px;border-top:1px solid var(--border);padding-top:24px">
-        <h2 style="font-family:var(--font-primary);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin:0">The shelf</h2>
+        <h2 style="font-family:var(--font-primary);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin:0">The Shelf</h2>
         <span style="font-size:12px;color:var(--faint)">click any card</span>
       </div>
       <div class="shelf-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">${grid}</div>
       ${cta}
     </div>`;
+}
+
+/* ---------- Explain This, surface 1a: the Decode box ---------- */
+// Contract (explain/CONTRACT.md): POST { sentence } -> { restatement, terms:[{card_id,surface}], gaps:[] }
+// State lives outside the DOM (explainState) because #s-lookup gets fully re-rendered by
+// renderLookup() elsewhere (shelf load, auth change) — without this, an in-flight or just-finished
+// Decode would be silently wiped out from under the reader.
+const EXPLAIN_MAX = 1000;
+const explainState = { sentence: '', loading: false, result: null }; // result: null (idle) | {state:'loading'|'error'|'success', ...}
+function escAttr(s) { return esc(s).replace(/"/g, '&quot;'); }
+function explainCountColor(len) { return len > EXPLAIN_MAX ? 'var(--error)' : 'var(--faint)'; }
+
+function renderDecode() {
+  // Same page furniture as renderSheet(): eyebrow, display h1, standfirst, then the
+  // body. A tab should look like the other tabs.
+  const head = `
+    <div style="max-width:640px;margin-bottom:44px">
+      <div style="font-family:var(--font-primary);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px">Decode</div>
+      <h1 class="dsp" style="font-weight:600;font-size:clamp(34px,5vw,54px);line-height:1.02;letter-spacing:-.035em;margin:0 0 14px;color:var(--text)">A sentence, in plain English.</h1>
+      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">Paste a sentence that isn't landing. You get the plain version, every shelf term in it linked, and anything the shelf doesn't cover named.</p>
+    </div>`;
+  const len = explainState.sentence.length;
+  const busy = explainState.loading;
+  const body = `
+    <div style="max-width:640px">
+      <label for="explainInput" class="sr-only">Sentence to decode</label>
+      <textarea id="explainInput" rows="3" aria-describedby="explainCount" placeholder="e.g. We reduced hallucination by tightening the retriever's top-k and reranking before the context is assembled." style="width:100%;box-sizing:border-box;resize:vertical;min-height:96px;font-family:inherit;font-size:15px;line-height:1.6;color:var(--text);background:var(--surface);border:1px solid var(--border-2);border-radius:12px;padding:14px 16px">${esc(explainState.sentence)}</textarea>
+      <div style="display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap">
+        <button id="explainBtn" data-decode type="button" ${busy ? 'disabled aria-disabled="true"' : ''} class="h-decode" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:12px 22px;font-size:14px;font-weight:600;cursor:${busy ? 'default' : 'pointer'};opacity:${busy ? '.6' : '1'};transition:transform 160ms cubic-bezier(0.23,1,0.32,1),opacity 160ms ease">${busy ? 'Decoding…' : 'Decode'}</button>
+        <span id="explainCount" style="font-size:12px;color:${explainCountColor(len)}">${len} / ${EXPLAIN_MAX}</span>
+        <span style="margin-left:auto;font-size:11px;color:var(--faint)">⌘Enter to decode</span>
+      </div>
+      <div id="explainResult" aria-live="polite" aria-atomic="true"></div>
+    </div>`;
+  $("#s-decode").innerHTML = `<div class="sheet-pad" style="padding:76px 0 96px">${head}${body}</div>`;
+  wireExplain();
+}
+
+function wireExplain() {
+  const ta = $("#explainInput");
+  if (!ta) return;
+  ta.addEventListener('input', e => {
+    explainState.sentence = e.target.value;
+    const cnt = $("#explainCount");
+    if (cnt) { cnt.textContent = explainState.sentence.length + ' / ' + EXPLAIN_MAX; cnt.style.color = explainCountColor(explainState.sentence.length); }
+  });
+  ta.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); submitExplain(); }
+  });
+  if (explainState.result) renderExplainResult(explainState.result); // restore across a background re-render
+}
+
+function reflectExplainBusy() {
+  const btn = $("#explainBtn");
+  if (btn) {
+    btn.disabled = explainState.loading;
+    btn.setAttribute('aria-disabled', String(explainState.loading));
+    btn.style.opacity = explainState.loading ? '.6' : '1';
+    btn.style.cursor = explainState.loading ? 'default' : 'pointer';
+    btn.textContent = explainState.loading ? 'Decoding…' : 'Decode';
+  }
+}
+
+function setExplainResult(payload) { explainState.result = payload; renderExplainResult(payload); }
+function renderExplainResult(opts) {
+  const el = $("#explainResult");
+  if (!el) return;
+  if (!opts) { el.innerHTML = ''; return; }
+  if (opts.state === 'loading') {
+    el.innerHTML = `<div style="display:flex;align-items:center;gap:10px;padding:16px 2px 2px;color:var(--muted-2);font-size:13.5px">
+      <span aria-hidden="true" style="width:13px;height:13px;border-radius:50%;border:2px solid var(--border-3);border-top-color:var(--accent);animation:spin .7s linear infinite;flex:none"></span>
+      <span>Decoding…</span>
+    </div>`;
+  } else if (opts.state === 'error') {
+    el.innerHTML = `<p role="alert" style="margin:16px 0 0;color:var(--text-3);font-size:13.5px;line-height:1.55">${esc(opts.message)}</p>`;
+  } else if (opts.state === 'success') {
+    const chips = opts.terms.length ? `<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">${opts.terms.map(t => `<button class="rel" data-openrow="${escAttr(t.card_id)}" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface-3);border:1px solid var(--hairline-2);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:500;color:var(--text-2);cursor:pointer">${esc(t.surface)}<span style="color:var(--accent)">→</span></button>`).join('')}</div>` : '';
+    const gapsLine = opts.gaps.length ? `<p style="margin:14px 0 0;font-size:12.5px;line-height:1.55;color:var(--muted-2)">Not on the shelf yet: ${opts.gaps.map(esc).join(', ')}.</p>` : '';
+    el.innerHTML = `<div class="explain-answer" style="margin-top:26px;padding-top:22px;border-top:1px solid var(--border)">
+      <p style="margin:0;font-size:17px;line-height:1.62;color:var(--text)">${esc(opts.restatement)}</p>
+      ${chips}${gapsLine}
+    </div>`;
+  } else {
+    el.innerHTML = '';
+  }
+}
+
+async function submitExplain() {
+  if (explainState.loading) return;
+  const sentence = (explainState.sentence || '').trim();
+  if (!sentence) { setExplainResult({ state: 'error', message: 'Paste a sentence first.' }); return; }
+  if (sentence.length > EXPLAIN_MAX) { setExplainResult({ state: 'error', message: `That’s over ${EXPLAIN_MAX} characters — trim it and try again.` }); return; }
+  explainState.loading = true; reflectExplainBusy();
+  setExplainResult({ state: 'loading' });
+  let res;
+  try {
+    res = await fetch('/api/explain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sentence }) });
+  } catch (e) {
+    explainState.loading = false; reflectExplainBusy();
+    setExplainResult({ state: 'error', message: 'Couldn’t reach the decoder. Check your connection and try again.' });
+    return;
+  }
+  let body = null, parseFailed = false;
+  try { body = await res.json(); } catch (e) { parseFailed = true; }
+  explainState.loading = false; reflectExplainBusy();
+  if (!res.ok) {
+    // web/api/explain.js's error shape is { error: <machine code>, message?: <human text> } —
+    // prefer message; error alone (e.g. "method_not_allowed") is not reader-facing copy.
+    const serverMsg = body && typeof body.message === 'string' ? body.message : '';
+    const msg = serverMsg || (res.status >= 500 ? 'Something went wrong on this end. Try again in a moment.' : 'Couldn’t decode that sentence. Try again.');
+    setExplainResult({ state: 'error', message: msg });
+    return;
+  }
+  const valid = !parseFailed && body && typeof body.restatement === 'string' && Array.isArray(body.terms) && Array.isArray(body.gaps);
+  if (!valid) { setExplainResult({ state: 'error', message: 'Got a response that didn’t make sense. Try again.' }); return; }
+  const terms = body.terms.filter(t => t && typeof t.card_id === 'string' && t.card_id && typeof t.surface === 'string' && t.surface);
+  const gaps = body.gaps.filter(g => typeof g === 'string' && g);
+  setExplainResult({ state: 'success', restatement: body.restatement, terms, gaps });
 }
 
 /* ---------- surface 2: saved terms ---------- */
@@ -651,7 +804,7 @@ function renderModal(animate){
           <p id="lensLine" style="font-family:var(--font-primary);font-weight:500;font-size:19px;line-height:1.5;color:var(--text-2);margin:0 0 22px">${esc(lensLine)}</p>
           <div class="mstack${animate?'':' still'}" style="display:flex;flex-direction:column;gap:16px">
             <div>
-              <div style="font-family:var(--font-primary);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">It’s like</div>
+              <div style="font-family:var(--font-primary);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">It’s Like</div>
               <p style="margin:0;font-size:15px;line-height:1.55;color:var(--text-3);font-style:italic">${esc(c.analogy)}</p>
             </div>
             <div>
@@ -720,7 +873,9 @@ function showToast(msg){
 function setTab(t){
   state.tab = t; state.spotlightOpen = false; state.openId = null; state.sel = null;
   $("#s-lookup").style.display = t==='lookup' ? '' : 'none';
+  $("#s-decode").style.display = t==='decode' ? '' : 'none';
   $("#s-sheet").style.display  = t==='sheet'  ? '' : 'none';
+  if(t==='decode') renderDecode();
   if(t==='sheet') renderSheet();
   renderTabs(); renderSpotlight(); renderModal(false); renderPopover();
 }
@@ -852,6 +1007,7 @@ document.addEventListener('click', e => {
   if(t.closest('[data-close-signin]')){ closeSignin(); return; }
   if(t.closest('[data-signin]')){ doSignIn(); return; }
   if(t.closest('[data-signout]')){ cloud.api && cloud.api.signOut(); return; }
+  if(t.closest('[data-decode]')){ submitExplain(); return; }
 });
 $("#searchBtn").addEventListener('click', openSpotlight);
 $("#themeBtn").addEventListener('click', toggleTheme);

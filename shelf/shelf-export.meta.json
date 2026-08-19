@@ -1,0 +1,536 @@
+{
+  "version_id": "shelf-1010-02e436fd8106",
+  "generated_at": "2026-08-19T09:39:59.175Z",
+  "source": {
+    "supabase_url": "https://ivyfvwnxjkqyicbjzqoz.supabase.co",
+    "table": "concepts",
+    "published_rows": 1011,
+    "concepts_js_rows": 95
+  },
+  "max_updated_at": "2026-08-18T17:28:29.030966+00:00",
+  "card_count": 1010,
+  "contract_sha256_12": "02e436fd8106",
+  "merges": {
+    "db_merges": [
+      {
+        "kept": "ai-safety",
+        "dropped": "aisafety"
+      },
+      {
+        "kept": "incontextlearning",
+        "dropped": "incontext"
+      },
+      {
+        "kept": "mixtureofexperts",
+        "dropped": "moe"
+      },
+      {
+        "kept": "red-teaming",
+        "dropped": "redteaming"
+      },
+      {
+        "kept": "semantic-search",
+        "dropped": "semanticsearch"
+      }
+    ],
+    "js_merged": [
+      {
+        "js_id": "contextengineering",
+        "into": "context-management"
+      },
+      {
+        "js_id": "tooluse",
+        "into": "tool-use"
+      },
+      {
+        "js_id": "llmjudge",
+        "into": "llm-as-judge"
+      },
+      {
+        "js_id": "multiagent",
+        "into": "multi-agent"
+      },
+      {
+        "js_id": "guardrails",
+        "into": "agent-guardrails"
+      },
+      {
+        "js_id": "agentmemory",
+        "into": "agent-memory"
+      },
+      {
+        "js_id": "computeruse",
+        "into": "computer-use"
+      },
+      {
+        "js_id": "vectordb",
+        "into": "vectordatabase"
+      },
+      {
+        "js_id": "reasoningmodels",
+        "into": "reasoningmodel"
+      },
+      {
+        "js_id": "genai",
+        "into": "generativeai"
+      },
+      {
+        "js_id": "diffusion",
+        "into": "diffusionmodel"
+      },
+      {
+        "js_id": "texttoimage",
+        "into": "texttoimagegeneration"
+      },
+      {
+        "js_id": "trainingdata",
+        "into": "trainingset"
+      },
+      {
+        "js_id": "supervised",
+        "into": "supervisedlearning"
+      },
+      {
+        "js_id": "unsupervised",
+        "into": "unsupervisedlearning"
+      },
+      {
+        "js_id": "backprop",
+        "into": "backpropagation"
+      },
+      {
+        "js_id": "multimodal",
+        "into": "multimodalinput"
+      },
+      {
+        "js_id": "moe",
+        "into": "mixtureofexperts"
+      },
+      {
+        "js_id": "incontext",
+        "into": "incontextlearning"
+      },
+      {
+        "js_id": "semanticsearch",
+        "into": "semantic-search"
+      },
+      {
+        "js_id": "redteaming",
+        "into": "red-teaming"
+      },
+      {
+        "js_id": "aisafety",
+        "into": "ai-safety"
+      }
+    ],
+    "js_added": [
+      {
+        "id": "a2a",
+        "term": "A2A"
+      },
+      {
+        "id": "agentops",
+        "term": "Agent Ops"
+      },
+      {
+        "id": "agentidentity",
+        "term": "Agent identity"
+      },
+      {
+        "id": "agentpayments",
+        "term": "Agentic payments"
+      }
+    ],
+    "collisions": [],
+    "alias_overlaps": [
+      {
+        "surface": "agentframework",
+        "ids": [
+          "agent-framework",
+          "agenticframework"
+        ]
+      },
+      {
+        "surface": "shorttermmemory",
+        "ids": [
+          "agent-memory",
+          "short-term-memory"
+        ]
+      },
+      {
+        "surface": "crewai",
+        "ids": [
+          "agenticframework",
+          "crewai"
+        ]
+      },
+      {
+        "surface": "autogen",
+        "ids": [
+          "agenticframework",
+          "autogen"
+        ]
+      },
+      {
+        "surface": "agi",
+        "ids": [
+          "agi",
+          "artificialgeneralintelligence"
+        ]
+      },
+      {
+        "surface": "artificialgeneralintelligence",
+        "ids": [
+          "agi",
+          "artificialgeneralintelligence"
+        ]
+      },
+      {
+        "surface": "responsibleai",
+        "ids": [
+          "ai-safety",
+          "responsible-ai"
+        ]
+      },
+      {
+        "surface": "asr",
+        "ids": [
+          "asr",
+          "speechtotext"
+        ]
+      },
+      {
+        "surface": "batching",
+        "ids": [
+          "batchinference",
+          "batching"
+        ]
+      },
+      {
+        "surface": "bias",
+        "ids": [
+          "bias",
+          "biasterm"
+        ]
+      },
+      {
+        "surface": "bytepairencoding",
+        "ids": [
+          "bytepairencoding",
+          "tokenizer"
+        ]
+      },
+      {
+        "surface": "bpe",
+        "ids": [
+          "bytepairencoding",
+          "tokenizer"
+        ]
+      },
+      {
+        "surface": "gradient",
+        "ids": [
+          "checkpointing",
+          "gradient"
+        ]
+      },
+      {
+        "surface": "datapoisoning",
+        "ids": [
+          "data-poisoning",
+          "poisoneddata"
+        ]
+      },
+      {
+        "surface": "diffusion",
+        "ids": [
+          "diffusionmodel",
+          "diffusionmodelpm"
+        ]
+      },
+      {
+        "surface": "ocr",
+        "ids": [
+          "documentunderstanding",
+          "ocr"
+        ]
+      },
+      {
+        "surface": "functioncalling",
+        "ids": [
+          "function-calling",
+          "tool-use"
+        ]
+      },
+      {
+        "surface": "functioncall",
+        "ids": [
+          "function-calling",
+          "tool-use"
+        ]
+      },
+      {
+        "surface": "gan",
+        "ids": [
+          "gan",
+          "generativeadversarialnetwork"
+        ]
+      },
+      {
+        "surface": "generativeadversarialnetwork",
+        "ids": [
+          "gan",
+          "generativeadversarialnetwork"
+        ]
+      },
+      {
+        "surface": "humaneval",
+        "ids": [
+          "human-eval",
+          "humaneval"
+        ]
+      },
+      {
+        "surface": "hypotheticaldocumentembeddings",
+        "ids": [
+          "hyde",
+          "hypothetical-document-embeddings"
+        ]
+      },
+      {
+        "surface": "inpainting",
+        "ids": [
+          "imageediting",
+          "inpainting"
+        ]
+      },
+      {
+        "surface": "llmjudge",
+        "ids": [
+          "llm-as-judge",
+          "referencefreeeval"
+        ]
+      },
+      {
+        "surface": "majorityvoting",
+        "ids": [
+          "majorityvoting",
+          "selfconsistency"
+        ]
+      },
+      {
+        "surface": "sparsemixtureofexperts",
+        "ids": [
+          "mixtureofexperts",
+          "sparsemixture"
+        ]
+      },
+      {
+        "surface": "quantization",
+        "ids": [
+          "modelquantization",
+          "quantization"
+        ]
+      },
+      {
+        "surface": "serving",
+        "ids": [
+          "modelserving",
+          "serving"
+        ]
+      },
+      {
+        "surface": "weights",
+        "ids": [
+          "parameters",
+          "weights"
+        ]
+      },
+      {
+        "surface": "personaprompting",
+        "ids": [
+          "personaprompting",
+          "roleprompting"
+        ]
+      },
+      {
+        "surface": "leastprivilege",
+        "ids": [
+          "principleofleastprivilege",
+          "scoped-access"
+        ]
+      },
+      {
+        "surface": "promptoptimization",
+        "ids": [
+          "promptoptimization",
+          "prompttuning"
+        ]
+      },
+      {
+        "surface": "prompttuning",
+        "ids": [
+          "promptoptimization",
+          "prompttuning"
+        ]
+      },
+      {
+        "surface": "retrievalaugmentedgeneration",
+        "ids": [
+          "rag",
+          "retrieval-augmentation"
+        ]
+      },
+      {
+        "surface": "reasonact",
+        "ids": [
+          "react",
+          "reactprompting"
+        ]
+      },
+      {
+        "surface": "skipconnection",
+        "ids": [
+          "residualconnection",
+          "skipconnection"
+        ]
+      },
+      {
+        "surface": "sampling",
+        "ids": [
+          "sampling",
+          "topptopk"
+        ]
+      },
+      {
+        "surface": "similaritysearch",
+        "ids": [
+          "semantic-search",
+          "similarity-search"
+        ]
+      },
+      {
+        "surface": "superresolution",
+        "ids": [
+          "superresolution",
+          "upscaling"
+        ]
+      },
+      {
+        "surface": "systemmessage",
+        "ids": [
+          "systemmessage",
+          "systemprompt"
+        ]
+      },
+      {
+        "surface": "systemprompt",
+        "ids": [
+          "systemmessage",
+          "systemprompt"
+        ]
+      },
+      {
+        "surface": "systeminstruction",
+        "ids": [
+          "systemmessagedesign",
+          "systemprompt"
+        ]
+      },
+      {
+        "surface": "videogeneration",
+        "ids": [
+          "texttovideo",
+          "videogeneration"
+        ]
+      },
+      {
+        "surface": "tokenization",
+        "ids": [
+          "tokenization",
+          "tokenizer"
+        ]
+      },
+      {
+        "surface": "tokenize",
+        "ids": [
+          "tokenization",
+          "tokenizer"
+        ]
+      },
+      {
+        "surface": "tokenizer",
+        "ids": [
+          "tokenization",
+          "tokenizer"
+        ]
+      },
+      {
+        "surface": "toolcalling",
+        "ids": [
+          "tool-calling",
+          "tool-use"
+        ]
+      },
+      {
+        "surface": "topk",
+        "ids": [
+          "topk",
+          "topptopk"
+        ]
+      },
+      {
+        "surface": "topp",
+        "ids": [
+          "topp",
+          "topptopk"
+        ]
+      },
+      {
+        "surface": "nucleussampling",
+        "ids": [
+          "topp",
+          "topptopk"
+        ]
+      },
+      {
+        "surface": "vae",
+        "ids": [
+          "vae",
+          "variationalautoencoder"
+        ]
+      },
+      {
+        "surface": "variationalautoencoder",
+        "ids": [
+          "vae",
+          "variationalautoencoder"
+        ]
+      }
+    ],
+    "dropped_related": 0
+  },
+  "term_pages": {
+    "term_pages": 1011,
+    "cards_without_page": [
+      "a2a",
+      "agentidentity",
+      "agentops",
+      "agentpayments"
+    ],
+    "pages_without_card": [
+      "aisafety",
+      "incontext",
+      "moe",
+      "redteaming",
+      "semanticsearch"
+    ]
+  },
+  "golden_set": {
+    "file": "eval/golden-set.csv",
+    "rows": 39,
+    "card_id_refs": 113,
+    "unresolved": []
+  },
+  "validation_errors": []
+}

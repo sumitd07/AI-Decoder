@@ -1,0 +1,98 @@
+{
+  "_comment": [
+    "Classifies the 11 negative golden-set rows (empty Card IDs) into the two kinds",
+    "the PRD (§Evaluation) and DECISIONS-Explain-This.md score separately: true_gap",
+    "(no card exists for anything the sentence turns on) vs false_friend (a content",
+    "word IS a shelf card title/alias, but this sentence uses a different sense).",
+    "",
+    "Method: mechanical, not eyeballed. For each row's sentence, normalise it",
+    "(lowercase, strip punctuation, collapse whitespace) the same way",
+    "explain/index.js's normalise() does, then look for any shelf card title or",
+    "alias appearing as a whole-token match — i.e. the exact word-boundary rule",
+    "explain/retrieve.js's lexicalLeg() uses, including its MIN_SURFACE_CHARS=3",
+    "floor (a 1-2 char surface, e.g. the alias 'ai', never counts as a match).",
+    "A row with at least one such hit is false_friend; a row with none is",
+    "true_gap. Checked against shelf/shelf-export.json, version shelf-1010-02e436fd8106.",
+    "",
+    "This mechanical check is a proxy for 'different sense', not a semantic judge —",
+    "row 27 is a genuine edge case where the hit is arguably the SAME sense; see",
+    "its reason for why it's still filed here rather than as a true_gap."
+  ],
+  "shelf_version_id": "shelf-1010-02e436fd8106",
+  "classified_against": "shelf/shelf-export.json",
+  "rows": [
+    {
+      "row": 13,
+      "sentence": "Young people should vote for younger representatives who have a skin-in-the-game for our country's future.",
+      "class": "true_gap",
+      "reason": "No content word (skin-in-the-game, representatives, vote, younger) matches any shelf card title or alias. Plain civics sentence; nothing on the shelf is even adjacent."
+    },
+    {
+      "row": 14,
+      "sentence": "After helping design and build our Horizon AI incubator last year, I'm excited to officially take on the role of AI Enablement Strategist!",
+      "class": "true_gap",
+      "reason": "\"AI\" is technically an alias of the artificialintelligence card, but at 2 characters it sits below the lexical leg's MIN_SURFACE_CHARS=3 floor (explain/retrieve.js) and never fires as a match. No other word hits. Filed as true_gap because the mechanical check the harness actually runs finds nothing — consistent with the gold explanation (\"AI\" here is a program name and job title, not the concept)."
+    },
+    {
+      "row": 16,
+      "sentence": "You don't need to be an engineer, but you need to be technically credible enough to make good build-vs-buy decisions, spot architectural risks early, and earn respect from a strong engineering team.",
+      "class": "false_friend",
+      "reason": "\"spot\" (as in \"spot architectural risks\") is a whole-word match against the alias \"spot\" on the spotinstances card (Spot instances — interruptible cloud compute). The sentence uses \"spot\" as an ordinary verb (notice), not the cloud-pricing sense."
+    },
+    {
+      "row": 22,
+      "sentence": "The Joker in Batman universe is portrayed as an agent of chaos, mastermind but also as a person who spoils people for fun.",
+      "class": "false_friend",
+      "reason": "\"agent\" matches the alias \"agent\" on the agents card. This is the PRD's own worked example of a false friend (\"agent of chaos\" — the everyday sense, not an AI agent)."
+    },
+    {
+      "row": 27,
+      "sentence": "Semantic Analysis is a subfield of Natural Language Processing (NLP) that attempts to understand the meaning of Natural Language.",
+      "class": "false_friend",
+      "reason": "EDGE CASE, flagged rather than quietly filed. \"NLP\" and \"Natural Language Processing\" both hit the nlp card's title/alias, and here they name the actual NLP field — arguably the SAME sense the card covers, not a different one, so this doesn't cleanly fit the PRD's false-friend definition. The gold explanation (\"the shelf doesn't cover 'semantic analysis' or NLP yet\") reads as if it predates the shelf's nlp card, which exists in the current export (shelf-1010-02e436fd8106) with definition + examples. \"Semantic Analysis\" itself, the sentence's actual subject, has no shelf hit at all. Net effect: retrieval will very likely return the nlp card here, which the golden set's empty Card IDs will score as a leak — filed as false_friend (not true_gap) so that leak lands in the class where a leak is an expected, visible number rather than silently miscounted against true-gap coverage. Worth flagging to whoever maintains the golden set: either the shelf grew past this row's assumption, or the row should score card [nlp] as expected rather than none."
+    },
+    {
+      "row": 29,
+      "sentence": "Poshak alerted me of his father's death.",
+      "class": "true_gap",
+      "reason": "No content word matches any shelf card title or alias. Personal message, no AI content at all."
+    },
+    {
+      "row": 30,
+      "sentence": "In sexual harassment and misconduct cases, establishing whether consent was present, absent, or legally invalid is the fundamental standard for determining accountability, distinguishing unwelcome behavior from mutual interaction.",
+      "class": "false_friend",
+      "reason": "\"consent\" matches the consent card (data/informed consent in AI) and \"accountability\" matches the accountability card. This is the PRD's own worked example of a false friend (consent in the legal sense, not the AI-governance sense)."
+    },
+    {
+      "row": 31,
+      "sentence": "What I saw on the weather dashboard was harrowing: the storm was traveling in the same direction.",
+      "class": "false_friend",
+      "reason": "\"dashboard\" matches the dashboards card (a UI pattern for monitoring model/agent metrics). The sentence uses it as an ordinary weather display, not the AI-monitoring sense."
+    },
+    {
+      "row": 32,
+      "sentence": "As a college dropout, he struggled to get a job.",
+      "class": "false_friend",
+      "reason": "\"dropout\" matches the dropout card (the regularization technique). This is the PRD's own worked example of a false friend (leaving college, not the ML regularizer)."
+    },
+    {
+      "row": 33,
+      "sentence": "In chronology and periodization, an epoch or reference epoch is an instant in time chosen as the origin of a particular calendar era.",
+      "class": "false_friend",
+      "reason": "\"epoch\" matches the epoch card (one full pass over the training data). This is the PRD's own worked example of a false friend (the calendar-era sense, not the ML-training sense)."
+    },
+    {
+      "row": 34,
+      "sentence": "His last five movies were all flops.",
+      "class": "false_friend",
+      "reason": "\"flops\" matches the flops card (floating point operations, a compute-cost unit). The sentence uses it as ordinary slang for failed films, not the FLOPs sense."
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "true_gap": 3,
+    "false_friend": 8,
+    "true_gap_rows": [13, 14, 29],
+    "false_friend_rows": [16, 22, 27, 30, 31, 32, 33, 34]
+  }
+}

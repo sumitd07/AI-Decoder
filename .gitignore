@@ -11,6 +11,9 @@ dist/
 .vercel/
 .netlify/
 
+# Eval harness output (eval/run.js) — regenerated per run, per shelf version
+eval/out/
+
 # OS / editor
 .DS_Store
 Thumbs.db
