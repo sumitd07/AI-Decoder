@@ -57,9 +57,17 @@ module.exports = async function handler(req, res) {
     return send(res, 200, payload);
   } catch (e) {
     // Never let a provider error reach the client: it can carry the key, the
-    // endpoint, or quota details. Log it, return something plain.
-    console.error('explain: ' + (e && e.message ? e.message : e));
-    return send(res, 502, { error: 'explain_failed', message: "Couldn't decode that one. Try again in a moment." });
+    // endpoint, or quota details. Log the real thing, return a plain message —
+    // plus a coarse `cause` so a broken deploy is diagnosable from a curl without
+    // digging through function logs. The causes are config states, not secrets.
+    const msg = String((e && e.message) || e);
+    console.error('explain: ' + msg);
+    let cause = 'unknown';
+    if (/no index at|shelf-index/i.test(msg)) cause = 'missing_index';
+    else if (/API_KEY is not set/i.test(msg)) cause = 'missing_api_key';
+    else if (/quota|rate limit|429/i.test(msg)) cause = 'quota';
+    else if (/Cannot find module/i.test(msg)) cause = 'missing_module';
+    return send(res, 502, { error: 'explain_failed', cause, message: "Couldn't decode that one. Try again in a moment." });
   }
 };
 

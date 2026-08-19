@@ -65,10 +65,23 @@ function buildIndex(cards, { vectors, version_id, embed_model, embed_task_type }
 
 function loadIndex(indexPath) {
   const p = indexPath || DEFAULT_INDEX_PATH;
-  if (!fs.existsSync(p)) {
-    throw new Error(`loadIndex: no index at ${p} — run: node scripts/build-index.js`);
+  let index;
+  if (!indexPath) {
+    // Static require, not fs.readFileSync, for the default path. Vercel's bundler
+    // traces require() and ships what it finds; it cannot see a path assembled at
+    // runtime, so the index silently missed the deployment and every request 502'd
+    // with "no index" while working perfectly on a laptop.
+    try {
+      index = require('../shelf/shelf-index.json');
+    } catch (e) {
+      throw new Error(`loadIndex: no index bundled at ${p} — run: node scripts/build-index.js (${e.message})`);
+    }
+  } else {
+    if (!fs.existsSync(p)) {
+      throw new Error(`loadIndex: no index at ${p} — run: node scripts/build-index.js`);
+    }
+    index = JSON.parse(fs.readFileSync(p, 'utf8'));
   }
-  const index = JSON.parse(fs.readFileSync(p, 'utf8'));
   if (!Array.isArray(index.cards)) throw new Error(`loadIndex: ${p} has no cards`);
   if (index.vectors && index.vectors.length && index.vectors.length !== index.cards.length) {
     throw new Error(`loadIndex: ${p} has ${index.vectors.length} vectors for ${index.cards.length} cards`);
