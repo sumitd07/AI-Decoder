@@ -25,7 +25,7 @@ never in the repo.
 | `GEMINI_API_KEY` | — | The only key. Embeddings and generation both use it. |
 | `EMBED_PROVIDER` | `gemini` | `gemini` or `mock`. |
 | `EMBED_MODEL` | `gemini-embedding-001` | |
-| `LLM_PROVIDER` | `mock` | `gemini` or `mock`. Set to `gemini` in production. |
+| `LLM_PROVIDER` | `gemini` | Only set to `mock` for offline tests. A mock default would serve invented text on a 200. |
 | `LLM_MODEL` | `gemini-flash-lite-latest` | Small-fast tier, D17. Keep the `-latest` alias — pinned 2.0/2.5 ids are retired or carry no free-tier quota. |
 | `EXPLAIN_DEBUG` | unset | `1` adds `_debug` to the endpoint's response. |
 

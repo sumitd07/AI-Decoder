@@ -66,6 +66,8 @@ function providerInfo(opts) -> { provider, model, dims, configured: boolean }
 
 ```js
 // provider: 'gemini' | 'mock'  (default from LLM_PROVIDER, else 'gemini')
+//   Default is the REAL provider. Mock must be opted into — a mock default turns a
+//   forgotten env var into a 200 OK full of invented text.
 //   'anthropic' and 'openai' exist as unexercised alternatives — see the note below.
 async function complete({ system, user, maxTokens, temperature }, opts)
   -> { text: string, model: string, usage: { input_tokens, output_tokens } }

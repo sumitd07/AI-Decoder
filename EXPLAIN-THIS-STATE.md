@@ -102,8 +102,15 @@ checked by hand, none scored.
    its leak is miscounted.
 3. **Sumit is building a golden test scorer separately** — `eval/score-*.js` here may be
    redundant. Still unresolved.
-4. **`GEMINI_API_KEY` must be set in Vercel** (Settings → Environment Variables), plus
-   `LLM_PROVIDER=gemini`. The key is in local `.env` only, which is gitignored.
+4. **`GEMINI_API_KEY` must be added in Vercel**, and it is the ONLY variable needed:
+   vercel.com → the AI-Decoder project → **Settings → Environment Variables → Add New**.
+   Key `GEMINI_API_KEY`, Value = the key from local `.env`, tick **Production**
+   (and Preview if you use preview deploys), Save. Then **redeploy** — environment
+   variables only apply to deployments created after they are added: Deployments tab →
+   the latest one → the ⋯ menu → Redeploy.
+   Why it is needed: the code reads `process.env.GEMINI_API_KEY`. Locally that comes
+   from `.env`, which is gitignored and never uploaded, so on Vercel the variable
+   simply does not exist until it is added there.
 4. **D13's model bake-off never happened.** One model, no comparison (D26).
 5. **Phase 2 moves vectors to Supabase pgvector** (D20). The 768-dim index is an interim
    size fix, not the answer.

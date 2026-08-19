@@ -24,11 +24,13 @@ const DEFAULT_MODELS = {
 };
 
 function resolveProvider(opts) {
-  // CONTRACT.md: default from LLM_PROVIDER, else 'mock' — mock is the safety
-  // net that keeps every test and any accidental un-configured call off the
-  // network. Which provider LLM_PROVIDER should be set to in production is a
-  // deployment decision (currently: gemini, since it's the only key present).
-  return (opts && opts.provider) || process.env.LLM_PROVIDER || 'mock';
+  // Default to the real provider, NOT mock. Defaulting to mock means a deploy that
+  // forgets one env var serves `{"restatement":"mock restatement"}` with a 200 and
+  // nobody notices — the same fake-answer hazard the preview server's canned
+  // response had. Missing config should fail loudly instead: with no key, gemini
+  // throws and the endpoint returns a clean 5xx.
+  // Tests and --dry-run opt into mock explicitly, via LLM_PROVIDER=mock or opts.
+  return (opts && opts.provider) || process.env.LLM_PROVIDER || 'gemini';
 }
 
 function resolveModel(provider, opts) {

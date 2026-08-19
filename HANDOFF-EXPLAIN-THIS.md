@@ -85,8 +85,9 @@ Root Directory is `web`; `web/api/explain.js` requires `../../explain/explain.js
 which loads `../shelf/shelf-index.json` — both outside the root, so neither is in the
 build context. Either turn on **Vercel → Settings → General → "Include source files
 outside of the Root Directory"**, or move `explain/` and `shelf/` inside `web/` and fix
-the requires. Also set `GEMINI_API_KEY` and `LLM_PROVIDER=gemini` in Vercel's
-environment variables. Verify with:
+the requires. Also add `GEMINI_API_KEY` in Vercel: Settings → Environment Variables → Add New, tick
+Production, Save, then redeploy (env vars only apply to new deployments). That is the
+only variable needed. Verify with:
 ```bash
 curl -X POST https://aidecoder.app/api/explain -H 'content-type: application/json' -d '{"sentence":"We reduced hallucination by tightening top-k."}'
 ```
