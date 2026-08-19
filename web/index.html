@@ -598,7 +598,11 @@ function reflectExplainBusy() {
   }
 }
 
-function setExplainResult(payload) { explainState.result = payload; renderExplainResult(payload); }
+let explainWaitTimer1 = null, explainWaitTimer2 = null;
+function setExplainResult(payload) {
+  if (!payload || payload.state !== 'loading') { clearTimeout(explainWaitTimer1); clearTimeout(explainWaitTimer2); }
+  explainState.result = payload; renderExplainResult(payload);
+}
 function renderExplainResult(opts) {
   const el = $("#explainResult");
   if (!el) return;
@@ -606,8 +610,14 @@ function renderExplainResult(opts) {
   if (opts.state === 'loading') {
     el.innerHTML = `<div style="display:flex;align-items:center;gap:10px;padding:16px 2px 2px;color:var(--muted-2);font-size:13.5px">
       <span aria-hidden="true" style="width:13px;height:13px;border-radius:50%;border:2px solid var(--border-3);border-top-color:var(--accent);animation:spin .7s linear infinite;flex:none"></span>
-      <span>Decoding…</span>
+      <span id="explainWait">Decoding…</span>
     </div>`;
+    // A silent spinner past a few seconds reads as hung. Cold starts on the
+    // serverless function are genuinely slow (the shelf index has to be parsed),
+    // so say so rather than leaving the reader guessing.
+    clearTimeout(explainWaitTimer1); clearTimeout(explainWaitTimer2);
+    explainWaitTimer1 = setTimeout(() => { const w = $("#explainWait"); if (w) w.textContent = 'Decoding… first one after a while takes longer'; }, 4000);
+    explainWaitTimer2 = setTimeout(() => { const w = $("#explainWait"); if (w) w.textContent = 'Still going — waking the decoder up'; }, 12000);
   } else if (opts.state === 'error') {
     el.innerHTML = `<p role="alert" style="margin:16px 0 0;color:var(--text-3);font-size:13.5px;line-height:1.55">${esc(opts.message)}</p>`;
   } else if (opts.state === 'success') {
@@ -630,13 +640,21 @@ async function submitExplain() {
   explainState.loading = true; reflectExplainBusy();
   setExplainResult({ state: 'loading' });
   let res;
+  // Bound the wait. Without this a stalled request spins indefinitely, which is
+  // indistinguishable from a broken page. 45s is past the worst measured cold start.
+  const ctl = new AbortController();
+  const abortTimer = setTimeout(() => ctl.abort(), 45000);
   try {
-    res = await fetch('/api/explain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sentence }) });
+    res = await fetch('/api/explain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sentence }), signal: ctl.signal });
   } catch (e) {
+    clearTimeout(abortTimer);
     explainState.loading = false; reflectExplainBusy();
-    setExplainResult({ state: 'error', message: 'Couldn’t reach the decoder. Check your connection and try again.' });
+    setExplainResult({ state: 'error', message: e && e.name === 'AbortError'
+      ? 'That took too long. Try again — the second one is usually quick.'
+      : 'Couldn’t reach the decoder. Check your connection and try again.' });
     return;
   }
+  clearTimeout(abortTimer);
   let body = null, parseFailed = false;
   try { body = await res.json(); } catch (e) { parseFailed = true; }
   explainState.loading = false; reflectExplainBusy();
