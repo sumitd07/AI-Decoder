@@ -15,8 +15,8 @@ Specs: `Mitsu/Docs/Explain-This-PRD.md` (what/why), `Explain-This-Technical.md` 
 | Retrieval, prompt, generation, endpoint | **DONE** — 66 tests, no network |
 | Decode box (surface 1a) | **DONE** — above the shelf on the homepage |
 | Eval harness | **DONE** — runner, retrieval scorer, judge, report |
-| Embedding index | rebuilding at 768 dims (D20) |
-| **A scored eval run** | **NOT DONE — no real numbers exist yet** |
+| Embedding index | **DONE** — 768-dim, 16 MB, `shelf/shelf-index.json` |
+| **First scored run** | **DONE** — `v1-flashlite`, see below |
 | Extension highlighter (1b) | not started, gated on 1a's eval (D19) |
 
 ## Run it
@@ -38,7 +38,40 @@ node eval/report.js eval/out/<version>/real
 `?mock=1` on the preview URL renders a fake answer, for judging layout without spending
 quota. It is labelled in the server log so it can't be mistaken for a real one.
 
-## What's measured so far
+## First scored run — `v1-flashlite`, 39 rows, 0 errors
+
+Generator `gemini-flash-lite-latest`, judge `gemini-pro-latest`, shelf
+`shelf-1010-02e436fd8106`.
+
+**How to read a judge score:** 5 = no fault, 4 = minor fault that would not mislead,
+3 = noticeable fault, 2 = would mislead, 1 = wrong or invented. There is no external
+benchmark — the number only means something against the PRD's bar and against the
+next run. Above 4.5 is where most rows are clean.
+
+| Axis | Score |
+|---|---|
+| Correct | 4.51 |
+| In-voice | 4.54 |
+| Useful | 4.51 |
+| Grounded | 4.23 |
+| **Ungrounded claims** | **10 / 39 rows — ship gate breached** |
+
+The gate is what matters, not the average: the PRD calls one confident invention a
+ship-blocker, so grounding is never averaged away into a pass. This is the expected
+Phase 1 result — D17 accepted invention risk at the small-fast tier because the
+Phase 3 verification gate is the backstop, and that gate is not built.
+
+Retrieval, same run: positives precision 46% / recall 60%; at the OUTPUT layer
+(what the reader sees) precision 78% / recall 45%; negatives 82% clean at the output
+layer against 0% at the retrieval layer. See D30 for why both layers are scored.
+
+**Four judge reruns were needed to get a trustworthy number, and every earlier one
+was measurement error:** `maxTokens: 500` truncated every reply (39/39 "ungrounded");
+`run.js` never saved card definitions so the judge graded blindfolded (30/39);
+`llm.js` had no retry so five rows died on Gemini 503s (14/39). Final: 10/39. If a
+judge number ever looks catastrophic, suspect the harness before the product.
+
+## What else is measured
 
 **The lexical leg alone, over the real shelf** — no embeddings, so these are exact:
 40.3% macro recall on the 28 positives, 7 of 28 find nothing, and **8 of 11 negatives leak
@@ -52,13 +85,25 @@ checked by hand, none scored.
 
 ## Blockers and open calls
 
-1. ~~Vercel Root Directory~~ — **CONFIRMED `web` by Sumit, 2026-08-19.** Was: `/api/explain` 404s if it is not. Not
-   checkable from the repo.
+1. **DEPLOY BLOCKER — the function's dependencies sit outside the Vercel root.**
+   Root Directory is `web` (confirmed by Sumit). The function is `web/api/explain.js`
+   and it requires `../../explain/explain.js`, which loads `../shelf/shelf-index.json`.
+   Both `explain/` and `shelf/` are at the repo root, i.e. *outside* `web/`, so they
+   are not in the build context and the function will fail at runtime even though it
+   works locally.
+   Two fixes, pick one:
+   - **Vercel Settings → General → "Include source files outside of the Root
+     Directory in the Build Step"** — turn it on. No code change.
+   - Move `explain/` and `shelf/` inside `web/` and update the requires plus the
+     paths in `scripts/`. More work, no Vercel setting needed.
+   Verify after deploying: `curl -X POST https://aidecoder.app/api/explain -H 'content-type: application/json' -d '{"sentence":"We reduced hallucination by tightening top-k."}'`
 2. **Golden-set row 27 has drifted.** Its gold explanation says the shelf doesn't cover
    NLP; an `nlp` card now exists. Either the row expects `[nlp]` or it retires. Until then
    its leak is miscounted.
 3. **Sumit is building a golden test scorer separately** — `eval/score-*.js` here may be
-   redundant. Unresolved as of this session.
+   redundant. Still unresolved.
+4. **`GEMINI_API_KEY` must be set in Vercel** (Settings → Environment Variables), plus
+   `LLM_PROVIDER=gemini`. The key is in local `.env` only, which is gitignored.
 4. **D13's model bake-off never happened.** One model, no comparison (D26).
 5. **Phase 2 moves vectors to Supabase pgvector** (D20). The 768-dim index is an interim
    size fix, not the answer.
@@ -73,3 +118,14 @@ checked by hand, none scored.
 - One card id contains a space: `serversent events`. It will not survive a URL.
 - 4 cards have no `/term/` page, so chips must use the in-app opener, not a link (D28).
 - Retrieval must be able to return **nothing**. That's D8, not a bug.
+- `eval/run.js` and `eval/score-explanation.js` run rows concurrently
+  (`EVAL_CONCURRENCY`, default 6). They were sequential and a judge pass took ten
+  minutes; it now takes forty seconds. Lower the pool on a free-tier key.
+- The judge needs `maxTokens` in the thousands: Gemini Pro spends output budget on
+  reasoning before it emits text, and a low ceiling returns truncated JSON that
+  scores worst-case and looks exactly like a failed ship gate.
+- Row 30 (`consent` / `accountability` on a sexual-harassment sentence) is a known,
+  unfixed false-friend miss. Diagnosed: the prompt's rule 7 tests whether a word is
+  used in a different *sense*, but this row needs a test of whether the sentence is
+  about an AI system at all. Proposed wording is in the session log; deliberately not
+  applied, at Sumit's call.
