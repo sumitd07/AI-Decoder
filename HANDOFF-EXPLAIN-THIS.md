@@ -103,6 +103,28 @@ Row 16 leaks on `spot` (from "spot architectural risks") matching the `spotinsta
 alias — a real false friend nobody anticipated. Worth adding `human-eval` vs
 `humaneval` to the negatives: two different concepts colliding on one string.
 
+## Open: the ~20s cold start (unresolved)
+
+Warm production requests are **~1.3s**, measured three times consecutively. The first
+request after an idle period is **~20s**. Cold starts are per *container*, not per user
+or session — they happen after a deploy, after Vercel scales to zero on idle, and on
+each additional container under concurrent load. On a low-traffic site that means most
+first-visitors-after-a-quiet-period pay it.
+
+**The cause is NOT the 16MB index parse.** That was the initial hypothesis and it is
+wrong: reading and parsing `shelf-index.json` measures **82ms** locally (44ms read,
+38ms `JSON.parse` of 775k floats). Do not re-litigate that without new evidence.
+
+**The cause is still unidentified.** The measurement that settles it: set
+`EXPLAIN_DEBUG=1` in Vercel's environment variables, wait for the function to go cold,
+then curl once. The response carries `_debug.ms` — time spent *inside* the handler.
+- `_debug.ms` ≈ 1.3s → the 20s is container boot/module load, outside our code.
+- `_debug.ms` ≈ 20s → it is inside the pipeline and traceable from there.
+
+Mitigated in the UI only (`a5d3f34`): the loading label changes at 4s and 12s, and the
+request aborts at 45s with a message rather than spinning forever. That is cosmetic —
+the latency is unchanged.
+
 ## Known, deliberately unfixed
 
 - **Row 30** — `consent` and `accountability` chips on a sexual-harassment sentence,
