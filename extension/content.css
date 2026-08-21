@@ -7,11 +7,217 @@
   transition: background .12s ease !important;
   color: inherit !important;
 }
-.dcx-term:hover {
-  background: rgba(79,119,166,0.14) !important;
+/* Touch devices fire :hover on tap and leave it stuck. Gate it. */
+@media (hover: hover) and (pointer: fine) {
+  .dcx-term:hover {
+    background: rgba(79,119,166,0.14) !important;
+  }
 }
 
 @keyframes dcxrise { from { opacity:0; transform:translate(-50%,6px); } to { opacity:1; transform:translate(-50%,0); } }
 @keyframes dcxtoast { from { opacity:0; transform:translate(-50%,10px); } to { opacity:1; transform:translate(-50%,0); } }
 @keyframes dcxpop { 0%{transform:scale(.4);opacity:0} 55%{transform:scale(1.2)} 100%{transform:scale(1);opacity:1} }
 .dcx-savepop { display:inline-block; animation: dcxpop .4s cubic-bezier(.3,1.3,.4,1) both; }
+
+/* ===========================================================================
+   Explain This, surface 1b — the decode trigger and the answer panel.
+
+   One motion language across the product: the Decode box on aidecoder.app uses
+   cubic-bezier(0.23,1,0.32,1) for entrances, a 60/40ms chip stagger, scale(.97)
+   on press, and hover gated behind a fine pointer. Same values here, so the
+   extension and the web app feel like one thing.
+
+   Page CSS bleeds into anything appended to <body>, so every property that
+   affects legibility is declared, not inherited.
+   =========================================================================== */
+
+:root {
+  --dcx-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.dcx-pill, .dcx-panel {
+  position: absolute !important;
+  z-index: 2147483646 !important;
+  transform: translateX(-50%) !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, 'Helvetica Neue', Arial, sans-serif !important;
+  text-align: left !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+.dcx-pill[data-dcx-side="below"], .dcx-panel[data-dcx-side="below"] { transform-origin: top center !important; }
+.dcx-pill[data-dcx-side="above"], .dcx-panel[data-dcx-side="above"] { transform-origin: bottom center !important; }
+
+/* ---- the trigger ---- */
+.dcx-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 7px 14px !important;
+  border: 1px solid rgba(20, 24, 33, 0.12) !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #4f77a6 !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 20px rgba(20, 18, 14, 0.16) !important;
+  animation: dcxpill 140ms var(--dcx-ease-out) backwards;
+  transition: transform 140ms var(--dcx-ease-out), box-shadow 140ms ease;
+}
+.dcx-pill:active { transform: translateX(-50%) scale(0.97) !important; }
+@media (hover: hover) and (pointer: fine) {
+  .dcx-pill:hover { box-shadow: 0 8px 24px rgba(20, 18, 14, 0.22) !important; }
+}
+.dcx-pill:focus-visible { outline: 2px solid #4f77a6 !important; outline-offset: 2px !important; }
+
+/* ---- the answer ---- */
+.dcx-panel {
+  width: 340px !important;
+  max-width: calc(100vw - 24px) !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+  color: #0e0f12 !important;
+  border: 1px solid rgba(20, 24, 33, 0.12) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 36px rgba(20, 18, 14, 0.20) !important;
+  overflow: hidden !important;
+  animation: dcxpanel 200ms var(--dcx-ease-out) backwards;
+}
+.dcx-panel-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px 14px 0 !important;
+}
+.dcx-eyebrow {
+  font-size: 9.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: #4f77a6 !important;
+}
+.dcx-x {
+  margin-left: auto !important;
+  padding: 2px !important;
+  background: none !important;
+  border: none !important;
+  color: #c6c9ce !important;
+  font-size: 15px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  transition: color 140ms ease, transform 140ms var(--dcx-ease-out);
+}
+.dcx-x:active { transform: scale(0.9) !important; }
+@media (hover: hover) and (pointer: fine) { .dcx-x:hover { color: #787c83 !important; } }
+.dcx-x:focus-visible { outline: 2px solid #4f77a6 !important; outline-offset: 2px !important; border-radius: 4px !important; }
+
+.dcx-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 12px 15px 15px !important;
+  color: #787c83 !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+.dcx-spin {
+  flex: none !important;
+  width: 13px !important;
+  height: 13px !important;
+  border: 2px solid rgba(20, 24, 33, 0.14) !important;
+  border-top-color: #4f77a6 !important;
+  border-radius: 50% !important;
+  animation: dcxspin 700ms linear infinite;
+}
+.dcx-err {
+  margin: 0 !important;
+  padding: 10px 15px 15px !important;
+  color: #4a4e55 !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+.dcx-answer { padding: 10px 15px 15px !important; }
+.dcx-restate {
+  margin: 0 !important;
+  color: #22252b !important;
+  font-size: 14.5px !important;
+  line-height: 1.6 !important;
+  animation: dcxin 220ms var(--dcx-ease-out) backwards;
+}
+.dcx-chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 7px !important;
+  margin-top: 13px !important;
+}
+.dcx-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 5px 11px !important;
+  background: #f5f6f8 !important;
+  border: 1px solid rgba(20, 24, 33, 0.08) !important;
+  border-radius: 999px !important;
+  color: #22252b !important;
+  font-family: inherit !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  cursor: pointer !important;
+  animation: dcxin 200ms var(--dcx-ease-out) backwards;
+  transition: transform 140ms var(--dcx-ease-out), background 140ms ease, border-color 140ms ease;
+}
+/* Stagger matches the Decode box on the web app: 60ms, then 40ms apart. */
+.dcx-chip:nth-child(1) { animation-delay: 60ms; }
+.dcx-chip:nth-child(2) { animation-delay: 100ms; }
+.dcx-chip:nth-child(3) { animation-delay: 140ms; }
+.dcx-chip:nth-child(4) { animation-delay: 180ms; }
+.dcx-chip:nth-child(n+5) { animation-delay: 220ms; }
+.dcx-chip:active { transform: scale(0.97) !important; }
+@media (hover: hover) and (pointer: fine) {
+  .dcx-chip:hover { background: #eef0f3 !important; border-color: rgba(20, 24, 33, 0.16) !important; }
+}
+.dcx-chip:focus-visible { outline: 2px solid #4f77a6 !important; outline-offset: 2px !important; }
+.dcx-chip[data-dcx-busy] { opacity: 0.55 !important; cursor: progress !important; }
+.dcx-arrow { color: #4f77a6 !important; }
+
+.dcx-gaps, .dcx-note {
+  margin: 12px 0 0 !important;
+  color: #787c83 !important;
+  font-size: 11.5px !important;
+  line-height: 1.5 !important;
+}
+.dcx-note { color: #a2a6ad !important; }
+
+@keyframes dcxpill { from { opacity: 0; transform: translateX(-50%) scale(0.96); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
+@keyframes dcxpanel { from { opacity: 0; transform: translateX(-50%) translateY(6px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+@keyframes dcxin { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes dcxspin { to { transform: rotate(360deg); } }
+
+/* Reduced motion means gentler, not absent: the fade stays (it says "this is
+   new"), the movement goes. */
+@media (prefers-reduced-motion: reduce) {
+  .dcx-pill, .dcx-panel, .dcx-restate, .dcx-chip {
+    animation-name: dcxfade !important;
+    animation-duration: 140ms !important;
+  }
+  .dcx-pill:active, .dcx-chip:active, .dcx-x:active { transform: translateX(-50%) !important; }
+  .dcx-chip:active { transform: none !important; }
+  .dcx-spin { animation-duration: 1400ms; }
+}
+@keyframes dcxfade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---- popover controls (content.js) — same press language as the 1b panel ---- */
+.dcx-act {
+  transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1), background 140ms ease !important;
+}
+.dcx-act:active { transform: scale(0.97) !important; }
+@media (hover: hover) and (pointer: fine) {
+  .dcx-act:hover { background: rgba(20, 24, 33, 0.035) !important; }
+}
+.dcx-act:focus-visible { outline: 2px solid #4f77a6 !important; outline-offset: -2px !important; }
+@media (prefers-reduced-motion: reduce) { .dcx-act:active { transform: none !important; } }

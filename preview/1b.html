@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1b harness — Explain This in the extension</title>
+<link rel="stylesheet" href="/extension/content.css">
+<style>
+  :root { color-scheme: light; }
+  body { margin:0; font:16px/1.7 Georgia,'Times New Roman',serif; color:#1c1e22; background:#fbfbfa; }
+  .bar { position:sticky; top:0; z-index:10; background:#17181b; color:#fff; font:12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; padding:9px 18px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .bar b { font-weight:600; }
+  .bar span { color:#a9adb4; }
+  .wrap { max-width:680px; margin:0 auto; padding:40px 24px 160px; }
+  nav a { margin-right:14px; font:13px/1 -apple-system,sans-serif; color:#4f77a6; text-decoration:none; }
+  h1 { font-size:34px; line-height:1.15; letter-spacing:-.02em; margin:26px 0 10px; }
+  h2 { font-size:20px; margin:38px 0 8px; }
+  .cols { column-count:2; column-gap:34px; font-size:15px; }
+  pre { background:#f1f2f4; padding:12px 14px; border-radius:8px; overflow:auto; font:13px/1.5 ui-monospace,Menlo,monospace; }
+  .fn { font-size:12px; color:#787c83; }
+  table { border-collapse:collapse; font-size:14px; }
+  td,th { border:1px solid #e2e4e8; padding:6px 10px; text-align:left; }
+  .dark { background:#14161a; color:#e6e8eb; }
+  .dark a { color:#8ab0dd; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <b>1b harness</b>
+  <span>Highlight a sentence → the Decode pill appears → click it.</span>
+  <span>/api/explain is the <b>real</b> pipeline (preview-server routes to web/api/explain.js). Nothing here is mocked.</span>
+  <label style="margin-left:auto;display:flex;gap:5px;align-items:center;cursor:pointer"><input type="checkbox" id="fHighlight" checked> Highlight terms</label>
+  <label style="display:flex;gap:5px;align-items:center;cursor:pointer"><input type="checkbox" id="fDecode" checked> Decode sentences</label>
+</div>
+
+<div class="wrap">
+  <nav><a href="#">Home</a><a href="#">Research</a><a href="#">Newsletter</a><a href="#">About</a></nav>
+
+  <h1>Notes on shipping a retrieval stack</h1>
+  <p>Most teams reach for a bigger model when the answers go wrong. In our case the answers were wrong because the context was wrong, and no amount of model changed that.</p>
+
+  <p>We reduced hallucination by tightening the retriever's top-k and reranking before the context is assembled. That single change did more than a month of prompt work. Evaluation came later, and it came grudgingly.</p>
+
+  <h2>Two columns, because the web is messy</h2>
+  <div class="cols">
+    <p>The embedding index was rebuilt offline every night, which meant a stale card could sit in produc&shy;tion for a day. Fine-tuning was never on the table; the failure mode was retrieval, not gener&shy;ation.<sup>1</sup></p>
+    <p>Chunking is where most of the tuning time went. A chunk that spans two ideas retrieves for both and answers neither, e.g. a paragraph that opens on latency and closes on cost.</p>
+  </div>
+
+  <h2>The part with code in it</h2>
+  <p>The guard below runs before the model call, so a refusal costs nothing:</p>
+  <pre>if (sentence.length > MAX_SENTENCE) return send(res, 400, { error: 'sentence_too_long' });</pre>
+  <p>An agent that plans its own retrieval loop is a different product. We kept the pipeline fixed so two runs stay comparable.</p>
+
+  <h2>A table, for the footnote markers</h2>
+  <table>
+    <tr><th>Change</th><th>Effect</th></tr>
+    <tr><td>Reranking on</td><td>Precision up, latency up by 180ms</td></tr>
+    <tr><td>Top-k 8 → 5</td><td>Fewer distractors in the prompt window[2]</td></tr>
+  </table>
+
+  <p class="fn">1. Measured on 39 rows. 2. The reader never sees the retrieved set.</p>
+
+  <h2 class="dark" style="padding:14px">A dark block, to check legibility</h2>
+  <div class="dark" style="padding:18px;border-radius:10px">
+    <p style="margin:0">Quantization let the model run on one card, and the quality loss was smaller than the latency win. We shipped it the same week.</p>
+  </div>
+</div>
+
+<script>
+// ---------------------------------------------------------------------------
+// chrome.* shim. The extension's chrome APIs do not exist on a plain page, so
+// this stands them in — and ONLY them. Every line of extension code under test
+// (content.js, extract.js, explain.js, content.css) is loaded unmodified.
+//
+// It is deliberately not a mock of the product: `explain` goes to the real
+// endpoint and `getCard` to the real Supabase. Nothing here can invent an answer.
+// ---------------------------------------------------------------------------
+const SUPA = { url: "https://ivyfvwnxjkqyicbjzqoz.supabase.co", anonKey: "sb_publishable_rP_Ds8F2cbEHkpFNIzyRIQ_YHGxQ5c9" };
+window.__harnessCalls = [];
+window.chrome = {
+  runtime: {
+    lastError: null,
+    async sendMessage(msg, cb) {
+      window.__harnessCalls.push(msg && msg.type);
+      try {
+        if (msg.type === "explain") {
+          const res = await fetch("/api/explain" + (location.search || ""), {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ sentence: msg.sentence })
+          });
+          let body = null; try { body = await res.json(); } catch (e) {}
+          if (!res.ok) return cb({ ok: false, message: (body && body.message) || "Couldn’t decode that one. Try again." });
+          return cb({ ok: true, data: body });
+        }
+        if (msg.type === "getCard") {
+          const res = await fetch(SUPA.url + "/rest/v1/rpc/get_concept", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", apikey: SUPA.anonKey, Authorization: "Bearer " + SUPA.anonKey },
+            body: JSON.stringify({ concept_id: msg.id })
+          });
+          if (!res.ok) return cb({ ok: false });
+          const rows = await res.json();
+          if (!rows || !rows[0]) return cb({ ok: false });
+          const r = rows[0];
+          return cb({ ok: true, card: { id: r.id, term: r.term, aliases: r.aliases || "", said: r.said || "", aliasList: r.alias_list || [], status: r.status || "Core", oneLiner: r.one_liner || "", analogy: r.analogy || "", example: r.example || "", related: r.related || [], deeper: r.deeper || "" } });
+        }
+        if (msg.type === "list") return cb({ needAuth: true });
+        return cb({ ok: false });
+      } catch (e) { cb({ ok: false, message: "Couldn’t reach the decoder. Check your connection and try again." }); }
+    }
+  },
+  // A real in-memory storage with change events, so the popup's feature switches
+  // are exercisable here — the content scripts follow storage.onChanged.
+  storage: (() => {
+    const store = {}; const listeners = [];
+    return {
+      local: {
+        get(keys, cb) {
+          const out = {};
+          (Array.isArray(keys) ? keys : [keys]).forEach(k => { if (k in store) out[k] = store[k]; });
+          cb(out);
+        },
+        set(obj, cb) {
+          const changes = {};
+          Object.keys(obj).forEach(k => { changes[k] = { oldValue: store[k], newValue: obj[k] }; store[k] = obj[k]; });
+          listeners.forEach(fn => fn(changes, "local"));
+          cb && cb();
+        }
+      },
+      onChanged: { addListener(fn) { listeners.push(fn); } }
+    };
+  })()
+};
+window.__setFeatures = f => new Promise(r => window.chrome.storage.local.set({ "decoder.features": f }, r));
+</script>
+<script src="/extension/concepts.js"></script>
+<script src="/extension/content.js"></script>
+<script src="/extension/extract.js"></script>
+<script src="/extension/explain.js"></script>
+<script>
+// Stands in for the popup's two switches (popup.js writes the same key).
+const push = () => window.__setFeatures({
+  highlight: document.getElementById('fHighlight').checked,
+  decode: document.getElementById('fDecode').checked
+});
+document.getElementById('fHighlight').addEventListener('change', push);
+document.getElementById('fDecode').addEventListener('change', push);
+</script>
+</body>
+</html>

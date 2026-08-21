@@ -26,7 +26,8 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
   1. Load the unpacked extension (see the extension `README.md`), open an article-heavy page, and let it underline some terms.
   2. Click a term so the explanation popover shows.
   3. Screenshot on Mac with **⌘ + Shift + 4**, then resize/crop to exactly **1280×800** (Preview → Tools → Adjust Size, or any editor).
-  4. Good shots: (a) underlined terms in an article, (b) the click-to-explain popover open, (c) the toolbar saved terms popup.
+  4. Good shots: (a) underlined terms in an article, (b) the click-to-explain popover open, (c) a highlighted sentence with the decoded answer panel showing, (d) the toolbar popup with the two switches.
+  5. Need a shot without loading the extension? `https://aidecoder.app/#how-it-works` shows the decode panel on a sample article — but at least one screenshot should be the real extension on a real page.
 
 ## 2. Store listing tab
 
@@ -49,23 +50,27 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
   > • Optional sign-in saves terms to your account and syncs them with the Decoder web app
   > • No ads, no tracking — page text is read on your device to find terms
 
-- **Homepage URL** (optional): `https://aidecoder.app`
+- **Homepage URL** (optional): `https://aidecoder.app/#how-it-works` — the live demo of both
+  features. A reviewer or a visitor can try the decoder without installing anything.
 - **Support URL** (optional): a contact page, or your GitHub repo's Issues page.
 
 ## 3. Privacy tab (this is where extensions usually get held up — fill every field)
 
 - **Single purpose** (one sentence):
-  `Decoder underlines known AI/technical terms on the page you're reading and shows a plain-language explanation when you click one, with an option to sign in and save terms to your account.`
+  `Decoder underlines known AI/technical terms on the page you're reading and shows a plain-language explanation when you click one; highlighting a sentence and clicking Decode explains that sentence in plain English. Users can sign in to save terms to their account.`
 
 - **Permission justifications** — the manifest now declares four items to justify (the "all sites" access is still *optional* and won't appear here):
   - **storage:** `Holds the user's sign-in session on the device so they stay logged in between visits.`
-  - **scripting:** `Injects the highlighter into a page after the user turns Decoder on, and registers it to run on pages they visit once they've opted in.`
+  - **scripting:** `Injects the highlighter and the sentence decoder into a page after the user turns Decoder on, and registers them to run on pages they visit once they've opted in.`
   - **identity:** `Used only to let the user sign in with Google (via the browser identity API) so their saved terms sync with their account. No Google profile data beyond sign-in is accessed.`
-  - **host access to `https://*.supabase.co/*`:** `The extension reads and writes the user's saved terms to their Supabase account. This is a single specific backend domain, not broad web access.`
+  - **host access to `https://*.supabase.co/*`:** `The extension reads and writes the user's saved terms to their Supabase account, and reads glossary card content by ID. This is a single specific backend domain, not broad web access.`
+  - **No new host permission was added for the decoder.** The sentence is posted to `https://aidecoder.app/api/explain` from the service worker, which is covered by the same optional `<all_urls>` grant the highlighter already needs — the decoder cannot run on a page the user has not opted in to. Adding `https://aidecoder.app/*` as a *required* host would have changed the install-time permission disclosure for no capability the extension does not already have (D34).
 
 - **Are you using remote code?** **No.** All code ships inside the package; the extension loads no external scripts and uses the system font. (It makes data requests to the Supabase backend, but does not load or run remote code.)
 
-- **Data collected — this changed now that saving syncs to an account.** Core highlighting collects nothing. **If the user signs in to sync their saved terms**, disclose in the Data-collection form:
+- **Data collected — read this again for v1.1.0; decoding a sentence transmits page-derived text.** Core highlighting collects nothing and sends nothing.
+  - **If the user decodes a sentence** (highlight → click Decode), that one sentence is sent to `aidecoder.app` and on to Google's Gemini API, which writes the explanation. Disclose it as **Website content** — user-initiated, one sentence at a time, purpose **App functionality**. It is not stored, not tied to an account, and carries no page URL or identifier. Nothing is sent on highlight alone; the request happens on the click. The user can switch decoding off in the popup and keep the highlighter.
+  - **If the user signs in to sync their saved terms**, **If the user signs in to sync their saved terms**, disclose in the Data-collection form:
   - ✅ **Personally identifiable information** — the user's **email address** (to create/identify their account).
   - ✅ **User activity** — the list of term IDs the user chooses to save.
   - Purpose: **App functionality** (account + sync). Not for ads, analytics, personalization, or resale.
@@ -86,11 +91,12 @@ This tab has three inputs: **Username**, **Password**, and **Additional instruct
 - **Additional instructions:** paste the text below (it fits the 500-char limit). **Important:** highlighting is opt-in, so the reviewer must click "Enable on all sites" in the popup first — otherwise they'll see nothing and may reject it as non-functional.
 
 ```
-No login needed to review the core feature.
+No login needed to review the core features.
 1) Open the Decoder toolbar popup and click "Enable on all sites", approve the Chrome prompt.
 2) Open a page about AI, e.g. https://en.wikipedia.org/wiki/Large_language_model — known AI terms get a dotted underline.
 3) Click a term to see the in-page explanation.
-Saving is OPTIONAL and requires signing in with Google (it syncs the saved terms to the user's account) — not needed to evaluate highlighting. Page text is read locally; only signed-in saves are sent to the account backend.
+4) Highlight a full sentence, then click the "Decode" button that appears — it is explained in plain English in place.
+Both features have their own switch in the popup. Saving is OPTIONAL and needs Google sign-in. Terms are matched locally; only a sentence you click Decode on is sent off-device.
 ```
 
 ## 4. Distribution

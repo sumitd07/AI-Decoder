@@ -57,6 +57,9 @@ async function explain(sentence, opts = {}) {
       embed_model: r.meta.embed_model,
       usage: g.usage,
       notes: g.notes || [],
+      // The model's reply verbatim. Kept because a parse failure is undiagnosable
+      // without it: the eval showed 32 empty rows and nothing to explain why.
+      raw: g.raw || null,
       error: g.error || null,
       shelf_version: index.version_id || null,
       ms: Date.now() - started,

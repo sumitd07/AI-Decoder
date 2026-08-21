@@ -55,8 +55,56 @@
   .explain-answer, .explain-answer .rel{ animation:none; }
   .h-decode:not(:disabled):active{ transform:none; }
 }
+/* "How it works" — the extension's surface (1b), shown live on a sample article.
+   Same motion language as the Decode box above, because it is the same feature
+   seen twice: 0.23,1,0.32,1 entrances, a 60/40ms chip stagger, scale(.97) on
+   press, hover behind a fine pointer. */
+.demo-doc{ user-select:text; -webkit-user-select:text; }
+.demo-doc p{ margin:0 0 15px; }
+.demo-doc p:last-child{ margin-bottom:0; }
+.demo-pill{
+  position:absolute; z-index:40; transform:translateX(-50%); transform-origin:top center;
+  display:inline-flex; align-items:center; gap:6px; padding:7px 14px;
+  background:var(--surface); color:var(--accent); border:1px solid var(--border-2);
+  border-radius:999px; font-family:var(--font-primary); font-size:12.5px; font-weight:600;
+  line-height:1; cursor:pointer; box-shadow:0 6px 20px var(--shadow-soft);
+  animation:demoPill 140ms cubic-bezier(0.23,1,0.32,1) backwards;
+  transition:transform 140ms cubic-bezier(0.23,1,0.32,1), box-shadow 140ms ease;
+}
+.demo-pill[data-side="above"]{ transform-origin:bottom center; }
+.demo-pill:active{ transform:translateX(-50%) scale(.97); }
+@media (hover:hover) and (pointer:fine){ .demo-pill:hover{ box-shadow:0 8px 24px var(--shadow-strong); } }
+@keyframes demoPill{ from{ opacity:0; transform:translateX(-50%) scale(.96); } to{ opacity:1; transform:translateX(-50%) scale(1); } }
+.demo-panel{
+  position:absolute; z-index:41; transform:translateX(-50%); transform-origin:top center;
+  width:340px; max-width:calc(100% - 24px);
+  background:var(--surface); color:var(--text); border:1px solid var(--border-2);
+  border-radius:12px; box-shadow:0 12px 36px var(--shadow-strong); overflow:hidden;
+  animation:demoPanel 200ms cubic-bezier(0.23,1,0.32,1) backwards;
+}
+.demo-panel[data-side="above"]{ transform-origin:bottom center; }
+@keyframes demoPanel{ from{ opacity:0; transform:translateX(-50%) translateY(6px); } to{ opacity:1; transform:translateX(-50%) translateY(0); } }
+.demo-head{ display:flex; align-items:center; gap:8px; padding:12px 14px 0; }
+.demo-eyebrow{ font-family:var(--font-primary); font-size:9.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
+.demo-x{ margin-left:auto; padding:2px; background:none; border:none; color:var(--faint-2); font-size:15px; line-height:1; cursor:pointer; transition:color 140ms ease, transform 140ms cubic-bezier(0.23,1,0.32,1); }
+.demo-x:active{ transform:scale(.9); }
+@media (hover:hover) and (pointer:fine){ .demo-x:hover{ color:var(--muted-2); } }
+.demo-body{ padding:10px 15px 15px; }
+.demo-restate{ margin:0; font-size:14.5px; line-height:1.6; color:var(--text-2); }
+.demo-wait{ display:flex; align-items:center; gap:10px; padding:12px 15px 15px; font-size:13px; color:var(--muted-2); }
+.demo-spin{ flex:none; width:13px; height:13px; border:2px solid var(--border-3); border-top-color:var(--accent); border-radius:50%; animation:spin .7s linear infinite; }
+.demo-gaps,.demo-note{ margin:12px 0 0; font-size:11.5px; line-height:1.5; color:var(--muted-2); }
+.demo-note{ color:var(--faint); }
+.demo-hint{ transition:opacity 200ms ease; }
+@media (prefers-reduced-motion:reduce){
+  .demo-pill,.demo-panel{ animation:none; }
+  .demo-pill:active,.demo-x:active{ transform:translateX(-50%); }
+}
+@media (max-width:520px){ .demo-panel{ width:min(340px, calc(100vw - 32px)); } }
+
 /* Visually hidden but read aloud — the Decode page's h1 already carries the
    visible label, so a second one on screen would be redundant. */
+.tab-short{ display:none; }
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @keyframes spin{to{transform:rotate(360deg)}}
 
@@ -103,6 +151,7 @@
     --border:rgba(20,24,33,0.10);--border-2:rgba(20,24,33,0.14);--border-3:rgba(20,24,33,0.18);--border-strong:rgba(20,24,33,0.30);--hairline:rgba(20,24,33,0.06);--hairline-2:rgba(20,24,33,0.08);
     --save-text:#4a7c59;--toast-bg:#17181b;--toast-text:#ffffff;--error:#ff0052;--secondary:#f09637;
     --hint-border:1px dotted rgba(20,24,33,.38);
+    --shadow-soft:rgba(20,18,14,0.16);--shadow-strong:rgba(20,18,14,0.20);
     transition:background .3s ease,color .3s ease;
   }
   .dm-shell[data-theme="dark"]{
@@ -111,6 +160,7 @@
     --border:rgba(255,255,255,0.12);--border-2:rgba(255,255,255,0.17);--border-3:rgba(255,255,255,0.22);--border-strong:rgba(255,255,255,0.34);--hairline:rgba(255,255,255,0.07);--hairline-2:rgba(255,255,255,0.10);
     --save-text:oklch(0.82 0.1 150);--toast-bg:#f4f5f7;--toast-text:#131519;
     --hint-border:1px dotted rgba(255,255,255,.42);
+    --shadow-soft:rgba(0,0,0,0.45);--shadow-strong:rgba(0,0,0,0.55);
   }
   .dm-shell[data-theme="dark"] .card:hover{box-shadow:0 6px 20px rgba(0,0,0,.35)}
 
@@ -156,7 +206,15 @@
     #main{ padding:0 14px !important; }
     .hero-pad{ padding:44px 0 44px !important; }
     .shelf-grid{ grid-template-columns:1fr !important; }
-    nav#tabs button{ padding:10px 9px 12px !important; }
+    nav#tabs button{ padding:10px 9px 12px !important; flex:0 0 auto !important; }
+    .tab-long{ display:none !important; }
+    .tab-short{ display:inline !important; }
+    /* The header overflowed the viewport at 375px even with three tabs — the
+       logo, the tab strip and the three controls simply don't fit. Let the tab
+       strip be the thing that gives: it shrinks and scrolls, everything else
+       stays reachable. */
+    nav#tabs{ min-width:0 !important; flex:1 1 auto !important; overflow-x:auto !important; overflow-y:hidden !important; scrollbar-width:none !important; -webkit-overflow-scrolling:touch; }
+    nav#tabs::-webkit-scrollbar{ display:none !important; }
     #themeBtn{ width:40px !important; height:40px !important; }
     .auth-email, .auth-signout-word, .auth-dot, .auth-signin-word{ display:none !important; }
     .auth-btn{ padding:8px !important; }
@@ -195,6 +253,7 @@
   <main id="main" style="flex:1;width:100%;max-width:1040px;margin:0 auto;padding:0 24px">
     <section id="s-lookup"></section>
     <section id="s-decode" style="display:none"></section>
+    <section id="s-how" style="display:none"></section>
     <section id="s-sheet" style="display:none"></section>
   </main>
 
@@ -257,6 +316,8 @@
 </script>
 
 <script src="concepts.js"></script>
+<!-- Surface 1b's sentence extraction. Copy of extension/extract.js; see that file. -->
+<script src="extract.js"></script>
 
 <script>
 "use strict";
@@ -464,22 +525,28 @@ async function loadShelfFromDB(){
   renderLookup(true); renderSheet();
   $("#s-lookup").style.display = state.tab==='lookup' ? '' : 'none';
   $("#s-decode").style.display = state.tab==='decode' ? '' : 'none';
+  $("#s-how").style.display    = state.tab==='how'    ? '' : 'none';
 }
 function meta(c){ return statusMeta[c.status]; }
 function isSaved(id){ return state.saved.includes(id); }
 
 /* ---------- header / tabs ---------- */
-const TABS = [{key:'lookup',label:'Lookup'},{key:'decode',label:'Decode'},{key:'sheet',label:'Saved'}];
+const TABS = [{key:'lookup',label:'Lookup'},{key:'decode',label:'Decode'},{key:'how',label:'How it works',short:'How'},{key:'sheet',label:'Saved'}];
 function renderTabs(){
   $("#tabs").innerHTML = TABS.map(t => {
     const active = state.tab === t.key;
     const badge = (t.key === 'sheet' && isSignedIn() && state.saved.length > 0)
       ? `<span style="font-family:var(--font-primary);font-size:10px;font-weight:600;background:var(--accent);color:#fff;border-radius:20px;padding:1px 6px;line-height:1.4">${state.saved.length}</span>` : '';
     return `<button data-tab="${t.key}" style="position:relative;background:none;border:none;cursor:pointer;padding:8px 12px 10px;font-size:13.5px;font-weight:500;color:${active?'var(--text)':'var(--muted-2)'};display:flex;align-items:center;gap:7px">
-      <span>${t.label}</span>${badge}
+      <span>${t.short ? `<span class="tab-long">${t.label}</span><span class="tab-short">${t.short}</span>` : t.label}</span>${badge}
       <span class="tabu" style="position:absolute;left:12px;right:12px;bottom:0;height:2px;border-radius:2px;background:var(--accent);transform:${active?'scaleX(1)':'scaleX(0)'};transform-origin:left"></span>
     </button>`;
   }).join('');
+  // The strip scrolls on narrow screens (see the 640px block), so the tab you are
+  // actually on has to be brought into view or you land on a page whose tab you
+  // cannot see. 'nearest' on both axes so the page itself never jumps.
+  const active = $("#tabs").querySelector('[data-tab="' + state.tab + '"]');
+  if(active && active.scrollIntoView) { try{ active.scrollIntoView({ block:'nearest', inline:'nearest' }); }catch(e){} }
 }
 
 /* ---------- surface 1: lookup ---------- */
@@ -672,6 +739,275 @@ async function submitExplain() {
   const gaps = body.gaps.filter(g => typeof g === 'string' && g);
   setExplainResult({ state: 'success', restatement: body.restatement, terms, gaps });
 }
+
+/* ---------- "How it works": surface 1b, live on a sample article ----------
+   This is the extension's surface running on this page — same extraction
+   (extract.js, the copy of extension/extract.js), same endpoint, same behaviour:
+   highlight a sentence, a Decode button appears, the answer renders in place.
+   The point is that a visitor can feel it before installing anything.
+
+   Two differences from the extension, both deliberate:
+   - it only listens inside #demoDoc, so selecting the site's own text does nothing;
+   - chips reuse this app's card opener (data-openrow), which is what the extension
+     does too in its own renderer — never a /term/ URL (D28).
+
+   DEMO_LIMIT is a courtesy cap, not a control: generation costs money and D5
+   ships with no rate limit yet (Phase 3). It stops honest over-use on a public
+   page and nothing else. */
+const DEMO_LIMIT = 8;
+let demoUsed = 0;
+let demoPill = null, demoPanel = null, demoRange = null, demoRect = null, demoSeq = 0;
+let demoWait1 = null, demoWait2 = null, demoSettle = null;
+
+const DEMO_ARTICLE = [
+  `Most teams reach for a bigger model when the answers go wrong. In our case the answers were wrong because the context was wrong, and no amount of model changed that.`,
+  `We reduced hallucination by tightening the retriever's top-k and reranking before the context is assembled. That single change did more than a month of prompt work.`,
+  `Chunking is where the rest of the tuning time went. A chunk that spans two ideas retrieves for both and answers neither.`,
+  `Quantization let the model run on one card, and the quality loss was smaller than the latency win. We shipped it the same week.`
+];
+
+function renderHow(){
+  const head = `
+    <div style="max-width:640px;margin-bottom:40px">
+      <div style="font-family:var(--font-primary);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px">How it works</div>
+      <h1 class="dsp" style="font-weight:600;font-size:clamp(34px,5vw,54px);line-height:1.02;letter-spacing:-.035em;margin:0 0 14px;color:var(--text)">Highlight a sentence. Get the plain version.</h1>
+      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">The extension does this on whatever you're already reading. Try it here first — the article below is a stand-in for any page on the web.</p>
+    </div>`;
+
+  const doc = `
+    <div style="max-width:640px">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+        <span style="font-family:var(--font-primary);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)">Sample article</span>
+        <span id="demoHint" class="demo-hint" style="font-size:12.5px;color:var(--muted-2)">Select any sentence below &rarr; then press Decode.</span>
+      </div>
+      <div id="demoStage" style="position:relative">
+        <div id="demoDoc" class="demo-doc" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 28px;font-family:var(--font-secondary);font-size:16.5px;line-height:1.75;color:var(--text-2)">
+          <h2 class="dsp" style="font-weight:600;font-size:23px;line-height:1.2;letter-spacing:-.02em;margin:0 0 16px;color:var(--text)">Notes on shipping a retrieval stack</h2>
+          ${DEMO_ARTICLE.map(t => `<p>${esc(t)}</p>`).join('')}
+        </div>
+      </div>
+      <p style="font-size:12px;line-height:1.55;color:var(--faint);margin:14px 0 0">Terms are matched on your device. The sentence you press Decode on is the only thing sent — nothing goes anywhere while you're just selecting.</p>
+    </div>`;
+
+  const steps = [
+    ['Underlines what it knows', 'Every term on the shelf gets a faint dotted underline as you read. Click one for the card.'],
+    ['Decodes what you highlight', 'Select a sentence, press Decode, and the sentence is restated in plain English with its jargon resolved.'],
+    ['Says when it does not know', 'A term the shelf does not cover is named as a gap rather than guessed at.']
+  ].map(([t,d]) => `
+    <div style="border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:17px 18px">
+      <p style="margin:0 0 6px;font-size:13.5px;font-weight:600;color:var(--text)">${esc(t)}</p>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:var(--text-4)">${esc(d)}</p>
+    </div>`).join('');
+
+  const cta = `
+    <div style="max-width:640px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:28px">${steps}</div>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <a class="ext-cta" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;border-radius:12px;padding:14px 22px;font-size:15px;font-weight:600;box-shadow:0 2px 10px rgba(79,119,166,.28);transition:box-shadow .15s ease-out,transform .15s ease-out">
+          <span>Add Decoder to Chrome</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+        <span style="font-size:12.5px;line-height:1.45;color:var(--muted-2);max-width:250px">Free. Works on any page you read, and you turn each half on or off from the toolbar.</span>
+      </div>
+    </div>`;
+
+  $("#s-how").innerHTML = `<div class="sheet-pad" style="padding:76px 0 96px">${head}${doc}${cta}</div>`;
+  demoWire();
+}
+
+/* ---- the demo surface ---- */
+function demoTeardown(){
+  clearTimeout(demoSettle); clearTimeout(demoWait1); clearTimeout(demoWait2);
+  if(demoPill){ demoPill.remove(); demoPill = null; }
+  if(demoPanel){ demoPanel.remove(); demoPanel = null; }
+  demoRange = null; demoRect = null;
+}
+
+function demoStage(){ return document.getElementById('demoStage'); }
+
+// Rects are viewport-relative; the stage is the positioning context. Converting
+// once here keeps every placement in one coordinate system.
+function demoPlace(el, rect, gap){
+  const stage = demoStage(); if(!stage) return;
+  const box = stage.getBoundingClientRect();
+  const w = el.offsetWidth || 320, h = el.offsetHeight || 120;
+  const lo = w/2 + 8, hi = box.width - w/2 - 8;
+  let left = rect.left + rect.width/2 - box.left;
+  left = hi < lo ? box.width/2 : Math.min(Math.max(left, lo), hi);
+  // Below by default. Flipping up is only worth it when the panel genuinely
+  // won't fit under the sentence AND it still lands inside the article card —
+  // a panel that escapes the card upwards and covers the page header reads as
+  // broken rather than in-place. An unknown viewport height means below.
+  const above = rect.top - box.top - h - gap;
+  const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+  const fitsBelow = !vh || rect.bottom + gap + h <= vh - 8;
+  const useAbove = !fitsBelow && above >= 0;
+  el.style.left = left + 'px';
+  el.style.top = (useAbove ? above : rect.bottom - box.top + gap) + 'px';
+  el.setAttribute('data-side', useAbove ? 'above' : 'below');
+}
+
+function demoEndRect(range){
+  const rects = range.getClientRects();
+  return (rects && rects.length) ? rects[rects.length-1] : range.getBoundingClientRect();
+}
+function demoRectNow(){
+  if(demoRange){
+    try{ const r = demoRange.getClientRects(); if(r && r.length) return r[r.length-1]; }catch(e){}
+  }
+  return demoRect;
+}
+
+function demoSelection(){
+  const doc = document.getElementById('demoDoc');
+  const sel = window.getSelection();
+  if(!doc || !sel || sel.isCollapsed || !sel.rangeCount) return null;
+  const range = sel.getRangeAt(0);
+  if(!doc.contains(range.commonAncestorContainer)) return null;   // the demo only, not the site
+  const text = sel.toString();
+  if(!text.trim()) return null;
+  let before = '', after = '';
+  try{
+    const pre = document.createRange(); pre.selectNodeContents(doc);
+    pre.setEnd(range.startContainer, range.startOffset); before = pre.toString();
+    const post = document.createRange(); post.selectNodeContents(doc);
+    post.setStart(range.endContainer, range.endOffset); after = post.toString();
+  }catch(e){}
+  if(!window.DecoderExtract) return null;   // extract.js missing: no pill, rather than a throw on every selection
+  const prepared = window.DecoderExtract.prepare({ selected:text, before, after });
+  if(!prepared.ok) return null;
+  return { prepared, range: range.cloneRange(), rect: demoEndRect(range) };
+}
+
+function demoHidePill(){ if(demoPill){ demoPill.remove(); demoPill = null; } }
+
+function demoShowPill(found){
+  demoHidePill();
+  const stage = demoStage(); if(!stage) return;
+  demoPill = document.createElement('button');
+  demoPill.type = 'button';
+  demoPill.className = 'demo-pill';
+  demoPill.textContent = 'Decode';
+  demoPill.setAttribute('aria-label','Decode this sentence');
+  stage.appendChild(demoPill);
+  demoPlace(demoPill, found.rect, 8);
+  demoPill.addEventListener('mousedown', e => e.preventDefault());   // keep the selection
+  demoPill.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); demoRun(found); });
+}
+
+function demoPaint(html){
+  const stage = demoStage(); if(!stage) return;
+  if(!demoPanel){
+    demoPanel = document.createElement('div');
+    demoPanel.className = 'demo-panel';
+    demoPanel.setAttribute('role','dialog');
+    demoPanel.setAttribute('aria-label','Decoded sentence');
+    demoPanel.setAttribute('aria-live','polite');
+    stage.appendChild(demoPanel);
+    demoPanel.addEventListener('click', ev => {
+      if(ev.target.closest('[data-demo-x]')){ demoClosePanel(); return; }
+      // chips fall through to the document handler, which opens the real card
+    });
+  }
+  demoPanel.innerHTML = `<div class="demo-head"><span class="demo-eyebrow">Decode</span><button data-demo-x class="demo-x" aria-label="Close">&times;</button></div>${html}`;
+  demoPlace(demoPanel, demoRectNow() || demoRect, 10);
+}
+function demoClosePanel(){
+  clearTimeout(demoWait1); clearTimeout(demoWait2);
+  if(demoPanel){ demoPanel.remove(); demoPanel = null; }
+  demoRange = null; demoRect = null;
+}
+
+function demoRun(found){
+  demoHidePill();
+  const hint = document.getElementById('demoHint');
+  if(hint) hint.style.opacity = '0';
+
+  demoRange = found.range; demoRect = found.rect;
+
+  if(demoUsed >= DEMO_LIMIT){
+    demoPaint(`<div class="demo-body"><p class="demo-restate">That's the demo's share of decodes for this visit. The extension does this on whatever you're reading — the button is just below.</p></div>`);
+    return;
+  }
+  demoUsed++;
+
+  const my = ++demoSeq;
+  demoPaint(`<div class="demo-wait"><span class="demo-spin" aria-hidden="true"></span><span data-demo-wait>Decoding&hellip;</span></div>`);
+  clearTimeout(demoWait1); clearTimeout(demoWait2);
+  const setWait = m => { const w = demoPanel && demoPanel.querySelector('[data-demo-wait]'); if(w) w.textContent = m; };
+  demoWait1 = setTimeout(() => setWait('Decoding… first one after a while takes longer'), 4000);
+  demoWait2 = setTimeout(() => setWait('Still going — waking the decoder up'), 12000);
+
+  const fail = msg => { if(my === demoSeq) demoPaint(`<p class="demo-restate" role="alert" style="padding:10px 15px 15px;font-size:13px;color:var(--text-4)">${esc(msg)}</p>`); };
+  const ctl = new AbortController();
+  const abortTimer = setTimeout(() => ctl.abort(), 45000);
+
+  fetch('/api/explain', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ sentence: found.prepared.text }), signal: ctl.signal })
+    .then(async res => {
+      clearTimeout(abortTimer);
+      let body = null; try{ body = await res.json(); }catch(e){}
+      if(my !== demoSeq) return;
+      clearTimeout(demoWait1); clearTimeout(demoWait2);
+      if(!res.ok){
+        const m = body && typeof body.message === 'string' ? body.message : '';
+        return fail(m || (res.status >= 500 ? 'Something went wrong on this end. Try again in a moment.' : 'Couldn’t decode that sentence. Try again.'));
+      }
+      const valid = body && typeof body.restatement === 'string' && Array.isArray(body.terms) && Array.isArray(body.gaps);
+      if(!valid) return fail('Got a response that didn’t make sense. Try again.');
+      const terms = body.terms.filter(t => t && typeof t.card_id === 'string' && t.card_id && typeof t.surface === 'string' && t.surface);
+      const gaps = body.gaps.filter(g => typeof g === 'string' && g);
+      const chips = terms.length
+        ? `<div class="explain-answer" style="display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;animation:none">${terms.map(t =>
+            `<button class="rel" data-openrow="${escAttr(t.card_id)}" style="display:inline-flex;align-items:center;gap:5px;background:var(--surface-3);border:1px solid var(--hairline-2);border-radius:999px;padding:5px 11px;font-family:var(--font-primary);font-size:12.5px;font-weight:500;color:var(--text-2);cursor:pointer">${esc(t.surface)}<span style="color:var(--accent)">&rarr;</span></button>`
+          ).join('')}</div>` : '';
+      const gapsLine = gaps.length ? `<p class="demo-gaps">Not on the shelf yet: ${gaps.map(esc).join(', ')}.</p>` : '';
+      const p = found.prepared;
+      const MAXS = (window.DecoderExtract && window.DecoderExtract.MAX_SENTENCES) || 3;
+      const note = p.trimmed
+        ? (p.found > MAXS
+            ? `Decoded the first ${MAXS} sentences of that selection.`
+            : 'Decoded the first part of that selection.')
+        : '';
+      const noteLine = note ? `<p class="demo-note">${esc(note)}</p>` : '';
+      demoPaint(`<div class="demo-body"><p class="demo-restate">${esc(body.restatement)}</p>${chips}${gapsLine}${noteLine}</div>`);
+    })
+    .catch(e => {
+      clearTimeout(abortTimer); clearTimeout(demoWait1); clearTimeout(demoWait2);
+      fail(e && e.name === 'AbortError'
+        ? 'That took too long. Try again — the second one is usually quick.'
+        : 'Couldn’t reach the decoder. Check your connection and try again.');
+    });
+}
+
+function demoWire(){
+  const doc = document.getElementById('demoDoc');
+  if(!doc) return;
+  const schedule = () => { clearTimeout(demoSettle); demoSettle = setTimeout(() => {
+    const found = demoSelection();
+    if(!found){ demoHidePill(); return; }
+    demoShowPill(found);
+  }, 10); };
+  doc.addEventListener('mouseup', schedule);
+  doc.addEventListener('keyup', e => { if(e.shiftKey || /^(Arrow|Home|End|Page)/.test(e.key)) schedule(); });
+}
+
+// Document-level, registered once: the demo's own nodes are rebuilt on every
+// tab switch, so listeners bound to them would leak.
+document.addEventListener('selectionchange', () => {
+  const sel = window.getSelection();
+  if(demoPill && (!sel || sel.isCollapsed)) demoHidePill();
+});
+document.addEventListener('mousedown', e => {
+  if(!demoPill && !demoPanel) return;
+  if(e.target.closest && e.target.closest('.demo-pill, .demo-panel')) return;
+  demoHidePill();
+  if(demoPanel && !(e.target.closest && e.target.closest('#demoDoc'))) demoClosePanel();
+}, true);
+window.addEventListener('resize', () => {
+  demoHidePill();
+  const r = demoRectNow();
+  if(demoPanel && r) demoPlace(demoPanel, r, 10);
+});
 
 /* ---------- surface 2: saved terms ---------- */
 function nudgeFor(c){
@@ -892,14 +1228,23 @@ function setTab(t){
   state.tab = t; state.spotlightOpen = false; state.openId = null; state.sel = null;
   $("#s-lookup").style.display = t==='lookup' ? '' : 'none';
   $("#s-decode").style.display = t==='decode' ? '' : 'none';
+  $("#s-how").style.display    = t==='how'    ? '' : 'none';
   $("#s-sheet").style.display  = t==='sheet'  ? '' : 'none';
   if(t==='decode') renderDecode();
+  if(t==='how') renderHow();
   if(t==='sheet') renderSheet();
+  // Only this tab touches the hash: it is the one worth linking to from the
+  // store listing and from the extension, and the others have never had a URL.
+  demoTeardown();
+  try {
+    if(t==='how') history.replaceState(null,'','#how-it-works');
+    else if(location.hash === '#how-it-works') history.replaceState(null,'',location.pathname);
+  } catch(e){}
   renderTabs(); renderSpotlight(); renderModal(false); renderPopover();
 }
 function openSpotlight(){ state.spotlightOpen = true; state.query = ''; state.selIndex = 0; state.remoteResults = []; renderSpotlight(); }
 function toggleSpotlight(){ state.spotlightOpen ? (state.spotlightOpen=false, renderSpotlight()) : openSpotlight(); }
-function escapeAll(){ state.spotlightOpen=false; state.openId=null; state.sel=null; renderSpotlight(); renderModal(false); renderPopover(); closeSignin(); }
+function escapeAll(){ state.spotlightOpen=false; state.openId=null; state.sel=null; demoHidePill(); demoClosePanel(); renderSpotlight(); renderModal(false); renderPopover(); closeSignin(); }
 
 function openCard(id){ state.openId = id; state.deeperOpen = false; state.spotlightOpen = false; state.sel = null; renderSpotlight(); renderPopover(); renderModal(true); }
 function closeCard(){ state.openId = null; renderModal(false); }
@@ -1043,6 +1388,11 @@ renderLookup();
 renderSheet();
 renderAuth();
 loadShelfFromDB();
+// aidecoder.app/#how-it-works — the one linkable tab (store listing, extension popup).
+if(location.hash === '#how-it-works') setTab('how');
+window.addEventListener('hashchange', () => {
+  if(location.hash === '#how-it-works' && state.tab !== 'how') setTab('how');
+});
 </script>
 </body>
 </html>

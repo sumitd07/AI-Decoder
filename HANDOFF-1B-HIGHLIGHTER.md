@@ -1,5 +1,14 @@
 # Explain This — handover for surface 1b (the extension highlighter)
 
+> **STATUS 2026-08-21: 1b is BUILT.** This file is now history — the reasoning it set out
+> is what the build followed, and where the build decided something the file left open,
+> the decision is recorded as D31–D38 in `Mitsu/Docs/DECISIONS-Explain-This.md`.
+> For current state read `EXPLAIN-THIS-STATE.md`. What is still owed:
+> a real-Chrome pass, store screenshots, and the privacy redeploy.
+>
+> The gate question at the top of this file was answered by Sumit directly — proceed,
+> on the grounds that 1b adds no backend risk (D31). D13's bake-off still has not run.
+
 Read `HANDOFF-EXPLAIN-THIS.md` first for the state of 1a and the pipeline. This file
 is only about 1b.
 

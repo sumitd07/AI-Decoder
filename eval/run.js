@@ -177,6 +177,7 @@ async function runRow(explainFn, row, opts, extraOpts) {
       embed_model: debug.embed_model || null,
       usage: debug.usage || { input_tokens: 0, output_tokens: 0 },
       notes: debug.notes || [],
+      raw: debug.raw || null,   // verbatim reply; a parse failure is undiagnosable without it
       shelf_version: debug.shelf_version || null,
       latency_ms: debug.ms != null ? debug.ms : Date.now() - started,
       error: debug.error || null,

@@ -1,0 +1,1072 @@
+diff --git a/EXPLAIN-THIS-STATE.md b/EXPLAIN-THIS-STATE.md
+index 853176e..5b69c07 100644
+--- a/EXPLAIN-THIS-STATE.md
++++ b/EXPLAIN-THIS-STATE.md
+@@ -1,7 +1,9 @@
+ # Explain This — state (read this first)
+ 
+-Phase 1 (Ground) is wired. Nothing has been scored yet.
+-Last worked: 2026-08-19.
++Phase 1 (Ground) is wired and BOTH surfaces are built. 1a is live; 1b is written and
++verified against the real endpoint, but every `chrome.*` path is unverified until
++someone loads the extension unpacked.
++Last worked: 2026-08-21.
+ 
+ Specs: `Mitsu/Docs/Explain-This-PRD.md` (what/why), `Explain-This-Technical.md` (how),
+ `DECISIONS-Explain-This.md` (every D-number, including D20–D28 from the build session).
+@@ -17,7 +19,36 @@ Specs: `Mitsu/Docs/Explain-This-PRD.md` (what/why), `Explain-This-Technical.md`
+ | Eval harness | **DONE** — runner, retrieval scorer, judge, report |
+ | Embedding index | **DONE** — 768-dim, 16 MB, `shelf/shelf-index.json` |
+ | **First scored run** | **DONE** — `v1-flashlite`, see below |
+-| Extension highlighter (1b) | not started, gated on 1a's eval (D19) |
++| **Extension highlighter (1b)** | **BUILT** — v1.1.0, gate crossed on Sumit's explicit call (D31). Needs a real-Chrome pass |
++
++## Surface 1b — what was built
++
++Highlight a sentence on any page → a "Decode" pill appears at the end of the selection →
++click it → the explanation renders in place, chips and gaps included. No backend change:
++it posts the same `{ sentence }` to the same `/api/explain` that 1a posts to.
++
++| File | What it is |
++|---|---|
++| `extension/extract.js` | Selection → one clean sentence. Pure, DOM-free, 25 tests (D33) |
++| `extension/explain.js` | The trigger pill, the answer panel, chip resolution (D32, D35, D37) |
++| `extension/content.js` | Unchanged highlighter + a narrow `window.__decoderCard` bridge 1b borrows |
++| `extension/content.css` | 1b's styles; the whole file now shares 1a's motion language (D38) |
++| `extension/background.js` | `explain` and `getCard` message handlers (the fetch must live here — D34) |
++| `extension/popup.{html,js}` | Two switches: Highlight terms, Decode sentences (D36) |
++| `preview/1b.html` | Browser harness — real endpoint, real Supabase, `chrome.*` shimmed |
++| `tests/extract.test.js` | The extraction test set (66 → 91 tests total) |
++
++**Verified in the browser, against the live pipeline:** partial mid-word selection expands
++to the full sentence before it is sent; the answer renders with chips and a gaps line;
++a chip outside the 95-card bundle fetches its card and opens it; a bare shelf term opens
++its card with **zero** model calls (the PRD's restraint criterion); a 4-sentence drag is
++cut to 3 and says so; code blocks and short selections offer no pill; both switches take
++effect immediately in an open tab; 500 and dropped-connection both render their message;
++375px and desktop; no console errors.
++
++**Not verified, and cannot be here:** everything touching `chrome.*` for real —
++`permissions.contains`, the registered content script, `storage.onChanged` across tabs,
++the popup in its actual popup window. Load it unpacked and check by hand.
+ 
+ ## Run it
+ 
+@@ -27,7 +58,8 @@ set -a && . ./.env && set +a          # GEMINI_API_KEY, gitignored
+ 
+ node scripts/build-index.js           # ~11 min, free tier is 100 embeds/min. Resumable.
+ node scripts/preview-server.js        # http://localhost:8743 — Decode box on the homepage
+-node --test                           # 66 tests, no key needed
++node --test                           # 91 tests, no key needed
++node scripts/preview-server.js && open http://localhost:8743/preview/1b.html   # 1b harness
+ 
+ node eval/run.js --label=real         # 39 golden sentences
+ node eval/score-retrieval.js  eval/out/<version>/real/results.json
+@@ -85,6 +117,12 @@ checked by hand, none scored.
+ 
+ ## Blockers and open calls
+ 
++0. **1b needs a real-Chrome pass before it can ship.** Load `extension/` unpacked, click
++   "Enable on all sites", then: underline a term, highlight a sentence and decode it,
++   click a chip, flip each switch, and confirm the panel behaves on a long article. The
++   store submission also needs re-shooting screenshots (STORE-LISTING.md §1) and the
++   privacy disclosure has changed — `web/privacy.html` now discloses the decode call and
++   must be redeployed **before** the new version is submitted.
+ 1. **DEPLOY BLOCKER — the function's dependencies sit outside the Vercel root.**
+    Root Directory is `web` (confirmed by Sumit). The function is `web/api/explain.js`
+    and it requires `../../explain/explain.js`, which loads `../shelf/shelf-index.json`.
+@@ -96,7 +134,10 @@ checked by hand, none scored.
+      Directory in the Build Step"** — turn it on. No code change.
+    - Move `explain/` and `shelf/` inside `web/` and update the requires plus the
+      paths in `scripts/`. More work, no Vercel setting needed.
+-   Verify after deploying: `curl -X POST https://aidecoder.app/api/explain -H 'content-type: application/json' -d '{"sentence":"We reduced hallucination by tightening top-k."}'`
++   **UPDATE 2026-08-21: this appears resolved.** The live endpoint answers a real
++   request in ~3s (`curl -X POST https://aidecoder.app/api/explain -H 'content-type: application/json' -d '{"sentence":"We reduced hallucination by tightening the retriever'"'"'s top-k."}'`
++   returned a correct restatement with `hallucination`, `retrieval` and `topk` chips).
++   Someone made one of the two fixes; which one is not recorded. 1b depends on it.
+ 2. **Golden-set row 27 has drifted.** Its gold explanation says the shelf doesn't cover
+    NLP; an `nlp` card now exists. Either the row expects `[nlp]` or it retires. Until then
+    its leak is miscounted.
+diff --git a/HANDOFF-1B-HIGHLIGHTER.md b/HANDOFF-1B-HIGHLIGHTER.md
+index 4010c79..5788d51 100644
+--- a/HANDOFF-1B-HIGHLIGHTER.md
++++ b/HANDOFF-1B-HIGHLIGHTER.md
+@@ -1,5 +1,14 @@
+ # Explain This — handover for surface 1b (the extension highlighter)
+ 
++> **STATUS 2026-08-21: 1b is BUILT.** This file is now history — the reasoning it set out
++> is what the build followed, and where the build decided something the file left open,
++> the decision is recorded as D31–D38 in `Mitsu/Docs/DECISIONS-Explain-This.md`.
++> For current state read `EXPLAIN-THIS-STATE.md`. What is still owed:
++> a real-Chrome pass, store screenshots, and the privacy redeploy.
++>
++> The gate question at the top of this file was answered by Sumit directly — proceed,
++> on the grounds that 1b adds no backend risk (D31). D13's bake-off still has not run.
++
+ Read `HANDOFF-EXPLAIN-THIS.md` first for the state of 1a and the pipeline. This file
+ is only about 1b.
+ 
+diff --git a/explain/generate.js b/explain/generate.js
+index 03ce85a..6cc4603 100644
+--- a/explain/generate.js
++++ b/explain/generate.js
+@@ -49,7 +49,12 @@ async function generate({ system, user }, opts = {}) {
+ 
+   let res;
+   try {
+-    res = await complete({ system, user, maxTokens: opts.maxTokens || 800, temperature: opts.temperature ?? 0 }, opts);
++    // 2000, not 800. Reasoning-tier models spend output budget on thinking before
++    // they emit text, so a low ceiling returns a truncated JSON object and the whole
++    // reply is discarded. Flash-Lite uses ~110 output tokens, so the higher ceiling
++    // changes nothing for it — an unused ceiling costs nothing, a breached one costs
++    // the run.
++    res = await complete({ system, user, maxTokens: opts.maxTokens || 2000, temperature: opts.temperature ?? 0 }, opts);
+   } catch (e) {
+     // The provider itself failed. Surface it as a note; the caller decides
+     // whether that becomes a 5xx or a fallback.
+diff --git a/explain/prompt.js b/explain/prompt.js
+index 18d7bcf..be8434d 100644
+--- a/explain/prompt.js
++++ b/explain/prompt.js
+@@ -30,7 +30,12 @@ Rules:
+ 
+ 3. Use only the supplied cards and the sentence itself. What a term means comes from a card. How the terms relate in this sentence comes from the sentence. Anything else — a fact, a number, a definition you happen to know — is invention, and one invention is worse than any number of admitted gaps.
+ 
+-4. If the sentence turns on a term that is not in the supplied cards, name it as a gap. Do not define it. Do not work around it with a vaguer word. Saying "not covered yet" is a good answer here.
++4. If the sentence turns on a term that is not in the supplied cards, name it as a gap and then say NOTHING about what it means. Not a definition, not a gloss, not a vaguer word standing in for one, not a clause that explains it in passing. Naming a term as a gap and explaining it anyway is the worst outcome available here: it is an admission of ignorance with an invention attached.
++
++   Wrong: gaps ["knowledge graphs"] with "...they end up as lists of numbers or inside networks of connected concepts."
++   Right: gaps ["knowledge graphs"] with "...they end up as lists of numbers, or in knowledge graphs, which the glossary doesn't cover yet."
++
++   You may say a term appears and is uncovered. You may not say what it means.
+ 
+ 5. Explain only the terms the sentence turns on. You will often be given cards that are not load-bearing for this sentence — ignore them. Completeness works against the twenty seconds.
+ 
+@@ -38,6 +43,8 @@ Rules:
+ 
+ 7. If the sentence uses a word that happens to be a glossary term but not in its glossary sense — "agent of chaos", an "epoch" of history, a college "dropout" — say so plainly and stop. Do not explain the technical sense of a word the writer did not mean.
+ 
++   This is the one place where naming the ordinary meaning is correct: "dropout here means leaving college" is how the reader knows which sense you ruled out. Rule 4 does not apply to it — rule 4 is about a term the sentence genuinely turns on that the glossary lacks.
++
+ Voice:
+ 
+ Short sentences. One idea in each. Three or four of them, not one long one — if you find yourself joining clauses with "because" and "which", break them apart.
+diff --git a/extension/PRIVACY.md b/extension/PRIVACY.md
+index aec69d5..0d983b3 100644
+--- a/extension/PRIVACY.md
++++ b/extension/PRIVACY.md
+@@ -2,20 +2,22 @@
+ 
+ > **Note:** the *published* privacy policy that goes live with your website is `web/privacy.html` (it covers both the website and the extension). Edit your contact email there. This markdown file is just a plain-text reference copy.
+ 
+-_Last updated: 8 July 2026_
++_Last updated: 21 August 2026_
+ 
+-Decoder is a browser extension that underlines known AI/technical terms on web pages and shows a plain-language explanation when you click one, with the option to save terms to a personal list.
++Decoder is a browser extension that underlines known AI/technical terms on web pages and shows a plain-language explanation when you click one, with the option to save terms to a personal list. It can also explain a whole sentence you highlight, in plain English.
+ 
+ ## What the extension does with data
+ 
+ - **Access is opt-in.** The extension has no access to any page until you turn it on (a one-time permission granted from its popup), and you can turn it off at any time.
+ - **Page text is read locally, never collected.** Once enabled, to find and underline terms the extension looks at the visible text of the page you're on, in your browser. This happens entirely on your device. Page content is **not** stored, logged, sent to us, or shared with anyone.
++- **Decoding a sentence sends that sentence, and only when you ask.** If you highlight a sentence and click Decode, that one sentence is sent to `aidecoder.app` and on to Google's Gemini API to be explained. Highlighting alone sends nothing — the request happens on the click. The page address, your account and the rest of the page stay on your device, and the sentence is not stored. Both surfaces have their own switch in the popup, so the highlighter can run with decoding off.
+ - **Saving is optional and uses the same account as the web app.** If you sign in with Google inside the extension, the terms you save are stored in your account (via Supabase) so they appear in the Decoder web app and sync across devices. If you don't sign in, you can't save from the extension and nothing is sent anywhere.
+ 
+ ## Data we collect
+ 
+ - **Only if you sign in:** your **email address** (to identify your account) and the **identifiers of the terms you save** (e.g. `rag`). These are stored in our Supabase project so your saved terms sync across the extension and the web app.
+-- **If you don't sign in:** nothing is collected or transmitted.
++- **If you decode a sentence:** the sentence itself, sent to Google's Gemini API to be explained and not retained by us. No account or page identifier travels with it.
++- **If you don't sign in and don't decode:** nothing is collected or transmitted.
+ - We never sell or share your data, and we run no ads, analytics, or tracking.
+ 
+ ## Permissions and why they're needed
+@@ -24,7 +26,7 @@ Decoder is a browser extension that underlines known AI/technical terms on web p
+ - **scripting** — to add the highlighter to a page after you enable it.
+ - **identity** — to let you sign in with Google (only used for sign-in).
+ - **Access to your Supabase backend (`https://*.supabase.co`)** — to read and save your saved terms to your account.
+-- **Access to pages you visit — optional** — granted only when you click "Enable on all sites," so it can read page text locally to underline terms.
++- **Access to pages you visit — optional** — granted only when you click "Enable on all sites," so it can read page text locally to underline terms and reach `aidecoder.app` for a sentence you decode.
+ 
+ ## Changes
+ 
+diff --git a/extension/README.md b/extension/README.md
+index 73943a8..2613946 100644
+--- a/extension/README.md
++++ b/extension/README.md
+@@ -1,6 +1,6 @@
+ # Decoder — Chrome extension
+ 
+-Subtly underlines AI jargon on any web page. Click a term to understand it in seconds and save it — the browser adaptation of Decoder's "Read" surface.
++Subtly underlines AI jargon on any web page. Click a term to understand it in seconds and save it — the browser adaptation of Decoder's "Read" surface. Highlight a whole sentence and it is explained in plain English in place ("Explain This", surface 1b).
+ 
+ ## Install (unpacked, for testing)
+ 
+@@ -10,7 +10,8 @@ Subtly underlines AI jargon on any web page. Click a term to understand it in se
+ 4. Click the Decoder toolbar icon and press **Enable on all sites** (approve Chrome's prompt). This is the one-time opt-in that grants page access.
+ 5. Visit any article-heavy page (news, blog, docs). Known AI terms get a faint dotted underline.
+ 6. Click an underlined term → an in-place card explains it, with **＋ Save**.
+-7. Click the toolbar icon anytime to see your saved terms (or **Turn off** to revoke access).
++7. Highlight a sentence in the article → a **Decode** pill appears at the end of the selection → click it. The sentence is explained in place, with a chip for every shelf term in it and a line naming anything the shelf doesn't cover.
++8. Click the toolbar icon anytime to see your saved terms, flip **Highlight terms** / **Decode sentences** independently, or **Turn off** to revoke access.
+ 
+ ## How it works
+ 
+@@ -19,6 +20,10 @@ Subtly underlines AI jargon on any web page. Click a term to understand it in se
+ - `content.js` scans page text for the shelf terms (via each concept's alias list), wraps matches in a subtle highlight, and shows the popover on click. A re-injection guard (`window.__decoderLoaded`) prevents double-binding, and links (`<a>`, `role="link"`) are skipped so clicks aren't hijacked (e.g. Google result titles).
+ - Matching is word-boundary aware and longest-first, so "context window" wins over "context", and short tokens (e.g. "rag") won't match inside other words ("storage").
+ - It watches for dynamically loaded content (infinite scroll, SPAs) and highlights new text as it appears.
++- **Decoding is opt-in twice over: the host permission, then the click.** Highlighting a sentence sends nothing; clicking **Decode** posts that one sentence to `https://aidecoder.app/api/explain` — the same endpoint the web app's Decode box uses, unchanged. The call runs in the service worker, not the content script: a content-script `fetch` is subject to the *page's* CORS and the endpoint sends no CORS headers.
++- **The selection is repaired before it is sent.** `extract.js` rejoins hyphenated line breaks, drops soft hyphens and footnote markers, collapses two-column whitespace, completes a partial selection to its sentence boundaries from the surrounding block, and caps the result at three sentences and 1000 characters — saying so in the panel when it trims. It is pure and DOM-free, and covered by `tests/extract.test.js`.
++- **Chips open cards, never URLs.** The endpoint answers from the full 1010-card shelf while the extension bundles 95, so a chip whose card isn't local is fetched by id from Supabase (public glossary data, anon key, no session) and opened through the same popover renderer.
++- **Two switches, stored in `chrome.storage.local` under `decoder.features`.** Both default on; content scripts follow `storage.onChanged`, so a flip lands in every open tab without a reload. The switches only appear once page access is granted.
+ - **Saved terms syncs with the web app account.** Sign-in (Google, via `chrome.identity` → Supabase) and saves are handled with plain `fetch` against Supabase's REST API — no bundled library. `content.js` and `popup.js` route reads/writes through `background.js`, which holds the session and calls Supabase. Terms saved in the extension appear in the web app's saved terms and vice-versa. Without sign-in, saving is disabled and nothing is transmitted.
+ 
+ ## Files
+@@ -30,9 +35,25 @@ Subtly underlines AI jargon on any web page. Click a term to understand it in se
+ | `config.js` | Your Supabase URL + publishable key (same project as the web app) |
+ | `supa.js` | Supabase auth (Google via `chrome.identity`) + REST helpers, plain `fetch` |
+ | `concepts.js` | Glossary data + status metadata. **Exact copy of `web/concepts.js`** (the single source) — edit there, then `cp web/concepts.js extension/concepts.js` |
+-| `content.js` | Page scanner, highlighter, and click-to-explain popover (injected after opt-in) |
+-| `content.css` | Highlight style + popover/toast animations |
+-| `popup.html` / `popup.js` | Sign-in, the account saved terms, and the "Enable on all sites" opt-in control |
++| `content.js` | Page scanner, highlighter, and click-to-explain popover (injected after opt-in). Exposes a narrow `window.__decoderCard` bridge for `explain.js` |
++| `extract.js` | Selection → one clean sentence. Pure, no DOM, no `chrome.*` — testable in Node |
++| `explain.js` | Surface 1b: the Decode pill, the answer panel, chip resolution |
++| `content.css` | Highlight style, popover/toast animations, and the 1b panel — one motion language with the web app |
++| `popup.html` / `popup.js` | Sign-in, the account saved terms, the "Enable on all sites" opt-in, and the two feature switches |
++
++## Working on it
++
++- `node --test` from the repo root runs the extraction tests (no browser, no network, no key).
++- `node scripts/preview-server.js` then <http://localhost:8743/preview/1b.html> loads the
++  real `content.js` / `extract.js` / `explain.js` / `content.css` on a deliberately messy
++  article with `chrome.*` shimmed. `/api/explain` there is the **real** pipeline; nothing
++  is mocked. Add `?mode=500`, `?mode=network`, `?mode=malformed` or `?mode=400` to see the
++  failure states.
++- <http://localhost:8743/extension/popup.html?shim=1> opens the real popup in a normal tab
++  (add `&granted=0` for the pre-opt-in state).
++- None of that exercises `chrome.*` for real. Anything touching permissions, the registered
++  content script, cross-tab storage events or the popup's own window is unverified until
++  the extension is loaded unpacked.
+ 
+ ## Notes & scope
+ 
+diff --git a/extension/STORE-LISTING.md b/extension/STORE-LISTING.md
+index 15b3e6b..c66b5a9 100644
+--- a/extension/STORE-LISTING.md
++++ b/extension/STORE-LISTING.md
+@@ -26,7 +26,7 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
+   1. Load the unpacked extension (see the extension `README.md`), open an article-heavy page, and let it underline some terms.
+   2. Click a term so the explanation popover shows.
+   3. Screenshot on Mac with **⌘ + Shift + 4**, then resize/crop to exactly **1280×800** (Preview → Tools → Adjust Size, or any editor).
+-  4. Good shots: (a) underlined terms in an article, (b) the click-to-explain popover open, (c) the toolbar saved terms popup.
++  4. Good shots: (a) underlined terms in an article, (b) the click-to-explain popover open, (c) a highlighted sentence with the decoded answer panel showing, (d) the toolbar popup with the two switches.
+ 
+ ## 2. Store listing tab
+ 
+@@ -55,17 +55,20 @@ Everything needed to submit Decoder, organized by the tabs you'll see in the [We
+ ## 3. Privacy tab (this is where extensions usually get held up — fill every field)
+ 
+ - **Single purpose** (one sentence):
+-  `Decoder underlines known AI/technical terms on the page you're reading and shows a plain-language explanation when you click one, with an option to sign in and save terms to your account.`
++  `Decoder underlines known AI/technical terms on the page you're reading and shows a plain-language explanation when you click one; highlighting a sentence and clicking Decode explains that sentence in plain English. Users can sign in to save terms to their account.`
+ 
+ - **Permission justifications** — the manifest now declares four items to justify (the "all sites" access is still *optional* and won't appear here):
+   - **storage:** `Holds the user's sign-in session on the device so they stay logged in between visits.`
+-  - **scripting:** `Injects the highlighter into a page after the user turns Decoder on, and registers it to run on pages they visit once they've opted in.`
++  - **scripting:** `Injects the highlighter and the sentence decoder into a page after the user turns Decoder on, and registers them to run on pages they visit once they've opted in.`
+   - **identity:** `Used only to let the user sign in with Google (via the browser identity API) so their saved terms sync with their account. No Google profile data beyond sign-in is accessed.`
+-  - **host access to `https://*.supabase.co/*`:** `The extension reads and writes the user's saved terms to their Supabase account. This is a single specific backend domain, not broad web access.`
++  - **host access to `https://*.supabase.co/*`:** `The extension reads and writes the user's saved terms to their Supabase account, and reads glossary card content by ID. This is a single specific backend domain, not broad web access.`
++  - **No new host permission was added for the decoder.** The sentence is posted to `https://aidecoder.app/api/explain` from the service worker, which is covered by the same optional `<all_urls>` grant the highlighter already needs — the decoder cannot run on a page the user has not opted in to. Adding `https://aidecoder.app/*` as a *required* host would have changed the install-time permission disclosure for no capability the extension does not already have (D34).
+ 
+ - **Are you using remote code?** **No.** All code ships inside the package; the extension loads no external scripts and uses the system font. (It makes data requests to the Supabase backend, but does not load or run remote code.)
+ 
+-- **Data collected — this changed now that saving syncs to an account.** Core highlighting collects nothing. **If the user signs in to sync their saved terms**, disclose in the Data-collection form:
++- **Data collected — read this again for v1.1.0; decoding a sentence transmits page-derived text.** Core highlighting collects nothing and sends nothing.
++  - **If the user decodes a sentence** (highlight → click Decode), that one sentence is sent to `aidecoder.app` and on to Google's Gemini API, which writes the explanation. Disclose it as **Website content** — user-initiated, one sentence at a time, purpose **App functionality**. It is not stored, not tied to an account, and carries no page URL or identifier. Nothing is sent on highlight alone; the request happens on the click. The user can switch decoding off in the popup and keep the highlighter.
++  - **If the user signs in to sync their saved terms**, **If the user signs in to sync their saved terms**, disclose in the Data-collection form:
+   - ✅ **Personally identifiable information** — the user's **email address** (to create/identify their account).
+   - ✅ **User activity** — the list of term IDs the user chooses to save.
+   - Purpose: **App functionality** (account + sync). Not for ads, analytics, personalization, or resale.
+@@ -86,11 +89,12 @@ This tab has three inputs: **Username**, **Password**, and **Additional instruct
+ - **Additional instructions:** paste the text below (it fits the 500-char limit). **Important:** highlighting is opt-in, so the reviewer must click "Enable on all sites" in the popup first — otherwise they'll see nothing and may reject it as non-functional.
+ 
+ ```
+-No login needed to review the core feature.
++No login needed to review the core features.
+ 1) Open the Decoder toolbar popup and click "Enable on all sites", approve the Chrome prompt.
+ 2) Open a page about AI, e.g. https://en.wikipedia.org/wiki/Large_language_model — known AI terms get a dotted underline.
+ 3) Click a term to see the in-page explanation.
+-Saving is OPTIONAL and requires signing in with Google (it syncs the saved terms to the user's account) — not needed to evaluate highlighting. Page text is read locally; only signed-in saves are sent to the account backend.
++4) Highlight a full sentence, then click the "Decode" button that appears — it is explained in plain English in place.
++Both features have their own switch in the popup. Saving is OPTIONAL and needs Google sign-in. Terms are matched locally; only a sentence you click Decode on is sent off-device.
+ ```
+ 
+ ## 4. Distribution
+diff --git a/extension/background.js b/extension/background.js
+index c9949af..ea2863e 100644
+--- a/extension/background.js
++++ b/extension/background.js
+@@ -20,6 +20,79 @@ async function refreshConcepts() {
+   } catch (e) { console.warn("[decoder] concepts fetch failed (offline?)", e); }
+ }
+ 
++// ---- Explain This, surface 1b -------------------------------------------
++// The content script cannot call the endpoint itself: a content-script fetch is
++// subject to the PAGE's CORS and /api/explain sends no CORS headers. The worker
++// has the extension's own origin and the host grant, so the call lives here.
++//
++// No backend work (D19/D31) — this posts the same body the Decode box posts and
++// passes the response back untouched.
++const EXPLAIN_URL = "https://aidecoder.app/api/explain";
++const EXPLAIN_TIMEOUT = 45000;   // past the worst measured cold start (~20s)
++
++async function explainSentence(sentence) {
++  if (typeof sentence !== "string" || !sentence.trim()) return { ok: false, message: "Highlight a sentence first." };
++  let granted = false;
++  try { granted = await chrome.permissions.contains({ origins: ["https://aidecoder.app/*"] }); } catch (e) {}
++  if (!granted) return { ok: false, message: "Turn on “Enable on all sites” from the Decoder toolbar to decode sentences." };
++
++  const ctl = new AbortController();
++  const timer = setTimeout(() => ctl.abort(), EXPLAIN_TIMEOUT);
++  try {
++    const res = await fetch(EXPLAIN_URL, {
++      method: "POST",
++      headers: { "Content-Type": "application/json" },
++      body: JSON.stringify({ sentence }),
++      signal: ctl.signal
++    });
++    let body = null;
++    try { body = await res.json(); } catch (e) {}
++    if (!res.ok) {
++      // The endpoint's shape is { error: <machine code>, message?: <human text> }.
++      // `error` alone ("method_not_allowed") is not reader-facing copy.
++      const msg = body && typeof body.message === "string" ? body.message : "";
++      return { ok: false, message: msg || (res.status >= 500 ? "Something went wrong on this end. Try again in a moment." : "Couldn’t decode that one. Try again.") };
++    }
++    return { ok: true, data: body };
++  } catch (e) {
++    return { ok: false, message: e && e.name === "AbortError"
++      ? "That took too long. Try again — the second one is usually quick."
++      : "Couldn’t reach the decoder. Check your connection and try again." };
++  } finally { clearTimeout(timer); }
++}
++
++// A chip can name any of the ~1010 shelf cards; the extension bundles 95. The
++// rest are read by id from the same Supabase the web app reads, with the anon
++// key and no session — this is public glossary data, not account data.
++const cardCache = new Map();
++function rowToCard(r) {
++  return {
++    id: r.id, term: r.term, aliases: r.aliases || "", said: r.said || "",
++    aliasList: r.alias_list || [], status: r.status || "Core",
++    oneLiner: r.one_liner || "", analogy: r.analogy || "", example: r.example || "",
++    related: r.related || [], deeper: r.deeper || ""
++  };
++}
++async function getCard(id) {
++  if (!id || typeof id !== "string") return { ok: false };
++  if (cardCache.has(id)) return { ok: true, card: cardCache.get(id) };
++  const cfg = self.DECODER_SUPABASE || {};
++  if (!cfg.url || !cfg.anonKey) return { ok: false };
++  try {
++    const res = await fetch(cfg.url + "/rest/v1/rpc/get_concept", {
++      method: "POST",
++      headers: { "Content-Type": "application/json", apikey: cfg.anonKey, Authorization: "Bearer " + cfg.anonKey },
++      body: JSON.stringify({ concept_id: id })
++    });
++    if (!res.ok) return { ok: false };
++    const rows = await res.json();
++    if (!rows || !rows[0]) return { ok: false };
++    const card = rowToCard(rows[0]);
++    cardCache.set(id, card);
++    return { ok: true, card };
++  } catch (e) { return { ok: false }; }
++}
++
+ // Route cheatsheet reads/writes from the content script and popup through here,
+ // so account/token handling lives in one place.
+ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+@@ -32,6 +105,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+       // which would kill launchWebAuthFlow before it could save the session.
+       else if (msg && msg.type === "signin") { const s = await self.DecoderSupa.signIn(); sendResponse({ ok: true, email: s.email }); }
+       else if (msg && msg.type === "signout") { await self.DecoderSupa.signOut(); sendResponse({ ok: true }); }
++      else if (msg && msg.type === "explain") sendResponse(await explainSentence(msg.sentence));
++      else if (msg && msg.type === "getCard") sendResponse(await getCard(msg.id));
+       else if (msg && msg.type === "getConcepts") {
+         const store = await chrome.storage.local.get(CONCEPTS_KEY);
+         sendResponse(store[CONCEPTS_KEY] || null);
+@@ -45,7 +120,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+ const SCRIPT = {
+   id: "decoder-highlighter",
+   matches: ["<all_urls>"],
+-  js: ["concepts.js", "content.js"],
++  js: ["concepts.js", "content.js", "extract.js", "explain.js"],   // content.js first: explain.js reads its bridge
+   css: ["content.css"],
+   runAt: "document_idle"
+ };
+diff --git a/extension/content.css b/extension/content.css
+index f30d602..836c462 100644
+--- a/extension/content.css
++++ b/extension/content.css
+@@ -7,11 +7,217 @@
+   transition: background .12s ease !important;
+   color: inherit !important;
+ }
+-.dcx-term:hover {
+-  background: rgba(79,119,166,0.14) !important;
++/* Touch devices fire :hover on tap and leave it stuck. Gate it. */
++@media (hover: hover) and (pointer: fine) {
++  .dcx-term:hover {
++    background: rgba(79,119,166,0.14) !important;
++  }
+ }
+ 
+ @keyframes dcxrise { from { opacity:0; transform:translate(-50%,6px); } to { opacity:1; transform:translate(-50%,0); } }
+ @keyframes dcxtoast { from { opacity:0; transform:translate(-50%,10px); } to { opacity:1; transform:translate(-50%,0); } }
+ @keyframes dcxpop { 0%{transform:scale(.4);opacity:0} 55%{transform:scale(1.2)} 100%{transform:scale(1);opacity:1} }
+ .dcx-savepop { display:inline-block; animation: dcxpop .4s cubic-bezier(.3,1.3,.4,1) both; }
++
++/* ===========================================================================
++   Explain This, surface 1b — the decode trigger and the answer panel.
++
++   One motion language across the product: the Decode box on aidecoder.app uses
++   cubic-bezier(0.23,1,0.32,1) for entrances, a 60/40ms chip stagger, scale(.97)
++   on press, and hover gated behind a fine pointer. Same values here, so the
++   extension and the web app feel like one thing.
++
++   Page CSS bleeds into anything appended to <body>, so every property that
++   affects legibility is declared, not inherited.
++   =========================================================================== */
++
++:root {
++  --dcx-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
++}
++
++.dcx-pill, .dcx-panel {
++  position: absolute !important;
++  z-index: 2147483646 !important;
++  transform: translateX(-50%) !important;
++  margin: 0 !important;
++  box-sizing: border-box !important;
++  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, 'Helvetica Neue', Arial, sans-serif !important;
++  text-align: left !important;
++  letter-spacing: normal !important;
++  text-transform: none !important;
++}
++.dcx-pill[data-dcx-side="below"], .dcx-panel[data-dcx-side="below"] { transform-origin: top center !important; }
++.dcx-pill[data-dcx-side="above"], .dcx-panel[data-dcx-side="above"] { transform-origin: bottom center !important; }
++
++/* ---- the trigger ---- */
++.dcx-pill {
++  display: inline-flex !important;
++  align-items: center !important;
++  gap: 6px !important;
++  padding: 7px 14px !important;
++  border: 1px solid rgba(20, 24, 33, 0.12) !important;
++  border-radius: 999px !important;
++  background: #ffffff !important;
++  color: #4f77a6 !important;
++  font-size: 12.5px !important;
++  font-weight: 600 !important;
++  line-height: 1 !important;
++  cursor: pointer !important;
++  box-shadow: 0 6px 20px rgba(20, 18, 14, 0.16) !important;
++  animation: dcxpill 140ms var(--dcx-ease-out) backwards;
++  transition: transform 140ms var(--dcx-ease-out), box-shadow 140ms ease;
++}
++.dcx-pill:active { transform: translateX(-50%) scale(0.97) !important; }
++@media (hover: hover) and (pointer: fine) {
++  .dcx-pill:hover { box-shadow: 0 8px 24px rgba(20, 18, 14, 0.22) !important; }
++}
++.dcx-pill:focus-visible { outline: 2px solid #4f77a6 !important; outline-offset: 2px !important; }
++
++/* ---- the answer ---- */
++.dcx-panel {
++  width: 340px !important;
++  max-width: calc(100vw - 24px) !important;
++  padding: 0 !important;
++  background: #ffffff !important;
++  color: #0e0f12 !important;
++  border: 1px solid rgba(20, 24, 33, 0.12) !important;
++  border-radius: 12px !important;
++  box-shadow: 0 12px 36px rgba(20, 18, 14, 0.20) !important;
++  overflow: hidden !important;
++  animation: dcxpanel 200ms var(--dcx-ease-out) backwards;
++}
++.dcx-panel-head {
++  display: flex !important;
++  align-items: center !important;
++  gap: 8px !important;
++  padding: 12px 14px 0 !important;
++}
++.dcx-eyebrow {
++  font-size: 9.5px !important;
++  font-weight: 700 !important;
++  letter-spacing: 0.16em !important;
++  text-transform: uppercase !important;
++  color: #4f77a6 !important;
++}
++.dcx-x {
++  margin-left: auto !important;
++  padding: 2px !important;
++  background: none !important;
++  border: none !important;
++  color: #c6c9ce !important;
++  font-size: 15px !important;
++  line-height: 1 !important;
++  cursor: pointer !important;
++  transition: color 140ms ease, transform 140ms var(--dcx-ease-out);
++}
++.dcx-x:active { transform: scale(0.9) !important; }
++@media (hover: hover) and (pointer: fine) { .dcx-x:hover { color: #787c83 !important; } }
++.dcx-x:focus-visible { outline: 2px solid #4f77a6 !important; outline-offset: 2px !important; border-radius: 4px !important; }
++
++.dcx-row {
++  display: flex !important;
++  align-items: center !important;
++  gap: 10px !important;
++  padding: 12px 15px 15px !important;
++  color: #787c83 !important;
++  font-size: 13px !important;
++  line-height: 1.45 !important;
++}
++.dcx-spin {
++  flex: none !important;
++  width: 13px !important;
++  height: 13px !important;
++  border: 2px solid rgba(20, 24, 33, 0.14) !important;
++  border-top-color: #4f77a6 !important;
++  border-radius: 50% !important;
++  animation: dcxspin 700ms linear infinite;
++}
++.dcx-err {
++  margin: 0 !important;
++  padding: 10px 15px 15px !important;
++  color: #4a4e55 !important;
++  font-size: 13px !important;
++  line-height: 1.55 !important;
++}
++
++.dcx-answer { padding: 10px 15px 15px !important; }
++.dcx-restate {
++  margin: 0 !important;
++  color: #22252b !important;
++  font-size: 14.5px !important;
++  line-height: 1.6 !important;
++  animation: dcxin 220ms var(--dcx-ease-out) backwards;
++}
++.dcx-chips {
++  display: flex !important;
++  flex-wrap: wrap !important;
++  gap: 7px !important;
++  margin-top: 13px !important;
++}
++.dcx-chip {
++  display: inline-flex !important;
++  align-items: center !important;
++  gap: 5px !important;
++  padding: 5px 11px !important;
++  background: #f5f6f8 !important;
++  border: 1px solid rgba(20, 24, 33, 0.08) !important;
++  border-radius: 999px !important;
++  color: #22252b !important;
++  font-family: inherit !important;
++  font-size: 12.5px !important;
++  font-weight: 500 !important;
++  line-height: 1.3 !important;
++  cursor: pointer !important;
++  animation: dcxin 200ms var(--dcx-ease-out) backwards;
++  transition: transform 140ms var(--dcx-ease-out), background 140ms ease, border-color 140ms ease;
++}
++/* Stagger matches the Decode box on the web app: 60ms, then 40ms apart. */
++.dcx-chip:nth-child(1) { animation-delay: 60ms; }
++.dcx-chip:nth-child(2) { animation-delay: 100ms; }
++.dcx-chip:nth-child(3) { animation-delay: 140ms; }
++.dcx-chip:nth-child(4) { animation-delay: 180ms; }
++.dcx-chip:nth-child(n+5) { animation-delay: 220ms; }
++.dcx-chip:active { transform: scale(0.97) !important; }
++@media (hover: hover) and (pointer: fine) {
++  .dcx-chip:hover { background: #eef0f3 !important; border-color: rgba(20, 24, 33, 0.16) !important; }
++}
++.dcx-chip:focus-visible { outline: 2px solid #4f77a6 !important; outline-offset: 2px !important; }
++.dcx-chip[data-dcx-busy] { opacity: 0.55 !important; cursor: progress !important; }
++.dcx-arrow { color: #4f77a6 !important; }
++
++.dcx-gaps, .dcx-note {
++  margin: 12px 0 0 !important;
++  color: #787c83 !important;
++  font-size: 11.5px !important;
++  line-height: 1.5 !important;
++}
++.dcx-note { color: #a2a6ad !important; }
++
++@keyframes dcxpill { from { opacity: 0; transform: translateX(-50%) scale(0.96); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
++@keyframes dcxpanel { from { opacity: 0; transform: translateX(-50%) translateY(6px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
++@keyframes dcxin { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
++@keyframes dcxspin { to { transform: rotate(360deg); } }
++
++/* Reduced motion means gentler, not absent: the fade stays (it says "this is
++   new"), the movement goes. */
++@media (prefers-reduced-motion: reduce) {
++  .dcx-pill, .dcx-panel, .dcx-restate, .dcx-chip {
++    animation-name: dcxfade !important;
++    animation-duration: 140ms !important;
++  }
++  .dcx-pill:active, .dcx-chip:active, .dcx-x:active { transform: translateX(-50%) !important; }
++  .dcx-chip:active { transform: none !important; }
++  .dcx-spin { animation-duration: 1400ms; }
++}
++@keyframes dcxfade { from { opacity: 0; } to { opacity: 1; } }
++
++/* ---- popover controls (content.js) — same press language as the 1b panel ---- */
++.dcx-act {
++  transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1), background 140ms ease !important;
++}
++.dcx-act:active { transform: scale(0.97) !important; }
++@media (hover: hover) and (pointer: fine) {
++  .dcx-act:hover { background: rgba(20, 24, 33, 0.035) !important; }
++}
++.dcx-act:focus-visible { outline: 2px solid #4f77a6 !important; outline-offset: -2px !important; }
++@media (prefers-reduced-motion: reduce) { .dcx-act:active { transform: none !important; } }
+diff --git a/extension/content.js b/extension/content.js
+index af2f63f..b259ebd 100644
+--- a/extension/content.js
++++ b/extension/content.js
+@@ -39,11 +39,14 @@
+         if (cached.status) STATUS = cached.status;
+         buildIndex();
+         removeAllHighlights();
+-        scanRoot(document.body);
++        if (enabled) scanRoot(document.body);
+       });
+     } catch (e) {}
+   }
+ 
++  // The highlighter's own switch (popup.js writes it; see decoder.features).
++  // `enabled` already gated the observer — now something actually sets it.
++  const FEATURES_KEY = "decoder.features";
+   let enabled = true;
+   let scanTimer = null;
+   let pending = new Set();
+@@ -144,20 +147,20 @@
+     if (!signedIn) return `<div style="flex:1;padding:10px 12px;font-size:12px;line-height:1.4;color:#787c83;text-align:center">Sign in from the Decoder toolbar to save it</div>`;
+     return savedSet.has(id)
+       ? `<button data-dcx-remove style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:#4a7c59"><span class="dcx-savepop">✓</span> Saved · remove</button>`
+-      : `<button data-dcx-save style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:${ACCENT}">＋ Save</button>`;
++      : `<button data-dcx-save class="dcx-act" style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:${ACCENT}">＋ Save</button>`;
+   }
+   function renderPopover(c, saved) {
+     const el = document.createElement("div");
+     el.id = "dcx-pop";
+     el.className = "dcx-ui";
+     el.setAttribute("role", "dialog");
+-    el.style.cssText = "position:fixed;z-index:2147483647;left:-9999px;top:-9999px;transform:translateX(-50%);width:300px;max-width:calc(100vw - 24px);background:#ffffff;color:#0e0f12;border:1px solid rgba(20,24,33,0.12);border-radius:12px;box-shadow:0 12px 36px rgba(20,18,14,0.20);font-family:" + UI_FONT + ";overflow:hidden;animation:dcxrise .16s ease;line-height:normal;text-align:left";
++    el.style.cssText = "position:fixed;z-index:2147483647;left:-9999px;top:-9999px;transform:translateX(-50%);width:300px;max-width:calc(100vw - 24px);background:#ffffff;color:#0e0f12;border:1px solid rgba(20,24,33,0.12);border-radius:12px;box-shadow:0 12px 36px rgba(20,18,14,0.20);font-family:" + UI_FONT + ";overflow:hidden;animation:dcxrise .2s cubic-bezier(0.23,1,0.32,1) backwards;line-height:normal;text-align:left";
+     el.innerHTML = `
+       <div style="padding:13px 15px 12px">
+         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+           ${badgeHTML(c)}
+           <span style="font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:16px;line-height:1.1;letter-spacing:-.01em;color:#0e0f12">${c.term}</span>
+-          <button data-dcx-close aria-label="Close" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#c6c9ce;font-size:15px;line-height:1;padding:2px">×</button>
++          <button data-dcx-close class="dcx-x" aria-label="Close">×</button>
+         </div>
+         <p style="margin:0 0 8px;font-size:13.5px;line-height:1.5;color:#22252b">${c.oneLiner}</p>
+         <p style="margin:0 0 6px;font-size:12.5px;line-height:1.5;color:#4a4e55;font-style:italic">${c.analogy}</p>
+@@ -253,20 +256,58 @@
+   }
+   function stopObserver() { if (observer) { observer.disconnect(); observer = null; } }
+ 
++  // ---- surface 1b bridge ----
++  // explain.js (Explain This) renders its own panel; from here it borrows only
++  // the card popover, the toast and the alias index. Isolated world, so the page
++  // cannot see or call any of this.
++  window.__decoderCard = {
++    has: id => Boolean(byId(id)),
++    show: (id, anchor) => showPopover(id, anchor),
++    add: c => { if (c && c.id && !byId(c.id)) DATA.push(c); },   // cards fetched by id, not in the bundle
++    aliasId: surface => (aliasMap ? aliasMap.get(String(surface).toLowerCase()) : undefined),
++    toast
++  };
++
+   // ---- init ----
+   // Re-scan hook, used when the script is re-injected into an already-loaded tab.
+-  window.__decoderRescan = () => { if (DATA.length) scanRoot(document.body); };
++  window.__decoderRescan = () => { if (DATA.length && enabled) scanRoot(document.body); };
++
++  function setHighlighting(on) {
++    if (on === enabled) return;
++    enabled = on;
++    if (on) { scanRoot(document.body); startObserver(); }
++    else { removeAllHighlights(); stopObserver(); }
++  }
++
+   function init() {
+     if (!DATA.length) return;
+     refreshSaved();          // learn which terms are already in the account (for popover state)
+-    scanRoot(document.body);
+-    startObserver();
+-    tryCachedConcepts();     // async: if a fresher glossary is cached, rebuild + rescan
++    // Read the switch BEFORE the first scan. Scanning first and unwinding after
++    // would flash underlines across the page for a reader who turned them off.
++    let started = false;
++    const start = on => {
++      if (started) return;
++      started = true;
++      enabled = on;
++      if (on) { scanRoot(document.body); startObserver(); }
++      tryCachedConcepts();   // async: if a fresher glossary is cached, rebuild + rescan
++    };
++    try {
++      chrome.storage.local.get(FEATURES_KEY, store => {
++        const f = (!chrome.runtime.lastError && store[FEATURES_KEY]) || {};
++        start(f.highlight !== false);
++      });
++    } catch (e) { start(true); }
+   }
+   // Keep popover state fresh if the user signs in/out or edits the saved terms elsewhere.
+   try {
+     chrome.storage.onChanged.addListener((changes, area) => {
+-      if (area === "local" && changes["decoder.session"]) refreshSaved();
++      if (area !== "local") return;
++      if (changes["decoder.session"]) refreshSaved();
++      if (changes[FEATURES_KEY]) {
++        const f = (changes[FEATURES_KEY].newValue) || {};
++        setHighlighting(f.highlight !== false);
++      }
+     });
+   } catch (e) {}
+   init();
+diff --git a/extension/manifest.json b/extension/manifest.json
+index f91853d..a5b1675 100644
+--- a/extension/manifest.json
++++ b/extension/manifest.json
+@@ -1,11 +1,11 @@
+ {
+   "manifest_version": 3,
+   "name": "Decoder — AI terms, explained in place",
+-  "version": "1.0.4",
+-  "description": "Highlights AI jargon on any page. Click a term to understand it in seconds and save it to your saved terms.",
++  "version": "1.1.0",
++  "description": "Highlights AI jargon on any page. Click a term to understand it, or highlight a sentence to get it in plain English.",
+   "permissions": ["storage", "scripting", "identity"],
+   "host_permissions": ["https://*.supabase.co/*"],
+-  "optional_host_permissions": ["<all_urls>"],
++  "optional_host_permissions": ["<all_urls>", "https://aidecoder.app/*"],
+   "background": {
+     "service_worker": "background.js"
+   },
+diff --git a/extension/popup.html b/extension/popup.html
+index 6601f82..c12955b 100644
+--- a/extension/popup.html
++++ b/extension/popup.html
+@@ -66,6 +66,21 @@
+   .status .live{ width:7px; height:7px; border-radius:50%; background:#4a7c59; flex:none }
+   .status .grow{ flex:1 }
+   .enable-off{ background:#fbfbfc; border:1px solid rgba(20,24,33,.09); border-radius:10px; padding:12px 13px; margin:8px 0 4px }
++  /* feature switches — one row per surface (highlighter, decode) */
++  .feats{ margin:2px 0 12px }
++  .frow{ display:flex; align-items:flex-start; gap:12px; padding:9px 2px; cursor:pointer; user-select:none }
++  .frow + .frow{ border-top:1px solid rgba(20,24,33,.06) }
++  .ftext{ display:flex; flex-direction:column; gap:2px; min-width:0 }
++  .fname{ font-size:12.5px; font-weight:500; color:#22252b; line-height:1.3 }
++  .fdesc{ font-size:11px; line-height:1.45; color:#9a9ea5 }
++  .frow .sw{ flex:none; margin-left:auto; margin-top:1px; transition:background 160ms cubic-bezier(0.23,1,0.32,1) }
++  .frow .sw::after{ transition:left 160ms cubic-bezier(0.23,1,0.32,1) }
++  .frow input{ position:absolute; opacity:0; width:0; height:0 }
++  .frow.on .sw{ background:var(--accent) }
++  .frow.on .sw::after{ left:16px }
++  .frow input:focus-visible + .sw{ outline:2px solid var(--accent); outline-offset:2px }
++  @media (hover:hover) and (pointer:fine){ .frow:hover .fname{ color:#0e0f12 } }
++  @media (prefers-reduced-motion:reduce){ .frow .sw, .frow .sw::after{ transition:none } }
+   .webfoot{ margin-top:14px; padding-top:12px; border-top:1px solid rgba(20,24,33,.07); text-align:center }
+   .webfoot a{ font-size:11.5px; color:#9a9ea5; text-decoration:none; transition:color .15s }
+   .webfoot a:hover{ color:#6a6e75 }
+@@ -81,6 +96,7 @@
+   <main>
+     <div id="account"></div>
+     <div id="enable"></div>
++    <div id="features"></div>
+     <p class="lede">Your saved terms</p>
+     <div id="list"></div>
+     <footer class="webfoot">
+diff --git a/extension/popup.js b/extension/popup.js
+index 5065731..fea14fc 100644
+--- a/extension/popup.js
++++ b/extension/popup.js
+@@ -21,9 +21,22 @@
+   }
+   const listEl = document.getElementById("list");
+   const enableEl = document.getElementById("enable");
++  const featuresEl = document.getElementById("features");
+   const accountEl = document.getElementById("account");
+   const ALL = { origins: ["<all_urls>"] };
+ 
++  // Two surfaces, two switches. They are separate because they are separate
++  // products to a reader: the highlighter marks up every page it can, the decoder
++  // only ever runs when asked and costs a model call each time. Someone who wants
++  // one and not the other should not have to give up both.
++  const FEATURES_KEY = "decoder.features";
++  const FEATURE_DEFAULTS = { highlight: true, decode: true };
++  const FEATURE_ROWS = [
++    { key: "highlight", name: "Highlight terms", desc: "Underline AI terms on the pages you read." },
++    { key: "decode", name: "Decode sentences", desc: "Highlight a sentence to get it in plain English." }
++  ];
++  let features = Object.assign({}, FEATURE_DEFAULTS);
++
+   const GOOGLE_G = `<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" style="flex:none"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.24 1.06-3.72 1.06-2.86 0-5.28-1.93-6.15-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.85 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.67-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.67 2.84C6.72 7.3 9.14 5.38 12 5.38z"/></svg>`;
+ 
+   let signedIn = false;
+@@ -137,7 +150,7 @@
+       enableEl.className = "status hairline";
+       enableEl.innerHTML = `
+         <span class="live"></span>
+-        <span class="grow">Highlighting on for every site</span>
++        <span class="grow">Decoder is on for every site</span>
+         <button class="linkbtn" id="disableBtn">Turn off</button>`;
+       document.getElementById("disableBtn").addEventListener("click", () => {
+         chrome.permissions.remove(ALL, () => refreshEnable());
+@@ -145,7 +158,7 @@
+     } else {
+       enableEl.className = "enable-off";
+       enableEl.innerHTML = `
+-        <p style="margin:0 0 9px;font-size:12px;line-height:1.5;color:#6a6e75">Turn on highlighting to underline AI terms as you read. Page text is read on your device only.</p>
++        <p style="margin:0 0 9px;font-size:12px;line-height:1.5;color:#6a6e75">Turn Decoder on to underline AI terms as you read, and to decode any sentence you highlight. Terms are matched on your device; a sentence you choose to decode is sent to aidecoder.app.</p>
+         <button class="btn primary" id="enableBtn">Enable on all sites</button>`;
+       document.getElementById("enableBtn").addEventListener("click", () => {
+         chrome.permissions.request(ALL, granted => {
+@@ -161,11 +174,53 @@
+       const tab = tabs && tabs[0];
+       if (!tab || !tab.id) return;
+       chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ["content.css"] }).catch(() => {});
+-      chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["concepts.js", "content.js"] }).catch(() => {});
++      chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["concepts.js", "content.js", "extract.js", "explain.js"] }).catch(() => {});
++    });
++  }
++
++  // ---- feature switches ----
++  function renderFeatures(granted) {
++    // With no host access nothing runs on a page, so a switch here would be a
++    // control over nothing. The opt-in card above is the real one at that point.
++    if (!granted) { featuresEl.innerHTML = ""; return; }
++    featuresEl.className = "feats hairline";
++    featuresEl.innerHTML = FEATURE_ROWS.map(r => `
++      <label class="frow${features[r.key] ? " on" : ""}" data-feat="${r.key}">
++        <span class="ftext">
++          <span class="fname">${esc(r.name)}</span>
++          <span class="fdesc">${esc(r.desc)}</span>
++        </span>
++        <input type="checkbox" ${features[r.key] ? "checked" : ""} aria-label="${esc(r.name)}">
++        <span class="sw"></span>
++      </label>`).join("");
++    featuresEl.querySelectorAll("input").forEach(input => {
++      input.addEventListener("change", () => {
++        const row = input.closest("[data-feat]");
++        const key = row.getAttribute("data-feat");
++        features[key] = input.checked;
++        row.classList.toggle("on", input.checked);
++        // Content scripts listen on storage.onChanged, so every open tab follows
++        // this immediately — no reload, no message plumbing.
++        try { chrome.storage.local.set({ [FEATURES_KEY]: features }); } catch (e) {}
++      });
+     });
+   }
+ 
+-  function refreshEnable() { chrome.permissions.contains(ALL, granted => renderEnable(!!granted)); }
++  function readFeatures(cb) {
++    try {
++      chrome.storage.local.get(FEATURES_KEY, store => {
++        if (!chrome.runtime.lastError) features = Object.assign({}, FEATURE_DEFAULTS, store[FEATURES_KEY] || {});
++        cb();
++      });
++    } catch (e) { cb(); }
++  }
++
++  function refreshEnable() {
++    chrome.permissions.contains(ALL, granted => {
++      renderEnable(!!granted);
++      readFeatures(() => renderFeatures(!!granted));
++    });
++  }
+   async function renderAll() { await renderAccount(); await renderList(); }
+ 
+   // init
+diff --git a/scripts/preview-server.js b/scripts/preview-server.js
+index 3fe2d8b..3152a42 100644
+--- a/scripts/preview-server.js
++++ b/scripts/preview-server.js
+@@ -24,6 +24,8 @@ if (process.env.GEMINI_API_KEY && !process.env.LLM_PROVIDER) process.env.LLM_PRO
+ 
+ const ROOT = '/Users/shibbypills/Documents/Mitsu/AI Dictionary/web';
+ const EXT = '/Users/shibbypills/Documents/Mitsu/AI Dictionary/extension';
++// Surface 1b's harness. Tracked in the repo, not scratch/, so it survives a session.
++const PREVIEW = '/Users/shibbypills/Documents/Mitsu/AI Dictionary/preview';
+ const EXPLAIN_HANDLER_PATH = path.join(ROOT, 'api', 'explain.js');
+ const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.json': 'application/json', '.svg': 'image/svg+xml' };
+ const MAX_BODY_BYTES = 200 * 1024; // generous cap for a one-sentence payload
+@@ -130,12 +132,20 @@ http.createServer((req, res) => {
+   let url = pathname;
+   let base = ROOT;
+   if (url.startsWith('/extension/')) { base = EXT; url = url.slice('/extension'.length); }
++  if (url.startsWith('/preview/')) { base = PREVIEW; url = url.slice('/preview'.length); }
+   if (url === '/') url = '/index.html';
+   if (url === '/privacy') url = '/privacy.html';
+   const file = path.join(base, decodeURIComponent(url));
+   if (!file.startsWith(base)) { res.writeHead(403); return res.end(); }
+   fs.readFile(file, (err, data) => {
+     if (err) { res.writeHead(404); return res.end('not found'); }
++    // Dev hook: extension/popup.html has no chrome.* in a normal tab. With
++    // ?shim=1 a stand-in is injected so the real popup markup can be looked at.
++    if (full.searchParams.get('shim') === '1' && path.extname(file) === '.html') {
++      const html = data.toString('utf8').replace('<head>', '<head>\n<script src="/preview/chrome-shim.js"></script>');
++      res.writeHead(200, { 'Content-Type': 'text/html' });
++      return res.end(html);
++    }
+     res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });
+     res.end(data);
+   });
+diff --git a/web/index.html b/web/index.html
+index 192c7f2..40fa324 100644
+--- a/web/index.html
++++ b/web/index.html
+@@ -55,6 +55,53 @@
+   .explain-answer, .explain-answer .rel{ animation:none; }
+   .h-decode:not(:disabled):active{ transform:none; }
+ }
++/* "How it works" — the extension's surface (1b), shown live on a sample article.
++   Same motion language as the Decode box above, because it is the same feature
++   seen twice: 0.23,1,0.32,1 entrances, a 60/40ms chip stagger, scale(.97) on
++   press, hover behind a fine pointer. */
++.demo-doc{ user-select:text; -webkit-user-select:text; }
++.demo-doc p{ margin:0 0 15px; }
++.demo-doc p:last-child{ margin-bottom:0; }
++.demo-pill{
++  position:absolute; z-index:40; transform:translateX(-50%); transform-origin:top center;
++  display:inline-flex; align-items:center; gap:6px; padding:7px 14px;
++  background:var(--surface); color:var(--accent); border:1px solid var(--border-2);
++  border-radius:999px; font-family:var(--font-primary); font-size:12.5px; font-weight:600;
++  line-height:1; cursor:pointer; box-shadow:0 6px 20px var(--shadow-soft);
++  animation:demoPill 140ms cubic-bezier(0.23,1,0.32,1) backwards;
++  transition:transform 140ms cubic-bezier(0.23,1,0.32,1), box-shadow 140ms ease;
++}
++.demo-pill[data-side="above"]{ transform-origin:bottom center; }
++.demo-pill:active{ transform:translateX(-50%) scale(.97); }
++@media (hover:hover) and (pointer:fine){ .demo-pill:hover{ box-shadow:0 8px 24px var(--shadow-strong); } }
++@keyframes demoPill{ from{ opacity:0; transform:translateX(-50%) scale(.96); } to{ opacity:1; transform:translateX(-50%) scale(1); } }
++.demo-panel{
++  position:absolute; z-index:41; transform:translateX(-50%); transform-origin:top center;
++  width:340px; max-width:calc(100% - 24px);
++  background:var(--surface); color:var(--text); border:1px solid var(--border-2);
++  border-radius:12px; box-shadow:0 12px 36px var(--shadow-strong); overflow:hidden;
++  animation:demoPanel 200ms cubic-bezier(0.23,1,0.32,1) backwards;
++}
++.demo-panel[data-side="above"]{ transform-origin:bottom center; }
++@keyframes demoPanel{ from{ opacity:0; transform:translateX(-50%) translateY(6px); } to{ opacity:1; transform:translateX(-50%) translateY(0); } }
++.demo-head{ display:flex; align-items:center; gap:8px; padding:12px 14px 0; }
++.demo-eyebrow{ font-family:var(--font-primary); font-size:9.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
++.demo-x{ margin-left:auto; padding:2px; background:none; border:none; color:var(--faint-2); font-size:15px; line-height:1; cursor:pointer; transition:color 140ms ease, transform 140ms cubic-bezier(0.23,1,0.32,1); }
++.demo-x:active{ transform:scale(.9); }
++@media (hover:hover) and (pointer:fine){ .demo-x:hover{ color:var(--muted-2); } }
++.demo-body{ padding:10px 15px 15px; }
++.demo-restate{ margin:0; font-size:14.5px; line-height:1.6; color:var(--text-2); }
++.demo-wait{ display:flex; align-items:center; gap:10px; padding:12px 15px 15px; font-size:13px; color:var(--muted-2); }
++.demo-spin{ flex:none; width:13px; height:13px; border:2px solid var(--border-3); border-top-color:var(--accent); border-radius:50%; animation:spin .7s linear infinite; }
++.demo-gaps,.demo-note{ margin:12px 0 0; font-size:11.5px; line-height:1.5; color:var(--muted-2); }
++.demo-note{ color:var(--faint); }
++.demo-hint{ transition:opacity 200ms ease; }
++@media (prefers-reduced-motion:reduce){
++  .demo-pill,.demo-panel{ animation:none; }
++  .demo-pill:active,.demo-x:active{ transform:translateX(-50%); }
++}
++@media (max-width:520px){ .demo-panel{ width:min(340px, calc(100vw - 32px)); } }
++
+ /* Visually hidden but read aloud — the Decode page's h1 already carries the
+    visible label, so a second one on screen would be redundant. */
+ .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+@@ -195,6 +242,7 @@
+   <main id="main" style="flex:1;width:100%;max-width:1040px;margin:0 auto;padding:0 24px">
+     <section id="s-lookup"></section>
+     <section id="s-decode" style="display:none"></section>
++    <section id="s-how" style="display:none"></section>
+     <section id="s-sheet" style="display:none"></section>
+   </main>
+ 
+@@ -257,6 +305,8 @@
+ </script>
+ 
+ <script src="concepts.js"></script>
++<!-- Surface 1b's sentence extraction. Copy of extension/extract.js; see that file. -->
++<script src="extract.js"></script>
+ 
+ <script>
+ "use strict";
+@@ -464,12 +514,13 @@ async function loadShelfFromDB(){
+   renderLookup(true); renderSheet();
+   $("#s-lookup").style.display = state.tab==='lookup' ? '' : 'none';
+   $("#s-decode").style.display = state.tab==='decode' ? '' : 'none';
++  $("#s-how").style.display    = state.tab==='how'    ? '' : 'none';
+ }
+ function meta(c){ return statusMeta[c.status]; }
+ function isSaved(id){ return state.saved.includes(id); }
+ 
+ /* ---------- header / tabs ---------- */
+-const TABS = [{key:'lookup',label:'Lookup'},{key:'decode',label:'Decode'},{key:'sheet',label:'Saved'}];
++const TABS = [{key:'lookup',label:'Lookup'},{key:'decode',label:'Decode'},{key:'how',label:'How it works'},{key:'sheet',label:'Saved'}];
+ function renderTabs(){
+   $("#tabs").innerHTML = TABS.map(t => {
+     const active = state.tab === t.key;
+@@ -892,9 +943,18 @@ function setTab(t){
+   state.tab = t; state.spotlightOpen = false; state.openId = null; state.sel = null;
+   $("#s-lookup").style.display = t==='lookup' ? '' : 'none';
+   $("#s-decode").style.display = t==='decode' ? '' : 'none';
++  $("#s-how").style.display    = t==='how'    ? '' : 'none';
+   $("#s-sheet").style.display  = t==='sheet'  ? '' : 'none';
+   if(t==='decode') renderDecode();
++  if(t==='how') renderHow();
+   if(t==='sheet') renderSheet();
++  // Only this tab touches the hash: it is the one worth linking to from the
++  // store listing and from the extension, and the others have never had a URL.
++  demoTeardown();
++  try {
++    if(t==='how') history.replaceState(null,'','#how-it-works');
++    else if(location.hash === '#how-it-works') history.replaceState(null,'',location.pathname);
++  } catch(e){}
+   renderTabs(); renderSpotlight(); renderModal(false); renderPopover();
+ }
+ function openSpotlight(){ state.spotlightOpen = true; state.query = ''; state.selIndex = 0; state.remoteResults = []; renderSpotlight(); }
+diff --git a/web/privacy.html b/web/privacy.html
+index 79a993f..600957b 100644
+--- a/web/privacy.html
++++ b/web/privacy.html
+@@ -35,24 +35,26 @@
+     </div>
+ 
+     <h1>Privacy Policy</h1>
+-    <p class="updated">Last updated: 8 July 2026</p>
++    <p class="updated">Last updated: 21 August 2026</p>
+ 
+-    <p class="lede"><strong>The short version:</strong> Looking up terms is anonymous. If you sign in, we store your email and the terms you save so your saved terms follow you across devices — nothing more. We don't sell your data, show ads, or track you, and the browser extension reads pages only on your own device.</p>
++    <p class="lede"><strong>The short version:</strong> Looking up terms is anonymous. If you sign in, we store your email and the terms you save so your saved terms follow you across devices — nothing more. We don't sell your data, show ads, or track you. The browser extension reads pages on your own device; the one thing that leaves your device is a sentence you explicitly ask us to decode.</p>
+ 
+     <h2>The website</h2>
+     <p><strong>Just browsing.</strong> You can search and read terms without an account. Nothing about you is stored on our servers when you do this.</p>
+     <p><strong>If you sign in with Google.</strong> To let you save terms that sync across your devices, we receive and store two things: your email address, and the identifiers of the terms you choose to save (for example <code>rag</code>). This information is stored on our behalf by <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase</a>, our database and authentication provider. We never see or receive your Google password.</p>
++    <p><strong>Decoding a sentence.</strong> When you paste a sentence into the Decode box and press Decode, that sentence is sent to our server and on to <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google's Gemini API</a>, which writes the plain-English explanation. Nothing else about you is sent with it — no account, no page address, no identifier. We don't store the sentence, and we don't use it to train anything.</p>
+     <p>We do not sell or rent your data, we run no advertising, and we use no third-party analytics or tracking.</p>
+     <p><strong>Deleting your data.</strong> You can remove any saved term at any time, or sign out to stop syncing. To delete your account and all associated data, email us at the address below and we'll remove it.</p>
+ 
+     <h2>The browser extension</h2>
+     <p><strong>Access is opt-in.</strong> The extension has no access to any page until you turn it on (a one-time permission you grant from its popup). You can turn it off again at any time.</p>
+     <p><strong>Page text is read locally, never collected.</strong> Once enabled, to underline known terms the extension looks at the visible text of the page you're on, entirely within your browser. Page content is not stored, logged, sent to us, or shared with anyone.</p>
++    <p><strong>Decoding a sentence sends that sentence, and only when you ask.</strong> If you highlight a sentence and click Decode, that one sentence is sent to our server and on to <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google's Gemini API</a> to be explained. Nothing is sent unless you click Decode — highlighting alone sends nothing — and the address of the page, your account and any other page content stay on your device. We don't store the sentence. You can switch this off entirely from the extension's popup, which leaves the highlighter working on its own.</p>
+     <p><strong>Saving is optional, and uses the same account as this website.</strong> If you sign in with Google inside the extension, the terms you save are stored in your account (through Supabase) so they appear in the web app and sync across your devices — exactly as saving on the website does. We store your email address and the identifiers of the terms you save, and nothing more. If you don't sign in, you simply can't save from the extension, and nothing is sent anywhere.</p>
+     <p>No analytics, no ads, no tracking, no remote code.</p>
+ 
+     <h2>Who we share data with</h2>
+-    <p>No one — other than the infrastructure providers that store it for us (Supabase, for the website's sign-in and saved terms). We do not share data with advertisers or data brokers.</p>
++    <p>Supabase, which stores sign-in and saved terms for us. Google, which receives a sentence you choose to decode, through its Gemini API, and returns the explanation. No one else — and never advertisers or data brokers.</p>
+ 
+     <h2>Children</h2>
+     <p>Decoder is a general-audience tool and is not directed at children under 13.</p>

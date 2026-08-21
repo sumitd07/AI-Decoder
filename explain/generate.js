@@ -49,7 +49,12 @@ async function generate({ system, user }, opts = {}) {
 
   let res;
   try {
-    res = await complete({ system, user, maxTokens: opts.maxTokens || 800, temperature: opts.temperature ?? 0 }, opts);
+    // 8000. Reasoning-tier models spend this budget on thinking BEFORE they emit
+    // text, and the thinking scales with prompt size: gemini-3.1-pro burned ~780 of
+    // 800 on a 5-card prompt and returned 22 tokens of truncated JSON, blanking 34
+    // of 39 eval rows. Flash-Lite uses ~110 output tokens, so a high ceiling changes
+    // nothing for it. An unused ceiling is free; a breached one costs the whole run.
+    res = await complete({ system, user, maxTokens: opts.maxTokens || 8000, temperature: opts.temperature ?? 0 }, opts);
   } catch (e) {
     // The provider itself failed. Surface it as a note; the caller decides
     // whether that becomes a 5xx or a fallback.

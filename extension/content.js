@@ -39,11 +39,14 @@
         if (cached.status) STATUS = cached.status;
         buildIndex();
         removeAllHighlights();
-        scanRoot(document.body);
+        if (enabled) scanRoot(document.body);
       });
     } catch (e) {}
   }
 
+  // The highlighter's own switch (popup.js writes it; see decoder.features).
+  // `enabled` already gated the observer — now something actually sets it.
+  const FEATURES_KEY = "decoder.features";
   let enabled = true;
   let scanTimer = null;
   let pending = new Set();
@@ -144,20 +147,20 @@
     if (!signedIn) return `<div style="flex:1;padding:10px 12px;font-size:12px;line-height:1.4;color:#787c83;text-align:center">Sign in from the Decoder toolbar to save it</div>`;
     return savedSet.has(id)
       ? `<button data-dcx-remove style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:#4a7c59"><span class="dcx-savepop">✓</span> Saved · remove</button>`
-      : `<button data-dcx-save style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:${ACCENT}">＋ Save</button>`;
+      : `<button data-dcx-save class="dcx-act" style="flex:1;background:none;border:none;cursor:pointer;padding:10px;font-size:12.5px;font-weight:600;color:${ACCENT}">＋ Save</button>`;
   }
   function renderPopover(c, saved) {
     const el = document.createElement("div");
     el.id = "dcx-pop";
     el.className = "dcx-ui";
     el.setAttribute("role", "dialog");
-    el.style.cssText = "position:fixed;z-index:2147483647;left:-9999px;top:-9999px;transform:translateX(-50%);width:300px;max-width:calc(100vw - 24px);background:#ffffff;color:#0e0f12;border:1px solid rgba(20,24,33,0.12);border-radius:12px;box-shadow:0 12px 36px rgba(20,18,14,0.20);font-family:" + UI_FONT + ";overflow:hidden;animation:dcxrise .16s ease;line-height:normal;text-align:left";
+    el.style.cssText = "position:fixed;z-index:2147483647;left:-9999px;top:-9999px;transform:translateX(-50%);width:300px;max-width:calc(100vw - 24px);background:#ffffff;color:#0e0f12;border:1px solid rgba(20,24,33,0.12);border-radius:12px;box-shadow:0 12px 36px rgba(20,18,14,0.20);font-family:" + UI_FONT + ";overflow:hidden;animation:dcxrise .2s cubic-bezier(0.23,1,0.32,1) backwards;line-height:normal;text-align:left";
     el.innerHTML = `
       <div style="padding:13px 15px 12px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
           ${badgeHTML(c)}
           <span style="font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:16px;line-height:1.1;letter-spacing:-.01em;color:#0e0f12">${c.term}</span>
-          <button data-dcx-close aria-label="Close" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#c6c9ce;font-size:15px;line-height:1;padding:2px">×</button>
+          <button data-dcx-close class="dcx-x" aria-label="Close">×</button>
         </div>
         <p style="margin:0 0 8px;font-size:13.5px;line-height:1.5;color:#22252b">${c.oneLiner}</p>
         <p style="margin:0 0 6px;font-size:12.5px;line-height:1.5;color:#4a4e55;font-style:italic">${c.analogy}</p>
@@ -253,20 +256,58 @@
   }
   function stopObserver() { if (observer) { observer.disconnect(); observer = null; } }
 
+  // ---- surface 1b bridge ----
+  // explain.js (Explain This) renders its own panel; from here it borrows only
+  // the card popover, the toast and the alias index. Isolated world, so the page
+  // cannot see or call any of this.
+  window.__decoderCard = {
+    has: id => Boolean(byId(id)),
+    show: (id, anchor) => showPopover(id, anchor),
+    add: c => { if (c && c.id && !byId(c.id)) DATA.push(c); },   // cards fetched by id, not in the bundle
+    aliasId: surface => (aliasMap ? aliasMap.get(String(surface).toLowerCase()) : undefined),
+    toast
+  };
+
   // ---- init ----
   // Re-scan hook, used when the script is re-injected into an already-loaded tab.
-  window.__decoderRescan = () => { if (DATA.length) scanRoot(document.body); };
+  window.__decoderRescan = () => { if (DATA.length && enabled) scanRoot(document.body); };
+
+  function setHighlighting(on) {
+    if (on === enabled) return;
+    enabled = on;
+    if (on) { scanRoot(document.body); startObserver(); }
+    else { removeAllHighlights(); stopObserver(); }
+  }
+
   function init() {
     if (!DATA.length) return;
     refreshSaved();          // learn which terms are already in the account (for popover state)
-    scanRoot(document.body);
-    startObserver();
-    tryCachedConcepts();     // async: if a fresher glossary is cached, rebuild + rescan
+    // Read the switch BEFORE the first scan. Scanning first and unwinding after
+    // would flash underlines across the page for a reader who turned them off.
+    let started = false;
+    const start = on => {
+      if (started) return;
+      started = true;
+      enabled = on;
+      if (on) { scanRoot(document.body); startObserver(); }
+      tryCachedConcepts();   // async: if a fresher glossary is cached, rebuild + rescan
+    };
+    try {
+      chrome.storage.local.get(FEATURES_KEY, store => {
+        const f = (!chrome.runtime.lastError && store[FEATURES_KEY]) || {};
+        start(f.highlight !== false);
+      });
+    } catch (e) { start(true); }
   }
   // Keep popover state fresh if the user signs in/out or edits the saved terms elsewhere.
   try {
     chrome.storage.onChanged.addListener((changes, area) => {
-      if (area === "local" && changes["decoder.session"]) refreshSaved();
+      if (area !== "local") return;
+      if (changes["decoder.session"]) refreshSaved();
+      if (changes[FEATURES_KEY]) {
+        const f = (changes[FEATURES_KEY].newValue) || {};
+        setHighlighting(f.highlight !== false);
+      }
     });
   } catch (e) {}
   init();

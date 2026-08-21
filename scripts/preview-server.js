@@ -24,6 +24,8 @@ if (process.env.GEMINI_API_KEY && !process.env.LLM_PROVIDER) process.env.LLM_PRO
 
 const ROOT = '/Users/shibbypills/Documents/Mitsu/AI Dictionary/web';
 const EXT = '/Users/shibbypills/Documents/Mitsu/AI Dictionary/extension';
+// Surface 1b's harness. Tracked in the repo, not scratch/, so it survives a session.
+const PREVIEW = '/Users/shibbypills/Documents/Mitsu/AI Dictionary/preview';
 const EXPLAIN_HANDLER_PATH = path.join(ROOT, 'api', 'explain.js');
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.json': 'application/json', '.svg': 'image/svg+xml' };
 const MAX_BODY_BYTES = 200 * 1024; // generous cap for a one-sentence payload
@@ -130,12 +132,20 @@ http.createServer((req, res) => {
   let url = pathname;
   let base = ROOT;
   if (url.startsWith('/extension/')) { base = EXT; url = url.slice('/extension'.length); }
+  if (url.startsWith('/preview/')) { base = PREVIEW; url = url.slice('/preview'.length); }
   if (url === '/') url = '/index.html';
   if (url === '/privacy') url = '/privacy.html';
   const file = path.join(base, decodeURIComponent(url));
   if (!file.startsWith(base)) { res.writeHead(403); return res.end(); }
   fs.readFile(file, (err, data) => {
     if (err) { res.writeHead(404); return res.end('not found'); }
+    // Dev hook: extension/popup.html has no chrome.* in a normal tab. With
+    // ?shim=1 a stand-in is injected so the real popup markup can be looked at.
+    if (full.searchParams.get('shim') === '1' && path.extname(file) === '.html') {
+      const html = data.toString('utf8').replace('<head>', '<head>\n<script src="/preview/chrome-shim.js"></script>');
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      return res.end(html);
+    }
     res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });
     res.end(data);
   });

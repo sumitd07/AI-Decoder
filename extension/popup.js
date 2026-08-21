@@ -21,8 +21,21 @@
   }
   const listEl = document.getElementById("list");
   const enableEl = document.getElementById("enable");
+  const featuresEl = document.getElementById("features");
   const accountEl = document.getElementById("account");
   const ALL = { origins: ["<all_urls>"] };
+
+  // Two surfaces, two switches. They are separate because they are separate
+  // products to a reader: the highlighter marks up every page it can, the decoder
+  // only ever runs when asked and costs a model call each time. Someone who wants
+  // one and not the other should not have to give up both.
+  const FEATURES_KEY = "decoder.features";
+  const FEATURE_DEFAULTS = { highlight: true, decode: true };
+  const FEATURE_ROWS = [
+    { key: "highlight", name: "Highlight terms", desc: "Underline AI terms on the pages you read." },
+    { key: "decode", name: "Decode sentences", desc: "Highlight a sentence to get it in plain English." }
+  ];
+  let features = Object.assign({}, FEATURE_DEFAULTS);
 
   const GOOGLE_G = `<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" style="flex:none"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.24 1.06-3.72 1.06-2.86 0-5.28-1.93-6.15-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.85 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.67-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.67 2.84C6.72 7.3 9.14 5.38 12 5.38z"/></svg>`;
 
@@ -137,7 +150,7 @@
       enableEl.className = "status hairline";
       enableEl.innerHTML = `
         <span class="live"></span>
-        <span class="grow">Highlighting on for every site</span>
+        <span class="grow">Decoder is on for every site</span>
         <button class="linkbtn" id="disableBtn">Turn off</button>`;
       document.getElementById("disableBtn").addEventListener("click", () => {
         chrome.permissions.remove(ALL, () => refreshEnable());
@@ -145,7 +158,7 @@
     } else {
       enableEl.className = "enable-off";
       enableEl.innerHTML = `
-        <p style="margin:0 0 9px;font-size:12px;line-height:1.5;color:#6a6e75">Turn on highlighting to underline AI terms as you read. Page text is read on your device only.</p>
+        <p style="margin:0 0 9px;font-size:12px;line-height:1.5;color:#6a6e75">Turn Decoder on to underline AI terms as you read, and to decode any sentence you highlight. Terms are matched on your device; a sentence you choose to decode is sent to aidecoder.app.</p>
         <button class="btn primary" id="enableBtn">Enable on all sites</button>`;
       document.getElementById("enableBtn").addEventListener("click", () => {
         chrome.permissions.request(ALL, granted => {
@@ -161,11 +174,53 @@
       const tab = tabs && tabs[0];
       if (!tab || !tab.id) return;
       chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ["content.css"] }).catch(() => {});
-      chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["concepts.js", "content.js"] }).catch(() => {});
+      chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["concepts.js", "content.js", "extract.js", "explain.js"] }).catch(() => {});
     });
   }
 
-  function refreshEnable() { chrome.permissions.contains(ALL, granted => renderEnable(!!granted)); }
+  // ---- feature switches ----
+  function renderFeatures(granted) {
+    // With no host access nothing runs on a page, so a switch here would be a
+    // control over nothing. The opt-in card above is the real one at that point.
+    if (!granted) { featuresEl.innerHTML = ""; return; }
+    featuresEl.className = "feats hairline";
+    featuresEl.innerHTML = FEATURE_ROWS.map(r => `
+      <label class="frow${features[r.key] ? " on" : ""}" data-feat="${r.key}">
+        <span class="ftext">
+          <span class="fname">${esc(r.name)}</span>
+          <span class="fdesc">${esc(r.desc)}</span>
+        </span>
+        <input type="checkbox" ${features[r.key] ? "checked" : ""} aria-label="${esc(r.name)}">
+        <span class="sw"></span>
+      </label>`).join("");
+    featuresEl.querySelectorAll("input").forEach(input => {
+      input.addEventListener("change", () => {
+        const row = input.closest("[data-feat]");
+        const key = row.getAttribute("data-feat");
+        features[key] = input.checked;
+        row.classList.toggle("on", input.checked);
+        // Content scripts listen on storage.onChanged, so every open tab follows
+        // this immediately — no reload, no message plumbing.
+        try { chrome.storage.local.set({ [FEATURES_KEY]: features }); } catch (e) {}
+      });
+    });
+  }
+
+  function readFeatures(cb) {
+    try {
+      chrome.storage.local.get(FEATURES_KEY, store => {
+        if (!chrome.runtime.lastError) features = Object.assign({}, FEATURE_DEFAULTS, store[FEATURES_KEY] || {});
+        cb();
+      });
+    } catch (e) { cb(); }
+  }
+
+  function refreshEnable() {
+    chrome.permissions.contains(ALL, granted => {
+      renderEnable(!!granted);
+      readFeatures(() => renderFeatures(!!granted));
+    });
+  }
   async function renderAll() { await renderAccount(); await renderList(); }
 
   // init
