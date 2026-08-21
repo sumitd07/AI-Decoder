@@ -82,7 +82,7 @@ quota. It is labelled in the server log so it can't be mistaken for a real one.
 
 ## Scored runs — always read the judge column
 
-**A score is only comparable to another score judged by the same model (D31).**
+**A score is only comparable to another score judged by the same model (D40).**
 The same 39 outputs judged by `gemini-pro-latest` gave 10/39 ungrounded; judged by
 `gemini-3.5-flash` they gave 4/39. Nothing about the product changed.
 
@@ -101,7 +101,7 @@ Negatives, output layer (what a reader would see):
 | v8-pro | 100% | 38% | 55% |
 
 **Read: Pro grounds better and refuses worse.** It halves ungrounded claims and wins
-every axis, but explains sentences it should decline. See D32.
+every axis, but explains sentences it should decline. See D41.
 
 **How to read a judge score:** 5 = no fault, 4 = minor fault that would not mislead,
 3 = noticeable fault, 2 = would mislead, 1 = wrong or invented. There is no external
@@ -246,10 +246,10 @@ without it.
 | D28 | Chips open cards in-app, never via a `/term/` URL |
 | D29 | Raising the retrieval cap to 8 was tested and reverted — it made things worse |
 | D30 | Score what the reader sees, not just what retrieval found |
-| D31 | The judge model moves the score more than the product does — always name the judge |
-| D32 | Bake-off run: Pro grounds better (2/39 vs 4/39), refuses worse (55% vs 82%) |
-| D33 | Reasoning models need a high token ceiling; the eval now saves the raw reply |
-| D34 | The gap rule was tried and rejected — it cut gap-naming almost in half |
+| D40 | The judge model moves the score more than the product does — always name the judge |
+| D41 | Bake-off run: Pro grounds better (2/39 vs 4/39), refuses worse (55% vs 82%) |
+| D42 | Reasoning models need a high token ceiling; the eval now saves the raw reply |
+| D43 | The gap rule was tried and rejected — it cut gap-naming almost in half |
 
 `C8` is from `EXPLAIN-THIS-SCOPE.md` and means the Phase 3 verification gate — the
 step that would *enforce* zero invention rather than just measure it.

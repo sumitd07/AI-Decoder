@@ -61,7 +61,20 @@
    press, hover behind a fine pointer. */
 .demo-doc{ user-select:text; -webkit-user-select:text; }
 .demo-doc p{ margin:0 0 15px; }
-.demo-doc p:last-child{ margin-bottom:0; }
+.demo-doc > *:last-child{ margin-bottom:0; }
+.demo-doc h3{ font-family:var(--font-secondary); font-weight:600; font-size:17px; line-height:1.25; letter-spacing:-.015em; color:var(--text); margin:24px 0 10px; }
+.demo-cols{ column-count:2; column-gap:26px; font-size:15px; line-height:1.7; margin:0 0 15px; }
+.demo-cols p{ margin:0 0 12px; }
+.demo-doc pre{ margin:0 0 15px; padding:11px 13px; background:var(--surface-3); border:1px solid var(--hairline-2); border-radius:8px; overflow-x:auto; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; line-height:1.55; color:var(--text-3); }
+.demo-doc code{ font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em; }
+.demo-doc table{ width:100%; border-collapse:collapse; font-family:var(--font-primary); font-size:13px; margin:0 0 15px; }
+.demo-doc th,.demo-doc td{ border:1px solid var(--border); padding:7px 10px; text-align:left; color:var(--text-3); }
+.demo-doc th{ font-weight:600; color:var(--text-2); }
+/* A dark section stays dark in both themes — that is the case being demonstrated. */
+.demo-dark{ background:#14161a; color:#e6e8eb; border-radius:10px; padding:16px 18px; margin:0 0 15px; }
+.demo-dark p{ margin:0; }
+.demo-fn{ font-family:var(--font-primary); font-size:12px; line-height:1.5; color:var(--muted-2); }
+@media (max-width:640px){ .demo-cols{ column-count:1; } }
 .demo-pill{
   position:absolute; z-index:40; transform:translateX(-50%); transform-origin:top center;
   display:inline-flex; align-items:center; gap:6px; padding:7px 14px;
@@ -105,6 +118,35 @@
 /* Visually hidden but read aloud — the Decode page's h1 already carries the
    visible label, so a second one on screen would be redundant. */
 .tab-short{ display:none; }
+/* The header is a single flex row and it runs out of room around 1000px once a
+   signed-in email is in it. Whatever gives, it must not be the tab labels: a
+   flex item shrinks below its content by default and the text wraps, which is
+   how "How it works" ended up stacked over three lines. Tabs never wrap and
+   never shrink; if the strip still doesn't fit, it scrolls. */
+nav#tabs{ min-width:0; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch; flex:0 0 auto; }
+nav#tabs::-webkit-scrollbar{ display:none; }
+nav#tabs button{ flex:0 0 auto; white-space:nowrap; }
+/* The header's usable width is fixed at ~992px (.hdr-inner is capped at 1040 and
+   padded), so a viewport-width media query never described the real constraint —
+   it is over-full at 1400px exactly as it is at 1000px. Four tabs plus the full
+   chrome overran it by ~20px, which clipped "Saved". Buy the room back from the
+   two things that lose nothing by giving it: the gaps, and the email's ellipsis. */
+.hdr-inner{ gap:16px !important; }
+.auth-email{ max-width:110px !important; }
+/* Between 640px and ~1100px the header is over-full once a signed-in email is in
+   it: logo, four tabs, a 210px search box, the theme toggle and the account button
+   don't fit, and something has to give. Order of what goes, cheapest first — the
+   "For AI" tag, the search box's label (the icon still says what it is), then the
+   email (the avatar and the button's title attribute still identify the account).
+   The tabs are the navigation and never give. This is the same treatment the
+   mobile block already applies, just starting earlier. */
+@media (max-width:1100px){
+  .hdr-inner{ gap:12px !important; }
+  .hdr-tag{ display:none !important; }
+  #searchBtn{ min-width:0 !important; white-space:nowrap !important; }
+  #searchBtn .search-label, #searchBtn .search-kbd{ display:none !important; }
+  .auth-email, .auth-dot{ display:none !important; }
+}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @keyframes spin{to{transform:rotate(360deg)}}
 
@@ -206,15 +248,14 @@
     #main{ padding:0 14px !important; }
     .hero-pad{ padding:44px 0 44px !important; }
     .shelf-grid{ grid-template-columns:1fr !important; }
-    nav#tabs button{ padding:10px 9px 12px !important; flex:0 0 auto !important; }
+    nav#tabs button{ padding:10px 9px 12px !important; }
     .tab-long{ display:none !important; }
     .tab-short{ display:inline !important; }
     /* The header overflowed the viewport at 375px even with three tabs — the
        logo, the tab strip and the three controls simply don't fit. Let the tab
        strip be the thing that gives: it shrinks and scrolls, everything else
        stays reachable. */
-    nav#tabs{ min-width:0 !important; flex:1 1 auto !important; overflow-x:auto !important; overflow-y:hidden !important; scrollbar-width:none !important; -webkit-overflow-scrolling:touch; }
-    nav#tabs::-webkit-scrollbar{ display:none !important; }
+    nav#tabs{ flex:1 1 auto !important; }
     #themeBtn{ width:40px !important; height:40px !important; }
     .auth-email, .auth-signout-word, .auth-dot, .auth-signin-word{ display:none !important; }
     .auth-btn{ padding:8px !important; }
@@ -413,6 +454,9 @@ function renderAuth(){
       ${GOOGLE_G}<span class="auth-signin-word">Sign in with Google</span>
     </button>`;
   }
+  // Signing in swaps a short button for a wide one, which changes how much room
+  // the tab strip has. Re-settle it.
+  if(typeof focusActiveTab === 'function') focusActiveTab();
 }
 
 /* ---------- sign-in prompt (shown when a logged-out user tries to save) ---------- */
@@ -542,11 +586,24 @@ function renderTabs(){
       <span class="tabu" style="position:absolute;left:12px;right:12px;bottom:0;height:2px;border-radius:2px;background:var(--accent);transform:${active?'scaleX(1)':'scaleX(0)'};transform-origin:left"></span>
     </button>`;
   }).join('');
-  // The strip scrolls on narrow screens (see the 640px block), so the tab you are
-  // actually on has to be brought into view or you land on a page whose tab you
-  // cannot see. 'nearest' on both axes so the page itself never jumps.
-  const active = $("#tabs").querySelector('[data-tab="' + state.tab + '"]');
-  if(active && active.scrollIntoView) { try{ active.scrollIntoView({ block:'nearest', inline:'nearest' }); }catch(e){} }
+  focusActiveTab();
+}
+
+// The strip scrolls on narrow screens, so the tab you are actually on has to be
+// brought into view or you land on a page whose tab you cannot see. Deferred a
+// frame because the header's width is not final until the account button has
+// rendered — renderAuth() runs after renderTabs() and is async on top of that,
+// so measuring during renderTabs reads a stale layout. 'nearest' on both axes so
+// the page itself never jumps.
+function focusActiveTab(){
+  const run = () => {
+    const el = $("#tabs") && $("#tabs").querySelector('[data-tab="' + state.tab + '"]');
+    if(el && el.scrollIntoView) { try{ el.scrollIntoView({ block:'nearest', inline:'nearest' }); }catch(e){} }
+  };
+  run();                 // right in the common case
+  setTimeout(run, 0);    // and again once the account button has settled. Not rAF:
+                         // it does not fire in a background tab, so a page opened
+                         // in one would render with the active tab scrolled off.
 }
 
 /* ---------- surface 1: lookup ---------- */
@@ -759,40 +816,64 @@ let demoUsed = 0;
 let demoPill = null, demoPanel = null, demoRange = null, demoRect = null, demoSeq = 0;
 let demoWait1 = null, demoWait2 = null, demoSettle = null;
 
-const DEMO_ARTICLE = [
-  `Most teams reach for a bigger model when the answers go wrong. In our case the answers were wrong because the context was wrong, and no amount of model changed that.`,
-  `We reduced hallucination by tightening the retriever's top-k and reranking before the context is assembled. That single change did more than a month of prompt work.`,
-  `Chunking is where the rest of the tuning time went. A chunk that spans two ideas retrieves for both and answers neither.`,
-  `Quantization let the model run on one card, and the quality loss was smaller than the latency win. We shipped it the same week.`
-];
+// The sample article carries the shapes a real page has and the ones that break
+// naive extraction: two columns, a code block, a table, footnote markers, soft
+// hyphens and a hyphenated line break. Selecting across any of them still has to
+// arrive at the endpoint as one clean sentence.
+const DEMO_ARTICLE = `
+  <h2 class="dsp" style="font-weight:600;font-size:23px;line-height:1.2;letter-spacing:-.02em;margin:0 0 16px;color:var(--text)">Notes on shipping a retrieval stack</h2>
+  <p>Most teams reach for a bigger model when the answers go wrong. In our case the answers were wrong because the context was wrong, and no amount of model changed that.</p>
+  <p>We reduced hallucination by tightening the retriever's top-k and reranking before the context is assembled. That single change did more than a month of prompt work.</p>
+
+  <h3>Two columns</h3>
+  <div class="demo-cols">
+    <p>The embedding index was rebuilt offline every night, which meant a stale card could sit in produc&shy;tion for a day. Fine-tuning was never on the table; the failure mode was retrieval, not gener&shy;ation.<sup>1</sup></p>
+    <p>Chunking is where the rest of the tuning time went. A chunk that spans two ideas retrieves for both and answers neither, e.g. a paragraph that opens on latency and closes on cost.</p>
+  </div>
+
+  <h3>A code block</h3>
+  <p>The guard below runs before the model call, so a refusal costs nothing:</p>
+  <pre>if (sentence.length &gt; MAX_SENTENCE) return send(res, 400, { error: 'sentence_too_long' });</pre>
+  <p>An agent that plans its own retrieval loop is a different product. We kept the pipeline fixed so that two runs stay comparable.</p>
+
+  <h3>A table</h3>
+  <table>
+    <tr><th>Change</th><th>Effect</th></tr>
+    <tr><td>Reranking on</td><td>Precision up, latency up by 180ms</td></tr>
+    <tr><td>Top-k 8 &rarr; 5</td><td>Fewer distractors in the prompt window[2]</td></tr>
+  </table>
+  <p class="demo-fn">1. Measured on 39 rows. 2. The reader never sees the retrieved set.</p>
+
+  <h3>A dark section</h3>
+  <div class="demo-dark">
+    <p>Quantization let the model run on one card, and the quality loss was smaller than the latency win. We shipped it the same week.</p>
+  </div>`;
 
 function renderHow(){
   const head = `
     <div style="max-width:640px;margin-bottom:40px">
-      <div style="font-family:var(--font-primary);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px">How it works</div>
-      <h1 class="dsp" style="font-weight:600;font-size:clamp(34px,5vw,54px);line-height:1.02;letter-spacing:-.035em;margin:0 0 14px;color:var(--text)">Highlight a sentence. Get the plain version.</h1>
-      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">The extension does this on whatever you're already reading. Try it here first — the article below is a stand-in for any page on the web.</p>
+      <div style="font-family:var(--font-primary);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px">How It Works</div>
+      <h1 class="dsp" style="font-weight:600;font-size:clamp(34px,5vw,54px);line-height:1.02;letter-spacing:-.035em;margin:0 0 14px;color:var(--text)">Highlight a sentence, and it is explained in place.</h1>
+      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">The extension underlines shelf terms on the page you are reading and explains any sentence you highlight. The article below runs the same code against the same endpoint, so what happens here is what happens on a real page.</p>
     </div>`;
 
   const doc = `
     <div style="max-width:640px">
       <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:12px;flex-wrap:wrap">
-        <span style="font-family:var(--font-primary);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)">Sample article</span>
-        <span id="demoHint" class="demo-hint" style="font-size:12.5px;color:var(--muted-2)">Select any sentence below &rarr; then press Decode.</span>
+        <span style="font-family:var(--font-primary);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)">Sample Article</span>
+        <span id="demoHint" class="demo-hint" style="font-size:12.5px;color:var(--muted-2)">Select a sentence, then press Decode.</span>
       </div>
       <div id="demoStage" style="position:relative">
-        <div id="demoDoc" class="demo-doc" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 28px;font-family:var(--font-secondary);font-size:16.5px;line-height:1.75;color:var(--text-2)">
-          <h2 class="dsp" style="font-weight:600;font-size:23px;line-height:1.2;letter-spacing:-.02em;margin:0 0 16px;color:var(--text)">Notes on shipping a retrieval stack</h2>
-          ${DEMO_ARTICLE.map(t => `<p>${esc(t)}</p>`).join('')}
-        </div>
+        <div id="demoDoc" class="demo-doc" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 28px;font-family:var(--font-secondary);font-size:16.5px;line-height:1.75;color:var(--text-2)">${DEMO_ARTICLE}</div>
       </div>
-      <p style="font-size:12px;line-height:1.55;color:var(--faint);margin:14px 0 0">Terms are matched on your device. The sentence you press Decode on is the only thing sent — nothing goes anywhere while you're just selecting.</p>
+      <p style="font-size:12.5px;line-height:1.6;color:var(--muted-2);margin:16px 0 0">This article is awkward on purpose: two columns, a code block, a table, footnote markers, and words broken across a line. A selection that picks any of that up is repaired to one clean sentence before it is sent. Part of a sentence is completed from the text around it. A selection inside the code block offers no Decode button.</p>
+      <p style="font-size:12px;line-height:1.55;color:var(--faint);margin:10px 0 0">Terms are matched on your device. Pressing Decode sends that one sentence to be explained. Selecting sends nothing.</p>
     </div>`;
 
   const steps = [
-    ['Underlines what it knows', 'Every term on the shelf gets a faint dotted underline as you read. Click one for the card.'],
-    ['Decodes what you highlight', 'Select a sentence, press Decode, and the sentence is restated in plain English with its jargon resolved.'],
-    ['Says when it does not know', 'A term the shelf does not cover is named as a gap rather than guessed at.']
+    ['Terms Are Underlined', 'Every term on the shelf gets a dotted underline as you read. Clicking one opens its card.'],
+    ['Sentences Are Explained on Request', 'Highlighting a sentence shows a Decode button. The sentence is restated in plain English, with each shelf term in it linked to its card.'],
+    ['Gaps Are Named', 'A term the sentence turns on that the shelf does not cover is named as a gap. The explanation says so and leaves it undefined.']
   ].map(([t,d]) => `
     <div style="border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:17px 18px">
       <p style="margin:0 0 6px;font-size:13.5px;font-weight:600;color:var(--text)">${esc(t)}</p>
@@ -807,7 +888,7 @@ function renderHow(){
           <span>Add Decoder to Chrome</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
-        <span style="font-size:12.5px;line-height:1.45;color:var(--muted-2);max-width:250px">Free. Works on any page you read, and you turn each half on or off from the toolbar.</span>
+        <span style="font-size:12.5px;line-height:1.45;color:var(--muted-2);max-width:260px">Underlining and decoding each have their own switch in the toolbar.</span>
       </div>
     </div>`;
 
@@ -864,6 +945,9 @@ function demoSelection(){
   if(!doc || !sel || sel.isCollapsed || !sel.rangeCount) return null;
   const range = sel.getRangeAt(0);
   if(!doc.contains(range.commonAncestorContainer)) return null;   // the demo only, not the site
+  // Same rule the extension applies: code is not prose, so it offers no Decode.
+  const host = range.commonAncestorContainer.nodeType === 3 ? range.commonAncestorContainer.parentElement : range.commonAncestorContainer;
+  if(host && host.closest && host.closest('pre, code')) return null;
   const text = sel.toString();
   if(!text.trim()) return null;
   let before = '', after = '';
@@ -926,7 +1010,7 @@ function demoRun(found){
   demoRange = found.range; demoRect = found.rect;
 
   if(demoUsed >= DEMO_LIMIT){
-    demoPaint(`<div class="demo-body"><p class="demo-restate">That's the demo's share of decodes for this visit. The extension does this on whatever you're reading — the button is just below.</p></div>`);
+    demoPaint(`<div class="demo-body"><p class="demo-restate">This demo runs ${DEMO_LIMIT} decodes per visit and you have used them. Reload to start again, or use the extension, which has no such limit.</p></div>`);
     return;
   }
   demoUsed++;

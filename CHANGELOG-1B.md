@@ -58,6 +58,9 @@ The privacy policy currently live says page content is never sent anywhere. That
 being true the moment v1.1.0 is in anyone's browser, so **the site has to go out before
 the extension is submitted**, not after.
 
+Most of this is already committed and pushed (`4b26b3b`, plus the "How it works" page).
+What is left is confirming Vercel actually built it.
+
 ```bash
 cd "/Users/shibbypills/Documents/Mitsu/AI Dictionary" && git add -A && git status
 ```
@@ -123,18 +126,20 @@ permission message, `<all_urls>` was not granted.
 
 ## Flags
 
-**1. The 1a grounding gate is still breached.** 10 of 39 golden rows carry an ungrounded
-claim, and the PRD calls a single confident invention a ship-blocker. 1b went ahead on
-your explicit call, logged as D31. **D13's model bake-off has still never run** — one env
-var, about $0.20, ~90 seconds, and it is the cheapest thing that could move that number.
+**1. The grounding numbers moved while this was being written.** The bake-off has now run
+(D41), and the 10/39 I flagged earlier was judge-dependent: the same 39 outputs score
+**4/39** under `gemini-3.5-flash` and 10/39 under `gemini-pro-latest` (D40). Pro as the
+*generator* halves it again to 2/39 and wins every axis, but its false-friend handling
+falls from 75% to 38% — it explains sentences it should decline, which is the premise in
+D8. Which way that trades is undecided and is yours to call. 1b shipped on your explicit
+call either way, logged as D31.
 
-**2. Someone else's work is in this repo right now.** `explain/explain.js`,
-`explain/generate.js` and `eval/run.js` have uncommitted changes I did not make —
-`maxTokens` 800→2000 and the prompt's rules 4 and 7 tightened against naming a gap and
-then explaining it anyway. That is aimed squarely at the grounding number, so **re-run
-the eval before trusting 10/39**. Mid-session that other session also ran `git stash`,
-which reverted my files under me; recovered from `stash@{0}`, which is still there and
-still holds their `explain/` work. Check `git status` before you commit.
+**2. Another session is working in this repo.** It committed and pushed everything —
+its work and mine — as `4b26b3b`, so CTA 1's commit step was already done before you read
+this. It also ran `git stash` mid-task, which reverted my files under me; recovered from
+the stash. Its four decision entries had been numbered D31–D34, colliding with the 1b
+entries of the same numbers; they are now **D40–D43**, and commit `4b26b3b`'s message
+means D41 and D43 where it says D32 and D34. Check `git status` before every commit here.
 
 **3. The demo makes the missing rate limit louder.** Every decode costs a model call and
 D5 still ships with no spend ceiling and no per-IP limit. The demo caps itself at 8
