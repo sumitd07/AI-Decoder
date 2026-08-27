@@ -20,6 +20,7 @@
     } catch (e) {}
   }
   const listEl = document.getElementById("list");
+  const noticeEl = document.getElementById("notice");
   const enableEl = document.getElementById("enable");
   const featuresEl = document.getElementById("features");
   const accountEl = document.getElementById("account");
@@ -215,6 +216,30 @@
     } catch (e) { cb(); }
   }
 
+  // ---- one-time upgrade notice ----
+  // background.js sets this flag only for the update that introduced decoding.
+  // Someone who installed 1.1.0 fresh never sees it — they get the opt-in copy,
+  // which already says a decoded sentence leaves the device.
+  const UPGRADE_KEY = "decoder.upgradeNotice";
+  function renderNotice() {
+    if (!noticeEl) return;
+    try {
+      chrome.storage.local.get(UPGRADE_KEY, store => {
+        if (chrome.runtime.lastError || !store[UPGRADE_KEY]) return;
+        noticeEl.innerHTML = `
+          <div class="notice">
+            <button class="nclose" id="noticeClose" aria-label="Dismiss">&times;</button>
+            <p class="ntitle">New: decode a whole sentence</p>
+            <p class="nbody">Highlight any sentence and click Decode to get it in plain English. That sentence is sent to aidecoder.app to be explained — nothing else about the page goes with it. Switch it off below whenever you like.</p>
+          </div>`;
+        document.getElementById("noticeClose").addEventListener("click", () => {
+          noticeEl.innerHTML = "";
+          try { chrome.storage.local.remove(UPGRADE_KEY); } catch (e) {}
+        });
+      });
+    } catch (e) {}
+  }
+
   function refreshEnable() {
     chrome.permissions.contains(ALL, granted => {
       renderEnable(!!granted);
@@ -224,6 +249,7 @@
   async function renderAll() { await renderAccount(); await renderList(); }
 
   // init
+  renderNotice();
   refreshEnable();
   renderAll();
   tryCachedConcepts();

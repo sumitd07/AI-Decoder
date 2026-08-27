@@ -28,10 +28,14 @@ Decoder is a browser extension that underlines known AI/technical terms on web p
 - **Access to your Supabase backend (`https://*.supabase.co`)** — to read and save your saved terms to your account.
 - **Access to pages you visit — optional** — granted only when you click "Enable on all sites," so it can read page text locally to underline terms and reach `aidecoder.app` for a sentence you decode.
 
+## Google API Services
+
+Decoder's use of information received from Google APIs will adhere to the [Chrome Web Store User Data Policy](https://developer.chrome.com/docs/webstore/program-policies/limited-use), including the Limited Use requirements.
+
 ## Changes
 
 If this policy changes, the "Last updated" date above will change and the new version will be posted at this URL.
 
 ## Contact
 
-Questions about this policy: **[add your contact email here]**
+Questions about this policy: **sumitd0704@gmail.com**

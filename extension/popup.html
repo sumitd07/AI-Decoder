@@ -66,6 +66,13 @@
   .status .live{ width:7px; height:7px; border-radius:50%; background:#4a7c59; flex:none }
   .status .grow{ flex:1 }
   .enable-off{ background:#fbfbfc; border:1px solid rgba(20,24,33,.09); border-radius:10px; padding:12px 13px; margin:8px 0 4px }
+  /* one-time strip shown to people upgrading from a version with no decoder */
+  .notice{ position:relative; background:#f2f6f2; border:1px solid #cfe0cf; border-radius:10px; padding:11px 30px 11px 13px; margin:0 0 12px }
+  .notice .ntitle{ font-size:12px; font-weight:600; color:#22252b; margin:0 0 3px }
+  .notice .nbody{ font-size:11px; line-height:1.5; color:#6a6e75; margin:0 }
+  .notice .nclose{ position:absolute; top:6px; right:6px; width:22px; height:22px; display:flex; align-items:center; justify-content:center; background:none; border:none; border-radius:6px; font-size:15px; line-height:1; color:#9a9ea5; cursor:pointer; padding:0 }
+  .notice .nclose:hover{ background:rgba(20,24,33,.06); color:#22252b }
+  .notice .nclose:focus-visible{ outline:2px solid var(--accent); outline-offset:1px }
   /* feature switches — one row per surface (highlighter, decode) */
   .feats{ margin:2px 0 12px }
   .frow{ display:flex; align-items:flex-start; gap:12px; padding:9px 2px; cursor:pointer; user-select:none }
@@ -95,6 +102,7 @@
   </header>
   <main>
     <div id="account"></div>
+    <div id="notice"></div>
     <div id="enable"></div>
     <div id="features"></div>
     <p class="lede">Your saved terms</p>

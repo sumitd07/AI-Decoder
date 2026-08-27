@@ -4,11 +4,23 @@
 
 importScripts("config.js", "supa.js");
 
+// The extension holds no host permission until the user opts in from the popup,
+// and aidecoder.app sends no CORS headers, so EVERY call to it must check the
+// grant first. Both the glossary refresh and the decoder go through here.
+const EXPLAIN_ORIGIN = { origins: ["https://aidecoder.app/*"] };
+async function hasExplainHost() {
+  try { return await chrome.permissions.contains(EXPLAIN_ORIGIN); }
+  catch (e) { return false; }
+}
+
 // ---- Remote glossary: fetch concepts.json from the web app and cache in storage ----
 const CONCEPTS_URL = "https://aidecoder.app/concepts.json";
 const CONCEPTS_KEY = "decoder.conceptsData";
 
 async function refreshConcepts() {
+  // Ungated, this fired at install on a profile with no grant: the fetch failed
+  // CORS, the catch swallowed it, and the glossary silently never refreshed.
+  if (!(await hasExplainHost())) return;
   try {
     const res = await fetch(CONCEPTS_URL, { cache: "no-cache" });
     if (!res.ok) return;
@@ -32,9 +44,7 @@ const EXPLAIN_TIMEOUT = 45000;   // past the worst measured cold start (~20s)
 
 async function explainSentence(sentence) {
   if (typeof sentence !== "string" || !sentence.trim()) return { ok: false, message: "Highlight a sentence first." };
-  let granted = false;
-  try { granted = await chrome.permissions.contains({ origins: ["https://aidecoder.app/*"] }); } catch (e) {}
-  if (!granted) return { ok: false, message: "Turn on “Enable on all sites” from the Decoder toolbar to decode sentences." };
+  if (!(await hasExplainHost())) return { ok: false, message: "Turn on “Enable on all sites” from the Decoder toolbar to decode sentences." };
 
   const ctl = new AbortController();
   const timer = setTimeout(() => ctl.abort(), EXPLAIN_TIMEOUT);
@@ -146,7 +156,34 @@ async function sync() {
   }
 }
 
-chrome.runtime.onInstalled.addListener(() => { sync(); refreshConcepts(); });
+// ---- Upgrade notice ------------------------------------------------------
+// 1.0.4 sent nothing off-device. 1.1.0 turns Decode on by default, so anyone
+// upgrading gets a capability they did not install. Chrome's Disclosure
+// Requirements policy (1 Aug 2026) says that has to be surfaced to them, so
+// flag it here and let the popup render the strip once.
+const UPGRADE_KEY = "decoder.upgradeNotice";
+const DECODE_LANDED_IN = "1.1.0";
+
+// "1.0.4" < "1.1.0" numerically, not lexically — 1.0.10 must beat 1.0.4.
+function isBefore(a, b) {
+  const pa = String(a || "0").split("."), pb = String(b || "0").split(".");
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const x = parseInt(pa[i] || "0", 10), y = parseInt(pb[i] || "0", 10);
+    if (x !== y) return x < y;
+  }
+  return false;
+}
+
+chrome.runtime.onInstalled.addListener(details => {
+  sync();
+  refreshConcepts();
+  // Only on the upgrade that introduces decoding — not on a fresh install (who
+  // see the opt-in copy instead) and not on every patch after this one.
+  if (details && details.reason === "update" && isBefore(details.previousVersion, DECODE_LANDED_IN)) {
+    try { chrome.storage.local.set({ [UPGRADE_KEY]: DECODE_LANDED_IN }); } catch (e) {}
+  }
+});
 chrome.runtime.onStartup.addListener(() => { sync(); refreshConcepts(); });
-chrome.permissions.onAdded.addListener(sync);
+// The grant is what unblocks the glossary fetch, so re-run it the moment it lands.
+chrome.permissions.onAdded.addListener(() => { sync(); refreshConcepts(); });
 chrome.permissions.onRemoved.addListener(sync);
