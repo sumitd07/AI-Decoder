@@ -54,12 +54,16 @@ async function explain(sentence, opts = {}) {
           restatement: NOTHING_TO_DECODE,
           terms: [],
           gaps: [],
+          gateStatus: 'skip',
           _debug: debugFor({ r, index, started, gate, g: { model: null, usage: null, notes: ['gate_skip'] } }),
         };
       }
       cards = cards.filter((c) => gate.keep.includes(c.id));
     } catch (e) {
       gate = { error: e.message };
+      // Fails open, but never silently: this line is the only trace in the
+      // function logs that the gate was meant to run and didn't.
+      console.error('explain: gate failed open: ' + e.message);
     }
   }
 
@@ -76,8 +80,23 @@ async function explain(sentence, opts = {}) {
     restatement: g.output.restatement,
     terms: g.output.terms,
     gaps: g.output.gaps,
+    gateStatus: gateStatusFor(gateMode, gate),
     _debug: debugFor({ r, index, started, gate, g }),
   };
+}
+
+// A coarse, secret-free label for whether the gate ran on this request, so a
+// deploy can be checked from a curl: off | pass | skip | error:<cause>.
+function gateStatusFor(gateMode, gate) {
+  if (gateMode !== 'jev') return 'off';
+  if (!gate) return 'error:other';
+  if (!gate.error) return gate.skip ? 'skip' : 'pass';
+  const msg = String(gate.error);
+  if (/TYPESAFE_API_KEY is not set/i.test(msg)) return 'error:missing_key';
+  if (/HTTP 40[13]/.test(msg)) return 'error:auth';
+  if (/Cannot find module/i.test(msg)) return 'error:missing_module';
+  if (/timeout|abort/i.test(msg)) return 'error:timeout';
+  return 'error:other';
 }
 
 function debugFor({ r, index, started, gate, g }) {
@@ -99,4 +118,4 @@ function debugFor({ r, index, started, gate, g }) {
   };
 }
 
-module.exports = { explain, _resetIndexCache: () => { cachedIndex = null; } };
+module.exports = { explain, gateStatusFor, _resetIndexCache: () => { cachedIndex = null; } };

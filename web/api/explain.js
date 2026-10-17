@@ -46,6 +46,9 @@ module.exports = async function handler(req, res) {
 
   try {
     const result = await explain(sentence);
+    // Whether the sense gate ran (off | pass | skip | error:<cause>). No keys,
+    // no sentence text: it exists so a deploy can be verified from a curl.
+    if (result.gateStatus) res.setHeader('x-decoder-gate', result.gateStatus);
     const payload = {
       restatement: result.restatement,
       terms: result.terms,

@@ -66,3 +66,14 @@ test('a Jev failure surfaces as an error for explain.js to fail open on', async 
     await assert.rejects(() => gate.applyGate('Anything.', CARDS), /503/);
   } finally { restore(); }
 });
+
+test('gateStatusFor labels each outcome without leaking detail', () => {
+  const { gateStatusFor } = require('../explain/explain');
+  assert.strictEqual(gateStatusFor(null, null), 'off');
+  assert.strictEqual(gateStatusFor('jev', { skip: true }), 'skip');
+  assert.strictEqual(gateStatusFor('jev', { skip: false }), 'pass');
+  assert.strictEqual(gateStatusFor('jev', { error: 'jev provider: TYPESAFE_API_KEY is not set' }), 'error:missing_key');
+  assert.strictEqual(gateStatusFor('jev', { error: 'jev: Unauthorized (HTTP 401)' }), 'error:auth');
+  assert.strictEqual(gateStatusFor('jev', { error: "Cannot find module './gate'" }), 'error:missing_module');
+  assert.strictEqual(gateStatusFor('jev', { error: 'something odd' }), 'error:other');
+});
