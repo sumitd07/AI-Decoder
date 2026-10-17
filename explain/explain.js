@@ -12,6 +12,10 @@ const { retrieve } = require('./retrieve');
 const { buildPrompt } = require('./prompt');
 const { generate } = require('./generate');
 
+// Experimental sense gate (explain/gate.js), off unless opts.gate === 'jev' or
+// EXPLAIN_GATE=jev. Loaded lazily so the default path never touches it.
+const NOTHING_TO_DECODE = "Nothing to decode here. The sentence doesn't use any glossary term in its AI sense.";
+
 let cachedIndex = null;
 
 // Serverless keeps a warm process between requests, so loading a 1010-card index
@@ -36,34 +40,62 @@ async function explain(sentence, opts = {}) {
     embedOpts: opts.embedOpts || {},
   });
 
-  const prompt = buildPrompt(sentence, r.cards);
+  // Sense gate: refusal as its own layer, ahead of generation. Fails open — a
+  // gate error means today's behaviour, never a blank answer.
+  let cards = r.cards;
+  let gate = null;
+  const gateMode = opts.gate || process.env.EXPLAIN_GATE || null;
+  if (gateMode === 'jev') {
+    try {
+      const { applyGate } = require('./gate');
+      gate = await applyGate(sentence, cards, { threshold: opts.gateThreshold, ...(opts.gateOpts || {}) });
+      if (gate.skip) {
+        return {
+          restatement: NOTHING_TO_DECODE,
+          terms: [],
+          gaps: [],
+          _debug: debugFor({ r, index, started, gate, g: { model: null, usage: null, notes: ['gate_skip'] } }),
+        };
+      }
+      cards = cards.filter((c) => gate.keep.includes(c.id));
+    } catch (e) {
+      gate = { error: e.message };
+    }
+  }
+
+  const prompt = buildPrompt(sentence, cards);
 
   // Empty retrieval still generates. With no cards the model's job is to name
   // what isn't covered (D8) — that is the answer, not a reason to skip the call.
   const g = await generate(prompt, {
     ...opts.llmOpts,
-    allowedCardIds: r.cards.map((c) => c.id),
+    allowedCardIds: cards.map((c) => c.id),
   });
 
   return {
     restatement: g.output.restatement,
     terms: g.output.terms,
     gaps: g.output.gaps,
-    _debug: {
-      retrieved: r.cards.map((c) => ({ id: c.id, title: c.title, score: c.score, legs: c.legs })),
-      legOutput: r.legOutput,
-      retrieval: r.meta,
-      model: g.model,
-      embed_model: r.meta.embed_model,
-      usage: g.usage,
-      notes: g.notes || [],
-      // The model's reply verbatim. Kept because a parse failure is undiagnosable
-      // without it: the eval showed 32 empty rows and nothing to explain why.
-      raw: g.raw || null,
-      error: g.error || null,
-      shelf_version: index.version_id || null,
-      ms: Date.now() - started,
-    },
+    _debug: debugFor({ r, index, started, gate, g }),
+  };
+}
+
+function debugFor({ r, index, started, gate, g }) {
+  return {
+    retrieved: r.cards.map((c) => ({ id: c.id, title: c.title, score: c.score, legs: c.legs })),
+    legOutput: r.legOutput,
+    retrieval: r.meta,
+    gate,
+    model: g.model,
+    embed_model: r.meta.embed_model,
+    usage: g.usage,
+    notes: g.notes || [],
+    // The model's reply verbatim. Kept because a parse failure is undiagnosable
+    // without it: the eval showed 32 empty rows and nothing to explain why.
+    raw: g.raw || null,
+    error: g.error || null,
+    shelf_version: index.version_id || null,
+    ms: Date.now() - started,
   };
 }
 

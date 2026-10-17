@@ -10,13 +10,13 @@ Decoder is a browser extension that underlines known AI/technical terms on web p
 
 - **Access is opt-in.** The extension has no access to any page until you turn it on (a one-time permission granted from its popup), and you can turn it off at any time.
 - **Page text is read locally, never collected.** Once enabled, to find and underline terms the extension looks at the visible text of the page you're on, in your browser. This happens entirely on your device. Page content is **not** stored, logged, sent to us, or shared with anyone.
-- **Decoding a sentence sends that sentence, and only when you ask.** If you highlight a sentence and click Decode, that one sentence is sent to `aidecoder.app` and on to Google's Gemini API to be explained. Highlighting alone sends nothing — the request happens on the click. The page address, your account and the rest of the page stay on your device, and the sentence is not stored. Both surfaces have their own switch in the popup, so the highlighter can run with decoding off.
+- **Decoding a sentence sends that sentence, and only when you ask.** If you highlight a sentence and click Decode, that one sentence is sent to `aidecoder.app` and on to TypeSafe, which checks whether it uses AI terms, and Google's Gemini API, which explains it. Highlighting alone sends nothing — the request happens on the click. The page address, your account and the rest of the page stay on your device, and the sentence is not stored. Both surfaces have their own switch in the popup, so the highlighter can run with decoding off.
 - **Saving is optional and uses the same account as the web app.** If you sign in with Google inside the extension, the terms you save are stored in your account (via Supabase) so they appear in the Decoder web app and sync across devices. If you don't sign in, you can't save from the extension and nothing is sent anywhere.
 
 ## Data we collect
 
 - **Only if you sign in:** your **email address** (to identify your account) and the **identifiers of the terms you save** (e.g. `rag`). These are stored in our Supabase project so your saved terms sync across the extension and the web app.
-- **If you decode a sentence:** the sentence itself, sent to Google's Gemini API to be explained and not retained by us. No account or page identifier travels with it.
+- **If you decode a sentence:** the sentence itself, sent to TypeSafe (to check it uses AI terms) and Google's Gemini API (to explain it), and not retained by us. No account or page identifier travels with it.
 - **If you don't sign in and don't decode:** nothing is collected or transmitted.
 - We never sell or share your data, and we run no ads, analytics, or tracking.
 

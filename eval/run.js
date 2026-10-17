@@ -6,7 +6,7 @@
 // surface-agnostic wrapper — never retrieve.js/prompt.js/generate.js directly,
 // so it stays correct regardless of how those modules are implemented inside.
 //
-//   node eval/run.js [--legs=semantic|lexical|both] [--label=NAME] [--dry-run]
+//   node eval/run.js [--legs=semantic|lexical|both] [--label=NAME] [--gate=jev] [--gate-threshold=0.3] [--dry-run]
 //
 // --dry-run forces the mock providers (no key, no network) so the harness is
 // fully exercisable before any API key exists. shelf/shelf-index.json needs a
@@ -29,15 +29,19 @@ const { loadGolden, assertCardIdsResolve } = require('./golden');
 const { mapWithConcurrency, poolSize } = require('./pool');
 
 function parseArgs(argv) {
-  const opts = { legs: 'both', label: null, dryRun: false, indexPath: null };
+  const opts = { legs: 'both', label: null, dryRun: false, indexPath: null, gate: null, gateThreshold: undefined };
   for (const arg of argv) {
     if (arg === '--dry-run') opts.dryRun = true;
     else if (arg.startsWith('--legs=')) opts.legs = arg.slice('--legs='.length);
     else if (arg.startsWith('--label=')) opts.label = arg.slice('--label='.length);
     else if (arg.startsWith('--index=')) opts.indexPath = arg.slice('--index='.length);
+    // --gate=jev puts the Jev sense gate (explain/gate.js) in front of generation.
+    else if (arg.startsWith('--gate=')) opts.gate = arg.slice('--gate='.length);
+    else if (arg.startsWith('--gate-threshold=')) opts.gateThreshold = Number(arg.slice('--gate-threshold='.length));
     else if (arg === '--help' || arg === '-h') opts.help = true;
     else throw new Error(`run: unrecognised argument "${arg}"`);
   }
+  if (opts.gate && opts.gate !== 'jev') throw new Error(`run: --gate must be jev, got "${opts.gate}"`);
   if (!['semantic', 'lexical', 'both'].includes(opts.legs)) {
     throw new Error(`run: --legs must be semantic|lexical|both, got "${opts.legs}"`);
   }
@@ -154,7 +158,13 @@ async function prepareRun(opts, version_id) {
 async function runRow(explainFn, row, opts, extraOpts) {
   const started = Date.now();
   try {
-    const result = await explainFn(row.sentence, { legs: opts.legs, ...extraOpts });
+    const result = await explainFn(row.sentence, {
+      legs: opts.legs,
+      gate: opts.gate || undefined,
+      gateThreshold: opts.gateThreshold,
+      gateOpts: opts.dryRun ? { provider: 'mock' } : undefined,
+      ...extraOpts,
+    });
     const debug = result._debug || {};
     return {
       row: row.row,
@@ -168,6 +178,7 @@ async function runRow(explainFn, row, opts, extraOpts) {
       retrieved: debug.retrieved || [],
       legOutput: debug.legOutput || { semantic: [], lexical: [] },
       retrieval_meta: debug.retrieval || {},
+      gate: debug.gate || null,
       output: {
         restatement: result.restatement || '',
         terms: result.terms || [],
@@ -212,7 +223,7 @@ async function runRow(explainFn, row, opts, extraOpts) {
 async function main(argv) {
   const opts = parseArgs(argv);
   if (opts.help) {
-    console.log('node eval/run.js [--legs=semantic|lexical|both] [--label=NAME] [--dry-run]');
+    console.log('node eval/run.js [--legs=semantic|lexical|both] [--label=NAME] [--gate=jev] [--gate-threshold=0.3] [--dry-run]');
     return;
   }
 
@@ -244,7 +255,7 @@ async function main(argv) {
   const embedInfo = embedMod ? embedMod.providerInfo() : null;
 
   console.log(`run: shelf ${version_id} (from ${version_source})`);
-  console.log(`run: pipeline=${pipeline} legs=${opts.legs} dry_run=${opts.dryRun} label=${label}`);
+  console.log(`run: pipeline=${pipeline} legs=${opts.legs} gate=${opts.gate || 'none'} dry_run=${opts.dryRun} label=${label}`);
   if (llmInfo) console.log(`run: llm provider=${llmInfo.provider} model=${llmInfo.model} configured=${llmInfo.configured}`);
   if (embedInfo) console.log(`run: embed provider=${embedInfo.provider} model=${embedInfo.model} configured=${embedInfo.configured}`);
 
@@ -278,6 +289,7 @@ async function main(argv) {
     shelf_version_source: version_source,
     run_label: label,
     legs: opts.legs,
+    gate: opts.gate ? { mode: opts.gate, threshold: opts.gateThreshold ?? 'default' } : null,
     dry_run: opts.dryRun,
     pipeline,
     generated_at: new Date().toISOString(),
