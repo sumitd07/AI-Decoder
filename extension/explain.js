@@ -13,8 +13,13 @@
 // call from here would be blocked on every site.
 (function () {
   "use strict";
-  if (window.__decoderExplainLoaded) return;
+  // Same rule as content.js: an update leaves the old copy running with a dead
+  // extension context, so only a live copy counts as loaded.
+  const rt = chrome.runtime;
+  const alive = () => { try { return Boolean(rt && rt.id); } catch (e) { return false; } };
+  if (window.__decoderExplainLoaded && window.__decoderExplainAlive && window.__decoderExplainAlive()) return;
   window.__decoderExplainLoaded = true;
+  window.__decoderExplainAlive = alive;
 
   const card = window.__decoderCard;             // bridge from content.js
   const EX = window.DecoderExtract;
@@ -334,29 +339,52 @@
   }
   function schedule(focus) { clearTimeout(settle); settle = setTimeout(() => evaluate(focus), 10); }
 
-  document.addEventListener("mouseup", e => {
+  const onMouseUp = e => {
     if (e.target.closest && e.target.closest(".dcx-ui")) return;
     schedule();
-  });
-  document.addEventListener("keyup", e => {
+  };
+  const onKeyUp = e => {
     if (e.shiftKey || e.key === "Shift" || /^(Arrow|Home|End|Page)/.test(e.key)) schedule(true);
-  });
-  document.addEventListener("selectionchange", () => {
+  };
+  const onSelChange = () => {
     const sel = window.getSelection();
     if (!sel || sel.isCollapsed) hidePill();
-  });
-  document.addEventListener("mousedown", e => {
+  };
+  const onMouseDown = e => {
     if (e.target.closest && e.target.closest(".dcx-ui")) return;
     hidePill();
     if (panel) closePanel();
-  }, true);
-  document.addEventListener("keydown", e => {
+  };
+  const onKeyDown = e => {
     if (e.key !== "Escape") return;
     if (panel) closePanel(); else hidePill();
-  });
-  window.addEventListener("resize", () => {
+  };
+  const onResize = () => {
     hidePill();
     const r = rectNow();
     if (panel && r) place(panel, r, 10); else if (panel) closePanel();
-  });
+  };
+  document.addEventListener("mouseup", onMouseUp);
+  document.addEventListener("keyup", onKeyUp);
+  document.addEventListener("selectionchange", onSelChange);
+  document.addEventListener("mousedown", onMouseDown, true);
+  document.addEventListener("keydown", onKeyDown);
+  window.addEventListener("resize", onResize);
+
+  // content.js fires this before a newer copy sets up; a dead copy steps aside so
+  // the page never shows two Decode pills.
+  const onRetire = () => {
+    if (alive()) return;
+    hidePill();
+    if (panel) closePanel();
+    document.removeEventListener("mouseup", onMouseUp);
+    document.removeEventListener("keyup", onKeyUp);
+    document.removeEventListener("selectionchange", onSelChange);
+    document.removeEventListener("mousedown", onMouseDown, true);
+    document.removeEventListener("keydown", onKeyDown);
+    window.removeEventListener("resize", onResize);
+    document.removeEventListener("decoder:retire", onRetire);
+    window.__decoderExplainLoaded = false;
+  };
+  document.addEventListener("decoder:retire", onRetire);
 })();

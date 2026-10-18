@@ -81,6 +81,10 @@ window.__harnessCalls = [];
 window.chrome = {
   runtime: {
     lastError: null,
+    // content.js/explain.js treat a copy with no runtime.id as orphaned by an
+    // update and retire it; the harness copy has to read as live.
+    id: "decoder-harness",
+    getManifest: () => ({ version: "harness" }),
     async sendMessage(msg, cb) {
       window.__harnessCalls.push(msg && msg.type);
       try {

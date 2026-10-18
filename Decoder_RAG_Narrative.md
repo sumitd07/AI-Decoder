@@ -1,4 +1,4 @@
-# Decoder RAG — the beats
+# Decoder RAG: the beats
 
 Everything here is beats, the short cues for what to say. Not a script. The mental model up top is the spine, and every answer hangs off it.
 
@@ -22,9 +22,10 @@ That's the whole story. Ground, say it plainly, prove it. Learn it as three word
 
 - plain-language dictionary for AI jargon
 - look a term up, or click it while you read
-- the RAG feature: highlight a whole sentence, get what it's *saying*
+- the RAG feature: highlight a whole sentence on any page, get what it's *saying*
 - grounded in our glossary, aware of the page
 - never makes anything up
+- live today, with a public demo on the site
 
 One line: *"It's a plain-language dictionary for AI jargon. The RAG piece lets you highlight a confusing sentence anywhere and get it explained in plain English from our glossary, and it never invents."*
 
@@ -79,19 +80,33 @@ One line if they want it fast: *"Clean glossary, searched by meaning, a small mo
 - lesson: the bottleneck was the model, so I stopped throwing search at it
 
 **3. Doubt the measurement before you panic.**
-- a score screamed "everything's broken"
-- every single time, the test setup was the bug
-- lesson: if a number looks catastrophic, check how you measured first
+- once a score screamed "everything's broken", and every time the test setup was the bug
+- later the same answers scored ten-bad under one judge model and four-bad under another, nothing about the product changed, only who graded it
+- lesson: name your judge and check your harness, a score only means something against another measured the same way
 
 ---
 
-## "What's next?" (talk about it as in flight)
+## "Where it is now, and what's next"
 
-- **a verify step** that checks every claim before it reaches the reader. This is the real invention-killer, and the reason I could afford a cheap fast model to generate
-- **the model call**, testing a couple head-to-head on the gold set to lock the right one
+Just shipped:
+- it's live end to end, warm answers in about a second and a half
+- the highlight-a-sentence surface now works on any page, plus a public demo on the site
+- I ran the model bake-off, and it gave me a real product tension: the stronger model invents less but over-explains, it answers sentences it should decline; the cheap model declines better but invents more
+
+Still ahead:
+- **the verify step** that checks every claim before it reaches the reader. This is the real invention-killer, and it lets me use the model that grounds best and add refusal as its own layer
 - **the search index** moving into a proper vector store so it scales past a glossary
-- **into the browser extension**, so it's there in the flow of reading, which was the original point
-- **a growth loop for free**: every "we don't cover that" logs the next card to write
+- **the growth loop** the design gives for free: every "we don't cover that" is the next card to write
+
+---
+
+## "Where this is headed" (the bigger vision, if they ask about ambition)
+
+- today the grounding source is one clean, structured glossary
+- next: let people bookmark any article across the web and use it as a grounding source for decoding
+- so your own reading becomes the source: you bookmark a research paper on climate change, and later, browsing something related, you decode it against what you already read
+- a separate product, built on everything Decoder taught me, retrieval, grounding, evals
+- the through-line: the same discipline that keeps a glossary honest is what lets someone's personal library become a trusted source
 
 ---
 

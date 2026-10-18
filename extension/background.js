@@ -140,19 +140,58 @@ async function hasAllSites() {
   catch (e) { return false; }
 }
 
-async function sync() {
+const sameList = (a, b) => JSON.stringify(a || []) === JSON.stringify(b || []);
+
+async function doSync() {
   const granted = await hasAllSites();
   let registered = [];
   try { registered = await chrome.scripting.getRegisteredContentScripts({ ids: [SCRIPT.id] }); }
   catch (e) { registered = []; }
-  const isRegistered = registered.length > 0;
+  const current = registered[0];
 
-  if (granted && !isRegistered) {
-    try { await chrome.scripting.registerContentScripts([SCRIPT]); }
-    catch (e) { console.warn("[decoder] register failed", e); }
-  } else if (!granted && isRegistered) {
+  if (!granted) {
+    if (!current) return;
     try { await chrome.scripting.unregisterContentScripts({ ids: [SCRIPT.id] }); }
     catch (e) { console.warn("[decoder] unregister failed", e); }
+    return;
+  }
+  // Existence is not enough. A registration written by an older build names that
+  // build's files — 1.0.4's has no explain.js — so a surviving one underlines
+  // terms and never offers Decode.
+  if (current && sameList(current.js, SCRIPT.js) && sameList(current.css, SCRIPT.css)) return;
+  try {
+    if (current) await chrome.scripting.unregisterContentScripts({ ids: [SCRIPT.id] });
+    await chrome.scripting.registerContentScripts([SCRIPT]);
+  } catch (e) { console.warn("[decoder] register failed", e); }
+}
+
+// Serialised: the wake-up call below and onInstalled both run on an update, and
+// two overlapping registers would collide on the script id.
+let syncing = Promise.resolve();
+function sync() { syncing = syncing.then(doSync, doSync); return syncing; }
+
+// Registered scripts only reach pages loaded AFTER registration. Every tab open at
+// install, update or opt-in stayed dark until the reader reloaded it — which is
+// what "it stopped working, then came back" looks like from the outside.
+async function injectOpenTabs() {
+  if (!(await hasAllSites())) return;
+  let tabs = [];
+  try { tabs = await chrome.tabs.query({ url: ["http://*/*", "https://*/*"] }); } catch (e) { return; }
+  for (const tab of tabs) {
+    if (!tab.id || tab.discarded) continue;
+    const target = { tabId: tab.id };
+    try {
+      // Builds before 1.1.1 leave underlines but no way to retire themselves;
+      // injecting beside one would open two popovers per click. Leave that tab to
+      // its next reload. data-decoder marks a copy that can retire (content.js).
+      const [probe] = await chrome.scripting.executeScript({
+        target,
+        func: () => document.documentElement.hasAttribute("data-decoder") || !document.querySelector(".dcx-term")
+      });
+      if (!probe || !probe.result) continue;
+      await chrome.scripting.insertCSS({ target, files: SCRIPT.css });
+      await chrome.scripting.executeScript({ target, files: SCRIPT.js });
+    } catch (e) { /* store pages, PDFs, tabs mid-navigation */ }
   }
 }
 
@@ -177,6 +216,7 @@ function isBefore(a, b) {
 chrome.runtime.onInstalled.addListener(details => {
   sync();
   refreshConcepts();
+  injectOpenTabs();
   // Only on the upgrade that introduces decoding — not on a fresh install (who
   // see the opt-in copy instead) and not on every patch after this one.
   if (details && details.reason === "update" && isBefore(details.previousVersion, DECODE_LANDED_IN)) {
@@ -185,5 +225,10 @@ chrome.runtime.onInstalled.addListener(details => {
 });
 chrome.runtime.onStartup.addListener(() => { sync(); refreshConcepts(); });
 // The grant is what unblocks the glossary fetch, so re-run it the moment it lands.
-chrome.permissions.onAdded.addListener(() => { sync(); refreshConcepts(); });
+chrome.permissions.onAdded.addListener(() => { sync(); refreshConcepts(); injectOpenTabs(); });
 chrome.permissions.onRemoved.addListener(sync);
+
+// Self-heal on every worker start, not only on install/startup/permission events.
+// The worker wakes for any message or event, so a registration that went missing
+// comes back the next time Decoder is used, instead of at the next browser restart.
+sync();

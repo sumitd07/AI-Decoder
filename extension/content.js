@@ -2,8 +2,22 @@
   "use strict";
   // Guard: the script can arrive two ways (registered content script on load, or
   // injected into the current tab right after opt-in). Never set up twice.
-  if (window.__decoderLoaded) { if (window.__decoderRescan) window.__decoderRescan(); return; }
+  //
+  // An extension update orphans the copy already running in open tabs: its code
+  // keeps going but its extension context is dead (chrome.runtime.id reads
+  // undefined). So only a LIVE copy counts as loaded, and a new copy asks dead ones
+  // to retire through a DOM event — the DOM is shared across isolated worlds,
+  // window globals are not guaranteed to be.
+  const rt = chrome.runtime;
+  const alive = () => { try { return Boolean(rt && rt.id); } catch (e) { return false; } };
+  if (window.__decoderLoaded && window.__decoderAlive && window.__decoderAlive()) {
+    if (window.__decoderRescan) window.__decoderRescan();
+    return;
+  }
+  document.dispatchEvent(new CustomEvent("decoder:retire"));   // synchronous: old copies are gone after this line
   window.__decoderLoaded = true;
+  window.__decoderAlive = alive;
+  try { document.documentElement.setAttribute("data-decoder", rt.getManifest().version); } catch (e) {}
 
   let DATA = window.DECODER_CONCEPTS || [];
   let STATUS = window.DECODER_STATUS || {};
@@ -221,7 +235,7 @@
   }
 
   // ---- global interactions ----
-  document.addEventListener("click", e => {
+  const onClick = e => {
     const term = e.target.closest && e.target.closest(".dcx-term");
     if (term) {
       // never hijack a click that's inside a link or button — follow it normally
@@ -229,10 +243,32 @@
       e.preventDefault(); e.stopPropagation(); showPopover(term.getAttribute("data-dcx-id"), term); return;
     }
     if (pop && !(e.target.closest && e.target.closest("#dcx-pop"))) closePopover();
-  }, true);
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closePopover(); });
-  window.addEventListener("scroll", () => closePopover(), true);
-  window.addEventListener("resize", () => closePopover());
+  };
+  const onKey = e => { if (e.key === "Escape") closePopover(); };
+  const onScroll = () => closePopover();
+  const onResize = () => closePopover();
+  document.addEventListener("click", onClick, true);
+  document.addEventListener("keydown", onKey);
+  window.addEventListener("scroll", onScroll, true);
+  window.addEventListener("resize", onResize);
+
+  // A newer copy was injected and this one's context is dead: leave nothing behind
+  // that could double up with it.
+  function teardown() {
+    stopObserver();
+    clearTimeout(scanTimer);
+    removeAllHighlights();
+    if (toastEl) { toastEl.remove(); toastEl = null; }
+    document.removeEventListener("click", onClick, true);
+    document.removeEventListener("keydown", onKey);
+    window.removeEventListener("scroll", onScroll, true);
+    window.removeEventListener("resize", onResize);
+    document.removeEventListener("decoder:retire", onRetire);
+    document.documentElement.removeAttribute("data-decoder");
+    window.__decoderLoaded = false;
+  }
+  const onRetire = () => { if (!alive()) teardown(); };
+  document.addEventListener("decoder:retire", onRetire);
 
   // ---- dynamic pages ----
   function schedule() { clearTimeout(scanTimer); scanTimer = setTimeout(flush, 350); }

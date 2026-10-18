@@ -61,6 +61,20 @@ functionality. §3.
 
 ## 2. Store listing tab
 
+| Field | Status | What to do |
+|---|---|---|
+| Item name | **unchanged** | Leave it |
+| Summary | **CHANGED** | Replace entirely |
+| Description | **CHANGED** | Replace entirely |
+| Category | **unchanged** | Productivity |
+| Language | **unchanged** | English |
+| Screenshots | **CHANGED** | Delete 3, upload 4 |
+| Small promo tile | **unchanged** | Already uploaded |
+| Marquee tile | **unchanged** | Already uploaded |
+| Homepage URL | **CHANGED** | Point at `#how-it-works` |
+| Support URL | **unchanged** | Leave it |
+
+
 - **Item name:** `Decoder — AI Dictionary: AI Terms Explained`
   *(The title is the strongest ranking field. "AI dictionary" is the head keyword, "AI terms
   explained" is the phrase people type. 43 chars, under the ~45-char sweet spot. Unchanged from
@@ -68,29 +82,34 @@ functionality. §3.
 
 - **Summary** (max 132 chars) — **changed**:
 
-  `Free AI dictionary. Click any AI term for a plain-English explanation, or highlight a sentence to decode it.`
+  `Free AI dictionary. Click any AI term for a plain-English explanation — or highlight a whole sentence and decode that.`
 
-  *(107 chars. The old summary described only the highlighter. Both features now appear.)*
+  *(118 chars. The old summary described only the highlighter. Both features now appear.)*
 
 - **Category:** Productivity
 - **Language:** English
 
-- **Description** — **changed. The second paragraph is the policy-relevant part; keep it above
-  the fold and don't cut it.**
+- **Description** — **changed.**
 
-  > Decoder is an AI dictionary for your browser. It underlines AI jargon — RAG, MCP, embeddings, context window, hallucination and more — on any web page, and explains each term in plain English when you click it. You get a simple explanation, an analogy, and a real example, right where you're reading, without leaving the page.
+  > Decoder is an AI dictionary for your browser. It underlines AI jargon — RAG, MCP, embeddings, context window, hallucination and more — on any web page, and explains each term in plain English when you click it: a straight explanation, an analogy, and a real example, without leaving the page.
   >
-  > When a whole sentence is the problem, not a single word, highlight it and click Decode. That sentence is sent to our server and on to Google's Gemini API, which writes a plain-English explanation that appears in place. This only happens on your click — highlighting alone sends nothing, the rest of the page and the page address stay on your device, and you can switch decoding off in the popup and keep the highlighter.
+  > Sometimes it isn't one word — it's the whole sentence. Highlight it, click Decode, and it comes back in plain English right where it sat. The paragraph you were about to skip becomes one you can actually read.
   >
-  > Save the terms you stumble on, so the ones that trip you up become a short list you can skim before a meeting. Signed-in saves sync with the Decoder web app.
+  > Save the ones that keep tripping you up and they become a short list you can skim before a meeting. Signed-in saves sync with the Decoder web app.
   >
   > • Plain-language explanations, not textbook definitions
-  > • Decode any sentence you highlight — one click, explained in place
-  > • Each term shows its status — Core, Rising, Fading or Historical — so you know what's still worth learning
+  > • Decode a whole sentence, not just a word — one click, explained in place
+  > • Every term shows its status — Core, Rising, Fading or Historical — so you know what's still worth learning
   > • Works on any page; the underlines are subtle and easy to ignore
-  > • Separate switches for highlighting and decoding — run either one alone
-  > • Optional sign-in saves terms to your account and syncs them with the Decoder web app
-  > • No ads, no tracking — terms are matched on your device; the only thing that ever leaves it is a sentence you ask us to decode
+  > • Separate switches for highlighting and decoding — run either on its own
+  > • Optional sign-in syncs your saved terms with the Decoder web app
+  > • No ads, no tracking. Terms are matched on your device. Decoding sends just the sentence you highlighted — nothing else about the page — and you can switch it off
+
+  *(**On the policy question.** Limited Use requires the user-facing **feature** to be described
+  prominently on this page — not the data flow. Paragraph 2 does that. The data handling belongs in
+  the last bullet, the Privacy tab and the privacy policy, which is where it now sits. An earlier
+  draft of this kit put the Gemini call in paragraph 2; that over-read the policy and spent the
+  listing's best paragraph on a disclosure.)*
 
 - **Homepage URL:** `https://aidecoder.app/#how-it-works` — the live demo of both features. A
   reviewer or a visitor can try decoding without installing anything.
@@ -126,7 +145,25 @@ least one shot must be the real extension on a real page.
 
 ## 3. Privacy tab
 
-This is the tab that changes, and the one that holds submissions up. Fill every field.
+Compared field-by-field against the 1.0.4 submission, so "changed" means changed against what is
+in your dashboard right now.
+
+| Field | Status | What to do |
+|---|---|---|
+| Single purpose | **CHANGED** | Replace — must cover decoding |
+| Justification: storage | **CHANGED** | Replace — now covers the switches |
+| Justification: scripting | **CHANGED** | Replace — now injects the decoder too |
+| Justification: identity | **unchanged** | Accurate as written. Don't retype |
+| Justification: supabase.co | **CHANGED** | Replace — add glossary-card reads |
+| Remote code | **unchanged** | Still **No** |
+| Data: **Website content** | **CHANGED — NEW TICK** | **The material change of this submission** |
+| Data: PII / email | **unchanged** | Already ticked |
+| Data: User activity | **unchanged** | Already ticked |
+| Certifications ×3 | **unchanged** | All three stay ticked |
+| Privacy policy URL | **unchanged** | Same URL — the *page* changed, not the field |
+
+Purpose on every data entry is **App functionality**. Analytics or personalization would contradict
+the certifications lower on the same form.
 
 - **Single purpose** (one sentence):
 
