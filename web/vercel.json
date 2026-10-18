@@ -1,5 +1,32 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/term/aisafety",
+      "destination": "/term/ai-safety",
+      "permanent": true
+    },
+    {
+      "source": "/term/incontext",
+      "destination": "/term/incontextlearning",
+      "permanent": true
+    },
+    {
+      "source": "/term/moe",
+      "destination": "/term/mixtureofexperts",
+      "permanent": true
+    },
+    {
+      "source": "/term/redteaming",
+      "destination": "/term/red-teaming",
+      "permanent": true
+    },
+    {
+      "source": "/term/semanticsearch",
+      "destination": "/term/semantic-search",
+      "permanent": true
+    }
+  ]
 }

@@ -484,6 +484,18 @@ const $ = (s) => document.querySelector(s);
 const shell = $("#shell");
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function find(id){ return DATA.find(c => c.id === id); }
+/* Cards that duplicate another card. The left id is hidden and its aliases fold into the
+   right one; links and saved terms that use the left id open the right one.
+   Same list as scripts/export-shelf.js (JS_INTO_DB + DB_MERGE). */
+const MERGED_INTO = {
+  tooluse:'tool-use', llmjudge:'llm-as-judge', agentmemory:'agent-memory', computeruse:'computer-use',
+  vectordb:'vectordatabase', genai:'generativeai', diffusion:'diffusionmodel', texttoimage:'texttoimagegeneration',
+  supervised:'supervisedlearning', unsupervised:'unsupervisedlearning', backprop:'backpropagation',
+  contextengineering:'context-management', multiagent:'multi-agent', guardrails:'agent-guardrails',
+  reasoningmodels:'reasoningmodel', trainingdata:'trainingset', multimodal:'multimodalinput',
+  aisafety:'ai-safety', incontext:'incontextlearning', moe:'mixtureofexperts', redteaming:'red-teaming', semanticsearch:'semantic-search',
+};
+function canon(id){ const to = MERGED_INTO[id]; return to && find(to) ? to : id; }
 function norm(s){ return (s||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
 function match(text){ const n = norm(text); if(!n) return null; return DATA.find(c => c.aliasList.some(a => norm(a) === n)) || null; }
 function getResults(){
@@ -536,7 +548,7 @@ function scheduleRemoteSearch(){
     const rows = await rpc('search_concepts', { q, lim:20 });
     if(my !== remoteSeq || !rows) return;
     const known = new Set(DATA.map(c=>c.id));
-    state.remoteResults = rows.filter(r=>!known.has(r.id)).map(r=>({ id:r.id, term:r.term, aliases:r.aliases||'', said:'', status:r.status||'Core', oneLiner:r.one_liner||'', aliasList:[] }));
+    state.remoteResults = rows.filter(r=>!known.has(r.id) && !MERGED_INTO[r.id]).map(r=>({ id:r.id, term:r.term, aliases:r.aliases||'', said:'', status:r.status||'Core', oneLiner:r.one_liner||'', aliasList:[] }));
     if(state.spotlightOpen) renderSpotResults();
   }, 180);
 }
@@ -552,6 +564,7 @@ async function ensureConcept(id){
   return null;
 }
 async function openRow(id){
+  id = canon(id);
   if(!find(id) || !find(id).deeper){ await ensureConcept(id); }
   // Guard: if the id still isn't resolvable (unreachable Supabase, or an id the loaded
   // shelf genuinely doesn't have), don't open a modal with an undefined card — that
@@ -585,6 +598,16 @@ async function loadShelfFromDB(){
     if(r.lens_pm || r.lens_eng) LENSES[r.id] = { pm:r.lens_pm||'', eng:r.lens_eng||'' };
   }
   for(const c of staticOnly) DATA.push(c);
+  // Drop duplicate cards whose survivor loaded, folding their names into the survivor's aliases.
+  for(const [from, to] of Object.entries(MERGED_INTO)){
+    const dup = find(from), keep = find(to);
+    if(!dup || !keep) continue;
+    for(const a of [dup.term, ...(dup.aliasList||[])]){ const n = String(a||'').toLowerCase(); if(n && !keep.aliasList.includes(n)) keep.aliasList.push(n); }
+    DATA.splice(DATA.indexOf(dup), 1);
+  }
+  const savedBefore = state.saved.join();
+  state.saved = [...new Set(state.saved.map(canon))].filter(id => find(id));
+  if(state.saved.join() !== savedBefore) persist();
   renderLookup(true); renderSheet();
   $("#s-lookup").style.display = state.tab==='lookup' ? '' : 'none';
   $("#s-decode").style.display = state.tab==='decode' ? '' : 'none';
@@ -1349,7 +1372,7 @@ function openSpotlight(){ state.spotlightOpen = true; state.query = ''; state.se
 function toggleSpotlight(){ state.spotlightOpen ? (state.spotlightOpen=false, renderSpotlight()) : openSpotlight(); }
 function escapeAll(){ state.spotlightOpen=false; state.openId=null; state.sel=null; demoHidePill(); demoClosePanel(); renderSpotlight(); renderModal(false); renderPopover(); closeSignin(); }
 
-function openCard(id){ state.openId = id; state.deeperOpen = false; state.spotlightOpen = false; state.sel = null; renderSpotlight(); renderPopover(); renderModal(true); }
+function openCard(id){ id = canon(id); state.openId = id; state.deeperOpen = false; state.spotlightOpen = false; state.sel = null; renderSpotlight(); renderPopover(); renderModal(true); }
 function closeCard(){ state.openId = null; renderModal(false); }
 function toggleDeeper(){
   state.deeperOpen = !state.deeperOpen;
