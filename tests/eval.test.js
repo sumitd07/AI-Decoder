@@ -52,19 +52,19 @@ test('parseCsv: quotes, commas, and newlines together in one field', () => {
 // Golden-set loader
 // ---------------------------------------------------------------------------
 
-test('loadGolden: real golden-set.csv has 39 rows, 28 positive / 11 negative', () => {
+test('loadGolden: real golden-set.csv has 54 rows, 29 positive / 25 negative', () => {
   const rows = golden.loadGolden();
-  assert.equal(rows.length, 39);
+  assert.equal(rows.length, 54);
   const positives = rows.filter((r) => !r.is_negative);
   const negatives = rows.filter((r) => r.is_negative);
-  assert.equal(positives.length, 28);
-  assert.equal(negatives.length, 11);
+  assert.equal(positives.length, 29);
+  assert.equal(negatives.length, 25);
 });
 
-test('loadGolden: every row has a sentence and row numbers are 1..39 with no gaps', () => {
+test('loadGolden: every row has a sentence and row numbers are 1..54 with no gaps', () => {
   const rows = golden.loadGolden();
   for (const r of rows) assert.ok(r.sentence.length > 0, `row ${r.row} has an empty sentence`);
-  assert.deepEqual(rows.map((r) => r.row), Array.from({ length: 39 }, (_, i) => i + 1));
+  assert.deepEqual(rows.map((r) => r.row), Array.from({ length: 54 }, (_, i) => i + 1));
 });
 
 test('loadGolden + assertCardIdsResolve: all real card ids resolve against the real shelf export', () => {
@@ -85,10 +85,10 @@ test('loadGolden: throws if the header does not match (wrong file fed in)', () =
   fs.rmSync(tmp);
 });
 
-test('loadGolden: throws if the row count drifts from 39', () => {
+test('loadGolden: throws if the row count drifts from 54', () => {
   const tmp = path.join(os.tmpdir(), `golden-short-${Date.now()}.csv`);
   fs.writeFileSync(tmp, 'Sentence,Associated Cards (Comma separated),Explanation,Card IDs\n"one",,"exp",\n');
-  assert.throws(() => golden.loadGolden(tmp), /expected 39 rows/);
+  assert.throws(() => golden.loadGolden(tmp), /expected 54 rows/);
   fs.rmSync(tmp);
 });
 
@@ -96,14 +96,14 @@ test('loadGolden: throws if the row count drifts from 39', () => {
 // eval/negatives.json
 // ---------------------------------------------------------------------------
 
-test('negatives.json: covers exactly the 11 negative rows from the golden set, no more no less', () => {
+test('negatives.json: covers exactly the 25 negative rows from the golden set, no more no less', () => {
   const rows = golden.loadGolden();
   const negativeRowNumbers = new Set(rows.filter((r) => r.is_negative).map((r) => r.row));
 
   const negatives = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'eval', 'negatives.json'), 'utf8'));
   const classifiedRowNumbers = negatives.rows.map((r) => r.row);
 
-  assert.equal(classifiedRowNumbers.length, 11, 'negatives.json should classify exactly 11 rows');
+  assert.equal(classifiedRowNumbers.length, 25, 'negatives.json should classify exactly 25 rows');
   assert.deepEqual(new Set(classifiedRowNumbers), negativeRowNumbers, 'negatives.json rows must exactly match the golden set\'s negative rows');
 
   for (const r of negatives.rows) {
@@ -118,7 +118,7 @@ test('negatives.json: summary counts match the row classifications', () => {
   const falseFriend = negatives.rows.filter((r) => r.class === 'false_friend').length;
   assert.equal(negatives.summary.true_gap, trueGap);
   assert.equal(negatives.summary.false_friend, falseFriend);
-  assert.equal(negatives.summary.total, 11);
+  assert.equal(negatives.summary.total, 25);
 });
 
 // ---------------------------------------------------------------------------

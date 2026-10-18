@@ -1,6 +1,6 @@
 {
   "_comment": [
-    "Classifies the 11 negative golden-set rows (empty Card IDs) into the two kinds",
+    "Classifies the 25 negative golden-set rows (empty Card IDs) into the two kinds",
     "the PRD (§Evaluation) and DECISIONS-Explain-This.md score separately: true_gap",
     "(no card exists for anything the sentence turns on) vs false_friend (a content",
     "word IS a shelf card title/alias, but this sentence uses a different sense).",
@@ -16,7 +16,8 @@
     "",
     "This mechanical check is a proxy for 'different sense', not a semantic judge —",
     "row 27 is a genuine edge case where the hit is arguably the SAME sense; see",
-    "its reason for why it's still filed here rather than as a true_gap."
+    "its reason for why it's still filed here rather than as a true_gap.",
+    "2026-10-18: row 27 (NLP) moved to positive with Card IDs [nlp], as its own note recommended; rows 40-54 added from Sumit's real-world non-AI sentences, classified with the same mechanical rule."
   ],
   "shelf_version_id": "shelf-1010-02e436fd8106",
   "classified_against": "shelf/shelf-export.json",
@@ -44,12 +45,6 @@
       "sentence": "The Joker in Batman universe is portrayed as an agent of chaos, mastermind but also as a person who spoils people for fun.",
       "class": "false_friend",
       "reason": "\"agent\" matches the alias \"agent\" on the agents card. This is the PRD's own worked example of a false friend (\"agent of chaos\" — the everyday sense, not an AI agent)."
-    },
-    {
-      "row": 27,
-      "sentence": "Semantic Analysis is a subfield of Natural Language Processing (NLP) that attempts to understand the meaning of Natural Language.",
-      "class": "false_friend",
-      "reason": "EDGE CASE, flagged rather than quietly filed. \"NLP\" and \"Natural Language Processing\" both hit the nlp card's title/alias, and here they name the actual NLP field — arguably the SAME sense the card covers, not a different one, so this doesn't cleanly fit the PRD's false-friend definition. The gold explanation (\"the shelf doesn't cover 'semantic analysis' or NLP yet\") reads as if it predates the shelf's nlp card, which exists in the current export (shelf-1010-02e436fd8106) with definition + examples. \"Semantic Analysis\" itself, the sentence's actual subject, has no shelf hit at all. Net effect: retrieval will very likely return the nlp card here, which the golden set's empty Card IDs will score as a leak — filed as false_friend (not true_gap) so that leak lands in the class where a leak is an expected, visible number rather than silently miscounted against true-gap coverage. Worth flagging to whoever maintains the golden set: either the shelf grew past this row's assumption, or the row should score card [nlp] as expected rather than none."
     },
     {
       "row": 29,
@@ -86,13 +81,130 @@
       "sentence": "His last five movies were all flops.",
       "class": "false_friend",
       "reason": "\"flops\" matches the flops card (floating point operations, a compute-cost unit). The sentence uses it as ordinary slang for failed films, not the FLOPs sense."
+    },
+    {
+      "row": 40,
+      "sentence": "The hospital’s HMIS solution consumes this information and generates a token number or queue number for the patients.",
+      "class": "false_friend",
+      "reason": "\"token\" matches the tokens card and \"queue\" the requestqueue card; the sentence means a hospital queue ticket. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 41,
+      "sentence": "In the 1960s and 1970s, anti-CIA activists occasionally revealed long lists of overseas intelligence agents to sabotage their activities.",
+      "class": "false_friend",
+      "reason": "\"agents\" matches the agents card; the sentence means intelligence agents (spies). Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 42,
+      "sentence": "What happens if I just make the air gap bigger for 480 V in a vacuum chamber? You move the failure to a lower pressure instead of removing it.",
+      "class": "false_friend",
+      "reason": "\"air gap\" matches the airgap card; the sentence means the gap between electrical conductors. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 43,
+      "sentence": "Symptoms begin before age 12 and include fidgeting, difficulty paying attention and losing things.",
+      "class": "false_friend",
+      "reason": "\"attention\" matches the attention card; the sentence means a person paying attention. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 44,
+      "sentence": "Optimizing batch production in manufacturing is all about finding the right balance between batch size and efficiency.",
+      "class": "false_friend",
+      "reason": "\"batch size\" matches the batchsize card; the sentence means factory production batches. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 45,
+      "sentence": "The term \"community capacity building\" (CCB) began to be used in 1995 and since then became popular for example within the policy literature in the United Kingdom, particularly in the context of urban policy, regeneration and social development.",
+      "class": "false_friend",
+      "reason": "\"capacity\" matches the capacity card; the sentence means community capacity building in social policy. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 46,
+      "sentence": "Make a cup of tea, pour a glass of wine, get cosy, and pick a few of these conversation starters.",
+      "class": "false_friend",
+      "reason": "\"conversation\" matches the conversation card; the sentence means people talking. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 47,
+      "sentence": "The Digger and other biggest flops of the century: what an epic movie flop means for Tom Cruise and Hollywood.",
+      "class": "false_friend",
+      "reason": "\"flops\" matches the flops card; the sentence means films that failed. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 48,
+      "sentence": "Gemini lies between Taurus to the west and Cancer to the east, with Auriga and Lynx to the north, Monoceros and Canis Minor to the south, and Orion to the south-west.",
+      "class": "false_friend",
+      "reason": "\"Gemini\" matches the gemini card; the sentence means the constellation. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 49,
+      "sentence": "Writing the Ensemble Cast: A Screenwriter’s Guide to Balancing Multiple Characters.",
+      "class": "false_friend",
+      "reason": "\"ensemble\" matches the ensemble card; the sentence means an ensemble cast. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 50,
+      "sentence": "The Environment (Protection) Act, 1986 is India's primary umbrella legislation designed to protect and improve the environment and prevent hazards to human beings, plants, animals, and property.",
+      "class": "false_friend",
+      "reason": "\"environment\" matches the environment card; the sentence means the natural environment in law. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 51,
+      "sentence": "Effective goal scoring requires not just shooting ability but also intelligent movement off the ball.",
+      "class": "false_friend",
+      "reason": "\"goal\" matches the goal card; the sentence means scoring in football. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 52,
+      "sentence": "An axial color gradient (sometimes also called a linear color gradient) is specified by two points, and a color at each point.",
+      "class": "false_friend",
+      "reason": "\"gradient\" matches the gradient and checkpointing cards; the sentence means a color gradient. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 53,
+      "sentence": "The Trojans were Anatolian (Luwian) people from northwestern Anatolia (modern-day Turkey), rather than ethnic Greeks.",
+      "class": "true_gap",
+      "reason": "No content word matches any shelf card title or alias (whole-token, 3+ chars). Ancient history; nothing on the shelf is adjacent. Added 2026-10-18 from Sumit's real-world sentences."
+    },
+    {
+      "row": 54,
+      "sentence": "In some legal jurisdictions there may be a requirement that the accused disclose an alibi defence prior to the trial.",
+      "class": "false_friend",
+      "reason": "\"alibi\" matches the alibi card (ALiBi, a position-encoding method); the sentence means a legal alibi. Added 2026-10-18 from Sumit's real-world sentences."
     }
   ],
   "summary": {
-    "total": 11,
-    "true_gap": 3,
-    "false_friend": 8,
-    "true_gap_rows": [13, 14, 29],
-    "false_friend_rows": [16, 22, 27, 30, 31, 32, 33, 34]
+    "total": 25,
+    "true_gap": 4,
+    "false_friend": 21,
+    "true_gap_rows": [
+      13,
+      14,
+      29,
+      53
+    ],
+    "false_friend_rows": [
+      16,
+      22,
+      30,
+      31,
+      32,
+      33,
+      34,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      54
+    ]
   }
 }

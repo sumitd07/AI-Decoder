@@ -13,12 +13,13 @@ const DEFAULT_CSV_PATH = path.join(__dirname, 'golden-set.csv');
 const DEFAULT_SHELF_EXPORT_PATH = path.join(__dirname, '..', 'shelf', 'shelf-export.json');
 
 // The golden set's shape is fixed by the PRD (§Evaluation) and the technical
-// doc: 39 rows, 28 positive / 11 negative. A silent drift here (a row added,
+// doc: 39 rows, 28 positive / 11 negative, grown on 2026-10-18 to 54 rows, 29
+// positive / 25 negative (row 27 became positive; 15 real-world negatives added). A silent drift here (a row added,
 // a Card IDs cell accidentally emptied) would make every downstream score
 // meaningless without anyone noticing, so the loader fails loudly instead.
-const EXPECTED_ROWS = 39;
-const EXPECTED_POSITIVE = 28;
-const EXPECTED_NEGATIVE = 11;
+const EXPECTED_ROWS = 54;
+const EXPECTED_POSITIVE = 29;
+const EXPECTED_NEGATIVE = 25;
 
 const EXPECTED_HEADER = ['Sentence', 'Associated Cards (Comma separated)', 'Explanation', 'Card IDs'];
 
