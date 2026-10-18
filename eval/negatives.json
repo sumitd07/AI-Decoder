@@ -163,8 +163,8 @@
     {
       "row": 53,
       "sentence": "The Trojans were Anatolian (Luwian) people from northwestern Anatolia (modern-day Turkey), rather than ethnic Greeks.",
-      "class": "true_gap",
-      "reason": "No content word matches any shelf card title or alias (whole-token, 3+ chars). Ancient history; nothing on the shelf is adjacent. Added 2026-10-18 from Sumit's real-world sentences."
+      "class": "false_friend",
+      "reason": "\"Trojans\" is the plural of the trojan card (a hidden backdoor in a model). The mechanical whole-token check misses it because retrieval has no plural handling (\"trojans\" != \"trojan\"), so it was first filed as true_gap; Sumit caught it. The sentence means the ancient people of Troy. Added 2026-10-18 from Sumit's real-world sentences."
     },
     {
       "row": 54,
@@ -175,13 +175,12 @@
   ],
   "summary": {
     "total": 25,
-    "true_gap": 4,
-    "false_friend": 21,
+    "true_gap": 3,
+    "false_friend": 22,
     "true_gap_rows": [
       13,
       14,
-      29,
-      53
+      29
     ],
     "false_friend_rows": [
       16,
@@ -204,6 +203,7 @@
       50,
       51,
       52,
+      53,
       54
     ]
   }

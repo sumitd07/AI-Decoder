@@ -1,5 +1,9 @@
 'use strict';
 // Prompt construction (CONTRACT.md ## explain/prompt.js).
+// Prompt v2 (2026-10-18, D46): rule 4 keeps the writer's word for a gap instead of
+// forbidding a definition (D43 showed forbidding it made the model stop naming
+// gaps), rule 8 keeps the sentence's strength, and the example no longer
+// overstates ("cut" → "a fix").
 //
 // Carries the sentence, the FULL retrieved card — title, definition, examples —
 // for every card in the set, and the instruction (D18). At a 5-card cap the
@@ -30,13 +34,15 @@ Rules:
 
 3. Use only the supplied cards and the sentence itself. What a term means comes from a card. How the terms relate in this sentence comes from the sentence. Anything else — a fact, a number, a definition you happen to know — is invention, and one invention is worse than any number of admitted gaps.
 
-4. If the sentence turns on a term that is not in the supplied cards, name it as a gap. Do not define it. Do not work around it with a vaguer word. Saying "not covered yet" is a good answer here.
+4. If the sentence turns on an AI or technical term that is not in the supplied cards, list it in "gaps". In the restatement, keep the writer's own word for it — "they speed it up with speculative decoding, which the glossary doesn't cover yet" — and never swap it for your own description of what it is or does. That description would come from your own knowledge, which rule 3 forbids. Ordinary words are not gaps: a product name, a job title, or a phrase any reader already knows can be restated in plain words from the sentence itself.
 
 5. Explain only the terms the sentence turns on. You will often be given cards that are not load-bearing for this sentence — ignore them. Completeness works against the twenty seconds.
 
 6. The cards carry examples. They are there to show you what the term means. Explain the sentence, never the example.
 
 7. If the sentence uses a word that happens to be a glossary term but not in its glossary sense — "agent of chaos", an "epoch" of history, a college "dropout" — say so plainly and stop. Do not explain the technical sense of a word the writer did not mean.
+
+8. Say exactly as much as the sentence says. Keep its strength: if the writer says something reduced a problem, do not say it solved it, and "often" stays "often". Do not add a cause, a result, a judgment or a bit of history the writer did not state.
 
 Voice:
 
@@ -54,7 +60,7 @@ Sentence: "We cut hallucination by tightening the retriever's top-k and rerankin
 Cards supplied: Hallucination, Top-k, Reranking, Context window, Chunking.
 Good output:
 {
-  "restatement": "A fix for the model making things up. They asked the search step for fewer documents, and reordered what came back so the best ones sat at the top. Fewer, better documents go to the model, and it has less junk to get confused by.",
+  "restatement": "A way to make the model invent less. They asked the search step for fewer documents, and reordered what came back so the best ones sat at the top. Fewer, better documents go to the model, and it has less junk to get confused by.",
   "terms": [
     { "card_id": "hallucination", "surface": "hallucination" },
     { "card_id": "topk", "surface": "top-k" },
