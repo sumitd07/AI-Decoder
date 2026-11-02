@@ -304,8 +304,8 @@ function renderTerm(c, idToTerm, validIds) {
 // ---------- hub page ----------
 function renderHub(concepts) {
   const canonical = `${SITE}/term/`;
-  const title = `AI glossary — ${concepts.length} terms explained in plain English | Decoder`;
-  const desc = 'A plain-English dictionary of AI terms — from RAG and tokens to agents and embeddings. Every term with a simple explanation, an analogy, and an example.';
+  const title = `AI glossary: ${concepts.length} terms in plain English | Decoder`;
+  const desc = 'Plain-English definitions of AI terms such as RAG, tokens and embeddings. Each term has a short meaning, an analogy and an example.';
 
   const sorted = concepts.slice().sort((a, b) =>
     a.term.localeCompare(b.term, 'en', { sensitivity: 'base' }));
@@ -323,12 +323,12 @@ function renderHub(concepts) {
   parts.push('<body><main class="wrap">');
   parts.push(siteHeader());
   parts.push(`<h1>The AI glossary, in plain English</h1>`);
-  parts.push(`<p class="idx-intro">${esc(concepts.length)} AI terms, each with a one-line meaning, an analogy, and a real example. Click any term for the full explanation.</p>`);
+  parts.push(`<p class="idx-intro">${esc(concepts.length)} AI terms, each with a one-line meaning, an analogy and an example. Open a term for the full explanation.</p>`);
   parts.push(`<p class="jump">${letters.map(l => `<a href="#l-${esc(l)}">${esc(l)}</a>`).join('')}</p>`);
 
   for (const letter of letters) {
     const items = groups.get(letter).map(c => {
-      const line = c.oneLiner ? ` — ${esc(truncate(c.oneLiner, 90))}` : '';
+      const line = c.oneLiner ? `: ${esc(truncate(c.oneLiner, 90))}` : '';
       return `<li><a href="/term/${esc(c.id)}">${esc(c.term)}</a>${line}</li>`;
     }).join('');
     parts.push(`<section class="idx-group" id="l-${esc(letter)}"><h2>${esc(letter)}</h2><ul class="idx-list">${items}</ul></section>`);
