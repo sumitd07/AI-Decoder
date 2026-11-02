@@ -119,17 +119,17 @@ async function loadConcepts(useLocal) {
 // ---------- shared page chrome ----------
 const CSS = `
 :root{
-  --bg:#fdfdfc;--surface:#ffffff;--surface-2:#f7f7f8;--text:#0e0f12;--text-2:#22252b;--text-3:#3f4249;--muted:#6a6e75;--faint:#9a9ea5;
-  --border:rgba(20,24,33,.10);--border-2:rgba(20,24,33,.14);--hairline:rgba(20,24,33,.08);--accent:#4f77a6;--secondary:#f09637;
+  --bg:#fcfcfa;--surface:#ffffff;--surface-2:#f4f4f0;--text:#161618;--text-2:#262624;--text-3:#3d3d39;--muted:#6b6a64;--faint:#9b9b96;
+  --border:rgba(20,20,20,.10);--border-2:rgba(20,20,20,.14);--hairline:rgba(20,20,20,.08);--accent:#4f77a6;--secondary:#f09637;
   --st-core-c:oklch(.5 .085 155);--st-core-bg:oklch(.955 .03 155);
   --st-rising-c:oklch(.56 .12 55);--st-rising-bg:oklch(.955 .05 72);
   --st-fading-c:oklch(.55 .05 250);--st-fading-bg:oklch(.955 .022 250);
   --st-historical-c:oklch(.5 0 0);--st-historical-bg:oklch(.925 0 0);
-  --font-primary:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --font-secondary:"Newsreader",Georgia,"Times New Roman",serif;
+  --font-primary:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-secondary:var(--font-primary);
 }
 @media (prefers-color-scheme:dark){:root{
-  --bg:#131519;--surface:#1c1f25;--surface-2:#23272e;--text:#f4f5f7;--text-2:#e6e8ec;--text-3:#c6cad1;--muted:#969ba3;--faint:#6d727a;
+  --bg:#151516;--surface:#1d1d1e;--surface-2:#252524;--text:#e9e8e3;--text-2:#dddcd6;--text-3:#c5c4bd;--muted:#9a9992;--faint:#6f6e68;
   --border:rgba(255,255,255,.12);--border-2:rgba(255,255,255,.17);--hairline:rgba(255,255,255,.10);
   --st-core-c:oklch(.82 .11 155);--st-core-bg:oklch(.33 .05 155);
   --st-rising-c:oklch(.83 .12 68);--st-rising-bg:oklch(.35 .06 60);
@@ -137,23 +137,23 @@ const CSS = `
   --st-historical-c:oklch(.78 0 0);--st-historical-bg:oklch(.34 0 0);
 }}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:var(--font-primary);-webkit-font-smoothing:antialiased;letter-spacing:-.006em;line-height:1.62}
+body{background:var(--bg);color:var(--text);font-family:var(--font-primary);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.65}
 a{color:var(--accent);text-decoration:none}a:hover{opacity:.72}
 .wrap{max-width:720px;margin:0 auto;padding:28px 20px 72px}
 .site-h{display:flex;align-items:center;justify-content:space-between;padding-bottom:22px;border-bottom:1px solid var(--hairline);margin-bottom:24px}
-.brand{font-family:var(--font-secondary);font-weight:600;font-size:20px;color:var(--text)}
+.brand{font-family:var(--font-secondary);font-weight:600;font-size:19px;letter-spacing:-.015em;color:var(--text)}
 .brand .dot{color:var(--secondary)}
 .brand-sub{font-size:12.5px;color:var(--muted)}
 .crumb{font-size:13px;color:var(--muted);margin-bottom:14px}.crumb a{color:var(--muted)}
-h1{font-family:var(--font-secondary);font-weight:600;font-size:40px;line-height:1.08;letter-spacing:-.02em;margin:2px 0 12px;color:var(--text)}
+h1{font-family:var(--font-secondary);font-weight:600;font-size:36px;line-height:1.1;letter-spacing:-.025em;margin:2px 0 12px;color:var(--text)}
 .meta-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
 .badge{display:inline-flex;align-items:center;gap:5px;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.03em;border-radius:20px;padding:4px 10px}
 .said{color:var(--muted);font-style:italic;font-family:var(--font-secondary);font-size:16px}
 .aka{color:var(--text-3);font-size:15px;margin:0 0 4px}
 .lead{font-size:20px;line-height:1.5;color:var(--text);margin:16px 0 30px;font-weight:450}
 .blk{margin:0 0 24px}
-.blk h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;margin:0 0 7px}
-.blk p{margin:0;font-size:16.5px;color:var(--text-2)}
+.blk h2{font-size:15px;color:var(--muted);font-weight:500;margin:0 0 6px}
+.blk p{margin:0;font-size:17px;color:var(--text-2)}
 .deeper{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
 .lenses{display:grid;gap:12px;grid-template-columns:1fr 1fr;margin:0 0 24px}
 @media (max-width:560px){.lenses{grid-template-columns:1fr}}
@@ -173,17 +173,15 @@ ul.rel li a{font-weight:600}
 .site-f a{color:var(--muted)}
 .idx-intro{font-size:17px;color:var(--text-2);margin:0 0 28px}
 .idx-group{margin:0 0 26px}
-.idx-group h2{font-family:var(--font-secondary);font-size:22px;color:var(--text);margin:0 0 10px;border-bottom:1px solid var(--hairline);padding-bottom:4px}
+.idx-group h2{font-family:var(--font-secondary);font-size:19px;letter-spacing:-.015em;color:var(--text);margin:0 0 10px;border-bottom:1px solid var(--hairline);padding-bottom:4px}
 .idx-list{list-style:none;margin:0;padding:0;display:grid;gap:9px}
 .idx-list li{font-size:15px;color:var(--muted)}
 .idx-list li a{font-weight:600}
 .jump{font-size:13px;color:var(--muted);margin:0 0 26px;line-height:2}.jump a{margin-right:8px}
 `.trim();
 
-const FONTS =
-  '<link rel="preconnect" href="https://fonts.googleapis.com">' +
-  '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
-  '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">';
+// System UI face, same as sumitdeshmukh.com, so no webfont to load.
+const FONTS = '';
 
 const ICONS =
   '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">' +
