@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reward model — what it means in AI | Decoder</title>
+<title>Reward model: what it means in AI | Decoder</title>
 <meta name="description" content="A model trained to score answers the way humans would, so it can grade at scale during training.">
 <link rel="canonical" href="https://aidecoder.app/term/rewardmodel">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Reward model — what it means in AI | Decoder">
+<meta property="og:title" content="Reward model: what it means in AI | Decoder">
 <meta property="og:description" content="A model trained to score answers the way humans would, so it can grade at scale during training.">
 <meta property="og:url" content="https://aidecoder.app/term/rewardmodel">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">A model trained to score answers the way humans would, so it can grade at scale during training.</p>
 <section class="blk"><h2>Think of it like</h2><p>Like teaching a judge your taste from a stack of ranked examples, then letting that judge score thousands more while you sleep.</p></section>
 <section class="blk"><h2>Example</h2><p>Labelers rank a few thousand answer-pairs; a reward model learns from them and then rates millions of the LLM’s attempts.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>The reward model turns scattered human preferences into a single differentiable score the main model can optimize against. It’s the linchpin of RLHF — the policy chases higher reward. Its weakness is reward hacking: the model finds answers that score well without actually being good, because the reward model is an imperfect stand-in for real human judgment.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>The reward model turns scattered human preferences into a single differentiable score the main model can optimize against. It’s the linchpin of RLHF — the policy chases higher reward. Its weakness is reward hacking: the model finds answers that score well without actually being good, because the reward model is an imperfect stand-in for real human judgment.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>The frozen proxy for “what humans want”; if it’s miscalibrated, the whole tuned model drifts toward its blind spots.</p></div><div class="lens"><h3>For engineers</h3><p>A learned scalar scorer over responses, trained on preference pairs; the objective the RL policy optimizes.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/rlhf">RLHF</a> — The engine inside RLHF.</li><li><a href="/term/preferencedata">Preference data</a> — Trained on preference data.</li><li><a href="/term/dpo">DPO</a> — Avoided by DPO.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/rlhf">RLHF</a>: The engine inside RLHF.</li><li><a href="/term/preferencedata">Preference data</a>: Trained on preference data.</li><li><a href="/term/dpo">DPO</a>: Avoided by DPO.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

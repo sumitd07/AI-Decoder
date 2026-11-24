@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Draft Model — what it means in AI | Decoder</title>
+<title>Draft Model: what it means in AI | Decoder</title>
 <meta name="description" content="The small, fast model that proposes candidate next words for a bigger model to check.">
 <link rel="canonical" href="https://aidecoder.app/term/draftmodel">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Draft Model — what it means in AI | Decoder">
+<meta property="og:title" content="Draft Model: what it means in AI | Decoder">
 <meta property="og:description" content="The small, fast model that proposes candidate next words for a bigger model to check.">
 <meta property="og:url" content="https://aidecoder.app/term/draftmodel">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">The small, fast model that proposes candidate next words for a bigger model to check.</p>
 <section class="blk"><h2>Think of it like</h2><p>Like an intern who quickly sketches the next few lines so the expert only has to review, not write from scratch.</p></section>
 <section class="blk"><h2>Example</h2><p>In speculative decoding, a 1-billion-parameter draft model guesses tokens that a 70-billion-parameter model then verifies.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>It needs to be fast and roughly agree with the big model, since every token the big model rejects is wasted draft work. The closer the draft’s guesses match the target, the more speedup you get. Choosing or training a good draft model — fast enough to help, aligned enough to be accepted — is the core engineering knob of speculative decoding.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>It needs to be fast and roughly agree with the big model, since every token the big model rejects is wasted draft work. The closer the draft’s guesses match the target, the more speedup you get. Choosing or training a good draft model — fast enough to help, aligned enough to be accepted — is the core engineering knob of speculative decoding.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>The cheap helper that makes the expensive model respond faster.</p></div><div class="lens"><h3>For engineers</h3><p>A lightweight model proposing tokens for parallel verification by the target model.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/speculativearchitecture">Speculative Architecture</a> — The technique it powers.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/speculativearchitecture">Speculative Architecture</a>: The technique it powers.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

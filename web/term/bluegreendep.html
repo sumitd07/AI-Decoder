@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blue-Green Deployment — what it means in AI | Decoder</title>
+<title>Blue-Green Deployment: what it means in AI | Decoder</title>
 <meta name="description" content="Keep two identical production environments—blue (current) and green (next)—flip traffic only after green is healthy.">
 <link rel="canonical" href="https://aidecoder.app/term/bluegreendep">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Blue-Green Deployment — what it means in AI | Decoder">
+<meta property="og:title" content="Blue-Green Deployment: what it means in AI | Decoder">
 <meta property="og:description" content="Keep two identical production environments—blue (current) and green (next)—flip traffic only after green is healthy.">
 <meta property="og:url" content="https://aidecoder.app/term/bluegreendep">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Keep two identical production environments—blue (current) and green (next)—flip traffic only after green is healthy.</p>
 <section class="blk"><h2>Think of it like</h2><p>Having a stunt double ready; if the double is fine, the star walks off stage and the double takes over.</p></section>
 <section class="blk"><h2>Example</h2><p>Both blue and green clusters run in parallel; traffic flows to blue; green is tested and validated; flip the load balancer to green; decommission blue.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Zero-downtime deployment with instant rollback. Requires double the infrastructure cost temporarily. Good for large, monolithic systems. Can pair with canary for even lower risk. Requires health checks and smoke tests to validate green before flip.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Zero-downtime deployment with instant rollback. Requires double the infrastructure cost temporarily. Good for large, monolithic systems. Can pair with canary for even lower risk. Requires health checks and smoke tests to validate green before flip.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Enables high-confidence, zero-downtime deployments at cost of doubled temporary infrastructure.</p></div><div class="lens"><h3>For engineers</h3><p>DNS or load balancer points to blue or green; deployment automation validates green, then flips the selector; blue remains on standby for instant rollback.</p></div></div>
 <section class="blk"><h2>Related</h2><ul class="rel"><li>Variant of.</li><li>Pairs well with.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

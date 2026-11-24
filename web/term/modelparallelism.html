@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Model Parallelism — what it means in AI | Decoder</title>
+<title>Model Parallelism: what it means in AI | Decoder</title>
 <meta name="description" content="Spreading one model across many GPUs when it’s simply too big to fit on a single chip.">
 <link rel="canonical" href="https://aidecoder.app/term/modelparallelism">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Model Parallelism — what it means in AI | Decoder">
+<meta property="og:title" content="Model Parallelism: what it means in AI | Decoder">
 <meta property="og:description" content="Spreading one model across many GPUs when it’s simply too big to fit on a single chip.">
 <meta property="og:url" content="https://aidecoder.app/term/modelparallelism">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Spreading one model across many GPUs when it’s simply too big to fit on a single chip.</p>
 <section class="blk"><h2>Think of it like</h2><p>Like a mural too large for one wall, painted across several walls that together make the whole picture.</p></section>
 <section class="blk"><h2>Example</h2><p>A frontier model with hundreds of billions of parameters can’t fit on one GPU, so it’s split with model parallelism.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>It’s the umbrella term for dividing a model’s parameters and computation across devices, whether by splitting within layers (tensor), across layers (pipeline), or across the sequence (context). It contrasts with data parallelism, where each GPU holds a full copy and just processes different examples. Modern training stacks combine several of these at once.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>It’s the umbrella term for dividing a model’s parameters and computation across devices, whether by splitting within layers (tensor), across layers (pipeline), or across the sequence (context). It contrasts with data parallelism, where each GPU holds a full copy and just processes different examples. Modern training stacks combine several of these at once.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>The general reason frontier models demand racks of interconnected GPUs.</p></div><div class="lens"><h3>For engineers</h3><p>Distributing model parameters/compute across devices; contrast with data parallelism.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/tensorparallelism">Tensor Parallelism</a> — A within-layer form.</li><li><a href="/term/pipelineparallelism">Pipeline Parallelism</a> — An across-layer form.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/tensorparallelism">Tensor Parallelism</a>: A within-layer form.</li><li><a href="/term/pipelineparallelism">Pipeline Parallelism</a>: An across-layer form.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

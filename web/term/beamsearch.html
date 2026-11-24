@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Beam search — what it means in AI | Decoder</title>
+<title>Beam search: what it means in AI | Decoder</title>
 <meta name="description" content="A decoding trick that keeps several candidate sentences alive at once and picks the best-scoring whole path.">
 <link rel="canonical" href="https://aidecoder.app/term/beamsearch">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Beam search — what it means in AI | Decoder">
+<meta property="og:title" content="Beam search: what it means in AI | Decoder">
 <meta property="og:description" content="A decoding trick that keeps several candidate sentences alive at once and picks the best-scoring whole path.">
 <meta property="og:url" content="https://aidecoder.app/term/beamsearch">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">A decoding trick that keeps several candidate sentences alive at once and picks the best-scoring whole path.</p>
 <section class="blk"><h2>Think of it like</h2><p>Like planning a road trip by keeping your top few routes open at each junction instead of committing to the first turn that looks good.</p></section>
 <section class="blk"><h2>Example</h2><p>An older translation system runs beam width 5, exploring five partial translations in parallel before settling on the most probable finished one.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Greedy decoding commits to the single best token each step and can paint itself into a corner; beam search hedges by tracking the k highest-scoring sequences and expanding all of them. It shines in translation and captioning, but for open-ended chat it tends to produce bland, repetitive text, which is why sampling methods largely replaced it.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Greedy decoding commits to the single best token each step and can paint itself into a corner; beam search hedges by tracking the k highest-scoring sequences and expanding all of them. It shines in translation and captioning, but for open-ended chat it tends to produce bland, repetitive text, which is why sampling methods largely replaced it.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Great when there’s one “right” output like a translation; wrong when you want lively, varied prose.</p></div><div class="lens"><h3>For engineers</h3><p>Maintains k partial hypotheses ranked by cumulative log-prob, expanding and pruning to k each step until end tokens fire.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/greedydecoding">Greedy decoding</a> — The simpler one-path cousin.</li><li><a href="/term/sampling">Sampling</a> — What replaced it for open-ended text.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/greedydecoding">Greedy decoding</a>: The simpler one-path cousin.</li><li><a href="/term/sampling">Sampling</a>: What replaced it for open-ended text.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

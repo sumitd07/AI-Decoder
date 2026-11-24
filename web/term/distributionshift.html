@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Distribution shift — what it means in AI | Decoder</title>
+<title>Distribution shift: what it means in AI | Decoder</title>
 <meta name="description" content="When your model&#39;s test data comes from a different distribution than what it&#39;ll see in production.">
 <link rel="canonical" href="https://aidecoder.app/term/distributionshift">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Distribution shift — what it means in AI | Decoder">
+<meta property="og:title" content="Distribution shift: what it means in AI | Decoder">
 <meta property="og:description" content="When your model&#39;s test data comes from a different distribution than what it&#39;ll see in production.">
 <meta property="og:url" content="https://aidecoder.app/term/distributionshift">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">When your model&#39;s test data comes from a different distribution than what it&#39;ll see in production.</p>
 <section class="blk"><h2>Think of it like</h2><p>Training a classifier on daytime photos, then using it on nighttime photos.</p></section>
 <section class="blk"><h2>Example</h2><p>Your NER model is trained on news articles. You deploy it to social media. Tweets are informal, have slang, use emojis — the distribution shifted. Performance drops.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Distribution shift is subtle because performance on old data stays good — you don&#39;t notice until production fails. Types include covariate shift (input distribution changes), label shift (class distribution changes), and concept drift (the relationship itself changes). Some shifts are fixable (retraining), others require architectural changes.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Distribution shift is subtle because performance on old data stays good — you don&#39;t notice until production fails. Types include covariate shift (input distribution changes), label shift (class distribution changes), and concept drift (the relationship itself changes). Some shifts are fixable (retraining), others require architectural changes.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Expect model performance to degrade post-launch. Monitor for it. Plan retraining cycles.</p></div><div class="lens"><h3>For engineers</h3><p>Collect examples from production. Compare feature distributions to training. Set up drift detection.</p></div></div>
 <section class="blk"><h2>Related</h2><ul class="rel"><li>Real-world problem.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

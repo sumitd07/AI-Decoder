@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vector Index — what it means in AI | Decoder</title>
+<title>Vector Index: what it means in AI | Decoder</title>
 <meta name="description" content="A data structure that makes finding the nearest vectors fast, even among millions of them.">
 <link rel="canonical" href="https://aidecoder.app/term/vector-index">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Vector Index — what it means in AI | Decoder">
+<meta property="og:title" content="Vector Index: what it means in AI | Decoder">
 <meta property="og:description" content="A data structure that makes finding the nearest vectors fast, even among millions of them.">
 <meta property="og:url" content="https://aidecoder.app/term/vector-index">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">A data structure that makes finding the nearest vectors fast, even among millions of them.</p>
 <section class="blk"><h2>Think of it like</h2><p>A library’s shelving system — you don’t walk past every book, the organization takes you near the right shelf instantly.</p></section>
 <section class="blk"><h2>Example</h2><p>With ten million embeddings, a vector index returns the closest matches in milliseconds instead of scanning them all.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Comparing a query against every stored vector is fine for thousands but hopeless for millions, so a vector index organizes the vectors to skip most comparisons. The catch is that fast indexes are usually approximate — they trade a small chance of missing the true nearest neighbor for enormous speed. Tuning that accuracy-versus-speed dial, and the memory the index consumes, is the core operational concern of any vector system.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Comparing a query against every stored vector is fine for thousands but hopeless for millions, so a vector index organizes the vectors to skip most comparisons. The catch is that fast indexes are usually approximate — they trade a small chance of missing the true nearest neighbor for enormous speed. Tuning that accuracy-versus-speed dial, and the memory the index consumes, is the core operational concern of any vector system.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>The index is what keeps search fast as your data grows — and the accuracy-versus-speed tradeoff behind it is a real choice.</p></div><div class="lens"><h3>For engineers</h3><p>A structure (e.g. HNSW, IVF) enabling sublinear approximate nearest-neighbor search over a vector set.</p></div></div>
 <section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/similarity-search">Similarity Search</a> — The operation it accelerates.</li><li><a href="/term/vectordatabase">Vector database</a> — The store it lives inside.</li><li><a href="/term/embeddings">Embeddings</a> — What it organizes.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

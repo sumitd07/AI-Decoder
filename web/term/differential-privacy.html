@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Differential Privacy — what it means in AI | Decoder</title>
+<title>Differential Privacy: what it means in AI | Decoder</title>
 <meta name="description" content="A mathematical guarantee that adding or removing one person&#39;s data from training barely changes the model.">
 <link rel="canonical" href="https://aidecoder.app/term/differential-privacy">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Differential Privacy — what it means in AI | Decoder">
+<meta property="og:title" content="Differential Privacy: what it means in AI | Decoder">
 <meta property="og:description" content="A mathematical guarantee that adding or removing one person&#39;s data from training barely changes the model.">
 <meta property="og:url" content="https://aidecoder.app/term/differential-privacy">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">A mathematical guarantee that adding or removing one person&#39;s data from training barely changes the model.</p>
 <section class="blk"><h2>Think of it like</h2><p>It&#39;s like painting with someone in a crowd—whether one person is there or not barely affects the final picture.</p></section>
 <section class="blk"><h2>Example</h2><p>A model trained on loan applications uses differential privacy to ensure that whether one applicant&#39;s data is included or excluded, the model&#39;s predictions don&#39;t shift enough to expose them.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Differential privacy adds calibrated noise during training so no single person&#39;s data dominates the learning signal. You define a privacy budget (epsilon)—smaller epsilon means more noise and stronger privacy, but lower accuracy. It&#39;s a hard tradeoff: you get mathematical certainty that individual data can&#39;t be reverse-engineered, but performance often suffers.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Differential privacy adds calibrated noise during training so no single person&#39;s data dominates the learning signal. You define a privacy budget (epsilon)—smaller epsilon means more noise and stronger privacy, but lower accuracy. It&#39;s a hard tradeoff: you get mathematical certainty that individual data can&#39;t be reverse-engineered, but performance often suffers.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Offer privacy guarantees that regulators and users trust, even if it means slightly weaker model performance.</p></div><div class="lens"><h3>For engineers</h3><p>Add Laplace or Gaussian noise to gradients during training, calibrated to your epsilon budget.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/privacy">Privacy</a> — Broader privacy approach.</li><li><a href="/term/federated-learning">Federated Learning</a> — Another privacy-preserving method.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/privacy">Privacy</a>: Broader privacy approach.</li><li><a href="/term/federated-learning">Federated Learning</a>: Another privacy-preserving method.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

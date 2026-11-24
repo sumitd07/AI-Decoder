@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pose Estimation — what it means in AI | Decoder</title>
+<title>Pose Estimation: what it means in AI | Decoder</title>
 <meta name="description" content="Detecting the positions of joints (elbows, knees, etc.) or landmarks (eyes, nose) to infer the posture of a person or object.">
 <link rel="canonical" href="https://aidecoder.app/term/poseestimation">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Pose Estimation — what it means in AI | Decoder">
+<meta property="og:title" content="Pose Estimation: what it means in AI | Decoder">
 <meta property="og:description" content="Detecting the positions of joints (elbows, knees, etc.) or landmarks (eyes, nose) to infer the posture of a person or object.">
 <meta property="og:url" content="https://aidecoder.app/term/poseestimation">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,11 +87,11 @@ ul.rel li a{font-weight:600}
 <p class="lead">Detecting the positions of joints (elbows, knees, etc.) or landmarks (eyes, nose) to infer the posture of a person or object.</p>
 <section class="blk"><h2>Think of it like</h2><p>Like marking the joints on a stick figure: head, shoulders, elbows, hips, knees. The model predicts where each joint is in the image.</p></section>
 <section class="blk"><h2>Example</h2><p>A fitness app analyzes a video of a user doing squats, detecting their knee, hip, and ankle positions to check form. A game uses hand pose to track gesture controls.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Human pose estimation typically predicts 2D pixel coordinates (and confidence) for each joint. Some models also infer 3D coordinates or depth. Challenging because people occlude themselves, appear at different scales, and in different lighting. Modern approaches use heatmaps (saliency maps at each joint) or direct regression. Top-down (detect person first, then their joints) vs. bottom-up (detect all joints, then link them).</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Human pose estimation typically predicts 2D pixel coordinates (and confidence) for each joint. Some models also infer 3D coordinates or depth. Challenging because people occlude themselves, appear at different scales, and in different lighting. Modern approaches use heatmaps (saliency maps at each joint) or direct regression. Top-down (detect person first, then their joints) vs. bottom-up (detect all joints, then link them).</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Powers fitness tracking, gesture control, animation from video, sports analytics, and accessibility interfaces.</p></div><div class="lens"><h3>For engineers</h3><p>Standard datasets: COCO (17 joints), OpenPose (25 joints). Metrics: OKS (object keypoint similarity). Models: OpenPose, HRNet, MediaPipe.</p></div></div>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

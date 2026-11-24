@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pass at k — what it means in AI | Decoder</title>
+<title>Pass at k: what it means in AI | Decoder</title>
 <meta name="description" content="Generating k candidate answers and checking if any of them is correct—measuring the model&#39;s sampling diversity.">
 <link rel="canonical" href="https://aidecoder.app/term/pass-at-k">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Pass at k — what it means in AI | Decoder">
+<meta property="og:title" content="Pass at k: what it means in AI | Decoder">
 <meta property="og:description" content="Generating k candidate answers and checking if any of them is correct—measuring the model&#39;s sampling diversity.">
 <meta property="og:url" content="https://aidecoder.app/term/pass-at-k">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Generating k candidate answers and checking if any of them is correct—measuring the model&#39;s sampling diversity.</p>
 <section class="blk"><h2>Think of it like</h2><p>Like giving a student k tries on a test question and counting it as correct if they get it right once.</p></section>
 <section class="blk"><h2>Example</h2><p>Pass@100 means generate 100 code samples and count it as success if any of them passes tests. A model might have 50% pass@1 but 90% pass@100.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Pass@k reveals that models often contain the right answer somewhere in their probability distribution, even if the top sample fails. It&#39;s most useful for code generation and math, where you can auto-verify correctness. It inflates scores relative to single-pass performance and isn&#39;t practical in production (can&#39;t generate 100 candidates for each user query), so it&#39;s more for research eval.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Pass@k reveals that models often contain the right answer somewhere in their probability distribution, even if the top sample fails. It&#39;s most useful for code generation and math, where you can auto-verify correctness. It inflates scores relative to single-pass performance and isn&#39;t practical in production (can&#39;t generate 100 candidates for each user query), so it&#39;s more for research eval.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Use pass@k to understand model capability vs. deployment feasibility—high pass@100 that&#39;s low at pass@1 suggests you need better decoding, not better training.</p></div><div class="lens"><h3>For engineers</h3><p>Track pass@1, pass@10, and pass@100 separately to diagnose whether problems are sampling or model knowledge.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/accuracy">Accuracy</a> — Complementary metric.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/accuracy">Accuracy</a>: Complementary metric.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

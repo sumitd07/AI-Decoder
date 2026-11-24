@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quantization — what it means in AI | Decoder</title>
+<title>Quantization: what it means in AI | Decoder</title>
 <meta name="description" content="Converting model weights and activations from high precision (float32) to lower precision (int8, int4) to save memory and speed up computation.">
 <link rel="canonical" href="https://aidecoder.app/term/quantization">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Quantization — what it means in AI | Decoder">
+<meta property="og:title" content="Quantization: what it means in AI | Decoder">
 <meta property="og:description" content="Converting model weights and activations from high precision (float32) to lower precision (int8, int4) to save memory and speed up computation.">
 <meta property="og:url" content="https://aidecoder.app/term/quantization">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Converting model weights and activations from high precision (float32) to lower precision (int8, int4) to save memory and speed up computation.</p>
 <section class="blk"><h2>Think of it like</h2><p>Storing a photo in lower resolution to take up less disk space.</p></section>
 <section class="blk"><h2>Example</h2><p>A model with 7 billion float32 weights uses 28GB of memory. Quantize to int8 (1 byte per weight) and it&#39;s 7GB.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Quantization trades accuracy for speed and memory. Most of the loss happens in the first few bits; going from float32 to float16 hurts less than float16 to int4. Post-training quantization is easy but less accurate; quantization-aware training is harder but better. Modern quantization methods (GPTQ, AWQ) are surprisingly good.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Quantization trades accuracy for speed and memory. Most of the loss happens in the first few bits; going from float32 to float16 hurts less than float16 to int4. Post-training quantization is easy but less accurate; quantization-aware training is harder but better. Modern quantization methods (GPTQ, AWQ) are surprisingly good.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Quantization multiplies your serving capacity. A 7B model that wouldn&#39;t fit on one GPU now fits.</p></div><div class="lens"><h3>For engineers</h3><p>Start with int8 post-training quantization. If that&#39;s too lossy, try QAT or mixed-precision.</p></div></div>
 <section class="blk"><h2>Related</h2><ul class="rel"><li>Key compression technique.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

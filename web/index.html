@@ -469,7 +469,7 @@ function openSignin(){
         <div class="modal-pad" style="padding:30px 28px 26px;text-align:center">
           <div style="width:44px;height:44px;border-radius:12px;background:var(--surface-3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px">🔖</div>
           <h2 class="dsp" style="font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-.02em;margin:0 0 8px">Save this for later</h2>
-          <p style="font-size:14.5px;line-height:1.55;color:var(--text-3);margin:0 0 22px">Sign in to save terms and reach your saved terms on any device.</p>
+          <p style="font-size:14.5px;line-height:1.55;color:var(--text-3);margin:0 0 22px">Sign in to save terms and see them on any device.</p>
           <button data-signin style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:13px;font-size:14.5px;font-weight:600;cursor:pointer">${GOOGLE_G_WHITE}<span>Sign in with Google</span></button>
           <button data-close-signin style="margin-top:10px;background:none;border:none;cursor:pointer;color:var(--muted-2);font-size:13px;padding:8px">Maybe later</button>
         </div>
@@ -671,14 +671,14 @@ function renderLookup(still){
   const cta = !isSignedIn() ? `
       <div class="hero-line" style="margin-top:28px;position:relative;border:1px solid var(--border);border-radius:16px;background:var(--surface-2);padding:36px 28px;text-align:center;overflow:hidden">
         <div style="position:absolute;left:0;right:0;top:-44px;height:44px;background:linear-gradient(to bottom, transparent, var(--surface-2));pointer-events:none"></div>
-        <h3 class="dsp" style="font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-.02em;margin:0 0 8px;color:var(--text)">Save the terms that trip you up</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:var(--text-3);margin:0 auto 20px;max-width:420px">Sign in to save terms and reach them on any device. New terms are added as the glossary grows.</p>
+        <h3 class="dsp" style="font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-.02em;margin:0 0 8px;color:var(--text)">Save terms to read later</h3>
+        <p style="font-size:14.5px;line-height:1.55;color:var(--text-3);margin:0 auto 20px;max-width:420px">Sign in with Google to save terms and see them on any device.</p>
         <button data-signin style="display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer">${GOOGLE_G_WHITE}<span>Sign in with Google</span></button>
       </div>` : '';
   $("#s-lookup").innerHTML = `
     <div class="hero-pad${still?' still-render':''}" style="padding:76px 0 84px">
       <div style="max-width:760px">
-        <div class="hero-line" style="font-size:15px;color:var(--muted);font-weight:500;margin-bottom:14px">Plain-Language AI Glossary</div>
+        <div class="hero-line" style="font-size:15px;color:var(--muted);font-weight:500;margin-bottom:14px">AI glossary</div>
         <h1 class="dsp hero-line" style="font-weight:600;font-size:clamp(32px,4.6vw,50px);line-height:1.06;letter-spacing:-.03em;margin:0 0 20px;color:var(--text);animation-delay:.07s">AI terms, explained in plain English.</h1>
         <p class="hero-line" style="font-size:17px;line-height:1.55;color:var(--text-3);margin:0 0 32px;max-width:560px;animation-delay:.13s">Search a term, or click one while you read. Each term has a plain explanation and an example. Free to use.</p>
         <div class="hero-line" style="animation-delay:.19s;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
@@ -686,7 +686,7 @@ function renderLookup(still){
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.4" fill="currentColor"/><line x1="12" y1="2.5" x2="12" y2="8.6" stroke="currentColor" stroke-width="1.6"/><line x1="4" y1="17.2" x2="9.3" y2="14.1" stroke="currentColor" stroke-width="1.6"/><line x1="20" y1="17.2" x2="14.7" y2="14.1" stroke="currentColor" stroke-width="1.6"/></svg>
             <span>Add Decoder to Chrome</span>
           </a>
-          <span class="cta-sub" style="font-size:12.5px;line-height:1.45;color:var(--muted-2);max-width:210px">Free. It underlines and explains AI terms on any page you read.</span>
+          <span class="cta-sub" style="font-size:12.5px;line-height:1.45;color:var(--muted-2);max-width:210px">The free extension underlines AI terms on any page and explains them.</span>
         </div>
         <button data-openspot class="hero-line h-hero" style="animation-delay:.25s;margin-top:14px;display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border-3);border-radius:12px;padding:13px 15px;cursor:pointer;width:100%;max-width:440px;box-shadow:0 1px 2px rgba(20,24,33,0.04);transition:box-shadow .15s,border-color .15s">
           <span style="color:var(--accent);font-size:16px">⌕</span>
@@ -695,7 +695,7 @@ function renderLookup(still){
         </button>
       </div>
       <div style="display:flex;align-items:baseline;justify-content:space-between;margin:68px 0 22px;border-top:1px solid var(--border);padding-top:24px">
-        <h2 style="font-family:var(--font-primary);font-size:17px;font-weight:600;color:var(--text);margin:0">The shelf</h2>
+        <h2 style="font-family:var(--font-primary);font-size:17px;font-weight:600;color:var(--text);margin:0">All terms</h2>
         <span style="font-size:12px;color:var(--faint)">click any card</span>
       </div>
       <div class="shelf-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">${grid}</div>
@@ -719,8 +719,8 @@ function renderDecode() {
   const head = `
     <div style="max-width:640px;margin-bottom:44px">
       <div style="font-family:var(--font-primary);font-size:15px;font-weight:500;color:var(--muted);margin-bottom:12px">Decode</div>
-      <h1 class="dsp" style="font-weight:600;font-size:clamp(30px,4.2vw,42px);line-height:1.08;letter-spacing:-.028em;margin:0 0 14px;color:var(--text)">A sentence, in plain English.</h1>
-      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">Paste a sentence that isn't landing. You get the plain version, every shelf term in it linked, and anything the shelf doesn't cover named.</p>
+      <h1 class="dsp" style="font-weight:600;font-size:clamp(30px,4.2vw,42px);line-height:1.08;letter-spacing:-.028em;margin:0 0 14px;color:var(--text)">Decode a sentence</h1>
+      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">Paste a sentence you don't follow. You'll get it back in plain English, with glossary terms linked. Terms the glossary doesn't have yet are listed underneath.</p>
     </div>`;
   const len = explainState.sentence.length;
   const busy = explainState.loading;
@@ -782,13 +782,13 @@ function renderExplainResult(opts) {
     // serverless function are genuinely slow (the shelf index has to be parsed),
     // so say so rather than leaving the reader guessing.
     clearTimeout(explainWaitTimer1); clearTimeout(explainWaitTimer2);
-    explainWaitTimer1 = setTimeout(() => { const w = $("#explainWait"); if (w) w.textContent = 'Decoding… the first request after a quiet spell is slower'; }, 4000);
-    explainWaitTimer2 = setTimeout(() => { const w = $("#explainWait"); if (w) w.textContent = 'Still working. The decoder is starting up.'; }, 12000);
+    explainWaitTimer1 = setTimeout(() => { const w = $("#explainWait"); if (w) w.textContent = 'Decoding… the first request in a while can take a few seconds'; }, 4000);
+    explainWaitTimer2 = setTimeout(() => { const w = $("#explainWait"); if (w) w.textContent = 'Still working on it.'; }, 12000);
   } else if (opts.state === 'error') {
     el.innerHTML = `<p role="alert" style="margin:16px 0 0;color:var(--text-3);font-size:13.5px;line-height:1.55">${esc(opts.message)}</p>`;
   } else if (opts.state === 'success') {
     const chips = opts.terms.length ? `<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">${opts.terms.map(t => `<button class="rel" data-openrow="${escAttr(t.card_id)}" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface-3);border:1px solid var(--hairline-2);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:500;color:var(--text-2);cursor:pointer">${esc(t.surface)}<span style="color:var(--accent)">→</span></button>`).join('')}</div>` : '';
-    const gapsLine = opts.gaps.length ? `<p style="margin:14px 0 0;font-size:12.5px;line-height:1.55;color:var(--muted-2)">Not on the shelf yet: ${opts.gaps.map(esc).join(', ')}.</p>` : '';
+    const gapsLine = opts.gaps.length ? `<p style="margin:14px 0 0;font-size:12.5px;line-height:1.55;color:var(--muted-2)">Not in the glossary yet: ${opts.gaps.map(esc).join(', ')}.</p>` : '';
     el.innerHTML = `<div class="explain-answer" style="margin-top:26px;padding-top:22px;border-top:1px solid var(--border)">
       <p style="margin:0;font-size:17px;line-height:1.62;color:var(--text)">${esc(opts.restatement)}</p>
       ${chips}${gapsLine}
@@ -828,12 +828,12 @@ async function submitExplain() {
     // web/api/explain.js's error shape is { error: <machine code>, message?: <human text> } —
     // prefer message; error alone (e.g. "method_not_allowed") is not reader-facing copy.
     const serverMsg = body && typeof body.message === 'string' ? body.message : '';
-    const msg = serverMsg || (res.status >= 500 ? 'Something went wrong on this end. Try again in a moment.' : 'Couldn’t decode that sentence. Try again.');
+    const msg = serverMsg || (res.status >= 500 ? 'Something went wrong on our side. Try again in a moment.' : 'Couldn’t decode that sentence. Try again.');
     setExplainResult({ state: 'error', message: msg });
     return;
   }
   const valid = !parseFailed && body && typeof body.restatement === 'string' && Array.isArray(body.terms) && Array.isArray(body.gaps);
-  if (!valid) { setExplainResult({ state: 'error', message: 'Got a response that didn’t make sense. Try again.' }); return; }
+  if (!valid) { setExplainResult({ state: 'error', message: 'Something went wrong with that answer. Try again.' }); return; }
   const terms = body.terms.filter(t => t && typeof t.card_id === 'string' && t.card_id && typeof t.surface === 'string' && t.surface);
   const gaps = body.gaps.filter(g => typeof g === 'string' && g);
   setExplainResult({ state: 'success', restatement: body.restatement, terms, gaps });
@@ -863,40 +863,40 @@ let demoWait1 = null, demoWait2 = null, demoSettle = null;
 // hyphens and a hyphenated line break. Selecting across any of them still has to
 // arrive at the endpoint as one clean sentence.
 const DEMO_ARTICLE = `
-  <h2 class="dsp" style="font-weight:600;font-size:23px;line-height:1.2;letter-spacing:-.02em;margin:0 0 16px;color:var(--text)">Notes on shipping a retrieval stack</h2>
-  <p>Most teams reach for a bigger model when the answers go wrong. Our answers were wrong because the context was wrong, so a bigger model did not help.</p>
-  <p>We reduced hallucination by tightening the retriever's top-k and reranking before the context is assembled. That single change did more than a month of prompt work.</p>
+  <h2 class="dsp" style="font-weight:600;font-size:23px;line-height:1.2;letter-spacing:-.02em;margin:0 0 16px;color:var(--text)">What we changed in our support bot's search</h2>
+  <p>Our support bot kept giving wrong answers, and our first idea was to switch to a bigger model. When we looked closer, the bot was being handed the wrong help articles before it wrote anything.</p>
+  <p>We reduced hallucination by tightening the retriever's top-k and reranking before the context is assembled. It took two days. We had spent most of the month before that rewriting prompts, with less to show for it.</p>
 
   <h3>Two columns</h3>
   <div class="demo-cols">
-    <p>The embedding index was rebuilt offline every night, which meant a stale card could sit in produc&shy;tion for a day. We never considered fine-tuning, because the failures all came from re&shy;trieval.<sup>1</sup></p>
-    <p>Chunking is where the rest of the tuning time went. A chunk that spans two ideas retrieves for both and answers neither, e.g. a paragraph that opens on latency and closes on cost.</p>
+    <p>We rebuild the embedding index once a night, so an edited help article can take up to a day to show up in produc&shy;tion. We looked at fine-tuning and decided against it, since the wrong answers traced back to re&shy;trieval.<sup>1</sup></p>
+    <p>Most of the remaining time went on chunking. Our first chunks were too long, e.g. one chunk covered both refunds and shipping, so it came back for questions about either.</p>
   </div>
 
   <h3>A code block</h3>
-  <p>The guard below runs before the model call, so a refusal costs nothing:</p>
+  <p>This check runs before the model is called, so a sentence that is too long never costs us a request:</p>
   <pre>if (sentence.length &gt; MAX_SENTENCE) return send(res, 400, { error: 'sentence_too_long' });</pre>
-  <p>An agent that plans its own retrieval loop is a different product. We kept the pipeline fixed so that two runs stay comparable.</p>
+  <p>We also tried letting an agent decide when to search again. It made results hard to compare from one run to the next, so we took it out for now.</p>
 
   <h3>A table</h3>
   <table>
     <tr><th>Change</th><th>Effect</th></tr>
-    <tr><td>Reranking on</td><td>Precision up, latency up by 180ms</td></tr>
-    <tr><td>Top-k 8 &rarr; 5</td><td>Fewer distractors in the prompt window[2]</td></tr>
+    <tr><td>Reranking on</td><td>More relevant results, about 180ms slower</td></tr>
+    <tr><td>Top-k 8 &rarr; 5</td><td>Fewer unrelated articles in the prompt[2]</td></tr>
   </table>
-  <p class="demo-fn">1. Measured on 39 rows. 2. The reader never sees the retrieved set.</p>
+  <p class="demo-fn">1. Based on 39 tickets we checked by hand. 2. Customers never see the retrieved articles.</p>
 
   <h3>A dark section</h3>
   <div class="demo-dark">
-    <p>Quantization let the model run on one card, and the quality loss was smaller than the latency win. We shipped it the same week.</p>
+    <p>We also used quantization to fit the model on one GPU. Answers got slightly worse and a lot faster, and we kept it.</p>
   </div>`;
 
 function renderHow(){
   const head = `
     <div style="max-width:640px;margin-bottom:40px">
       <div style="font-family:var(--font-primary);font-size:15px;font-weight:500;color:var(--muted);margin-bottom:12px">How it works</div>
-      <h1 class="dsp" style="font-weight:600;font-size:clamp(30px,4.2vw,42px);line-height:1.08;letter-spacing:-.028em;margin:0 0 14px;color:var(--text)">Highlight a sentence, and it is explained in place.</h1>
-      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">The extension underlines shelf terms on the page you are reading and explains any sentence you highlight. The article below runs the same code against the same endpoint, so what happens here is what happens on a real page.</p>
+      <h1 class="dsp" style="font-weight:600;font-size:clamp(30px,4.2vw,42px);line-height:1.08;letter-spacing:-.028em;margin:0 0 14px;color:var(--text)">Highlight a sentence to get it explained on the page.</h1>
+      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">The extension underlines glossary terms on the page you're reading and explains any sentence you highlight. The article below uses the same code as the extension, so you can try it here.</p>
     </div>`;
 
   const doc = `
@@ -908,14 +908,14 @@ function renderHow(){
       <div id="demoStage" style="position:relative">
         <div id="demoDoc" class="demo-doc" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 28px;font-family:var(--font-secondary);font-size:16.5px;line-height:1.75;color:var(--text-2)">${DEMO_ARTICLE}</div>
       </div>
-      <p style="font-size:12.5px;line-height:1.6;color:var(--muted-2);margin:16px 0 0">This article is awkward on purpose: two columns, a code block, a table, footnote markers, and words broken across a line. A selection that picks any of that up is repaired to one clean sentence before it is sent. Part of a sentence is completed from the text around it. A selection inside the code block offers no Decode button.</p>
-      <p style="font-size:12px;line-height:1.55;color:var(--faint);margin:10px 0 0">Terms are matched on your device. Pressing Decode sends that one sentence to be explained. Selecting sends nothing.</p>
+      <p style="font-size:12.5px;line-height:1.6;color:var(--muted-2);margin:16px 0 0">The article has columns, a code block, a table, footnotes and words split across lines, because real pages do. If your selection catches any of that, it is cleaned up into one sentence before it is sent. If you select part of a sentence, the rest is filled in from the page. Selections inside the code block don't get a Decode button.</p>
+      <p style="font-size:12px;line-height:1.55;color:var(--faint);margin:10px 0 0">Terms are matched on your device. Nothing is sent until you press Decode, and then only that sentence is sent.</p>
     </div>`;
 
   const steps = [
-    ['Terms Are Underlined', 'Every term on the shelf gets a dotted underline as you read. Clicking one opens its card.'],
-    ['Sentences Are Explained on Request', 'Highlighting a sentence shows a Decode button. The sentence is restated in plain English, with each shelf term in it linked to its card.'],
-    ['Gaps Are Named', 'A term the sentence turns on that the shelf does not cover is named as a gap. The explanation says so and leaves it undefined.']
+    ['Terms are underlined', 'Glossary terms get a dotted underline. Click one to open its card.'],
+    ['Sentences are explained when you ask', 'Highlight a sentence and press Decode. You get it back in plain English, with glossary terms linked to their cards.'],
+    ['Missing terms are listed', "If the sentence depends on a term the glossary doesn't have yet, it is listed under the explanation. The explanation doesn't guess what it means."]
   ].map(([t,d]) => `
     <div style="border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:17px 18px">
       <p style="margin:0 0 6px;font-size:13.5px;font-weight:600;color:var(--text)">${esc(t)}</p>
@@ -930,7 +930,7 @@ function renderHow(){
           <span>Add Decoder to Chrome</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
-        <span style="font-size:12.5px;line-height:1.45;color:var(--muted-2);max-width:260px">Underlining and decoding each have their own switch in the toolbar.</span>
+        <span style="font-size:12.5px;line-height:1.45;color:var(--muted-2);max-width:260px">You can turn underlining and decoding on or off separately from the toolbar.</span>
       </div>
     </div>`;
 
@@ -1061,8 +1061,8 @@ function demoRun(found){
   demoPaint(`<div class="demo-wait"><span class="demo-spin" aria-hidden="true"></span><span data-demo-wait>Decoding&hellip;</span></div>`);
   clearTimeout(demoWait1); clearTimeout(demoWait2);
   const setWait = m => { const w = demoPanel && demoPanel.querySelector('[data-demo-wait]'); if(w) w.textContent = m; };
-  demoWait1 = setTimeout(() => setWait('Decoding… the first request after a quiet spell is slower'), 4000);
-  demoWait2 = setTimeout(() => setWait('Still working. The decoder is starting up.'), 12000);
+  demoWait1 = setTimeout(() => setWait('Decoding… the first request in a while can take a few seconds'), 4000);
+  demoWait2 = setTimeout(() => setWait('Still working on it.'), 12000);
 
   const fail = msg => { if(my === demoSeq) demoPaint(`<p class="demo-restate" role="alert" style="padding:10px 15px 15px;font-size:13px;color:var(--text-4)">${esc(msg)}</p>`); };
   const ctl = new AbortController();
@@ -1076,17 +1076,17 @@ function demoRun(found){
       clearTimeout(demoWait1); clearTimeout(demoWait2);
       if(!res.ok){
         const m = body && typeof body.message === 'string' ? body.message : '';
-        return fail(m || (res.status >= 500 ? 'Something went wrong on this end. Try again in a moment.' : 'Couldn’t decode that sentence. Try again.'));
+        return fail(m || (res.status >= 500 ? 'Something went wrong on our side. Try again in a moment.' : 'Couldn’t decode that sentence. Try again.'));
       }
       const valid = body && typeof body.restatement === 'string' && Array.isArray(body.terms) && Array.isArray(body.gaps);
-      if(!valid) return fail('Got a response that didn’t make sense. Try again.');
+      if(!valid) return fail('Something went wrong with that answer. Try again.');
       const terms = body.terms.filter(t => t && typeof t.card_id === 'string' && t.card_id && typeof t.surface === 'string' && t.surface);
       const gaps = body.gaps.filter(g => typeof g === 'string' && g);
       const chips = terms.length
         ? `<div class="explain-answer" style="display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;animation:none">${terms.map(t =>
             `<button class="rel" data-openrow="${escAttr(t.card_id)}" style="display:inline-flex;align-items:center;gap:5px;background:var(--surface-3);border:1px solid var(--hairline-2);border-radius:999px;padding:5px 11px;font-family:var(--font-primary);font-size:12.5px;font-weight:500;color:var(--text-2);cursor:pointer">${esc(t.surface)}<span style="color:var(--accent)">&rarr;</span></button>`
           ).join('')}</div>` : '';
-      const gapsLine = gaps.length ? `<p class="demo-gaps">Not on the shelf yet: ${gaps.map(esc).join(', ')}.</p>` : '';
+      const gapsLine = gaps.length ? `<p class="demo-gaps">Not in the glossary yet: ${gaps.map(esc).join(', ')}.</p>` : '';
       const p = found.prepared;
       const MAXS = (window.DecoderExtract && window.DecoderExtract.MAX_SENTENCES) || 3;
       const note = p.trimmed
@@ -1137,23 +1137,23 @@ window.addEventListener('resize', () => {
 
 /* ---------- surface 2: saved terms ---------- */
 function nudgeFor(c){
-  if(c.status==='Fading') return 'This term is fading. You will still see it, but it is used less.';
-  if(c.status==='Historical') return 'Mostly historical. You may still see it in older writing.';
+  if(c.status==='Fading') return 'People use this term less than they used to.';
+  if(c.status==='Historical') return 'You will mostly see this term in older writing.';
   return null;
 }
 function renderSheet(){
   const head = `
     <div style="max-width:640px;margin-bottom:44px">
       <div style="font-family:var(--font-primary);font-size:15px;font-weight:500;color:var(--muted);margin-bottom:12px">Saved</div>
-      <h1 class="dsp" style="font-weight:600;font-size:clamp(30px,4.2vw,42px);line-height:1.08;letter-spacing:-.028em;margin:0 0 14px;color:var(--text)">The terms you saved.</h1>
-      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">Everything you saved while reading, in one place. Skim it before a meeting.</p>
+      <h1 class="dsp" style="font-weight:600;font-size:clamp(30px,4.2vw,42px);line-height:1.08;letter-spacing:-.028em;margin:0 0 14px;color:var(--text)">Saved terms</h1>
+      <p style="font-size:16px;line-height:1.55;color:var(--text-3);margin:0">Terms you saved here or in the extension.</p>
     </div>`;
   let body;
   if(!isSignedIn()){
     body = `<div style="border:1px solid var(--border);border-radius:16px;background:var(--surface-2);padding:52px 28px;text-align:center;max-width:520px">
       <div style="width:44px;height:44px;border-radius:12px;background:var(--surface-3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px">🔖</div>
       <p style="font-size:16px;line-height:1.5;color:var(--text-3);margin:0 0 8px;font-weight:500">Sign in to start saving</p>
-      <p style="font-size:14px;line-height:1.55;color:var(--muted-2);margin:0 auto 22px;max-width:380px">Save terms as you look them up and reach your saved terms on any device.</p>
+      <p style="font-size:14px;line-height:1.55;color:var(--muted-2);margin:0 auto 22px;max-width:380px">Save terms as you look them up and see them on any device.</p>
       <button data-signin style="display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer">${GOOGLE_G_WHITE}<span>Sign in with Google</span></button>
     </div>`;
   } else if(state.saved.length){
@@ -1191,7 +1191,7 @@ function renderSpotResults(){
   const capped = Math.min(results.length, SPOT_MAX);
   if(state.selIndex > capped-1) state.selIndex = Math.max(capped-1,0);
   if(results.length === 0){
-    box.innerHTML = `<div style="padding:34px 20px;text-align:center;color:var(--muted-2);font-size:14px;line-height:1.5">No match. It might be too new to have a card yet.</div>`;
+    box.innerHTML = `<div style="padding:34px 20px;text-align:center;color:var(--muted-2);font-size:14px;line-height:1.5">No match. We may not have added this term yet.</div>`;
   } else {
     const shown = results.slice(0, SPOT_MAX);
     const rows = shown.map((c,i) => {
@@ -1307,7 +1307,7 @@ function renderModal(animate){
         </div>
         <div style="border-top:1px solid var(--hairline-2);padding:16px 28px;display:flex;align-items:center;gap:12px;background:var(--surface-2)">
           <button data-savemodal class="savebtn ${signed&&saved?'is-saved':''}">${signed&&saved?'<span class="savepop">✓</span>':''}<span>${!signed?'Sign in to save':(saved?'Remove':'Save')}</span></button>
-          <span style="font-size:12.5px;color:var(--faint);line-height:1.4">${!signed?'Your saved terms sync to your account.':(saved?'Its status updates as the field changes.':'Keeps the terms you looked up in one place.')}</span>
+          <span style="font-size:12.5px;color:var(--faint);line-height:1.4">${!signed?'Your saved terms sync to your account.':(saved?'We update its status if the term falls out of use.':'Adds this term to your saved list.')}</span>
         </div>
       </div>
     </div>`;

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Normalization — what it means in AI | Decoder</title>
+<title>Normalization: what it means in AI | Decoder</title>
 <meta name="description" content="Rescaling numbers to a sane, consistent range so training doesn’t wobble or blow up.">
 <link rel="canonical" href="https://aidecoder.app/term/normalization">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Normalization — what it means in AI | Decoder">
+<meta property="og:title" content="Normalization: what it means in AI | Decoder">
 <meta property="og:description" content="Rescaling numbers to a sane, consistent range so training doesn’t wobble or blow up.">
 <meta property="og:url" content="https://aidecoder.app/term/normalization">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Rescaling numbers to a sane, consistent range so training doesn’t wobble or blow up.</p>
 <section class="blk"><h2>Think of it like</h2><p>Adjusting every photo to the same brightness before comparing them, so lighting doesn’t fool you.</p></section>
 <section class="blk"><h2>Example</h2><p>Deep networks add normalization between layers to keep the signal from exploding or vanishing as it goes deep.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Activations can drift to wildly different scales, which makes gradients unstable. Normalization re-centers and re-scales them, keeping the network in a well-behaved zone so it trains faster and deeper. The main variants differ in what they average over.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Activations can drift to wildly different scales, which makes gradients unstable. Normalization re-centers and re-scales them, keeping the network in a well-behaved zone so it trains faster and deeper. The main variants differ in what they average over.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Invisible plumbing, but it’s a big reason very deep models train at all.</p></div><div class="lens"><h3>For engineers</h3><p>Standardizing activations (subtract mean, divide by std) to stabilize gradients; see LayerNorm, BatchNorm.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/layernormalization">Layer normalization</a> — The transformer favorite is layer normalization.</li><li><a href="/term/batchnormalization">Batch normalization</a> — The older vision trick is batch normalization.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/layernormalization">Layer normalization</a>: The transformer favorite is layer normalization.</li><li><a href="/term/batchnormalization">Batch normalization</a>: The older vision trick is batch normalization.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

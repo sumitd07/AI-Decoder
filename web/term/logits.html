@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Logits — what it means in AI | Decoder</title>
+<title>Logits: what it means in AI | Decoder</title>
 <meta name="description" content="The raw scores a model gives every possible next token before picking one — un-normalized “how likely is each word” numbers.">
 <link rel="canonical" href="https://aidecoder.app/term/logits">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Logits — what it means in AI | Decoder">
+<meta property="og:title" content="Logits: what it means in AI | Decoder">
 <meta property="og:description" content="The raw scores a model gives every possible next token before picking one — un-normalized “how likely is each word” numbers.">
 <meta property="og:url" content="https://aidecoder.app/term/logits">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">The raw scores a model gives every possible next token before picking one — un-normalized “how likely is each word” numbers.</p>
 <section class="blk"><h2>Think of it like</h2><p>The tally of votes for each candidate, before you convert them into percentages.</p></section>
 <section class="blk"><h2>Example</h2><p>For “The sky is ___”, “blue” gets a high logit, “refrigerator” a very low one.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>The final layer outputs one logit per token in the vocabulary. They’re relative scores, not probabilities yet — softmax turns them into a distribution that sums to one. Sampling knobs like temperature and top-p operate on this distribution to decide how adventurous the final pick is.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>The final layer outputs one logit per token in the vocabulary. They’re relative scores, not probabilities yet — softmax turns them into a distribution that sums to one. Sampling knobs like temperature and top-p operate on this distribution to decide how adventurous the final pick is.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Deep-internals term; matters mainly when you’re tuning how random or safe outputs are.</p></div><div class="lens"><h3>For engineers</h3><p>Pre-softmax activations over the vocabulary; scaled by temperature, filtered by top-p/top-k.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/softmax">Softmax</a> — Turned into probabilities by softmax.</li><li><a href="/term/temperature">Temperature</a> — Reshaped by the temperature dial.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/softmax">Softmax</a>: Turned into probabilities by softmax.</li><li><a href="/term/temperature">Temperature</a>: Reshaped by the temperature dial.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">
