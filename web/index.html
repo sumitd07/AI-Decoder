@@ -130,8 +130,11 @@ nav#tabs button{ flex:0 0 auto; white-space:nowrap; }
    it is over-full at 1400px exactly as it is at 1000px. Four tabs plus the full
    chrome overran it by ~20px, which clipped "Saved". Buy the room back from the
    two things that lose nothing by giving it: the gaps, and the email's ellipsis. */
-.hdr-inner{ gap:16px !important; }
-.auth-email{ max-width:110px !important; }
+.hdr-inner{ gap:12px !important; }
+.auth-email{ max-width:96px !important; }
+/* The logo never gives: as a shrinkable flex item it was the first thing squeezed
+   when the signed-in header ran over, which stacked "For AI" onto two lines and
+   pressed the dot into an oval. The search box gives instead (its label ellipsizes). */
 /* Between 640px and ~1100px the header is over-full once a signed-in email is in
    it: logo, four tabs, a 210px search box, the theme toggle and the account button
    don't fit, and something has to give. Order of what goes, cheapest first — the
@@ -142,7 +145,7 @@ nav#tabs button{ flex:0 0 auto; white-space:nowrap; }
 @media (max-width:1100px){
   .hdr-inner{ gap:12px !important; }
   .hdr-tag{ display:none !important; }
-  #searchBtn{ min-width:0 !important; white-space:nowrap !important; }
+  #searchBtn{ flex:0 0 auto !important; min-width:0 !important; white-space:nowrap !important; }
   #searchBtn .search-label, #searchBtn .search-kbd{ display:none !important; }
   .auth-email, .auth-dot{ display:none !important; }
 }
@@ -275,15 +278,15 @@ nav#tabs button{ flex:0 0 auto; white-space:nowrap; }
 
   <header style="position:sticky;top:0;z-index:20;background:var(--header-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)">
     <div class="hdr-inner" style="max-width:1040px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;gap:20px">
-      <div style="display:flex;align-items:center;gap:9px;margin-right:8px">
-        <span style="width:9px;height:9px;border-radius:50%;background:var(--accent);display:inline-block"></span>
+      <div style="flex:none;display:flex;align-items:center;gap:9px;margin-right:4px">
+        <span style="flex:none;width:9px;height:9px;border-radius:50%;background:var(--accent);display:inline-block"></span>
         <span class="dsp" style="font-weight:600;font-size:22px;line-height:1;letter-spacing:-.02em">Decoder</span>
-        <span class="hdr-tag" style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">For AI</span>
+        <span class="hdr-tag" style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);white-space:nowrap">For AI</span>
       </div>
       <nav id="tabs" style="display:flex;gap:2px"></nav>
-      <button id="searchBtn" class="h-bd" aria-label="Search a term" style="margin-left:auto;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border-2);border-radius:10px;padding:7px 10px 7px 12px;cursor:pointer;color:var(--muted-2);font-size:13px;min-width:210px;transition:border-color .15s">
+      <button id="searchBtn" class="h-bd" aria-label="Search a term" style="margin-left:auto;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border-2);border-radius:10px;padding:7px 10px 7px 12px;cursor:pointer;color:var(--muted-2);font-size:13px;flex:0 1 196px;min-width:120px;transition:border-color .15s">
         <span style="color:var(--accent);font-size:15px">⌕</span>
-        <span class="search-label" style="opacity:.7">Search a term…</span>
+        <span class="search-label" style="opacity:.7;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Search a term…</span>
         <span class="search-kbd" style="margin-left:auto;font-family:var(--font-primary);font-size:10.5px;color:var(--faint);border:1px solid var(--border-2);border-radius:5px;padding:1px 6px">⌘K</span>
       </button>
       <button id="themeBtn" class="h-theme" title="Switch to dark" aria-label="Switch to dark" style="flex:none;display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--surface);border:1px solid var(--border-2);border-radius:10px;cursor:pointer;color:var(--muted);font-size:15px;line-height:1;transition:border-color .15s,color .15s">☾</button>
