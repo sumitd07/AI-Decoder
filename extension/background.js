@@ -52,7 +52,7 @@ async function explainSentence(sentence) {
     const res = await fetch(EXPLAIN_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sentence }),
+      body: JSON.stringify({ sentence, surface: "extension" }),
       signal: ctl.signal
     });
     let body = null;
@@ -68,6 +68,29 @@ async function explainSentence(sentence) {
     return { ok: false, message: e && e.name === "AbortError"
       ? "That took too long. Try again — the second one is usually quick."
       : "Couldn’t reach the decoder. Check your connection and try again." };
+  } finally { clearTimeout(timer); }
+}
+
+// Answer feedback (thumbs up / down in the decode panel). Same reason as above
+// for living in the worker. The panel builds the body; the endpoint validates it
+// (web/api/feedback.js). Only sent when the reader taps a vote.
+const FEEDBACK_URL = "https://aidecoder.app/api/feedback";
+
+async function sendFeedback(body) {
+  if (!body || typeof body !== "object") return { ok: false };
+  if (!(await hasExplainHost())) return { ok: false };
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), 10000);
+  try {
+    const res = await fetch(FEEDBACK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...body, surface: "extension" }),
+      signal: ctl.signal
+    });
+    return { ok: res.ok };
+  } catch (e) {
+    return { ok: false };
   } finally { clearTimeout(timer); }
 }
 
@@ -116,6 +139,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       else if (msg && msg.type === "signin") { const s = await self.DecoderSupa.signIn(); sendResponse({ ok: true, email: s.email }); }
       else if (msg && msg.type === "signout") { await self.DecoderSupa.signOut(); sendResponse({ ok: true }); }
       else if (msg && msg.type === "explain") sendResponse(await explainSentence(msg.sentence));
+      else if (msg && msg.type === "feedback") sendResponse(await sendFeedback(msg.body));
       else if (msg && msg.type === "getCard") sendResponse(await getCard(msg.id));
       else if (msg && msg.type === "getConcepts") {
         const store = await chrome.storage.local.get(CONCEPTS_KEY);

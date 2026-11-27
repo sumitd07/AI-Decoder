@@ -792,7 +792,9 @@ function renderExplainResult(opts) {
     el.innerHTML = `<div class="explain-answer" style="margin-top:26px;padding-top:22px;border-top:1px solid var(--border)">
       <p style="margin:0;font-size:17px;line-height:1.62;color:var(--text)">${esc(opts.restatement)}</p>
       ${chips}${gapsLine}
+      ${opts.meta ? '<div id="explainFb"></div>' : ''}
     </div>`;
+    if (opts.meta) { renderFeedback(opts); el.onclick = onFeedbackClick; el.oninput = onFeedbackInput; }
   } else {
     el.innerHTML = '';
   }
@@ -811,7 +813,7 @@ async function submitExplain() {
   const ctl = new AbortController();
   const abortTimer = setTimeout(() => ctl.abort(), 45000);
   try {
-    res = await fetch('/api/explain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sentence }), signal: ctl.signal });
+    res = await fetch('/api/explain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sentence, surface: 'web' }), signal: ctl.signal });
   } catch (e) {
     clearTimeout(abortTimer);
     explainState.loading = false; reflectExplainBusy();
@@ -836,7 +838,96 @@ async function submitExplain() {
   if (!valid) { setExplainResult({ state: 'error', message: 'Something went wrong with that answer. Try again.' }); return; }
   const terms = body.terms.filter(t => t && typeof t.card_id === 'string' && t.card_id && typeof t.surface === 'string' && t.surface);
   const gaps = body.gaps.filter(g => typeof g === 'string' && g);
-  setExplainResult({ state: 'success', restatement: body.restatement, terms, gaps });
+  const meta = body.meta && typeof body.meta.answer_id === 'string' ? body.meta : null;
+  setExplainResult({ state: 'success', restatement: body.restatement, terms, gaps, sentence, meta, fb: { vote: null, reason: null, comment: '', sent: false, failed: false } });
+}
+
+/* ---------- Answer feedback: thumbs up / down under a Decode answer ----------
+   Scope: feedback-feature/ANSWER-FEEDBACK-SCOPE.md. One tap records the vote;
+   a thumbs-down then offers plain reasons and an optional comment. A tap that
+   goes no further still counts. The sentence is stored only when the reader
+   votes, and the note beside the buttons says so before anything is sent.
+   The extension's panel (extension/explain.js) mirrors this copy. */
+const FB_REASONS = {
+  answer: [['wrong', 'The explanation is wrong'], ['confusing', 'Still hard to understand'], ['wrong_term', 'It linked the wrong term'], ['missed_term', 'It missed a term I needed'], ['other', 'Something else']],
+  declined: [['is_ai', 'This sentence is about AI'], ['other', 'Something else']],
+};
+const FB_NOTE = 'Voting saves this sentence and answer so we can improve Decoder.';
+const fbBtn = 'display:inline-flex;align-items:center;gap:6px;background:var(--surface-3);border:1px solid var(--hairline-2);border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:500;color:var(--text-2);cursor:pointer';
+const fbOn = 'border-color:var(--accent);color:var(--text)';
+
+function renderFeedback(r) {
+  const box = $("#explainFb");
+  if (!box || !r || !r.meta) return;
+  const fb = r.fb;
+  const muted = 'font-size:12px;line-height:1.5;color:var(--muted-2)';
+  let html;
+  if (!fb.vote) {
+    html = `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span style="font-size:12.5px;color:var(--muted)">Was this helpful?</span>
+        <button type="button" data-fb-vote="up" aria-label="Helpful" style="${fbBtn}">👍</button>
+        <button type="button" data-fb-vote="down" aria-label="Not helpful" style="${fbBtn}">👎</button>
+      </div>
+      <p style="margin:6px 0 0;${muted}">${FB_NOTE}</p>`;
+  } else if (fb.vote === 'up' || fb.sent) {
+    html = `<p role="status" style="margin:0;${muted}">${fb.vote === 'up' ? 'Thanks for letting us know.' : 'Thanks. That helps us fix it.'}</p>`;
+  } else {
+    const reasons = FB_REASONS[r.meta.kind === 'declined' ? 'declined' : 'answer'];
+    html = `<p style="margin:0 0 8px;font-size:12.5px;color:var(--muted)">Thanks. What went wrong? <span style="color:var(--muted-2)">(optional)</span></p>
+      <div role="group" aria-label="What went wrong" style="display:flex;flex-wrap:wrap;gap:6px">${reasons.map(([k, label]) =>
+        `<button type="button" data-fb-reason="${k}" aria-pressed="${fb.reason === k}" style="${fbBtn};${fb.reason === k ? fbOn : ''}">${esc(label)}</button>`).join('')}</div>
+      <label for="explainFbComment" class="sr-only">Tell us more</label>
+      <textarea id="explainFbComment" rows="2" maxlength="1000" placeholder="Tell us more (optional)" style="width:100%;box-sizing:border-box;margin-top:10px;resize:vertical;font-family:inherit;font-size:13.5px;line-height:1.5;color:var(--text);background:var(--surface);border:1px solid var(--border-2);border-radius:10px;padding:9px 12px">${esc(fb.comment)}</textarea>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:8px">
+        <button type="button" data-fb-send style="${fbBtn};${fbOn}">Send</button>
+        ${fb.failed ? `<span role="alert" style="${muted}">Couldn’t send that. Try again.</span>` : ''}
+      </div>`;
+  }
+  box.innerHTML = `<div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border)">${html}</div>`;
+}
+
+function postFeedback(r, extra) {
+  return fetch('/api/feedback', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      answer_id: r.meta.answer_id, kind: r.meta.kind, surface: 'web', sentence: r.sentence,
+      answer: { restatement: r.restatement, terms: r.terms, gaps: r.gaps },
+      meta: { gate: r.meta.gate, prompt_version: r.meta.prompt_version, shelf_version: r.meta.shelf_version },
+      ...extra,
+    }),
+  }).then(res => res.ok);
+}
+
+function onFeedbackClick(ev) {
+  const r = explainState.result;
+  if (!r || r.state !== 'success' || !r.meta) return;
+  const vote = ev.target.closest('[data-fb-vote]');
+  if (vote && !r.fb.vote) {
+    r.fb.vote = vote.getAttribute('data-fb-vote');
+    postFeedback(r, { vote: r.fb.vote }).catch(() => {});   // the tap alone is the vote; a lost one is not worth an error
+    renderFeedback(r);
+    if (r.fb.vote === 'down') { const first = $("#explainFb [data-fb-reason]"); if (first) first.focus(); }
+    return;
+  }
+  const reason = ev.target.closest('[data-fb-reason]');
+  if (reason) {
+    const k = reason.getAttribute('data-fb-reason');
+    r.fb.reason = r.fb.reason === k ? null : k;
+    renderFeedback(r);
+    const again = $(`#explainFb [data-fb-reason="${k}"]`); if (again) again.focus();
+    return;
+  }
+  if (ev.target.closest('[data-fb-send]')) {
+    if (!r.fb.reason && !r.fb.comment.trim()) { r.fb.sent = true; renderFeedback(r); return; }   // nothing new to say; the vote is in
+    postFeedback(r, { vote: 'down', reason: r.fb.reason, comment: r.fb.comment })
+      .then(ok => { r.fb.sent = ok; r.fb.failed = !ok; })
+      .catch(() => { r.fb.failed = true; })
+      .then(() => { if (explainState.result === r) renderFeedback(r); });
+  }
+}
+function onFeedbackInput(ev) {
+  const r = explainState.result;
+  if (ev.target && ev.target.id === 'explainFbComment' && r && r.fb) r.fb.comment = ev.target.value;
 }
 
 /* ---------- "How it works": surface 1b, live on a sample article ----------

@@ -9,6 +9,8 @@
 // Phase 3 — the seam for them is marked below, deliberately unbuilt.
 
 const { explain } = require('../../explain/explain');
+const { PROMPT_VERSION } = require('../../explain/prompt');
+const { newAnswerId, kindOf, surfaceOf, countAnswer } = require('../../explain/feedback');
 
 const MAX_SENTENCE = 1000;
 
@@ -19,7 +21,7 @@ function send(res, status, body) {
   res.end(JSON.stringify(body));
 }
 
-module.exports = async function handler(req, res) {
+module.exports = async function handler(req, res, opts = {}) {
   if (req.method !== 'POST') {
     res.setHeader('allow', 'POST');
     return send(res, 405, { error: 'method_not_allowed' });
@@ -45,19 +47,35 @@ module.exports = async function handler(req, res) {
   // decision is "when abuse actually appears in the logs".
 
   try {
-    const result = await explain(sentence);
+    const result = await (opts.explain || explain)(sentence);
     // Whether the sense gate ran (off | pass | skip | error:<cause>). No keys,
     // no sentence text: it exists so a deploy can be verified from a curl.
     if (result.gateStatus) res.setHeader('x-decoder-gate', result.gateStatus);
+    const kind = kindOf(result);
     const payload = {
       restatement: result.restatement,
       terms: result.terms,
       gaps: result.gaps,
+      // What a feedback vote sends back (web/api/feedback.js). Secret-free: an
+      // id for this answer, and which pipeline produced it.
+      meta: {
+        answer_id: newAnswerId(),
+        kind,
+        gate: result.gateStatus || 'off',
+        prompt_version: PROMPT_VERSION,
+        shelf_version: (result._debug && result._debug.shelf_version) || null,
+      },
     };
+    // Answers-shown counter, the denominator for the vote rate. Counts only, no
+    // text. Started now, awaited after the reply is sent, so the reader never
+    // waits on it; bounded and fail-safe inside countAnswer.
+    const counting = opts.skipCount ? null : countAnswer({ surface: surfaceOf(body.surface), kind, gate: payload.meta.gate });
     // Debug carries model ids, scores and token counts. Off unless asked for —
     // it is for the eval and for local work, not for readers.
     if (process.env.EXPLAIN_DEBUG === '1') payload._debug = result._debug;
-    return send(res, 200, payload);
+    send(res, 200, payload);
+    if (counting) await counting;
+    return;
   } catch (e) {
     // Never let a provider error reach the client: it can carry the key, the
     // endpoint, or quota details. Log the real thing, return a plain message —

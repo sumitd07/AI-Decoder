@@ -2,7 +2,7 @@
 
 > **Note:** the *published* privacy policy that goes live with your website is `web/privacy.html` (it covers both the website and the extension). Edit your contact email there. This markdown file is just a plain-text reference copy.
 
-_Last updated: 21 August 2026_
+_Last updated: 27 November 2026_
 
 Decoder is a browser extension that underlines known AI/technical terms on web pages and shows a plain-language explanation when you click one, with the option to save terms to a personal list. It can also explain a whole sentence you highlight, in plain English.
 
@@ -10,7 +10,8 @@ Decoder is a browser extension that underlines known AI/technical terms on web p
 
 - **Access is opt-in.** The extension has no access to any page until you turn it on (a one-time permission granted from its popup), and you can turn it off at any time.
 - **Page text is read locally, never collected.** Once enabled, to find and underline terms the extension looks at the visible text of the page you're on, in your browser. This happens entirely on your device. Page content is **not** stored, logged, sent to us, or shared with anyone.
-- **Decoding a sentence sends that sentence, and only when you ask.** If you highlight a sentence and click Decode, that one sentence is sent to `aidecoder.app` and on to TypeSafe, which checks whether it uses AI terms, and Google's Gemini API, which explains it. Highlighting alone sends nothing — the request happens on the click. The page address, your account and the rest of the page stay on your device, and the sentence is not stored. Both surfaces have their own switch in the popup, so the highlighter can run with decoding off.
+- **Decoding a sentence sends that sentence, and only when you ask.** If you highlight a sentence and click Decode, that one sentence is sent to `aidecoder.app` and on to TypeSafe, which checks whether it uses AI terms, and Google's Gemini API, which explains it. Highlighting alone sends nothing — the request happens on the click. The page address, your account and the rest of the page stay on your device, and the sentence is not stored unless you rate the answer (next point). Both surfaces have their own switch in the popup, so the highlighter can run with decoding off.
+- **Rating an answer is optional.** Under each answer you can tap thumbs up or thumbs down and optionally say what went wrong. Only if you vote is that sentence stored, with the answer, your vote, your reason and any comment, so we can find and fix bad answers. It is not linked to your account, IP address or the page you were on, and it is kept for 12 months. The note beside the buttons says this before anything is sent.
 - **Saving is optional and uses the same account as the web app.** If you sign in with Google inside the extension, the terms you save are stored in your account (via Supabase) so they appear in the Decoder web app and sync across devices. If you don't sign in, you can't save from the extension and nothing is sent anywhere.
 
 ## Data we collect

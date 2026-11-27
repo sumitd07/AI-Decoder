@@ -1,4 +1,34 @@
-# Chrome Web Store submission kit — v1.1.0
+# Chrome Web Store submission kit
+
+## v1.2.0 — answer feedback (read this first for this submission)
+
+What changed from 1.1.x: thumbs up / down under each decoded answer, with optional
+reasons and a comment. A vote sends the sentence, the answer and the vote to
+`aidecoder.app/api/feedback`, which stores it (Supabase) for 12 months.
+
+- **Permissions:** unchanged. The call goes through the background worker to
+  `https://aidecoder.app/*`, which is already an optional host permission. So no
+  in-depth review, and existing users update silently.
+- **Privacy tab:** keep **Website content** ticked (purpose App functionality) and
+  change its description to: *"One sentence, only when the user highlights it and
+  clicks Decode. Not stored, unless the user rates the answer with thumbs up or
+  down; then the sentence, the answer and the rating are kept for 12 months to
+  improve answers. Never tied to an account, IP or page address."* Nothing else on
+  the tab changes; all three certifications still hold.
+- **Privacy policy:** `aidecoder.app/privacy` already describes this ("Rating an
+  answer"). Deploy the website before submitting, so the reviewer reads the new page.
+- **Description:** add one line to the decode paragraph: *"Rate any answer with a
+  thumbs up or down to help us improve it."* (Limited Use: the feature that keeps
+  data must be described on the store page.)
+- **Telling existing users:** the note beside the buttons ("Voting saves this
+  sentence and answer so we can improve Decoder.") is shown before anything is
+  stored.
+- Recheck these against Chrome's current policy pages before submitting; the notes
+  below were checked in August 2026.
+
+---
+
+## Previous submission: v1.1.0
 
 Everything needed to submit Decoder, organized by the tabs in the [Web Store developer dashboard](https://chrome.google.com/webstore/devconsole).
 
