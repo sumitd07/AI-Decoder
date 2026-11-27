@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JSON mode — what it means in AI | Decoder</title>
+<title>JSON mode: what it means in AI | Decoder</title>
 <meta name="description" content="A model API feature that guarantees the output is valid JSON by constraining token choices during generation.">
 <link rel="canonical" href="https://aidecoder.app/term/jsonmode">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="JSON mode — what it means in AI | Decoder">
+<meta property="og:title" content="JSON mode: what it means in AI | Decoder">
 <meta property="og:description" content="A model API feature that guarantees the output is valid JSON by constraining token choices during generation.">
 <meta property="og:url" content="https://aidecoder.app/term/jsonmode">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">A model API feature that guarantees the output is valid JSON by constraining token choices during generation.</p>
 <section class="blk"><h2>Think of it like</h2><p>Like autocorrect that prevents you from typing invalid JSON.</p></section>
 <section class="blk"><h2>Example</h2><p>OpenAI API: set `response_format: { type: &quot;json_object&quot; }` and the output will always parse with `json.loads()`.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Under the hood, JSON mode works by blacklisting tokens that would break JSON syntax at each step. First `{` locks you into an object; once you type a key string, only `:` and certain characters follow. It&#39;s elegant and fast. Downside: it doesn&#39;t validate against a schema, only that the JSON is well-formed. A nested object might not match your expected structure.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Under the hood, JSON mode works by blacklisting tokens that would break JSON syntax at each step. First `{` locks you into an object; once you type a key string, only `:` and certain characters follow. It&#39;s elegant and fast. Downside: it doesn&#39;t validate against a schema, only that the JSON is well-formed. A nested object might not match your expected structure.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Eliminates parsing errors; integrations work seamlessly.</p></div><div class="lens"><h3>For engineers</h3><p>Check your API docs. Combine with a schema definition (TypeScript type, Pydantic model) in the prompt. Parse the output confidently with no try/catch.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/structuredoutput">Structured output</a> — Implementation of structured output.</li><li><a href="/term/outputschema">Output schema</a> — Output schema is the broader pattern.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/structuredoutput">Structured output</a>: Implementation of structured output.</li><li><a href="/term/outputschema">Output schema</a>: Output schema is the broader pattern.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

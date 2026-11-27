@@ -226,8 +226,8 @@ function siteFooter() {
 }
 function ctaBlock() {
   return `<div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="${STORE_URL}" rel="nofollow">Add to Chrome</a>
 </div>`;
 }
@@ -236,7 +236,7 @@ function ctaBlock() {
 function renderTerm(c, idToTerm, validIds) {
   const canonical = `${SITE}/term/${c.id}`;
   const desc = truncate(c.oneLiner || c.analogy || c.example, 155);
-  const title = `${c.term} — what it means in AI | Decoder`;
+  const title = `${c.term}: what it means in AI | Decoder`;
   const sym = STATUS_SYM[c.status] || '●';
   const stk = String(c.status || 'Core').toLowerCase();
 
@@ -255,7 +255,7 @@ function renderTerm(c, idToTerm, validIds) {
   if (c.oneLiner) parts.push(`<p class="lead">${esc(c.oneLiner)}</p>`);
   if (c.analogy) parts.push(`<section class="blk"><h2>Think of it like</h2><p>${esc(c.analogy)}</p></section>`);
   if (c.example) parts.push(`<section class="blk"><h2>Example</h2><p>${esc(c.example)}</p></section>`);
-  if (c.deeper) parts.push(`<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>${esc(c.deeper)}</p></div></section>`);
+  if (c.deeper) parts.push(`<section class="blk"><h2>How it works</h2><div class="deeper"><p>${esc(c.deeper)}</p></div></section>`);
 
   const lens = c.lens || {};
   if (lens.pm || lens.eng) {
@@ -271,7 +271,7 @@ function renderTerm(c, idToTerm, validIds) {
       const text = esc(r.text || '');
       if (r.id && validIds.has(r.id)) {
         const name = esc(idToTerm.get(r.id) || r.id);
-        return `<li><a href="/term/${esc(r.id)}">${name}</a> — ${text}</li>`;
+        return `<li><a href="/term/${esc(r.id)}">${name}</a>: ${text}</li>`;
       }
       return `<li>${text}</li>`;
     }).join('');

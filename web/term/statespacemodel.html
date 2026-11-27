@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>State Space Model — what it means in AI | Decoder</title>
+<title>State Space Model: what it means in AI | Decoder</title>
 <meta name="description" content="A sequence model that carries a compact running state, mixing RNN-like memory with parallel training.">
 <link rel="canonical" href="https://aidecoder.app/term/statespacemodel">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="State Space Model — what it means in AI | Decoder">
+<meta property="og:title" content="State Space Model: what it means in AI | Decoder">
 <meta property="og:description" content="A sequence model that carries a compact running state, mixing RNN-like memory with parallel training.">
 <meta property="og:url" content="https://aidecoder.app/term/statespacemodel">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -88,12 +88,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">A sequence model that carries a compact running state, mixing RNN-like memory with parallel training.</p>
 <section class="blk"><h2>Think of it like</h2><p>A thermostat that tracks a single evolving reading over time instead of re-reading the whole day’s log.</p></section>
 <section class="blk"><h2>Example</h2><p>For very long sequences, an SSM keeps a fixed-size state so cost grows linearly, not quadratically like attention.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>State space models process sequences through a linear dynamical system: a hidden state evolves step to step, summarizing history in fixed size. Cleverly, they can be computed either recurrently (cheap at inference) or as a convolution (parallel at training), sidestepping the RNN’s training bottleneck. Their linear scaling with length makes them attractive for very long contexts where attention gets expensive.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>State space models process sequences through a linear dynamical system: a hidden state evolves step to step, summarizing history in fixed size. Cleverly, they can be computed either recurrently (cheap at inference) or as a convolution (parallel at training), sidestepping the RNN’s training bottleneck. Their linear scaling with length makes them attractive for very long contexts where attention gets expensive.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>A promising challenger to attention for very long inputs, with cheaper scaling.</p></div><div class="lens"><h3>For engineers</h3><p>A linear-recurrence sequence model with a fixed-size state, computable as convolution for parallel training.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/mamba">Mamba</a> — A prominent example is Mamba.</li><li><a href="/term/transformer">Transformer</a> — An alternative to the transformer.</li><li><a href="/term/recurrentneuralnetwork">Recurrent Neural Network</a> — Descends from recurrent ideas.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/mamba">Mamba</a>: A prominent example is Mamba.</li><li><a href="/term/transformer">Transformer</a>: An alternative to the transformer.</li><li><a href="/term/recurrentneuralnetwork">Recurrent Neural Network</a>: Descends from recurrent ideas.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

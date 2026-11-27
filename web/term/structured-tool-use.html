@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Structured Tool Use — what it means in AI | Decoder</title>
+<title>Structured Tool Use: what it means in AI | Decoder</title>
 <meta name="description" content="Making the model’s tool requests conform strictly to a defined shape, so they can’t come out malformed.">
 <link rel="canonical" href="https://aidecoder.app/term/structured-tool-use">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Structured Tool Use — what it means in AI | Decoder">
+<meta property="og:title" content="Structured Tool Use: what it means in AI | Decoder">
 <meta property="og:description" content="Making the model’s tool requests conform strictly to a defined shape, so they can’t come out malformed.">
 <meta property="og:url" content="https://aidecoder.app/term/structured-tool-use">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Making the model’s tool requests conform strictly to a defined shape, so they can’t come out malformed.</p>
 <section class="blk"><h2>Think of it like</h2><p>A form that won’t submit until every required field is filled with the right kind of value — no half-finished orders slip through.</p></section>
 <section class="blk"><h2>Example</h2><p>The model must return `{amount: number, currency: string}`; the system rejects or repairs any call missing a field or with the wrong type.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Rather than hoping the model emits valid arguments, structured tool use constrains generation to a schema — via grammars, constrained decoding, or validate-and-retry — so the output is guaranteed parseable. This removes a whole category of flaky failures where a stray character broke the JSON. The tradeoff is a little rigidity and setup, in exchange for calls your code can trust.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Rather than hoping the model emits valid arguments, structured tool use constrains generation to a schema — via grammars, constrained decoding, or validate-and-retry — so the output is guaranteed parseable. This removes a whole category of flaky failures where a stray character broke the JSON. The tradeoff is a little rigidity and setup, in exchange for calls your code can trust.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>The unglamorous reliability layer that keeps agents from breaking on a misplaced comma.</p></div><div class="lens"><h3>For engineers</h3><p>Enforcing schema conformance on tool-call arguments via constrained decoding or validation-and-repair.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/tool-schema">Tool Schema</a> — The schema it enforces against.</li><li><a href="/term/tool-calling">Tool Calling</a> — The call it makes trustworthy.</li><li><a href="/term/function-calling">Function Calling</a> — The structured-output mechanism it tightens.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/tool-schema">Tool Schema</a>: The schema it enforces against.</li><li><a href="/term/tool-calling">Tool Calling</a>: The call it makes trustworthy.</li><li><a href="/term/function-calling">Function Calling</a>: The structured-output mechanism it tightens.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

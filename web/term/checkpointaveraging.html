@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Checkpoint Averaging — what it means in AI | Decoder</title>
+<title>Checkpoint Averaging: what it means in AI | Decoder</title>
 <meta name="description" content="Average several saved snapshots from a single training run into one steadier final model.">
 <link rel="canonical" href="https://aidecoder.app/term/checkpointaveraging">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Checkpoint Averaging — what it means in AI | Decoder">
+<meta property="og:title" content="Checkpoint Averaging: what it means in AI | Decoder">
 <meta property="og:description" content="Average several saved snapshots from a single training run into one steadier final model.">
 <meta property="og:url" content="https://aidecoder.app/term/checkpointaveraging">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Average several saved snapshots from a single training run into one steadier final model.</p>
 <section class="blk"><h2>Think of it like</h2><p>Blending a few photos of a moving subject to cancel the blur and get one sharp shot.</p></section>
 <section class="blk"><h2>Example</h2><p>Rather than shipping the last step, a team averages the final five checkpoints and gets a small, free quality gain.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Late in training the weights oscillate around a good region rather than settling exactly. Averaging several nearby checkpoints lands you in a flatter, more robust center of that region, which usually generalizes a touch better than any single snapshot. It’s a standard, near-zero-cost finishing move.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Late in training the weights oscillate around a good region rather than settling exactly. Averaging several nearby checkpoints lands you in a flatter, more robust center of that region, which usually generalizes a touch better than any single snapshot. It’s a standard, near-zero-cost finishing move.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>A no-downside trick to slightly improve the final model from runs you already completed.</p></div><div class="lens"><h3>For engineers</h3><p>Averaging parameters of consecutive checkpoints from one run to reduce oscillation-driven variance.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/weightaveraging">Weight Averaging</a> — A specific use of weight averaging.</li><li><a href="/term/ema">EMA</a> — The streaming version is EMA.</li><li><a href="/term/checkpoint">Checkpoint</a> — Operates on saved checkpoints.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/weightaveraging">Weight Averaging</a>: A specific use of weight averaging.</li><li><a href="/term/ema">EMA</a>: The streaming version is EMA.</li><li><a href="/term/checkpoint">Checkpoint</a>: Operates on saved checkpoints.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

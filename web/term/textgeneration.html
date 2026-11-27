@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Text generation — what it means in AI | Decoder</title>
+<title>Text generation: what it means in AI | Decoder</title>
 <meta name="description" content="A model producing new text one token at a time, each choice conditioned on everything so far.">
 <link rel="canonical" href="https://aidecoder.app/term/textgeneration">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Text generation — what it means in AI | Decoder">
+<meta property="og:title" content="Text generation: what it means in AI | Decoder">
 <meta property="og:description" content="A model producing new text one token at a time, each choice conditioned on everything so far.">
 <meta property="og:url" content="https://aidecoder.app/term/textgeneration">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">A model producing new text one token at a time, each choice conditioned on everything so far.</p>
 <section class="blk"><h2>Think of it like</h2><p>Like writing a sentence where you commit to one word, then choose the next based on all the words already down.</p></section>
 <section class="blk"><h2>Example</h2><p>You type a prompt and watch the reply stream in word by word — that streaming is generation happening token by token.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Generation is autoregressive: the model predicts a probability distribution for the next token, a decoding strategy picks one, it’s appended, and the loop repeats. Everything from temperature to stop sequences is really about shaping or ending this loop. It’s also why longer outputs cost proportionally more time and money.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Generation is autoregressive: the model predicts a probability distribution for the next token, a decoding strategy picks one, it’s appended, and the loop repeats. Everything from temperature to stop sequences is really about shaping or ending this loop. It’s also why longer outputs cost proportionally more time and money.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>The core act you’re paying for; output length drives both latency and cost linearly.</p></div><div class="lens"><h3>For engineers</h3><p>Iterative next-token sampling from the model’s conditional distribution until a stop condition; inherently sequential.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/autoregressive">Autoregressive</a> — The step-by-step nature of it.</li><li><a href="/term/nexttokenprediction">Next-token prediction</a> — The prediction at each step.</li><li><a href="/term/sampling">Sampling</a> — How each token is chosen.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/autoregressive">Autoregressive</a>: The step-by-step nature of it.</li><li><a href="/term/nexttokenprediction">Next-token prediction</a>: The prediction at each step.</li><li><a href="/term/sampling">Sampling</a>: How each token is chosen.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

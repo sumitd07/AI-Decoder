@@ -107,4 +107,7 @@ function buildPrompt(sentence, cards = []) {
   return { system: SYSTEM, user: parts.join('\n') };
 }
 
-module.exports = { buildPrompt, renderCard, SYSTEM };
+// Bump when the prompt changes, so feedback can be split by prompt (D46 = v2).
+const PROMPT_VERSION = 'v2';
+
+module.exports = { buildPrompt, renderCard, SYSTEM, PROMPT_VERSION };

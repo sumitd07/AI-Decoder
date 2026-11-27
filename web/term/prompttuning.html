@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prompt tuning — what it means in AI | Decoder</title>
+<title>Prompt tuning: what it means in AI | Decoder</title>
 <meta name="description" content="Learning a &quot;soft prompt&quot; — a sequence of embedding vectors — instead of hand-writing text instructions.">
 <link rel="canonical" href="https://aidecoder.app/term/prompttuning">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Prompt tuning — what it means in AI | Decoder">
+<meta property="og:title" content="Prompt tuning: what it means in AI | Decoder">
 <meta property="og:description" content="Learning a &quot;soft prompt&quot; — a sequence of embedding vectors — instead of hand-writing text instructions.">
 <meta property="og:url" content="https://aidecoder.app/term/prompttuning">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Learning a &quot;soft prompt&quot; — a sequence of embedding vectors — instead of hand-writing text instructions.</p>
 <section class="blk"><h2>Think of it like</h2><p>Instead of typing &quot;Be nice,&quot; training the model to recognize a learned signal that means &quot;be nice.&quot;</p></section>
 <section class="blk"><h2>Example</h2><p>Initialize 20 vectors, train them on your task data, use them as a prefix to the model. Often outperforms hand-crafted prompts.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Soft prompts bypass the discrete token constraint. You optimize vectors end-to-end using gradient descent on your task loss. Pros: often outperforms handwriting, no token budget limits. Cons: less interpretable, not transferable across models, requires labeled data and compute.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Soft prompts bypass the discrete token constraint. You optimize vectors end-to-end using gradient descent on your task loss. Pros: often outperforms handwriting, no token budget limits. Cons: less interpretable, not transferable across models, requires labeled data and compute.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Better performance for specialized tasks. Faster than fine-tuning.</p></div><div class="lens"><h3>For engineers</h3><p>Implement with a trainable embedding layer. Use gradient-based optimization. Save and reload the soft prompt for inference.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/softprompts">Soft prompts</a> — Related to soft prompts and prefix tuning.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/softprompts">Soft prompts</a>: Related to soft prompts and prefix tuning.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

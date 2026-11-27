@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reward shaping — what it means in AI | Decoder</title>
+<title>Reward shaping: what it means in AI | Decoder</title>
 <meta name="description" content="Adding extra hints to the reward so the model gets feedback along the way, not just at the very end.">
 <link rel="canonical" href="https://aidecoder.app/term/rewardshaping">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Reward shaping — what it means in AI | Decoder">
+<meta property="og:title" content="Reward shaping: what it means in AI | Decoder">
 <meta property="og:description" content="Adding extra hints to the reward so the model gets feedback along the way, not just at the very end.">
 <meta property="og:url" content="https://aidecoder.app/term/rewardshaping">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -88,12 +88,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Adding extra hints to the reward so the model gets feedback along the way, not just at the very end.</p>
 <section class="blk"><h2>Think of it like</h2><p>Giving a kid &quot;warmer, warmer, colder&quot; clues while they search, instead of only saying &quot;found it&quot; at the end.</p></section>
 <section class="blk"><h2>Example</h2><p>Rather than rewarding only a fully correct final answer, a trainer gives partial credit for each valid reasoning step to guide learning.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Sparse rewards are hard to learn from because most actions get zero signal. Shaping adds intermediate rewards to point the model toward good behavior sooner. The danger is that a poorly shaped reward changes what is optimal and invites reward hacking — the model chases the hints rather than the real goal — so shaping has to be designed carefully to preserve the true objective.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Sparse rewards are hard to learn from because most actions get zero signal. Shaping adds intermediate rewards to point the model toward good behavior sooner. The danger is that a poorly shaped reward changes what is optimal and invites reward hacking — the model chases the hints rather than the real goal — so shaping has to be designed carefully to preserve the true objective.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Speeds up learning on hard tasks, but a sloppy shaping function can teach the wrong lesson.</p></div><div class="lens"><h3>For engineers</h3><p>Augment sparse rewards with intermediate signals; keep them potential-based to avoid altering the optimal policy.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/rewardhacking">Reward hacking</a> — What careless shaping can cause.</li><li><a href="/term/rewardsignal">Reward signal</a> — The base signal being shaped.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/rewardhacking">Reward hacking</a>: What careless shaping can cause.</li><li><a href="/term/rewardsignal">Reward signal</a>: The base signal being shaped.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

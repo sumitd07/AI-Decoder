@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tool Calling — what it means in AI | Decoder</title>
+<title>Tool Calling: what it means in AI | Decoder</title>
 <meta name="description" content="The concrete act of a model choosing a tool and issuing the request to run it, mid-response.">
 <link rel="canonical" href="https://aidecoder.app/term/tool-calling">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Tool Calling — what it means in AI | Decoder">
+<meta property="og:title" content="Tool Calling: what it means in AI | Decoder">
 <meta property="og:description" content="The concrete act of a model choosing a tool and issuing the request to run it, mid-response.">
 <meta property="og:url" content="https://aidecoder.app/term/tool-calling">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">The concrete act of a model choosing a tool and issuing the request to run it, mid-response.</p>
 <section class="blk"><h2>Think of it like</h2><p>Reaching for the right implement on the workbench the moment the task needs it — grab the wrench, not just describe wrenches.</p></section>
 <section class="blk"><h2>Example</h2><p>Halfway through answering, the model emits a call to the `get_stock_price` tool with `ticker: &quot;AAPL&quot;` and pauses for the result.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Tool calling is the mechanical event inside tool use: the model outputs a structured request naming the tool and its arguments, the runtime pauses generation, runs it, and resumes with the result appended. Modern models are trained to do this natively, often calling several tools in one turn. The reliability question is whether it picks the right tool and fills the arguments correctly.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Tool calling is the mechanical event inside tool use: the model outputs a structured request naming the tool and its arguments, the runtime pauses generation, runs it, and resumes with the result appended. Modern models are trained to do this natively, often calling several tools in one turn. The reliability question is whether it picks the right tool and fills the arguments correctly.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>The moment your model stops talking and starts doing — literally the trigger for action.</p></div><div class="lens"><h3>For engineers</h3><p>The model emitting a structured tool invocation that suspends generation until the runtime returns a result.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/function-calling">Function Calling</a> — The structured-output mechanism behind it.</li><li><a href="/term/tool-use">Tool Use</a> — The umbrella idea it realizes.</li><li><a href="/term/tool-result">Tool Result</a> — What the runtime hands back afterward.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/function-calling">Function Calling</a>: The structured-output mechanism behind it.</li><li><a href="/term/tool-use">Tool Use</a>: The umbrella idea it realizes.</li><li><a href="/term/tool-result">Tool Result</a>: What the runtime hands back afterward.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

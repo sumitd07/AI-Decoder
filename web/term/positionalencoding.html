@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Positional encoding — what it means in AI | Decoder</title>
+<title>Positional encoding: what it means in AI | Decoder</title>
 <meta name="description" content="The trick that tells a model the order of words, since the core machinery would otherwise see your sentence as an unordered pile.">
 <link rel="canonical" href="https://aidecoder.app/term/positionalencoding">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Positional encoding — what it means in AI | Decoder">
+<meta property="og:title" content="Positional encoding: what it means in AI | Decoder">
 <meta property="og:description" content="The trick that tells a model the order of words, since the core machinery would otherwise see your sentence as an unordered pile.">
 <meta property="og:url" content="https://aidecoder.app/term/positionalencoding">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">The trick that tells a model the order of words, since the core machinery would otherwise see your sentence as an unordered pile.</p>
 <section class="blk"><h2>Think of it like</h2><p>Numbering the pages so the story still makes sense after you drop the binder.</p></section>
 <section class="blk"><h2>Example</h2><p>It’s why “dog bites man” and “man bites dog” land differently instead of looking identical.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Attention treats input as a set, so order has to be injected separately — as a positional signal added to each token. The specific method keeps evolving (sinusoidal, learned, rotary), and it’s a quiet lever behind how far a model’s context window can stretch. Increasingly an under-the-hood detail as newer schemes just work.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Attention treats input as a set, so order has to be injected separately — as a positional signal added to each token. The specific method keeps evolving (sinusoidal, learned, rotary), and it’s a quiet lever behind how far a model’s context window can stretch. Increasingly an under-the-hood detail as newer schemes just work.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Deep-internals; matters only when reasoning about very long-context behavior.</p></div><div class="lens"><h3>For engineers</h3><p>Injects sequence order into permutation-invariant attention; RoPE and variants affect context extrapolation.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/llm">LLM</a> — A detail of how the transformer behind an LLM works.</li><li><a href="/term/contextwindow">Context window</a> — Bounds how the context window scales.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/llm">LLM</a>: A detail of how the transformer behind an LLM works.</li><li><a href="/term/contextwindow">Context window</a>: Bounds how the context window scales.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

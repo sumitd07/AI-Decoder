@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TF-IDF — what it means in AI | Decoder</title>
+<title>TF-IDF: what it means in AI | Decoder</title>
 <meta name="description" content="A scoring trick that highlights words that are common in a document but rare across all documents — so &quot;urgent&quot; in your email matters more than &quot;the.&quot;">
 <link rel="canonical" href="https://aidecoder.app/term/tfidf">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="TF-IDF — what it means in AI | Decoder">
+<meta property="og:title" content="TF-IDF: what it means in AI | Decoder">
 <meta property="og:description" content="A scoring trick that highlights words that are common in a document but rare across all documents — so &quot;urgent&quot; in your email matters more than &quot;the.&quot;">
 <meta property="og:url" content="https://aidecoder.app/term/tfidf">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">A scoring trick that highlights words that are common in a document but rare across all documents — so &quot;urgent&quot; in your email matters more than &quot;the.&quot;</p>
 <section class="blk"><h2>Think of it like</h2><p>A librarian who knows which words are telling: &quot;blood&quot; in a medical journal is informative; &quot;the&quot; in any journal is noise.</p></section>
 <section class="blk"><h2>Example</h2><p>When you search Google, TF-IDF helps rank results: pages containing your rare search term score higher than pages stuffed with common words.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>TF (term frequency) counts how often a word appears in a document; IDF (inverse document frequency) is a penalty for words that appear in many documents. Multiply them: a word gets high TF-IDF if it&#39;s frequent in one document but rare globally. It&#39;s a simple heuristic that works well for retrieval and classification without deep learning. Modern systems use learned embeddings instead, which capture semantic meaning beyond word statistics, but TF-IDF remains a solid baseline and is interpretable.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>TF (term frequency) counts how often a word appears in a document; IDF (inverse document frequency) is a penalty for words that appear in many documents. Multiply them: a word gets high TF-IDF if it&#39;s frequent in one document but rare globally. It&#39;s a simple heuristic that works well for retrieval and classification without deep learning. Modern systems use learned embeddings instead, which capture semantic meaning beyond word statistics, but TF-IDF remains a solid baseline and is interpretable.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>A robust, interpretable baseline for search and classification; overtaken by learned methods but still useful.</p></div><div class="lens"><h3>For engineers</h3><p>A term weighting scheme: TF-IDF(term, doc) = count(term, doc) × log(total_docs / docs_with_term).</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/bagofwords">Bag of words</a> — An improvement on bag of words.</li><li><a href="/term/retrieval">Retrieval</a> — Foundational to classic information retrieval.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/bagofwords">Bag of words</a>: An improvement on bag of words.</li><li><a href="/term/retrieval">Retrieval</a>: Foundational to classic information retrieval.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

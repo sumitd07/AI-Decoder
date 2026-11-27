@@ -175,6 +175,7 @@
     clearTimeout(waitTimer1); clearTimeout(waitTimer2);
     if (panel) { panel.remove(); panel = null; }
     pending = null;
+    current = null;
     anchorRange = null; anchorRect = null;
   }
 
@@ -188,6 +189,9 @@
     panel.setAttribute("aria-live", "polite");
     document.body.appendChild(panel);
     panel.addEventListener("click", onPanelClick);
+    panel.addEventListener("input", ev => {
+      if (ev.target && ev.target.hasAttribute && ev.target.hasAttribute("data-dcx-comment") && current) current.fb.comment = ev.target.value;
+    });
     return panel;
   }
 
@@ -233,7 +237,94 @@
       ? `<p class="dcx-gaps">Not on the shelf yet: ${data.gaps.map(esc).join(", ")}.</p>`
       : "";
     const noteLine = note ? `<p class="dcx-note">${esc(note)}</p>` : "";
-    paint(`<div class="dcx-answer"><p class="dcx-restate">${esc(data.restatement)}</p>${chips}${gaps}${noteLine}</div>`, rect);
+    paint(`<div class="dcx-answer"><p class="dcx-restate">${esc(data.restatement)}</p>${chips}${gaps}${noteLine}${data.meta ? '<div class="dcx-fb" data-dcx-fb></div>' : ""}</div>`, rect);
+    current = data.meta ? { ...data, fb: { vote: null, reason: null, comment: "", sent: false, failed: false } } : null;
+    paintFeedback();
+  }
+
+  // ---- answer feedback -----------------------------------------------------
+  // Same flow and copy as the Decode box on aidecoder.app (web/index.html):
+  // one tap records the vote; a thumbs-down then offers plain reasons and an
+  // optional comment. The sentence is stored only when the reader votes, and the
+  // note beside the buttons says so before anything is sent.
+  const FB_REASONS = {
+    answer: [["wrong", "The explanation is wrong"], ["confusing", "Still hard to understand"], ["wrong_term", "It linked the wrong term"], ["missed_term", "It missed a term I needed"], ["other", "Something else"]],
+    declined: [["is_ai", "This sentence is about AI"], ["other", "Something else"]]
+  };
+  const FB_NOTE = "Voting saves this sentence and answer so we can improve Decoder.";
+  let current = null;   // the answer on screen: { restatement, terms, gaps, sentence, meta, fb }
+
+  function paintFeedback() {
+    const box = panel && panel.querySelector("[data-dcx-fb]");
+    if (!box || !current) return;
+    const fb = current.fb;
+    let html;
+    if (!fb.vote) {
+      html = `<div class="dcx-fb-row"><span class="dcx-fb-q">Was this helpful?</span>
+          <button class="dcx-fb-btn" data-dcx-vote="up" aria-label="Helpful">👍</button>
+          <button class="dcx-fb-btn" data-dcx-vote="down" aria-label="Not helpful">👎</button></div>
+        <p class="dcx-fb-note">${esc(FB_NOTE)}</p>`;
+    } else if (fb.vote === "up" || fb.sent) {
+      html = `<p class="dcx-fb-note" role="status">${fb.vote === "up" ? "Thanks for letting us know." : "Thanks. That helps us fix it."}</p>`;
+    } else {
+      const reasons = FB_REASONS[current.meta.kind === "declined" ? "declined" : "answer"];
+      html = `<p class="dcx-fb-q">Thanks. What went wrong? <span class="dcx-fb-note">(optional)</span></p>
+        <div class="dcx-fb-reasons" role="group" aria-label="What went wrong">${reasons.map(([k, label]) =>
+          `<button class="dcx-fb-btn${fb.reason === k ? " dcx-fb-on" : ""}" data-dcx-reason="${k}" aria-pressed="${fb.reason === k}">${esc(label)}</button>`).join("")}</div>
+        <textarea class="dcx-fb-text" data-dcx-comment rows="2" maxlength="1000" placeholder="Tell us more (optional)" aria-label="Tell us more">${esc(fb.comment)}</textarea>
+        <div class="dcx-fb-row"><button class="dcx-fb-btn dcx-fb-on" data-dcx-send>Send</button>${fb.failed ? `<span class="dcx-fb-note" role="alert">Couldn’t send that. Try again.</span>` : ""}</div>`;
+    }
+    box.innerHTML = html;
+  }
+
+  function postFeedback(c, extra, done) {
+    const body = {
+      answer_id: c.meta.answer_id, kind: c.meta.kind, sentence: c.sentence,
+      answer: { restatement: c.restatement, terms: c.terms, gaps: c.gaps },
+      meta: { gate: c.meta.gate, prompt_version: c.meta.prompt_version, shelf_version: c.meta.shelf_version },
+      ...extra
+    };
+    try {
+      chrome.runtime.sendMessage({ type: "feedback", body }, resp => {
+        const ok = !chrome.runtime.lastError && Boolean(resp && resp.ok);
+        if (done) done(ok);
+      });
+    } catch (e) { if (done) done(false); }
+  }
+
+  // true when the click was a feedback control (so the panel handler stops there).
+  function onFeedbackClick(ev) {
+    const c = current;
+    if (!c) return false;
+    const vote = ev.target.closest("[data-dcx-vote]");
+    if (vote) {
+      if (!c.fb.vote) {
+        c.fb.vote = vote.getAttribute("data-dcx-vote");
+        postFeedback(c, { vote: c.fb.vote });   // the tap alone is the vote
+        paintFeedback();
+        const first = panel && panel.querySelector("[data-dcx-reason]");
+        if (first) first.focus();
+      }
+      return true;
+    }
+    const reason = ev.target.closest("[data-dcx-reason]");
+    if (reason) {
+      const k = reason.getAttribute("data-dcx-reason");
+      c.fb.reason = c.fb.reason === k ? null : k;
+      paintFeedback();
+      const again = panel && panel.querySelector(`[data-dcx-reason="${k}"]`);
+      if (again) again.focus();
+      return true;
+    }
+    if (ev.target.closest("[data-dcx-send]")) {
+      if (!c.fb.reason && !c.fb.comment.trim()) { c.fb.sent = true; paintFeedback(); return true; }
+      postFeedback(c, { vote: "down", reason: c.fb.reason, comment: c.fb.comment }, ok => {
+        c.fb.sent = ok; c.fb.failed = !ok;
+        if (current === c) paintFeedback();
+      });
+      return true;
+    }
+    return false;
   }
 
   // ---- chips ---------------------------------------------------------------
@@ -269,6 +360,7 @@
 
   function onPanelClick(ev) {
     if (ev.target.closest("[data-dcx-x]")) { closePanel(); return; }
+    if (onFeedbackClick(ev)) { ev.preventDefault(); ev.stopPropagation(); return; }
     const chip = ev.target.closest("[data-dcx-chip]");
     if (chip) { ev.preventDefault(); ev.stopPropagation(); openChip(chip.getAttribute("data-dcx-chip"), chip); }
   }
@@ -310,6 +402,8 @@
         const valid = typeof d.restatement === "string" && Array.isArray(d.terms) && Array.isArray(d.gaps);
         if (!valid) { paintError("Got a response that didn’t make sense. Try again.", rect); return; }
         paintAnswer({
+          sentence,
+          meta: d.meta && typeof d.meta.answer_id === "string" ? d.meta : null,
           restatement: d.restatement,
           terms: d.terms.filter(t => t && typeof t.card_id === "string" && t.card_id && typeof t.surface === "string" && t.surface),
           gaps: d.gaps.filter(g => typeof g === "string" && g)

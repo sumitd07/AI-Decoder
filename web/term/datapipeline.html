@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Data pipeline — what it means in AI | Decoder</title>
+<title>Data pipeline: what it means in AI | Decoder</title>
 <meta name="description" content="The assembly line that turns raw data into clean, tokenized, training-ready batches.">
 <link rel="canonical" href="https://aidecoder.app/term/datapipeline">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Data pipeline — what it means in AI | Decoder">
+<meta property="og:title" content="Data pipeline: what it means in AI | Decoder">
 <meta property="og:description" content="The assembly line that turns raw data into clean, tokenized, training-ready batches.">
 <meta property="og:url" content="https://aidecoder.app/term/datapipeline">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -88,12 +88,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">The assembly line that turns raw data into clean, tokenized, training-ready batches.</p>
 <section class="blk"><h2>Think of it like</h2><p>A factory line: raw ingredients go in one end, cleaned and packaged product comes out the other.</p></section>
 <section class="blk"><h2>Example</h2><p>Raw web dumps flow through the pipeline — deduped, filtered, tokenized, shuffled, and sharded — before the trainer ever sees a batch.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>The pipeline is the engineered sequence of steps between raw sources and the optimizer: ingestion, cleaning, filtering, deduplication, tokenization, shuffling, and sharding into an efficient on-disk format. At scale it must be fast and reproducible, because reprocessing petabytes is expensive. Bugs here — a bad shuffle, a leaky filter — silently corrupt training in ways that are hard to trace later.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>The pipeline is the engineered sequence of steps between raw sources and the optimizer: ingestion, cleaning, filtering, deduplication, tokenization, shuffling, and sharding into an efficient on-disk format. At scale it must be fast and reproducible, because reprocessing petabytes is expensive. Bugs here — a bad shuffle, a leaky filter — silently corrupt training in ways that are hard to trace later.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Invisible plumbing whose reliability quietly determines whether a training run is trustworthy.</p></div><div class="lens"><h3>For engineers</h3><p>The reproducible ETL from raw sources to tokenized, shuffled, sharded training batches.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/datacuration">Data curation</a> — The judgment-heavy part of the pipeline.</li><li><a href="/term/tokenization">Tokenization</a> — A step near the end of it.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/datacuration">Data curation</a>: The judgment-heavy part of the pipeline.</li><li><a href="/term/tokenization">Tokenization</a>: A step near the end of it.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Patch Embedding — what it means in AI | Decoder</title>
+<title>Patch Embedding: what it means in AI | Decoder</title>
 <meta name="description" content="Dividing an image into small patches and embedding each patch into a vector - the first step of Vision Transformer.">
 <link rel="canonical" href="https://aidecoder.app/term/patchembedding">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Patch Embedding — what it means in AI | Decoder">
+<meta property="og:title" content="Patch Embedding: what it means in AI | Decoder">
 <meta property="og:description" content="Dividing an image into small patches and embedding each patch into a vector - the first step of Vision Transformer.">
 <meta property="og:url" content="https://aidecoder.app/term/patchembedding">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,11 +87,11 @@ ul.rel li a{font-weight:600}
 <p class="lead">Dividing an image into small patches and embedding each patch into a vector - the first step of Vision Transformer.</p>
 <section class="blk"><h2>Think of it like</h2><p>Breaking a large poster into tiles; each tile is then scanned and digitized.</p></section>
 <section class="blk"><h2>Example</h2><p>A 224x224 image with 16x16 patch size = 14x14 = 196 patches. Each patch is a 3x256 vector (16x16x3 = 768 dims flattened, then linearly projected to D).</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Linear projection (conv 1x1) or learned embeddings map each patch to embedding dimension. Positional encoding added (learned, absolute, or relative). Trade-off: large patches = fewer tokens (efficient), small patches = more tokens (finer granularity). Patches of 14x14 or 16x16 are common. No CNN inductive bias; transformer learns locality from data.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Linear projection (conv 1x1) or learned embeddings map each patch to embedding dimension. Positional encoding added (learned, absolute, or relative). Trade-off: large patches = fewer tokens (efficient), small patches = more tokens (finer granularity). Patches of 14x14 or 16x16 are common. No CNN inductive bias; transformer learns locality from data.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Enables transformer-based vision, scalable to large models.</p></div><div class="lens"><h3>For engineers</h3><p>Implementation: reshape, linear projection, add positional embeddings. Typical: 768-2048 D, 196-576 patches.</p></div></div>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

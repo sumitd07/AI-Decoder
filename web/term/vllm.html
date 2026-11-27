@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>vLLM — what it means in AI | Decoder</title>
+<title>vLLM: what it means in AI | Decoder</title>
 <meta name="description" content="An inference engine optimized for fast LLM serving — uses PagedAttention to avoid wasteful memory fragmentation.">
 <link rel="canonical" href="https://aidecoder.app/term/vllm">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="vLLM — what it means in AI | Decoder">
+<meta property="og:title" content="vLLM: what it means in AI | Decoder">
 <meta property="og:description" content="An inference engine optimized for fast LLM serving — uses PagedAttention to avoid wasteful memory fragmentation.">
 <meta property="og:url" content="https://aidecoder.app/term/vllm">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,11 +87,11 @@ ul.rel li a{font-weight:600}
 <p class="lead">An inference engine optimized for fast LLM serving — uses PagedAttention to avoid wasteful memory fragmentation.</p>
 <section class="blk"><h2>Think of it like</h2><p>A smart warehouse manager who packs boxes efficiently so none of the shelf space is wasted.</p></section>
 <section class="blk"><h2>Example</h2><p>vLLM can serve more concurrent requests per GPU than vanilla PyTorch because it doesn&#39;t allocate a full context window per request upfront.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>vLLM&#39;s key trick is PagedAttention — KV cache (attention keys and values) are paged into blocks dynamically rather than pre-allocated in full. This lets you fit more requests on the same GPU memory. It also supports continuous batching (processing requests at different paces) and speculative decoding.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>vLLM&#39;s key trick is PagedAttention — KV cache (attention keys and values) are paged into blocks dynamically rather than pre-allocated in full. This lets you fit more requests on the same GPU memory. It also supports continuous batching (processing requests at different paces) and speculative decoding.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>vLLM can cut your inference costs by 3-4x by letting you pack more requests per GPU.</p></div><div class="lens"><h3>For engineers</h3><p>vLLM abstracts away low-level CUDA — use its Python API or OpenAI-compatible REST endpoint.</p></div></div>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

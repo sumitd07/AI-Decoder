@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reranking — what it means in AI | Decoder</title>
+<title>Reranking: what it means in AI | Decoder</title>
 <meta name="description" content="A second-pass sort that takes the retriever’s rough shortlist and reorders it by who actually answers the question best.">
 <link rel="canonical" href="https://aidecoder.app/term/reranking">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Reranking — what it means in AI | Decoder">
+<meta property="og:title" content="Reranking: what it means in AI | Decoder">
 <meta property="og:description" content="A second-pass sort that takes the retriever’s rough shortlist and reorders it by who actually answers the question best.">
 <meta property="og:url" content="https://aidecoder.app/term/reranking">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">A second-pass sort that takes the retriever’s rough shortlist and reorders it by who actually answers the question best.</p>
 <section class="blk"><h2>Think of it like</h2><p>A hiring manager reading the résumés that HR’s keyword filter already passed through.</p></section>
 <section class="blk"><h2>Example</h2><p>Retrieve 50 candidate chunks cheaply, then rerank to keep the 5 that truly fit before answering.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Fast retrieval favors recall — cast a wide net — but the top hits aren’t always the most relevant. A reranker (often a heavier cross-encoder that reads query and chunk together) scores each candidate directly, catching the good ones the first pass buried. More compute, better precision.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Fast retrieval favors recall — cast a wide net — but the top hits aren’t always the most relevant. A reranker (often a heavier cross-encoder that reads query and chunk together) scores each candidate directly, catching the good ones the first pass buried. More compute, better precision.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>A cheap accuracy boost for RAG: keep retrieval wide, then let reranking pick the winners.</p></div><div class="lens"><h3>For engineers</h3><p>A cross-encoder scoring (query, passage) pairs to reorder first-stage retrieval by relevance.</p></div></div>
-<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/retrieval">Retrieval</a> — Cleans up what retrieval hands over.</li><li><a href="/term/rag">RAG</a> — A quality lever for RAG.</li></ul></section>
+<section class="blk"><h2>Related</h2><ul class="rel"><li><a href="/term/retrieval">Retrieval</a>: Cleans up what retrieval hands over.</li><li><a href="/term/rag">RAG</a>: A quality lever for RAG.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

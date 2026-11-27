@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tracing — what it means in AI | Decoder</title>
+<title>Tracing: what it means in AI | Decoder</title>
 <meta name="description" content="Following a single request through all services—inference server calls embedding service which queries vector DB—to find bottlenecks.">
 <link rel="canonical" href="https://aidecoder.app/term/tracing">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Tracing — what it means in AI | Decoder">
+<meta property="og:title" content="Tracing: what it means in AI | Decoder">
 <meta property="og:description" content="Following a single request through all services—inference server calls embedding service which queries vector DB—to find bottlenecks.">
 <meta property="og:url" content="https://aidecoder.app/term/tracing">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Following a single request through all services—inference server calls embedding service which queries vector DB—to find bottlenecks.</p>
 <section class="blk"><h2>Think of it like</h2><p>Painting a drop of food coloring into a river and tracking where it goes.</p></section>
 <section class="blk"><h2>Example</h2><p>A request spans: model loading (50ms) then prompt build (10ms) then inference (200ms) then token streaming (150ms) = 410ms end-to-end.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Logs let you ask &quot;what happened?&quot; Traces let you ask &quot;how did this request get here and why was it slow?&quot; Requires instrumentation in code (OpenTelemetry) and a collector (Jaeger, Datadog). Sampling is critical—tracing every request is expensive; sample high-latency requests more often.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Logs let you ask &quot;what happened?&quot; Traces let you ask &quot;how did this request get here and why was it slow?&quot; Requires instrumentation in code (OpenTelemetry) and a collector (Jaeger, Datadog). Sampling is critical—tracing every request is expensive; sample high-latency requests more often.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Pinpoints exact bottlenecks in production without guessing.</p></div><div class="lens"><h3>For engineers</h3><p>Instrumentation in code creates spans; each span tags service, duration, metadata; collector gathers spans into traces; UI shows waterfall chart.</p></div></div>
 <section class="blk"><h2>Related</h2><ul class="rel"><li>Complements.</li><li>Paired with.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">

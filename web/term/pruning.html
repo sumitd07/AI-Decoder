@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pruning — what it means in AI | Decoder</title>
+<title>Pruning: what it means in AI | Decoder</title>
 <meta name="description" content="Removing weights from a trained model — setting them to zero — to reduce model size without retraining from scratch.">
 <link rel="canonical" href="https://aidecoder.app/term/pruning">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Decoder">
-<meta property="og:title" content="Pruning — what it means in AI | Decoder">
+<meta property="og:title" content="Pruning: what it means in AI | Decoder">
 <meta property="og:description" content="Removing weights from a trained model — setting them to zero — to reduce model size without retraining from scratch.">
 <meta property="og:url" content="https://aidecoder.app/term/pruning">
 <meta property="og:image" content="https://aidecoder.app/apple-touch-icon.png">
@@ -87,12 +87,12 @@ ul.rel li a{font-weight:600}
 <p class="lead">Removing weights from a trained model — setting them to zero — to reduce model size without retraining from scratch.</p>
 <section class="blk"><h2>Think of it like</h2><p>Editing a book by deleting unimportant sentences.</p></section>
 <section class="blk"><h2>Example</h2><p>A layer has 1 million weights. You remove 50% of them (the ones closest to zero) and the layer still works because those weights didn&#39;t contribute much.</p></section>
-<section class="blk"><h2>How it actually works</h2><div class="deeper"><p>Pruning reduces memory and compute proportionally. Structured pruning (removing whole neurons) is easier to implement but less efficient; unstructured pruning (removing individual weights) is more efficient but requires sparse matrix operations that aren&#39;t always fast on hardware. Modern approach: use sparsity-aware training (pruning during training) instead of post-hoc pruning.</p></div></section>
+<section class="blk"><h2>How it works</h2><div class="deeper"><p>Pruning reduces memory and compute proportionally. Structured pruning (removing whole neurons) is easier to implement but less efficient; unstructured pruning (removing individual weights) is more efficient but requires sparse matrix operations that aren&#39;t always fast on hardware. Modern approach: use sparsity-aware training (pruning during training) instead of post-hoc pruning.</p></div></section>
 <div class="lenses"><div class="lens"><h3>For product teams</h3><p>Cheaper than retraining but usually less effective than quantization.</p></div><div class="lens"><h3>For engineers</h3><p>Start with unstructured magnitude pruning. If hardware doesn&#39;t support sparse ops, use structured pruning instead.</p></div></div>
 <section class="blk"><h2>Related</h2><ul class="rel"><li>Compression technique.</li></ul></section>
 <div class="cta">
-<h2>Read anything AI without the jargon</h2>
-<p>Look up any term in plain English, or save terms as you read with the free Chrome extension.</p>
+<h2>Look up AI terms as you read</h2>
+<p>Search the glossary here, or add the free Chrome extension to look up terms on any page.</p>
 <a class="btn" href="/">Open Decoder</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/decoder-%E2%80%94-ai-terms-explai/lmkalmchomfbhfjmbepnldbcpmknajbh" rel="nofollow">Add to Chrome</a>
 </div>
 <footer class="site-f">
